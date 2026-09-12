@@ -7,7 +7,18 @@ interface ButtonProps {
   variant?: "primary" | "secondary";
   onClick?: () => void;
   disabled?: boolean;
+  className?: string;
 }
+
+const baseClass =
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+
+const variantClass = {
+  primary:
+    "brand-gradient-bg brand-gradient-shadow text-white hover:brightness-110 focus-visible:outline-brand",
+  secondary:
+    "border border-hairline bg-white text-brand-ink hover:bg-gray-50 focus-visible:outline-brand-ink",
+} as const;
 
 export default function Button({
   children,
@@ -15,21 +26,14 @@ export default function Button({
   type = "button",
   variant = "primary",
   onClick,
-  disabled
+  disabled,
+  className = "",
 }: ButtonProps) {
-  const className = `
-    inline-flex items-center justify-center rounded-full px-6 py-3
-    text-sm font-semibold transition shadow-[0px_8px_15px_-3px_#3148c0c9] 
-    ${
-      variant === "primary"
-        ? "bg-[linear-gradient(135deg,#032683_0%,#1A5BB8_55%,#56B0E6_100%)] text-white hover:bg-gray-800"
-        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 "
-    }
-  `;
+  const classes = `${baseClass} ${variantClass[variant]} ${className}`.trim();
 
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link href={href} className={classes}>
         {children}
       </Link>
     );
@@ -37,12 +41,12 @@ export default function Button({
 
   return (
     <button
-  type={type}
-  onClick={onClick}
-  disabled={disabled}
-  className={className}
->
-  {children}
-</button>
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+    >
+      {children}
+    </button>
   );
 }

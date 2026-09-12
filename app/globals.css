@@ -1,20 +1,37 @@
 @import "tailwindcss";
 
+/* Design tokens exposed to Tailwind (text-ink, border-hairline, bg-brand-sky, ...) */
+@theme {
+  --color-ink: #121f37;
+  --color-ink-muted: #647183;
+  --color-brand: #032683;
+  --color-brand-mid: #1a5bb8;
+  --color-brand-sky: #56b0e6;
+  --color-brand-ink: #111e89;
+  --color-hairline: #dce4ec;
+}
+
 :root {
-   --primary-color: #032683;
-  --secondary-color: #1A5BB8;
-}
-.banner-title {
-  font-size: var(--banner-title-size);
+  --primary-color: #032683;
+  --secondary-color: #1a5bb8;
+  --accent-color: #56b0e6;
+
+  --brand-gradient: linear-gradient(
+    135deg,
+    #032683 0%,
+    #1a5bb8 55%,
+    #56b0e6 100%
+  );
+  --brand-shadow: 0px 10px 26px -12px rgba(3, 38, 131, 0.7);
+
+  --background: #ffffff;
+  --foreground: #121f37;
+
+  --banner-title-size: clamp(32px, 5vw, 60px);
+  --section-title-size: clamp(28px, 4vw, 45px);
+  --running-text-size: 15px;
 }
 
-.section-title {
-  font-size: var(--section-title-size);
-}
-
-.running-text {
-  font-size: var(--running-text-size);
-}
 * {
   box-sizing: border-box;
 }
@@ -30,22 +47,6 @@ body {
   font-family: var(--font-sora), sans-serif;
 }
 
-.primary-button {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.secondary-button {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-button,
-input,
-textarea {
-  font: inherit;
-}
-
 h1,
 h2,
 h3,
@@ -55,14 +56,165 @@ h6 {
   font-family: var(--font-sora), sans-serif;
 }
 
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* Type scale */
 .banner-title {
-  font-size: clamp(40px, 5vw, 60px);
+  font-size: var(--banner-title-size);
 }
 
 .section-title {
-  font-size: clamp(32px, 4vw, 45px);
+  font-size: var(--section-title-size);
 }
 
 .running-text {
-  font-size: 15px;
+  font-size: var(--running-text-size);
+}
+
+/* Brand gradient helpers */
+.brand-gradient-text {
+  background-image: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-bg {
+  background-image: var(--brand-gradient);
+}
+
+.brand-gradient-shadow {
+  box-shadow: var(--brand-shadow);
+}
+
+/* ------------------------------------------------------------------
+   Hero "connected ecosystem" diagram
+   Geometry lives in components/Home/heroEcosystem.data.ts
+------------------------------------------------------------------ */
+
+/* Wires must not steal hover from the chip they feed. */
+.hero-node__wire {
+  pointer-events: none;
+}
+
+.hero-node__line {
+  fill: none;
+  stroke: #56b0e6;
+  stroke-opacity: 0.45;
+  stroke-width: 1.17632;
+  transition: stroke-opacity 0.25s ease;
+}
+
+/* The travelling capsule: a single dash chased along the wire. */
+.hero-node__flow {
+  fill: none;
+  stroke: #8fd2ff;
+  stroke-width: 4.11714;
+  stroke-linecap: round;
+  stroke-dasharray: var(--flow-dash) var(--flow-len);
+  animation: hero-flow var(--flow-cycle, 3.2s) linear infinite;
+  animation-delay: var(--flow-delay);
+  transition:
+    stroke 0.25s ease,
+    stroke-width 0.25s ease;
+}
+
+/* Decreasing the offset walks the dash outward, so the pulse leaves the core
+   and arrives at the module. */
+@keyframes hero-flow {
+  from {
+    stroke-dashoffset: var(--flow-end);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-node__chip {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.hero-node__pill {
+  fill: #ffffff;
+  fill-opacity: 0.08;
+  stroke: #ffffff;
+  stroke-opacity: 0.16;
+  stroke-width: 1;
+  transition:
+    fill-opacity 0.25s ease,
+    stroke-opacity 0.25s ease;
+}
+
+.hero-node__circle {
+  fill: #ffffff;
+  fill-opacity: 0.14;
+  transition:
+    fill 0.25s ease,
+    fill-opacity 0.25s ease;
+}
+
+.hero-node__icon {
+  fill: none;
+  stroke: #dbeeff;
+  stroke-width: 0.991667;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.25s ease;
+}
+
+.hero-node__label {
+  fill: #ffffff;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12.3px;
+  font-weight: 500;
+}
+
+/* ---- hover: lift the chip, light its wire, colour the icon disc ---- */
+.hero-node:hover .hero-node__chip {
+  transform: scale(1.045);
+}
+
+.hero-node:hover .hero-node__pill {
+  fill-opacity: 0.18;
+  stroke-opacity: 0.5;
+}
+
+.hero-node:hover .hero-node__circle {
+  fill: #56b0e6;
+  fill-opacity: 1;
+}
+
+.hero-node:hover .hero-node__icon {
+  stroke: #ffffff;
+}
+
+.hero-node:hover .hero-node__line {
+  stroke-opacity: 0.95;
+}
+
+.hero-node:hover .hero-node__flow {
+  stroke: #ffffff;
+  stroke-width: 5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Park the pulse at the module end — where the Figma export froze it. */
+  .hero-node__flow {
+    animation: none;
+    stroke-dashoffset: var(--flow-dash);
+  }
+
+  .hero-node__chip {
+    transition: none;
+  }
+
+  .hero-node:hover .hero-node__chip {
+    transform: none;
+  }
 }
