@@ -69,7 +69,7 @@ export default function Hero() {
           </div>
 
           {/* Connected ecosystem visual */}
-          <HeroEcosystem className="mx-auto w-full max-w-[560px] lg:max-w-none lg:justify-self-end" />
+          <HeroEcosystem className="mx-auto w-full max-w-[760px] lg:max-w-none lg:justify-self-end" />
         </div>
       </Container>
     </section>
