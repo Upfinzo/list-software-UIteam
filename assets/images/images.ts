@@ -1,7 +1,7 @@
-import logo from "./listsoftware-logo.svg";
-
 export const Images = {
   common: {
-    logo,
+    logo: "images/common/listsoftware-logo.svg",
+    footerbg:"images/common/footer-bg.jpg",
+    footerlogo:"images/common/footer-logo.svg"
   },
 };

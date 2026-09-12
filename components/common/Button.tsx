@@ -19,11 +19,11 @@ export default function Button({
 }: ButtonProps) {
   const className = `
     inline-flex items-center justify-center rounded-full px-6 py-3
-    text-sm font-semibold transition 
+    text-sm font-semibold transition shadow-[0px_8px_15px_-3px_#3148c0c9] 
     ${
       variant === "primary"
         ? "bg-[linear-gradient(135deg,#032683_0%,#1A5BB8_55%,#56B0E6_100%)] text-white hover:bg-gray-800"
-        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100"
+        : "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 "
     }
   `;
 

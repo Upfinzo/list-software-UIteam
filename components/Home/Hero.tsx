@@ -5,7 +5,8 @@ export default function Hero() {
   return (
     <section className="bg-gray-50 py-24">
       <Container>
-        <div className="max-w-3xl">
+        
+        <div className="max-w-3xl mt-20">
           <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">
             Software Solutions
           </span>
