@@ -97,7 +97,8 @@ export default function BeyondProductSection({
   const activeItem = items[activeIndex] || items[0];
 
   // Circle radius and center for 500x500 viewBox
-  const radius = 175;
+  const radius = 190;
+  const innerRadius = 140;
   const circumference = 2 * Math.PI * radius;
   const arcLength = 160;
 
@@ -193,12 +194,12 @@ export default function BeyondProductSection({
         {/* ============================================================ */}
         {/* MAIN: Orbit Diagram (left) + Cards (right)                  */}
         {/* ============================================================ */}
-        <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 xl:gap-10 items-center">
+        <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           {/* ============================================================ */}
           {/* LEFT: Radial Orbit Diagram                                   */}
           {/* ============================================================ */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] aspect-square mx-auto lg:mx-0">
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[520px] aspect-square mx-auto">
               {/* SVG Orbit Track */}
               <svg
                 viewBox="0 0 500 500"
@@ -241,9 +242,19 @@ export default function BeyondProductSection({
                   strokeWidth="1"
                 />
 
+                {/* Inner decorative ring */}
+                <circle
+                  cx="250"
+                  cy="250"
+                  r={innerRadius}
+                  fill="rgba(10,25,80,0.35)"
+                  stroke="rgba(96,165,250,0.18)"
+                  strokeWidth="1"
+                />
+
                 {/* Static accent arc on the LEFT side (between SUPPORT and PLAN) — matches image */}
                 <path
-                  d="M 87 310 A 175 175 0 0 1 95 168"
+                  d="M 73 320 A 190 190 0 0 1 82 168"
                   fill="none"
                   stroke="rgba(96,165,250,0.8)"
                   strokeWidth="1.8"
@@ -253,7 +264,7 @@ export default function BeyondProductSection({
 
                 {/* Static short white dash at bottom (between DEPLOY and RUN) — matches image */}
                 <path
-                  d="M 270 422 A 175 175 0 0 1 230 422"
+                  d="M 275 438 A 190 190 0 0 1 225 438"
                   fill="none"
                   stroke="rgba(255,255,255,0.4)"
                   strokeWidth="1.8"
@@ -281,27 +292,50 @@ export default function BeyondProductSection({
 
               {/* Center Hub: Cross-fading active item content */}
               <div
-                className="absolute inset-[23%] flex items-center justify-center pointer-events-none"
+                className="absolute inset-[24%] flex items-center justify-center pointer-events-none"
                 aria-live="polite"
               >
                 {items.map((item, index) => {
                   const isCurrent = activeIndex === index;
+                  const HubIcon = item.icon;
                   return (
                     <div
                       key={item.id}
-                      className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ease-out ${
+                      className={`absolute inset-0 flex flex-col items-center justify-center gap-1.5 transition-all duration-300 ease-out ${
                         isCurrent
                           ? "opacity-100 translate-y-0 pointer-events-auto"
                           : "opacity-0 translate-y-2 pointer-events-none"
                       }`}
                     >
+                      {/* Icon */}
+                      <div
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          borderRadius: "50%",
+                          background: "radial-gradient(circle at 40% 35%, #0d1f5c 0%, #060d2e 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          border: "1px solid rgba(80,140,255,0.35)",
+                          boxShadow:
+                            "0 0 0 4px rgba(30,60,160,0.18), 0 0 18px rgba(60,130,255,0.30), inset 0 1px 1px rgba(120,180,255,0.12)",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <HubIcon
+                          style={{ width: "17px", height: "17px", color: "rgba(255,255,255,0.92)", strokeWidth: 1.8 }}
+                        />
+                      </div>
+
                       {/* Title */}
                       <h3
                         className="font-bold text-white text-center"
                         style={{
-                          fontSize: "13.5px",
+                          fontSize: "13px",
                           letterSpacing: "-0.2px",
-                          lineHeight: 1.3,
+                          lineHeight: 1.25,
+                          marginTop: "2px",
                         }}
                       >
                         {item.title}
@@ -309,11 +343,11 @@ export default function BeyondProductSection({
 
                       {/* Description */}
                       <p
-                        className="mt-1.5 text-white/60 text-center"
+                        className="text-white/60 text-center"
                         style={{
-                          fontSize: "11px",
+                          fontSize: "10.5px",
                           lineHeight: 1.5,
-                          maxWidth: "170px",
+                          maxWidth: "155px",
                         }}
                       >
                         {item.description}
@@ -329,8 +363,8 @@ export default function BeyondProductSection({
                 const NodeIcon = item.orbitIcon || item.icon;
 
                 const rad = (item.angle * Math.PI) / 180;
-                const leftPercent = 50 + 35 * Math.sin(rad);
-                const topPercent = 50 - 35 * Math.cos(rad);
+                const leftPercent = 50 + 38 * Math.sin(rad);
+                const topPercent = 50 - 38 * Math.cos(rad);
 
                 return (
                   <button
@@ -394,7 +428,7 @@ export default function BeyondProductSection({
           {/* RIGHT: 5 Vertically Stacked Cards                            */}
           {/* ============================================================ */}
           <div
-            className="lg:col-span-7 flex flex-col w-full"
+            className="flex flex-col w-full"
             role="tablist"
             aria-label="Services & Implementation tabs"
             style={{ gap: "4px" }}
