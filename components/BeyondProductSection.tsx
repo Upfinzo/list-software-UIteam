@@ -171,14 +171,20 @@ export default function BeyondProductSection({
           <h2
             id="beyond-product-heading"
             className="mt-3 font-bold text-white leading-[1.12]"
-            style={{ fontSize: "clamp(26px, 4vw, 42px)", letterSpacing: "-0.5px" }}
+            style={{
+              fontSize: "clamp(26px, 4vw, 42px)",
+              letterSpacing: "-0.5px",
+            }}
           >
             A Banking Technology Partner{" "}
             <span className="block">Beyond the Product.</span>
           </h2>
 
           {/* Subheading */}
-          <p className="mt-3 text-white/60 leading-relaxed" style={{ fontSize: "13.5px" }}>
+          <p
+            className="mt-3 text-white/60 leading-relaxed"
+            style={{ fontSize: "13.5px" }}
+          >
             Plan → Implement → Integrate → Deploy → Support. A continuous loop,
             not a one-time handover.
           </p>
@@ -188,27 +194,37 @@ export default function BeyondProductSection({
         {/* MAIN: Orbit Diagram (left) + Cards (right)                  */}
         {/* ============================================================ */}
         <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 xl:gap-10 items-center">
-
           {/* ============================================================ */}
           {/* LEFT: Radial Orbit Diagram                                   */}
           {/* ============================================================ */}
           <div className="lg:col-span-5 flex justify-center lg:justify-start">
             <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] aspect-square mx-auto lg:mx-0">
-
               {/* SVG Orbit Track */}
               <svg
                 viewBox="0 0 500 500"
                 className="absolute inset-0 w-full h-full pointer-events-none"
               >
                 <defs>
-                  <filter id="bp-arc-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <filter
+                    id="bp-arc-glow"
+                    x="-30%"
+                    y="-30%"
+                    width="160%"
+                    height="160%"
+                  >
                     <feGaussianBlur stdDeviation="6" result="glow" />
                     <feMerge>
                       <feMergeNode in="glow" />
                       <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
-                  <linearGradient id="bp-arc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient
+                    id="bp-arc-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
                     <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.1" />
                     <stop offset="50%" stopColor="#93c5fd" stopOpacity="0.9" />
                     <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.1" />
@@ -282,7 +298,11 @@ export default function BeyondProductSection({
                       {/* Title */}
                       <h3
                         className="font-bold text-white text-center"
-                        style={{ fontSize: "13.5px", letterSpacing: "-0.2px", lineHeight: 1.3 }}
+                        style={{
+                          fontSize: "13.5px",
+                          letterSpacing: "-0.2px",
+                          lineHeight: 1.3,
+                        }}
                       >
                         {item.title}
                       </h3>
@@ -290,7 +310,11 @@ export default function BeyondProductSection({
                       {/* Description */}
                       <p
                         className="mt-1.5 text-white/60 text-center"
-                        style={{ fontSize: "11px", lineHeight: 1.5, maxWidth: "170px" }}
+                        style={{
+                          fontSize: "11px",
+                          lineHeight: 1.5,
+                          maxWidth: "170px",
+                        }}
                       >
                         {item.description}
                       </p>
@@ -321,9 +345,7 @@ export default function BeyondProductSection({
                     onMouseEnter={() => setActiveIndex(index)}
                     onFocus={() => setActiveIndex(index)}
                     className={`group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 ease-out focus:outline-none ${
-                      isActive
-                        ? "z-20 scale-105"
-                        : "z-10 hover:scale-105"
+                      isActive ? "z-20 scale-105" : "z-10 hover:scale-105"
                     }`}
                     style={{
                       left: `${leftPercent}%`,
@@ -395,14 +417,13 @@ export default function BeyondProductSection({
                   onFocus={() => setActiveIndex(index)}
                   className={`group w-full text-left transition-all duration-300 ease-out focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-400`}
                   style={{
-                    padding: isActive ? "14px 18px 14px 16px" : "10px 18px 10px 16px",
+                    padding: "14px 18px 14px 16px",
+                    border: "1px solid rgba(255, 255, 255, 0.09)",
                     borderRadius: "12px",
                     background: isActive
                       ? "rgba(20,50,120,0.60)"
                       : "transparent",
-                    border: isActive
-                      ? "1px solid rgba(100,160,255,0.22)"
-                      : "1px solid transparent",
+
                     backdropFilter: isActive ? "blur(16px)" : "none",
                   }}
                 >
@@ -413,7 +434,7 @@ export default function BeyondProductSection({
                       style={{
                         fontSize: "11px",
                         fontWeight: 400,
-                        color: "rgba(255,255,255,0.45)",
+                        color: "rgba(150,210,255,0.95)",
                         fontFamily: "monospace",
                         minWidth: "18px",
                       }}
@@ -426,7 +447,7 @@ export default function BeyondProductSection({
                       style={{
                         width: "14px",
                         height: "14px",
-                        color: isActive ? "rgba(150,210,255,0.95)" : "rgba(200,220,255,0.65)",
+                        color: "rgba(150,210,255,0.95)",
                         strokeWidth: 1.8,
                         flexShrink: 0,
                       }}
@@ -436,8 +457,10 @@ export default function BeyondProductSection({
                     <span
                       style={{
                         fontSize: "14.5px",
-                        fontWeight: 600,
-                        color: isActive ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.88)",
+                        fontWeight: 400,
+                        color: isActive
+                          ? "rgba(255,255,255,1)"
+                          : "rgba(255,255,255,0.88)",
                         letterSpacing: "-0.2px",
                         lineHeight: 1.3,
                       }}
@@ -452,8 +475,12 @@ export default function BeyondProductSection({
                       marginTop: "6px",
                       fontSize: "12.5px",
                       lineHeight: 1.55,
-                      color: isActive ? "rgba(200,220,255,0.72)" : "rgba(200,220,255,0.55)",
-                      paddingLeft: "26px", /* align under icon/title, past the number */
+                      fontWeight: 400,
+                      color: isActive
+                        ? "rgba(200,220,255,0.72)"
+                        : "rgba(200,220,255,0.55)",
+                      paddingLeft:
+                        "26px" /* align under icon/title, past the number */,
                     }}
                   >
                     {item.description}
@@ -462,7 +489,6 @@ export default function BeyondProductSection({
               );
             })}
           </div>
-
         </div>
       </Container>
     </section>
