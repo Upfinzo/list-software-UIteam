@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-
 import { Images } from "@/assets/images/images";
 import { HERO_NODES, HERO_VIEWBOX } from "./heroEcosystem.data";
 
@@ -9,23 +8,8 @@ const FLOW_DASH = 16;
 
 /** Seconds for one capsule to travel from the core out to a module. */
 const FLOW_CYCLE = 3.2;
-
-/**
- * The horizontal spokes are barely 26 units of visible wire, so a fixed-length
- * capsule would sit there as a static bar. Scale it down on the short ones.
- */
 const pulseLength = (wire: number) =>
   Math.round(Math.min(FLOW_DASH, wire * 0.4) * 100) / 100;
-
-/**
- * The export is a 723x660 box but the card inside it is only 622.094x559.875 —
- * the rest is drop-shadow bleed (50px each side, 10px above, 90px below), so
- * the artwork covers just 86% of its own width.
- *
- * Sizing this component to the card and offsetting the artwork by the bleed
- * makes the card fill the box edge to edge, with the shadow spilling outside
- * where a shadow belongs.
- */
 const CARD_ASPECT = "622.094 / 559.875";
 
 const BLEED: CSSProperties = {
@@ -34,7 +18,8 @@ const BLEED: CSSProperties = {
   width: "116.2204%", // 723 / 622.094
   height: "117.8835%", // 660 / 559.875
 };
-
+const CARD_RADIUS = "5.4654% / 6.0728%"; // 34 / 622.094 and 34 / 559.875
+const CARD_SHADOW = "0px 40px 90px -40px rgba(3, 38, 131, 0.75)";
 export default function HeroEcosystem({
   className = "",
 }: {
@@ -43,7 +28,11 @@ export default function HeroEcosystem({
   return (
     <div
       className={`relative ${className}`}
-      style={{ aspectRatio: CARD_ASPECT }}
+      style={{
+        aspectRatio: CARD_ASPECT,
+        borderRadius: CARD_RADIUS,
+        boxShadow: CARD_SHADOW,
+      }}
     >
       <div className="absolute" style={BLEED}>
         {/* Card, texture, glow, dashed ring and the Custodian CORE hub. */}

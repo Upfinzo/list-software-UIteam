@@ -3,8 +3,8 @@
  *
  *   node scripts/build-hero-ecosystem.mjs
  *
- * Reads   assets/images/Homepage_sideasset.svg        source of truth, never hand-edited
- * Writes  assets/images/hero-ecosystem-backdrop.svg   static art only
+ * Reads   public/images/Homepage_sideasset.svg               source of truth, never hand-edited
+ * Writes  public/images/common/hero-ecosystem-backdrop.svg   static art only
  *         components/Home/heroEcosystem.data.ts       geometry for the interactive layer
  *
  * The export bakes every module pill, connector and label into one 408KB file.
@@ -16,8 +16,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import sharp from "sharp";
 
-const SRC = "assets/images/Homepage_sideasset.svg";
-const BACKDROP = "assets/images/hero-ecosystem-backdrop.svg";
+const SRC = "public/images/Homepage_sideasset.svg";
+const BACKDROP = "public/images/common/hero-ecosystem-backdrop.svg";
 const DATA = "components/Home/heroEcosystem.data.ts";
 
 const HUB = { x: 361.047, y: 289.938 };
@@ -155,6 +155,17 @@ let backdrop = src;
 cuts.sort((p, q) => q[0] - p[0]);
 for (const [a, b, replacement] of cuts) {
   backdrop = backdrop.slice(0, a) + (replacement ?? "") + backdrop.slice(b);
+}
+
+// Drop the card's baked-in shadow. It decodes to exactly
+// `0 40px 90px -40px rgba(3,38,131,0.75)`, but as an SVG filter it scales with
+// the artwork (so it thins out on narrow viewports) and is boxed in by the
+// viewBox. The component re-applies it as a CSS box-shadow instead.
+backdrop = backdrop.replace('<g filter="url(#filter0_d_140_201)">', "<g>");
+const cardShadow = backdrop.match(/<filter id="filter0_d_140_201"[\s\S]*?<\/filter>/);
+if (cardShadow) backdrop = backdrop.replace(cardShadow[0], "");
+if (backdrop.includes("filter0_d_140_201")) {
+  throw new Error("card shadow filter is still referenced");
 }
 
 // Recompress the card texture. It renders at opacity 0.3, so it can be small.

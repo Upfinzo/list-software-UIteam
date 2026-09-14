@@ -52,34 +52,71 @@ const productTags = [
 export default function ProductStack() {
   return (
     <section
-      className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#061b61] text-[#f7f9ff] min-[801px]:min-h-[929px]"
+      className="
+        relative
+        flex
+        min-h-screen
+        w-full
+        items-center
+        overflow-hidden
+        bg-[#061b61]
+        text-[#f7f9ff]
+
+        min-[801px]:min-h-[929px]
+      "
       aria-labelledby="home-products-title"
     >
-      {/* Background Image */}
+      {/* =========================================
+          BACKGROUND IMAGE
+      ========================================= */}
       <img
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-45"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          h-full
+          w-full
+          object-cover
+          opacity-45
+        "
         src={backgroundImage.src}
         alt=""
         aria-hidden="true"
       />
 
-      {/* Background Overlay */}
+      {/* =========================================
+          BACKGROUND OVERLAY
+      ========================================= */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_77%_68%,rgba(27,100,230,0.65),transparent_35%),linear-gradient(90deg,rgba(6,27,97,0.98),rgba(6,27,97,0.52))]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(ellipse_at_77%_68%,rgba(27,100,230,0.65),transparent_35%),linear-gradient(90deg,rgba(6,27,97,0.98),rgba(6,27,97,0.52))]
+        "
         aria-hidden="true"
       />
 
-      {/* Main Container */}
+      {/* =========================================
+          MAIN CONTAINER
+      ========================================= */}
       <div
         className="
-          relative z-10 mx-auto grid w-full max-w-[1160px]
-          grid-cols-1 items-center
+          relative
+          z-10
+          mx-auto
+          grid
+          w-full
+          max-w-[1160px]
+          grid-cols-1
+          items-center
           gap-[42px]
-          px-[22px] py-[60px]
+          px-[22px]
+          py-[60px]
 
-          min-[801px]:grid-cols-[minmax(280px,0.82fr)_minmax(420px,1.18fr)]
-          min-[801px]:gap-[8vw]
-          min-[801px]:px-10
+          min-[801px]:grid-cols-[430px_667px]
+          min-[801px]:gap-[40px]
+          min-[801px]:px-0
           min-[801px]:py-10
         "
       >
@@ -88,9 +125,12 @@ export default function ProductStack() {
         ========================================= */}
         <div
           className="
-            mx-auto w-full max-w-[305px]
+            mx-auto
+            w-full
+            max-w-[430px]
 
             min-[801px]:mx-0
+            min-[801px]:w-[430px]
             min-[801px]:max-w-[430px]
           "
         >
@@ -108,49 +148,58 @@ export default function ProductStack() {
             Product stack
           </p>
 
-          {/* Main Heading */}
+          {/* =========================================
+              MAIN HEADING
+          ========================================= */}
           <h2
             id="home-products-title"
             className="
               m-0
-              max-w-[560px]
+              w-full
+              max-w-[430px]
               font-sora
-              text-[45.6px]
+              text-[43px]
               font-semibold
+              not-italic
               leading-[50.16px]
               tracking-[-1.14px]
 
-              min-[801px]:max-w-[430px]
-
               max-[800px]:text-[34px]
               max-[800px]:leading-[38px]
+              max-[800px]:tracking-[-0.8px]
             "
           >
             Everything Your Banking Technology Needs — Around the Core.
           </h2>
 
-          {/* Description */}
+          {/* =========================================
+              DESCRIPTION
+          ========================================= */}
           <p
             className="
-              my-[22px]
-              mb-5
-              max-w-[560px]
-              text-[11px]
-              leading-[1.5]
+              m-0
+              mt-[22px]
+              w-full
+              max-w-[390px]
+              text-[14px]
+              font-normal
+              leading-[24.38px]
+              tracking-[0px]
               text-[#adbee8]
-
-              min-[801px]:max-w-[390px]
             "
           >
-            Run the full banking lifecycle from one core. Custodian Core
-            Banking supports deposits, accounts, loans, accounting, clearing,
+            Run the full banking lifecycle from one core. Custodian Core Banking
+            supports deposits, accounts, loans, accounting, clearing,
             remittances, branch operations, NPA management and day-to-day
             banking workflows
           </p>
 
-          {/* Product Tags */}
+          {/* =========================================
+              PRODUCT TAGS
+          ========================================= */}
           <div
             className="
+              mt-[22px]
               flex
               max-w-[410px]
               flex-wrap
@@ -162,10 +211,7 @@ export default function ProductStack() {
               <Fragment key={tag}>
                 {/* Force second row after Clearing */}
                 {index === 4 && (
-                  <span
-                    className="h-0 basis-full"
-                    aria-hidden="true"
-                  />
+                  <span className="h-0 basis-full" aria-hidden="true" />
                 )}
 
                 <span
@@ -187,32 +233,6 @@ export default function ProductStack() {
               </Fragment>
             ))}
           </div>
-
-          {/* Optional Explore Link */}
-          {/*
-          <a
-            className="
-              mt-7
-              inline-flex
-              items-center
-              gap-[10px]
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-[0.14em]
-              text-white
-            "
-            href="/products"
-          >
-            Explore all products
-            <span
-              className="text-[18px] leading-none"
-              aria-hidden="true"
-            >
-              ↗
-            </span>
-          </a>
-          */}
         </div>
 
         {/* =========================================
@@ -222,32 +242,36 @@ export default function ProductStack() {
           className="
             relative
             hidden
+            w-[667px]
+            grid-cols-1
             gap-[15px]
 
             min-[801px]:grid
           "
         >
-          {/* Vertical Connector Line */}
-          <span
-            className="
-              pointer-events-none
-              absolute
-              z-0
-            "
-            style={{
-              left: "34px",
-              top: "50px",
-              bottom: "50px",
-              width: "1px",
-              background:
-                "linear-gradient(to bottom, transparent, rgba(140,180,255,0.35), transparent)",
-              border: "none",
-              boxShadow: "none",
-            }}
-            aria-hidden="true"
-          />
+          {/* =========================================
+              VERTICAL CONNECTOR LINE
+          ========================================= */}
+         <span
+  className="
+    pointer-events-none
+    absolute
+    left-[28px]
+    top-[60px]
+    h-[614px]
+    z-[999]
+    w-[1px]
+  "
+  style={{
+    background:
+      "linear-gradient(to bottom, rgba(140,180,255,0.45) 0%, rgba(140,180,255,0.30) 35%, rgba(140,180,255,0.18) 70%, rgba(140,180,255,0.08) 100%)",
+  }}
+  aria-hidden="true"
+/>
 
-          {/* Capability Cards */}
+          {/* =========================================
+              CAPABILITY CARDS
+          ========================================= */}
           {capabilities.map((capability, index) => {
             const isLastCard = index === capabilities.length - 1;
 
@@ -259,16 +283,15 @@ export default function ProductStack() {
                   relative
                   z-10
                   flex
-                  min-h-[99px]
-                  w-full
-                  max-w-[667px]
-                  gap-[14px]
-                  rounded-[14px]
+                  h-[148.5px]
+                  w-[667px]
+                  shrink-0
+                  gap-[20px]
+                  rounded-[20px]
                   border
                   border-[rgba(127,176,255,0.27)]
                   bg-[rgba(38,81,166,0.3)]
-                  px-[14px]
-                  py-[13px]
+                  p-[20px]
                   text-white
                   shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]
                   backdrop-blur-[4px]
@@ -278,26 +301,21 @@ export default function ProductStack() {
                   hover:!border-[#4f8cdb]
                   hover:!bg-[#0d3a87]
                   hover:!text-white
-
-                  ${
-                    isLastCard
-                      ? `
-                        group-hover:bg-[linear-gradient(100deg,rgba(33,104,208,0.58),rgba(31,65,144,0.46))]
-                        group-hover:shadow-[0_0_24px_rgba(40,129,255,0.18)]
-                      `
-                      : ""
-                  }
+                  group-hover:bg-[linear-gradient(100deg,rgba(33,104,208,0.58),rgba(31,65,144,0.46))]
+                  group-hover:shadow-[0_0_24px_rgba(40,129,255,0.18)]
                 `}
               >
-                {/* Card Icon */}
+                {/* =========================================
+                    CARD ICON
+                ========================================= */}
                 <span
-                  className={`
+                  className="
                     relative
                     z-10
                     grid
-                    h-10
-                    w-10
-                    flex-[0_0_40px]
+                    h-[40px]
+                    w-[40px]
+                    shrink-0
                     place-items-center
                     rounded-[10px]
                     bg-[rgba(103,146,224,0.18)]
@@ -305,18 +323,9 @@ export default function ProductStack() {
                     text-[#d8e5ff]
                     transition-all
                     duration-200
-
-                    group-hover:!bg-[#6fa8ec]
-
-                    ${
-                      isLastCard
-                        ? `
-                          group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
-                          group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
-                        `
-                        : ""
-                    }
-                  `}
+                    group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
+                    group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
+                  "
                   aria-hidden="true"
                 >
                   <img
@@ -326,7 +335,6 @@ export default function ProductStack() {
                       object-contain
                       transition-[filter]
                       duration-200
-
                       group-hover:[filter:brightness(0)_saturate(100%)_invert(14%)_sepia(45%)_saturate(2771%)_hue-rotate(201deg)_brightness(120%)_contrast(110%)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]
                     "
                     src={capability.icon.src}
@@ -334,8 +342,10 @@ export default function ProductStack() {
                   />
                 </span>
 
-                {/* Card Content */}
-                <div className="min-w-0">
+                {/* =========================================
+                    CARD CONTENT
+                ========================================= */}
+                <div className="min-w-0 flex-1">
                   {/* Number + Title */}
                   <div className="flex items-baseline gap-[9px]">
                     <span
@@ -356,6 +366,8 @@ export default function ProductStack() {
                       className="
                         m-0
                         text-[12px]
+                        font-medium
+                        leading-normal
                         tracking-[0.06em]
                       "
                     >
@@ -366,8 +378,11 @@ export default function ProductStack() {
                   {/* Card Description */}
                   <p
                     className="
-                      mt-2
-                      text-[10px]
+                      m-0
+                      mt-[10px]
+                      max-w-[550px]
+                      text-[14px]
+                      font-normal
                       leading-[1.5]
                       text-[#d9e4ff]
                       transition-colors

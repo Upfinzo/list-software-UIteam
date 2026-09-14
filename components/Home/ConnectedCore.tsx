@@ -87,7 +87,7 @@ export default function ConnectedCore() {
     ];
 
     return (
-        <section className="bg-white py-20 overflow-hidden">
+        <section className="bg-white py-12 lg:py-16 overflow-hidden">
             <style jsx global>{`
         @keyframes smoothDashMove {
           0% {
@@ -111,11 +111,11 @@ export default function ConnectedCore() {
 
       `}</style>
 
-            <Container className="mt-16">
+            <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                     {/* Left Column: Heading, Subtext, & Interactive List Items */}
-                    <div className="lg:col-span-7 space-y-8">
+                    <div className="lg:col-span-7 space-y-6">
                         <div className="space-y-4 max-w-xl">
                             <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
                                 THE CONNECTED CORE
@@ -175,7 +175,7 @@ export default function ConnectedCore() {
                     </div>
 
                     {/* Right Column: Circular Interactive Diagram */}
-                    <div className="lg:col-span-5 flex justify-center items-center py-10">
+                    <div className="lg:col-span-5 flex justify-center items-center py-4 lg:py-6">
                         <div className="relative w-[380px] h-[380px] sm:w-[420px] sm:h-[420px] flex items-center justify-center">
 
                             {/* Inner Circle Track */}
@@ -287,10 +287,8 @@ export default function ConnectedCore() {
                                     </div>
                                 );
                             })}
-
                         </div>
                     </div>
-
                 </div>
             </Container>
         </section>

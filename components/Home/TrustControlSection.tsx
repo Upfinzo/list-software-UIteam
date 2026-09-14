@@ -20,7 +20,7 @@ export default function TrustControlSection() {
             Built for Banking Where Control Matters.
           </h2>
 
-          <p className="running-text mt-5 max-w-[640px] leading-7 text-white/65">
+          <p className="running-text-trust mt-5 max-w-[640px] leading-7 text-white/65">
             Banking technology needs more than functionality. It needs security,
             traceability and operational discipline at every step.
           </p>
@@ -63,11 +63,11 @@ export default function TrustControlSection() {
                     {item.id}
                   </span>
 
-                  <h3 className="mt-3 text-[15px] font-semibold leading-6 text-white">
+                  <h3 className="mt-3 text-[15px]  leading-6 text-white">
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-[13px] leading-6 text-white/65 transition-colors duration-300 group-hover:text-white/80">
+                  <p className="mt-2 text-[13px] leading-6 text-white/55 transition-colors duration-300 group-hover:text-white/80">
                     {item.description}
                   </p>
                 </div>
