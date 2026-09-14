@@ -98,8 +98,8 @@ export default function BeyondProductSection({
 
   // Circle radius and center for 500x500 viewBox
   const radius = 175;
-  const circumference = 2 * Math.PI * radius; // ~1099.55
-  const arcLength = 170; // highlight arc segment spanning ~55 degrees
+  const circumference = 2 * Math.PI * radius;
+  const arcLength = 160;
 
   // Rotation for the glowing active arc
   const activeArcRotation =
@@ -107,135 +107,154 @@ export default function BeyondProductSection({
 
   return (
     <section
-      className={`relative w-full overflow-hidden bg-[#020716] py-20 lg:py-28 text-white ${className}`}
+      className={`relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 text-white ${className}`}
+      style={{ backgroundColor: "#061060" }}
       aria-labelledby="beyond-product-heading"
     >
-      {/* Background Texture Image with Sapphire Mesh Wave */}
+      {/* Background Texture Image — prominent on the right side */}
       <img
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_right] opacity-75"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-80"
         src={backgroundImage.src}
         alt=""
         aria-hidden="true"
       />
 
-      {/* Deep Navy/Sapphire Ambient Vignette & Gradients */}
+      {/* Left-side dark gradient — fades from dark to transparent to show texture */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#020716] via-[#02091e]/85 to-[#041235]/35"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(5,14,80,0.92) 0%, rgba(7,20,100,0.70) 38%, rgba(9,28,120,0.25) 60%, transparent 80%)",
+        }}
         aria-hidden="true"
       />
+      {/* Top & bottom fade */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#020716] via-transparent to-[#020716]"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(5,14,80,0.65) 0%, transparent 18%, transparent 82%, rgba(5,14,80,0.65) 100%)",
+        }}
         aria-hidden="true"
       />
+      {/* Subtle blue radial glow on the right-center (matching reference) */}
       <div
-        className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(25,90,225,0.22)_0%,rgba(5,30,110,0.08)_50%,transparent_75%)] blur-[90px]"
+        className="pointer-events-none absolute"
+        style={{
+          right: "-5%",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "55%",
+          height: "80%",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(ellipse at center, rgba(30,80,220,0.30) 0%, rgba(15,50,180,0.10) 50%, transparent 75%)",
+          filter: "blur(60px)",
+        }}
         aria-hidden="true"
       />
 
       <Container className="relative z-10">
         {/* ============================================================ */}
-        {/* TOP: Section Header (Eyebrow, Main Heading, Subtitle)       */}
+        {/* TOP LEFT: Header                                             */}
         {/* ============================================================ */}
-        <div className="max-w-2xl text-left">
-          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#38bdf8]">
+        <div className="max-w-[520px] text-left">
+          {/* Eyebrow — very small, light tracking, white/faint */}
+          <span
+            className="block uppercase tracking-[0.22em] text-white/60"
+            style={{ fontSize: "11px", fontWeight: 500 }}
+          >
             SERVICES &amp; IMPLEMENTATION
           </span>
 
+          {/* Main Heading */}
           <h2
             id="beyond-product-heading"
-            className="mt-3.5 text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight text-white leading-[1.14]"
+            className="mt-3 font-bold text-white leading-[1.12]"
+            style={{ fontSize: "clamp(26px, 4vw, 42px)", letterSpacing: "-0.5px" }}
           >
-            A Banking Technology Partner
-            <br className="hidden sm:inline" /> Beyond the Product.
+            A Banking Technology Partner{" "}
+            <span className="block">Beyond the Product.</span>
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-300/80 leading-relaxed max-w-xl">
+          {/* Subheading */}
+          <p className="mt-3 text-white/60 leading-relaxed" style={{ fontSize: "13.5px" }}>
             Plan → Implement → Integrate → Deploy → Support. A continuous loop,
             not a one-time handover.
           </p>
         </div>
 
         {/* ============================================================ */}
-        {/* MAIN CONTENT: Orbit Diagram on Left, Cards on Right          */}
+        {/* MAIN: Orbit Diagram (left) + Cards (right)                  */}
         {/* ============================================================ */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-center">
+        <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 xl:gap-10 items-center">
+
           {/* ============================================================ */}
           {/* LEFT: Radial Orbit Diagram                                   */}
           {/* ============================================================ */}
-          <div className="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[380px] sm:max-w-[430px] lg:max-w-[440px] aspect-square mx-auto lg:mx-0">
-              {/* SVG Orbit Track with Glow Effects */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] aspect-square mx-auto lg:mx-0">
+
+              {/* SVG Orbit Track */}
               <svg
                 viewBox="0 0 500 500"
                 className="absolute inset-0 w-full h-full pointer-events-none"
               >
                 <defs>
-                  <filter
-                    id="arc-glow"
-                    x="-20%"
-                    y="-20%"
-                    width="140%"
-                    height="140%"
-                  >
-                    <feGaussianBlur stdDeviation="5" result="glow" />
+                  <filter id="bp-arc-glow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="6" result="glow" />
                     <feMerge>
                       <feMergeNode in="glow" />
                       <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
-                  <linearGradient
-                    id="active-arc-grad"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.2" />
-                    <stop offset="50%" stopColor="#7dd3fc" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.2" />
+                  <linearGradient id="bp-arc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.1" />
+                    <stop offset="50%" stopColor="#93c5fd" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.1" />
                   </linearGradient>
                 </defs>
 
-                {/* Base Faint Track Ring */}
+                {/* Base faint track ring */}
                 <circle
                   cx="250"
                   cy="250"
                   r={radius}
                   fill="none"
-                  stroke="rgba(255, 255, 255, 0.12)"
-                  strokeWidth="1.2"
+                  stroke="rgba(255,255,255,0.15)"
+                  strokeWidth="1"
                 />
 
-                {/* Decorative Static Cyan Arc on Left (Under SUPPORT, exactly as in image) */}
+                {/* Static accent arc on the LEFT side (between SUPPORT and PLAN) — matches image */}
                 <path
-                  d="M 91.4 323.9 A 175 175 0 0 1 98.5 162.5"
+                  d="M 87 310 A 175 175 0 0 1 95 168"
                   fill="none"
-                  stroke="rgba(56, 189, 248, 0.75)"
-                  strokeWidth="2"
+                  stroke="rgba(96,165,250,0.8)"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
-                  filter="url(#arc-glow)"
+                  filter="url(#bp-arc-glow)"
                 />
 
-                {/* Decorative Static White Dash at Bottom (Between DEPLOY and RUN, as in image) */}
+                {/* Static short white dash at bottom (between DEPLOY and RUN) — matches image */}
                 <path
-                  d="M 274.3 423.3 A 175 175 0 0 1 225.6 423.3"
+                  d="M 270 422 A 175 175 0 0 1 230 422"
                   fill="none"
-                  stroke="rgba(255, 255, 255, 0.45)"
-                  strokeWidth="2"
+                  stroke="rgba(255,255,255,0.4)"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
                 />
 
-                {/* Glowing Arc Highlight Near Active Node */}
+                {/* Animated glowing arc near active node */}
                 <circle
                   cx="250"
                   cy="250"
                   r={radius}
                   fill="none"
-                  stroke="url(#active-arc-grad)"
-                  strokeWidth="2.5"
+                  stroke="url(#bp-arc-grad)"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeDasharray={`${arcLength} ${circumference - arcLength}`}
-                  filter="url(#arc-glow)"
+                  filter="url(#bp-arc-glow)"
                   style={{
                     transform: `rotate(${activeArcRotation}deg)`,
                     transformOrigin: "250px 250px",
@@ -244,35 +263,35 @@ export default function BeyondProductSection({
                 />
               </svg>
 
-              {/* Center Hub: Cross-fading Content */}
+              {/* Center Hub: Cross-fading active item content */}
               <div
-                className="absolute inset-[22%] flex items-center justify-center pointer-events-none"
+                className="absolute inset-[23%] flex items-center justify-center pointer-events-none"
                 aria-live="polite"
               >
                 {items.map((item, index) => {
                   const isCurrent = activeIndex === index;
-                  const HubIcon = item.icon;
                   return (
                     <div
                       key={item.id}
                       className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ease-out ${
                         isCurrent
-                          ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-                          : "opacity-0 translate-y-2 scale-95 pointer-events-none"
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 translate-y-2 pointer-events-none"
                       }`}
                     >
-                      {/* Hub Icon Badge */}
-                      <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-[#071330]/80 backdrop-blur-md shadow-[0_0_20px_rgba(56,189,248,0.2)] mb-2">
-                        <HubIcon className="w-5 h-5 text-[#38bdf8] stroke-[1.8]" />
-                      </div>
-
-                      {/* Hub Title (Kept on one line for Integration & Connectivity) */}
-                      <h3 className="text-sm sm:text-[15px] font-bold text-white tracking-tight text-center px-2 max-w-[260px] whitespace-normal sm:whitespace-nowrap">
+                      {/* Title */}
+                      <h3
+                        className="font-bold text-white text-center"
+                        style={{ fontSize: "13.5px", letterSpacing: "-0.2px", lineHeight: 1.3 }}
+                      >
                         {item.title}
                       </h3>
 
-                      {/* Hub Description */}
-                      <p className="mt-1.5 text-[11px] sm:text-xs text-slate-300/80 leading-relaxed text-center px-3 max-w-[240px]">
+                      {/* Description */}
+                      <p
+                        className="mt-1.5 text-white/60 text-center"
+                        style={{ fontSize: "11px", lineHeight: 1.5, maxWidth: "170px" }}
+                      >
                         {item.description}
                       </p>
                     </div>
@@ -280,12 +299,11 @@ export default function BeyondProductSection({
                 })}
               </div>
 
-              {/* 5 Radial Orbit Node Squircles (Clockwise: Plan, Integrate, Run, Deploy, Support) */}
+              {/* 5 Radial Orbit Node Squircles */}
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
                 const NodeIcon = item.orbitIcon || item.icon;
 
-                // Position calculation in percentage where (50%, 50%) is center
                 const rad = (item.angle * Math.PI) / 180;
                 const leftPercent = 50 + 35 * Math.sin(rad);
                 const topPercent = 50 - 35 * Math.cos(rad);
@@ -302,29 +320,45 @@ export default function BeyondProductSection({
                     onClick={() => setActiveIndex(index)}
                     onMouseEnter={() => setActiveIndex(index)}
                     onFocus={() => setActiveIndex(index)}
-                    className={`group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-[60px] h-[60px] sm:w-[68px] sm:h-[68px] rounded-2xl cursor-pointer transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] ${
+                    className={`group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 ease-out focus:outline-none ${
                       isActive
-                        ? "bg-gradient-to-b from-[#38bdf8] via-[#2070e6] to-[#124cb4] border border-[#7dd3fc]/80 shadow-[0_0_35px_rgba(56,189,248,0.7),0_0_12px_rgba(56,189,248,0.45)] scale-105 z-20"
-                        : "bg-[#091838]/80 hover:bg-[#112654]/85 border border-white/10 hover:border-white/20 backdrop-blur-md z-10"
+                        ? "z-20 scale-105"
+                        : "z-10 hover:scale-105"
                     }`}
                     style={{
                       left: `${leftPercent}%`,
                       top: `${topPercent}%`,
+                      width: isActive ? "62px" : "56px",
+                      height: isActive ? "62px" : "56px",
+                      background: isActive
+                        ? "linear-gradient(160deg, #60d0ff 0%, #2b7cf7 45%, #1050c8 100%)"
+                        : "rgba(10,28,90,0.85)",
+                      border: isActive
+                        ? "1px solid rgba(140,210,255,0.7)"
+                        : "1px solid rgba(255,255,255,0.12)",
+                      boxShadow: isActive
+                        ? "0 0 28px rgba(80,180,255,0.65), 0 0 8px rgba(80,180,255,0.4)"
+                        : "none",
+                      backdropFilter: "blur(12px)",
                     }}
                   >
                     <NodeIcon
-                      className={`w-4.5 h-4.5 sm:w-5 sm:h-5 transition-colors duration-300 ${
-                        isActive
-                          ? "text-white stroke-[2.2]"
-                          : "text-slate-300 group-hover:text-white stroke-[1.8]"
-                      }`}
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        color: isActive ? "white" : "rgba(200,220,255,0.85)",
+                        strokeWidth: isActive ? 2.2 : 1.7,
+                      }}
                     />
                     <span
-                      className={`mt-1 text-[9px] sm:text-[10px] uppercase tracking-wider transition-colors duration-300 ${
-                        isActive
-                          ? "text-white font-bold"
-                          : "text-slate-300/90 group-hover:text-white font-semibold"
-                      }`}
+                      style={{
+                        marginTop: "3px",
+                        fontSize: "9px",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.08em",
+                        fontWeight: isActive ? 700 : 500,
+                        color: isActive ? "white" : "rgba(200,220,255,0.80)",
+                      }}
                     >
                       {item.orbitLabel}
                     </span>
@@ -338,9 +372,10 @@ export default function BeyondProductSection({
           {/* RIGHT: 5 Vertically Stacked Cards                            */}
           {/* ============================================================ */}
           <div
-            className="lg:col-span-7 xl:col-span-7 flex flex-col space-y-3 sm:space-y-3.5 w-full lg:pt-2"
+            className="lg:col-span-7 flex flex-col w-full"
             role="tablist"
             aria-label="Services & Implementation tabs"
+            style={{ gap: "4px" }}
           >
             {items.map((item, index) => {
               const isActive = activeIndex === index;
@@ -358,31 +393,76 @@ export default function BeyondProductSection({
                   onClick={() => setActiveIndex(index)}
                   onMouseEnter={() => setActiveIndex(index)}
                   onFocus={() => setActiveIndex(index)}
-                  className={`group w-full text-left rounded-2xl px-5 sm:px-6 py-4 sm:py-5 transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] ${
-                    isActive
-                      ? "bg-[rgba(23,49,95,0.85)] border border-[#3b82f6]/40 shadow-[0_8px_30px_rgba(2,12,38,0.5),0_0_20px_rgba(56,189,248,0.12)] backdrop-blur-md"
-                      : "bg-[#06122d]/45 hover:bg-[#0c1f48]/55 border border-white/[0.08] hover:border-white/20 backdrop-blur-sm"
-                  }`}
+                  className={`group w-full text-left transition-all duration-300 ease-out focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-400`}
+                  style={{
+                    padding: isActive ? "14px 18px 14px 16px" : "10px 18px 10px 16px",
+                    borderRadius: "12px",
+                    background: isActive
+                      ? "rgba(20,50,120,0.60)"
+                      : "transparent",
+                    border: isActive
+                      ? "1px solid rgba(100,160,255,0.22)"
+                      : "1px solid transparent",
+                    backdropFilter: isActive ? "blur(16px)" : "none",
+                  }}
                 >
-                  {/* Top Row: Number, Icon, Title */}
-                  <div className="flex items-center gap-2.5 sm:gap-3">
-                    <span className="text-[13px] sm:text-sm font-mono font-medium text-[#38bdf8]">
+                  {/* Top Row: Number + Icon + Title */}
+                  <div className="flex items-center" style={{ gap: "8px" }}>
+                    {/* Number — very small, muted */}
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 400,
+                        color: "rgba(255,255,255,0.45)",
+                        fontFamily: "monospace",
+                        minWidth: "18px",
+                      }}
+                    >
                       {item.number}
                     </span>
-                    <CardIcon className="w-4 h-4 text-[#38bdf8] shrink-0 stroke-[1.8]" />
-                    <span className="text-sm sm:text-base font-semibold text-white tracking-tight">
+
+                    {/* Icon — small, slightly brighter than number */}
+                    <CardIcon
+                      style={{
+                        width: "14px",
+                        height: "14px",
+                        color: isActive ? "rgba(150,210,255,0.95)" : "rgba(200,220,255,0.65)",
+                        strokeWidth: 1.8,
+                        flexShrink: 0,
+                      }}
+                    />
+
+                    {/* Title */}
+                    <span
+                      style={{
+                        fontSize: "14.5px",
+                        fontWeight: 600,
+                        color: isActive ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.88)",
+                        letterSpacing: "-0.2px",
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {item.title}
                     </span>
                   </div>
 
-                  {/* Bottom Row: Description (starts under number, spans across card) */}
-                  <p className="mt-2 text-xs sm:text-[13px] text-slate-300/80 group-hover:text-slate-200/90 leading-relaxed font-normal">
+                  {/* Description */}
+                  <p
+                    style={{
+                      marginTop: "6px",
+                      fontSize: "12.5px",
+                      lineHeight: 1.55,
+                      color: isActive ? "rgba(200,220,255,0.72)" : "rgba(200,220,255,0.55)",
+                      paddingLeft: "26px", /* align under icon/title, past the number */
+                    }}
+                  >
                     {item.description}
                   </p>
                 </button>
               );
             })}
           </div>
+
         </div>
       </Container>
     </section>

@@ -161,10 +161,12 @@ textarea {
 
 .section-title {
   font-size: var(--section-title-size);
+  font-weight: 600;
 }
 
 .running-text {
   font-size: var(--running-text-size);
+  color: #647183;
 }
 
 /* Brand gradient helpers */
