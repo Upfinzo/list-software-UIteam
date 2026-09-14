@@ -14,7 +14,7 @@ const RING_ORDER = [...audiences].sort(
 /** Opens on the wedge left of twelve o'clock, as the export shows it. */
 const DEFAULT_ID = RING_ORDER[0].id;
 
-const CYCLE_MS = 3000;
+const CYCLE_MS = 3600;
 
 export default function WhoWeServeSection() {
   const [activeId, setActiveId] = useState(DEFAULT_ID);
@@ -101,7 +101,7 @@ export default function WhoWeServeSection() {
                       onFocus={() => setActiveId(item.id)}
                       onClick={() => setActiveId(item.id)}
                       aria-pressed={isActive}
-                      className={`h-full w-full cursor-pointer p-5 text-left transition-colors duration-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#032683] ${
+                      className={`h-full w-full cursor-pointer p-5 text-left transition-colors duration-500 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#032683] ${
                         isActive
                           ? "bg-gradient-to-br from-[#E9F2FC] to-[#F8FBFE]"
                           : "hover:bg-[#F7F9FC]"
@@ -109,12 +109,12 @@ export default function WhoWeServeSection() {
                     >
                       <span className="flex items-center gap-3">
                         <span
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-300 ${
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-500 ease-out ${
                             isActive ? "bg-[#032683]" : "bg-transparent"
                           }`}
                         >
                           <Icon
-                            className={`h-[18px] w-[18px] transition-colors duration-300 ${
+                            className={`h-[18px] w-[18px] transition-colors duration-500 ease-out ${
                               isActive ? "text-white" : "text-[#032683]"
                             }`}
                             strokeWidth={1.5}
@@ -131,7 +131,7 @@ export default function WhoWeServeSection() {
                         value, so the row can grow to whatever the copy needs.
                       */}
                       <span
-                        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
                           isActive
                             ? "grid-rows-[1fr] opacity-100"
                             : "grid-rows-[0fr] opacity-0"

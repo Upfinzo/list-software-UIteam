@@ -1,19 +1,18 @@
 import type { Audience } from "@/types/audience";
-
-/*
- * Geometry derived from the Figma close-up, normalised to a 400x400 box:
- * dashed guide r=194, wedges 169 -> 94, centre puck r=89.
- */
 const BOX = 400;
 const CENTRE = BOX / 2;
 const GUIDE_R = 194;
 const HAIRLINE_R = 181;
 const OUTER_R = 169;
 const INNER_R = 94;
+const POP = 7;
 const ICON_R = (OUTER_R + INNER_R) / 2;
 const CORNER = 7;
 const GAP_DEG = 1.1;
 const SEAT_DEG = 360 / 8;
+
+/** Long enough to read as a move rather than a flicker. */
+const EASE = "transition-opacity duration-500 ease-out";
 
 const DEG = Math.PI / 180;
 
@@ -31,24 +30,19 @@ function seatAngles(seat: number) {
   return { from: end - SEAT_DEG + GAP_DEG, to: end - GAP_DEG };
 }
 
-/**
- * Annular sector with all four corners rounded. Each corner is an arc of
- * radius CORNER tangent to the radial edge and to the arc it meets, so the
- * rounding stays even on both the inner and outer edges.
- */
-function wedgePath(from: number, to: number) {
-  const outerInset = CORNER / OUTER_R / DEG;
-  const innerInset = CORNER / INNER_R / DEG;
+function wedgePath(from: number, to: number, outer: number, inner: number) {
+  const outerInset = CORNER / outer / DEG;
+  const innerInset = CORNER / inner / DEG;
 
   const p = [
-    pointAt(from, OUTER_R - CORNER),
-    pointAt(from + outerInset, OUTER_R),
-    pointAt(to - outerInset, OUTER_R),
-    pointAt(to, OUTER_R - CORNER),
-    pointAt(to, INNER_R + CORNER),
-    pointAt(to - innerInset, INNER_R),
-    pointAt(from + innerInset, INNER_R),
-    pointAt(from, INNER_R + CORNER),
+    pointAt(from, outer - CORNER),
+    pointAt(from + outerInset, outer),
+    pointAt(to - outerInset, outer),
+    pointAt(to, outer - CORNER),
+    pointAt(to, inner + CORNER),
+    pointAt(to - innerInset, inner),
+    pointAt(from + innerInset, inner),
+    pointAt(from, inner + CORNER),
   ];
 
   const n = (v: number) => v.toFixed(2);
@@ -56,11 +50,11 @@ function wedgePath(from: number, to: number) {
   return [
     `M${n(p[0].x)} ${n(p[0].y)}`,
     `A${CORNER} ${CORNER} 0 0 1 ${n(p[1].x)} ${n(p[1].y)}`,
-    `A${OUTER_R} ${OUTER_R} 0 0 1 ${n(p[2].x)} ${n(p[2].y)}`,
+    `A${outer} ${outer} 0 0 1 ${n(p[2].x)} ${n(p[2].y)}`,
     `A${CORNER} ${CORNER} 0 0 1 ${n(p[3].x)} ${n(p[3].y)}`,
     `L${n(p[4].x)} ${n(p[4].y)}`,
     `A${CORNER} ${CORNER} 0 0 1 ${n(p[5].x)} ${n(p[5].y)}`,
-    `A${INNER_R} ${INNER_R} 0 0 0 ${n(p[6].x)} ${n(p[6].y)}`,
+    `A${inner} ${inner} 0 0 0 ${n(p[6].x)} ${n(p[6].y)}`,
     `A${CORNER} ${CORNER} 0 0 1 ${n(p[7].x)} ${n(p[7].y)}`,
     "Z",
   ].join(" ");
@@ -117,17 +111,36 @@ export default function AudienceRing({
           const isActive = item.id === activeId;
 
           return (
-            <path
+            <g
               key={item.id}
-              d={wedgePath(from, to)}
               onMouseEnter={() => onActivate(item.id)}
-              className="cursor-pointer transition-[fill,stroke] duration-300"
-              fill={isActive ? "#032683" : "#032683"}
-              fillOpacity={isActive ? 0.92 : 0.05}
-              stroke={isActive ? "#56B0E6" : "#032683"}
-              strokeOpacity={isActive ? 1 : 0.12}
-              strokeWidth={1.05}
-            />
+              className="cursor-pointer"
+            >
+              <path
+                d={wedgePath(from, to, OUTER_R, INNER_R)}
+                fill="#032683"
+                fillOpacity={0.05}
+                stroke="#032683"
+                strokeOpacity={0.12}
+                strokeWidth={1.05}
+              />
+
+              {/*
+                The raised wedge simply fades in over the resting one. A path's
+                `d` cannot be transitioned, and because this one is larger at
+                both ends over the same angular span it covers the resting
+                wedge completely — so the swap reads as the wedge growing.
+              */}
+              <path
+                d={wedgePath(from, to, OUTER_R + POP, INNER_R - POP)}
+                fill="#032683"
+                fillOpacity={0.92}
+                stroke="#56B0E6"
+                strokeWidth={1.05}
+                opacity={isActive ? 1 : 0}
+                className={EASE}
+              />
+            </g>
           );
         })}
       </svg>
@@ -151,7 +164,7 @@ export default function AudienceRing({
             className="absolute aspect-square -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
             <Icon
-              className={`h-full w-full transition-colors duration-300 ${
+              className={`h-full w-full transition-colors duration-500 ease-out ${
                 isActive ? "text-white" : "text-[#032683]/55"
               }`}
               strokeWidth={1.6}

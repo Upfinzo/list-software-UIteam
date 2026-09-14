@@ -76,6 +76,9 @@ textarea {
   font-size: var(--running-text-size);
   color: #647183;
 }
+.running-text-trust {
+  font-size: var(--running-text-size);
+}
 
 /* Brand gradient helpers */
 .brand-gradient-text {
