@@ -4,6 +4,7 @@ import CTASection from "@/components/Home/CTASection";
 import Hero from "@/components/Home/Hero";
 import ProvenFoundationSection from "@/components/Home/ProvenFoundationSection";
 import ServicesSection from "@/components/Home/ServicesSection";
+import TrustControlSection from "@/components/Home/TrustControlSection";
 import ProductStack from "@/components/Home/ProductStack";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack/>
+      <TrustControlSection />
       <CTASection />
     </>
   );
