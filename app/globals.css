@@ -9,6 +9,98 @@
   --color-brand-sky: #56b0e6;
   --color-brand-ink: #111e89;
   --color-hairline: #dce4ec;
+
+  /* Capabilities section exact tokens */
+  --color-tab-heading: #121f37;
+  --color-icon-color: #111e89;
+  --color-content-heading: #121f37;
+  --color-content-paragraph: #647183;
+  --color-badge-border: #dce4ec;
+}
+
+@keyframes travelDot {
+  0% {
+    left: 0%;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.6);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  100% {
+    left: calc(100% - 10px);
+    opacity: 0;
+    transform: translateY(-50%) scale(0.6);
+  }
+}
+
+.tab-indicator-expand {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: expandLine 300ms ease-out forwards;
+}
+
+@keyframes expandLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderExpand {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes borderWidthExpand {
+  0% {
+    width: 0%;
+    opacity: 0.2;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.tab-indicator-expand {
+  animation: borderWidthExpand 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-indicator-expand {
+    animation: none;
+  }
 }
 
 :root {
@@ -134,6 +226,7 @@ textarea {
   from {
     stroke-dashoffset: var(--flow-end);
   }
+
   to {
     stroke-dashoffset: 0;
   }

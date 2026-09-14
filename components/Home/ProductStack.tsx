@@ -188,8 +188,8 @@ export default function ProductStack() {
               text-[#adbee8]
             "
           >
-            Run the full banking lifecycle from one core. Custodian Core
-            Banking supports deposits, accounts, loans, accounting, clearing,
+            Run the full banking lifecycle from one core. Custodian Core Banking
+            supports deposits, accounts, loans, accounting, clearing,
             remittances, branch operations, NPA management and day-to-day
             banking workflows
           </p>
@@ -211,10 +211,7 @@ export default function ProductStack() {
               <Fragment key={tag}>
                 {/* Force second row after Clearing */}
                 {index === 4 && (
-                  <span
-                    className="h-0 basis-full"
-                    aria-hidden="true"
-                  />
+                  <span className="h-0 basis-full" aria-hidden="true" />
                 )}
 
                 <span
