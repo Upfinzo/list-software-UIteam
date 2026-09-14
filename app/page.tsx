@@ -13,20 +13,18 @@ import Whylist from "@/components/Home/Whylists";
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <AboutSection />
-      <ServicesSection />
-       <ProductStack/>
+      <Hero /> 
+       
       
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack/>
-      
+      <SolutionsSection />
       <Whylist/>
       <TrustControlSection />
-      <SolutionsSection />
+      
       <WhoWeServeSection />
-      <CTASection />
+     
     </>
   );
 }
