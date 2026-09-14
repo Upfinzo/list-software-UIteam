@@ -11,21 +11,24 @@ import ProductStack from "@/components/Home/ProductStack";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import BeyondProductSection from "@/components/BeyondProductSection";
 import Whylist from "@/components/Home/Whylists";
+import BankingFoundation from "@/components/Home/BankingFoundation";
+import CoreBankingPortfolio from "@/components/Home/CoreBanking";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <AboutSection />
-      <ServicesSection />
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
       <CapabilitiesSection />
+      <CoreBankingPortfolio/>
       <BeyondProductSection />
       <Whylist />
       <TrustControlSection />
       <WhoWeServeSection />
+      <CTASection />
+      <BankingFoundation/>
     </>
   );
 }
