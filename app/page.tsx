@@ -4,6 +4,7 @@ import CTASection from "@/components/Home/CTASection";
 import Hero from "@/components/Home/Hero";
 import ProvenFoundationSection from "@/components/Home/ProvenFoundationSection";
 import ServicesSection from "@/components/Home/ServicesSection";
+import SolutionsSection from "@/components/Home/SolutionsSection";
 import TrustControlSection from "@/components/Home/TrustControlSection";
 import WhoWeServeSection from "@/components/Home/WhoWeServeSection";
 import ProductStack from "@/components/Home/ProductStack";
@@ -13,11 +14,17 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <AboutSection />
+      <ServicesSection />
+       <ProductStack/>
+      
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack/>
+      
       <Whylist/>
       <TrustControlSection />
+      <SolutionsSection />
       <WhoWeServeSection />
       <CTASection />
     </>
