@@ -10,10 +10,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <AboutSection />
       <ProvenFoundationSection />
       <ConnectedCore />
-      <ServicesSection />
       <ProductStack/>
       <CTASection />
     </>
