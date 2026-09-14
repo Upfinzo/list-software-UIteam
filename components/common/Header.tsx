@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 import { navigation } from "@/data/navigation";
 import Button from "@/components/common/Button";
 import { Images } from "@/assets/images/images";
+import { ChevronDoubleDownIcon, ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,23 +47,20 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "top-0 bg-white shadow-md" : "top-4 sm:top-10"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "top-0 bg-white shadow-md" : "top-4 sm:top-10"
+        }`}
       onMouseLeave={scheduleClose}
     >
       {/* Gradient Border */}
       <div
-        className={`mx-auto max-w-7xl rounded-[100px] p-[1.5px] transition-all duration-300 ${
-          isScrolled
-            ? "bg-transparent"
-            : "bg-[linear-gradient(359deg,#8CC8FF_0%,#E8F3FF_25%,#FFFFFF_50%,#FFFFFF_75%,#A9D4FF_100%)]"
-        }`}
+        className={`mx-auto max-w-7xl rounded-[100px] p-[1.5px] transition-all duration-300 ${isScrolled
+          ? "bg-transparent"
+          : "bg-[linear-gradient(359deg,#8CC8FF_0%,#E8F3FF_25%,#FFFFFF_50%,#FFFFFF_75%,#A9D4FF_100%)]"
+          }`}
       >
         <div
-          className={`flex h-16 items-center justify-between rounded-[100px] px-4 transition-all duration-300 sm:h-20 sm:px-6 ${
-            isScrolled ? "" : "bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)]"
-          }`}
+          className={`flex h-16 items-center justify-between rounded-[100px] px-4 transition-all duration-300 sm:h-20 sm:px-6 ${isScrolled ? "" : "bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)]"
+            }`}
         >
           <Link href="/" className="flex shrink-0 items-center">
             <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[60px] sm:w-[75px]" />
@@ -77,9 +75,8 @@ const Header = () => {
                     <Link
                       href={item.href}
                       onClick={() => setActiveIndex(index)}
-                      className={`relative text-sm font-medium transition-colors ${
-                        isActive ? "text-black" : "text-gray-700 hover:text-black"
-                      }`}
+                      className={`relative text-sm font-medium transition-colors ${isActive ? "text-black" : "text-gray-700 hover:text-black"
+                        }`}
                     >
                       {item.label}
                       {isActive && (
@@ -94,7 +91,7 @@ const Header = () => {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <Button href="/contact" variant="primary" className="hidden sm:inline-flex">
-              Request a Demo
+              Request a Demo<ArrowRight height={15} />
             </Button>
 
             <button
@@ -141,21 +138,32 @@ const Header = () => {
                     const isActive = activeDirectionIndex === directionIndex;
 
                     return (
-                      <button
-                        key={direction.label}
-                        type="button"
-                        onMouseEnter={() => setActiveDirectionIndex(directionIndex)}
-                        className={`rounded-2xl p-2.5 text-left transition-colors xl:p-3 ${
-                          isActive ? "bg-white shadow-md" : "hover:bg-gray-50"
-                        }`}
-                      >
-                        <span className="block text-sm font-semibold text-gray-900">
-                          {direction.label}
-                        </span>
-                        <span className="hidden text-xs text-gray-500 xl:block">
-                          {direction.description}
-                        </span>
-                      </button>
+                  <button
+  key={direction.label}
+  type="button"
+  onMouseEnter={() => setActiveDirectionIndex(directionIndex)}
+  className={`group flex flex-row items-center justify-between rounded-2xl border p-2.5 text-left outline-none ring-0 transition-colors duration-300 [-webkit-tap-highlight-color:transparent] focus:outline-none focus:ring-0 focus-visible:outline-none xl:p-3 ${
+    isActive
+      ? "border-[#dde6f2] bg-[#F7FAFF]"
+      : "border-transparent hover:border-[#dde6f2] hover:bg-gray-50"
+  }`}
+>
+  <span className="block text-sm font-semibold text-gray-900">
+    {direction.label}
+  </span>
+  
+  {/* The icon now fades in smoothly when active */}
+  <div
+    className={`transition-all duration-300 ease-in-out ${
+      isActive 
+        ? "opacity-100 translate-x-0 scale-100" 
+        : "opacity-0 -translate-x-2 scale-95 pointer-events-none"
+    }`}
+  >
+    <ChevronDoubleRightIcon height={20} color="var(--primary-color)"/>
+  </div>
+</button>
+
                     );
                   })}
                 </div>
@@ -194,24 +202,7 @@ const Header = () => {
                     ))}
                   </div>
 
-                  {activeDirection.panel.note && (
-                    <div className="mt-6 flex flex-col gap-3 border-t border-[#E6EBF2] pt-5 sm:flex-row sm:items-center sm:justify-between xl:mt-8 xl:pt-6">
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">
-                          {activeDirection.panel.note.title}
-                        </p>
-                        <p className="mt-1 text-xs text-gray-500">
-                          {activeDirection.panel.note.description}
-                        </p>
-                      </div>
-                      <Link
-                        href={activeDirection.panel.note.ctaHref}
-                        className="inline-flex w-fit shrink-0 rounded-full border border-[#DCE2EA] px-5 py-2 text-xs font-semibold text-gray-900 transition-colors hover:border-[#3277D9] hover:text-[#3277D9]"
-                      >
-                        {activeDirection.panel.note.ctaLabel}
-                      </Link>
-                    </div>
-                  )}
+
                 </div>
               )}
             </div>
@@ -236,9 +227,8 @@ const Header = () => {
                           setActiveIndex(index);
                           if (!item.megaMenu) setMobileOpen(false);
                         }}
-                        className={`block py-3 text-sm font-medium transition-colors ${
-                          activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
-                        }`}
+                        className={`block py-3 text-sm font-medium transition-colors ${activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
+                          }`}
                       >
                         {item.label}
                       </Link>
@@ -279,9 +269,8 @@ const Header = () => {
                                   {direction.label}
                                 </span>
                                 <ChevronDown
-                                  className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
-                                    isDirectionOpen ? "rotate-180" : ""
-                                  }`}
+                                  className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${isDirectionOpen ? "rotate-180" : ""
+                                    }`}
                                 />
                               </button>
 

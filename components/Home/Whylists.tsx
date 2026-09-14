@@ -7,7 +7,7 @@ export default function Whylist() {
     <section className="relative bg-[#F7F9FC]">
       <Container className="py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-12 items-start gap-6">
-          
+
           {/* Left - Sticky */}
           <div className="col-span-12 md:col-span-5 md:sticky md:top-24">
             <p
