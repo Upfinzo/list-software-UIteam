@@ -15,9 +15,7 @@ import Whylist from "@/components/Home/Whylists";
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <AboutSection />
-      <ServicesSection />
+      <Hero /> 
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
