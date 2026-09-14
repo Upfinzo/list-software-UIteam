@@ -7,6 +7,7 @@ import ServicesSection from "@/components/Home/ServicesSection";
 import TrustControlSection from "@/components/Home/TrustControlSection";
 import WhoWeServeSection from "@/components/Home/WhoWeServeSection";
 import ProductStack from "@/components/Home/ProductStack";
+import Whylist from "@/components/Home/Whylists";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack/>
+      <Whylist/>
       <TrustControlSection />
       <WhoWeServeSection />
       <CTASection />
