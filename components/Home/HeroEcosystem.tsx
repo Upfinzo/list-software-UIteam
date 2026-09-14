@@ -47,12 +47,14 @@ export default function HeroEcosystem({
     >
       <div className="absolute" style={BLEED}>
         {/* Card, texture, glow, dashed ring and the Custodian CORE hub. */}
-        <Image
-          src={Images.common.heroEcosystemBackdrop}
-          alt=""
-          priority
-          className="block h-full w-full"
-        />
+       <Image
+  src={Images.common.heroEcosystemBackdrop}
+  alt=""
+  priority
+  fill
+  sizes="100vw"
+  className="block object-fill"
+/>
 
         {/* Connectors and modules — same viewBox, so it lines up at any size. */}
         <svg
