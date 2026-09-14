@@ -11,15 +11,17 @@ import ProductStack from "@/components/Home/ProductStack";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import BeyondProductSection from "@/components/BeyondProductSection";
 import Whylist from "@/components/Home/Whylists";
+import CoreBankingPortfolio from "@/components/Home/CoreBanking";
 
 export default function HomePage() {
   return (
     <>
-      <Hero /> 
+      <Hero />
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
       <CapabilitiesSection />
+      <CoreBankingPortfolio/>
       <BeyondProductSection />
       <Whylist />
       <TrustControlSection />
