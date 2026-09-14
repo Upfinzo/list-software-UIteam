@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const solutions = [
   "Digital Banking",
   "Payments & Transactions",
@@ -7,73 +11,335 @@ const solutions = [
   "Data & Intelligence",
 ];
 
-const bars = [
-  14, 18, 22, 28, 18, 20, 26, 14, 16, 26, 20, 22, 18, 12, 10, 16, 20, 14,
-  18, 24, 16, 22, 18, 12, 16, 20, 14,
+const solutionData = [
+  {
+    title: "Digital Banking",
+    description:
+      "Deliver seamless digital experiences with secure account access, instant transfers, mobile-first journeys, and smart service layers built for modern banking customers.",
+  },
+  {
+    title: "Payments & Transactions",
+    description:
+      "Modernise payment rails with real-time processing, transaction orchestration, channel connectivity, and smart controls across every payment flow.",
+  },
+  {
+    title: "Lending & Recovery",
+    description:
+      "Accelerate lending decisions, streamline collections, and manage recovery workflows with data-driven controls across the loan lifecycle.",
+  },
+  {
+    title: "Compliance & Risk",
+    description:
+      "Strengthen governance and reduce operational risk through automated checks, identity validation, audit controls, and regulatory reporting built into your core.",
+  },
+  {
+    title: "Operations",
+    description:
+      "LIST Software brings together purpose-built solutions across the banking lifecycle. Enabling financial institutions to modernise customer experiences, move money, manage risk, streamline operations, and turn banking data into actionable intelligence.",
+  },
+  {
+    title: "Data & Intelligence",
+    description:
+      "Turn large volumes of banking data into practical insights with reporting, forecasting, operational intelligence, and decision support across teams.",
+  },
+];
+
+/* Zig-zag graph */
+const graphBars = [
+  18, 42, 27, 62,
+  14, 48, 34, 72,
+  20, 54, 31, 67,
+  16, 46, 29, 60,
+  22, 50, 35, 64,
+  18, 43, 28, 57,
 ];
 
 export default function SolutionsSection() {
+  const [activeIndex, setActiveIndex] = useState(4);
+
+  const activeSolution = solutionData[activeIndex];
+
   return (
-    <section className="w-full bg-[#f5f6f7] px-4 py-12 md:px-8 lg:px-16 lg:py-20">
-      <div className="mx-auto max-w-[1260px]">
-        <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.26em] text-[#2c5ed6]">
+    <section
+      className="
+        w-full
+        bg-white
+        px-[20px]
+        py-[60px]
+
+        sm:px-[32px]
+        sm:py-[70px]
+
+        lg:px-[80px]
+        lg:py-[80px]
+      "
+    >
+      {/* =========================================
+          1280px MAIN CONTAINER
+      ========================================== */}
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-[1280px]
+        "
+      >
+        {/* =========================================
+            SOLUTIONS LABEL
+        ========================================== */}
+        <p
+          className="
+            m-0
+            mb-[14px]
+            font-sora
+            text-[9px]
+            font-semibold
+            uppercase
+            leading-[14px]
+            tracking-[0.25em]
+            text-[#1748c5]
+          "
+        >
           Solutions
         </p>
 
-        <h2 className="max-w-[980px] text-[clamp(2.8rem,4vw,5rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-[#0d1b36]">
+        {/* =========================================
+            MAIN HEADING
+        ========================================== */}
+        <h2
+          className="
+            m-0
+            max-w-[671.59375px]
+            font-sora
+            text-[45.6px]
+            font-semibold
+            not-italic
+            leading-[50.16px]
+            tracking-[-1.14px]
+            text-[#14213d]
+
+            max-md:text-[36px]
+            max-md:leading-[41px]
+            max-md:tracking-[-0.9px]
+          "
+        >
           Technology Built Around
           <br />
           Banking&apos;s Real-World Needs
         </h2>
 
-        <div className="mt-10 grid items-start gap-8 lg:mt-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-          <div className="rounded-[18px] border border-[#cbdde8] bg-[#edf5fb] px-5 py-6 shadow-[inset_0_0_0_1px_rgba(108,140,170,0.04)] md:px-7 md:py-8">
-            <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#4b6ea7]">
+        {/* =========================================
+            CONTENT AREA
+        ========================================== */}
+        <div
+          className="
+            mt-[48px]
+            grid
+            grid-cols-1
+            gap-[40px]
+
+            lg:grid-cols-[671.59375px_1fr]
+            lg:items-start
+            lg:gap-[70px]
+          "
+        >
+          {/* =========================================
+              LEFT CARD
+          ========================================== */}
+          <div
+            className="
+              relative
+              h-[354.609375px]
+              w-full
+              overflow-hidden
+              rounded-[20px]
+              border
+              border-[#d6e4ee]
+              bg-[linear-gradient(135deg,#f9fcfe_0%,#eef7fc_58%,#dceef9_100%)]
+              px-[32px]
+              py-[30px]
+            "
+          >
+            {/* =========================================
+                CARD LABEL
+            ========================================== */}
+            <p
+              className="
+                m-0
+                mb-[18px]
+                font-sora
+                text-[9px]
+                font-semibold
+                uppercase
+                leading-[14px]
+                tracking-[0.22em]
+                text-[#1748c5]
+              "
+            >
               Operational Discipline
             </p>
 
-            <h3 className="mb-4 text-[clamp(2.1rem,3vw,3.2rem)] font-semibold leading-[1.04] tracking-[-0.065em] text-[#101d38]">
-              Operations
+            {/* =========================================
+                ACTIVE TITLE
+            ========================================== */}
+            <h3
+              className="
+                m-0
+                mb-[13px]
+                max-w-[560px]
+                font-sora
+                text-[36.8px]
+                font-semibold
+                not-italic
+                leading-[46px]
+                tracking-[-0.92px]
+                text-[#17243e]
+              "
+            >
+              {activeSolution.title}
             </h3>
 
-            <p className="max-w-[540px] text-[14px] leading-[1.75] text-[#4d617e] md:text-[15px]">
-              LIST Software brings together purpose-built solutions across the
-              banking lifecycle. Enabling financial institutions to modernise
-              customer experiences, move money, manage risk, streamline
-              operations, and turn banking data into actionable intelligence.
+            {/* =========================================
+                DESCRIPTION
+            ========================================== */}
+            <p
+              className="
+                m-0
+                max-w-[570px]
+                text-[15px]
+                font-normal
+                not-italic
+                leading-[24.38px]
+                tracking-[0px]
+                text-[#62728a]
+              "
+            >
+              {activeSolution.description}
             </p>
 
-            <div className="mt-8 flex h-[110px] items-end gap-[6px] overflow-hidden px-1 md:mt-10 md:gap-[7px]">
-              {bars.map((height, index) => (
-                <span
-                  key={index}
-                  className={
-                    index === 6 || index === 11 || index === 18
-                      ? "w-[7px] rounded-t-[4px] bg-[#2860d7] md:w-[8px]"
-                      : "w-[7px] rounded-t-[4px] bg-[#c8d9ef] md:w-[8px]"
-                  }
-                  style={{ height: `${height}px` }}
-                />
-              ))}
+            {/* =========================================
+                ZIG-ZAG GRAPH
+            ========================================== */}
+            <div
+              className="
+                absolute
+                bottom-[28px]
+                left-[32px]
+                flex
+                h-[78px]
+                items-end
+                gap-[7px]
+                overflow-hidden
+              "
+              aria-hidden="true"
+            >
+              {graphBars.map((height, index) => {
+                const isHighlighted = index % 4 === 0;
+
+                return (
+                  <span
+                    key={index}
+                    className={`
+                      block
+                      w-[6px]
+                      shrink-0
+                      rounded-full
+
+                      ${
+                        isHighlighted
+                          ? "bg-gradient-to-b from-[#06358f] via-[#1475c7] to-[#48b9ee]"
+                          : "bg-[#d3e0ef]"
+                      }
+                    `}
+                    style={{
+                      height: `${height}px`,
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
 
-          <div>
-            {solutions.map((item, index) => (
-              <div
-                key={item}
-                className={
-                  index === 0
-                    ? "flex items-center justify-between border-t border-[#d7e0eb] py-[18px] text-[18px] font-medium text-[#1a2d4d] md:text-[20px]"
-                    : "flex items-center justify-between border-t border-[#d7e0eb] py-[18px] text-[18px] font-medium text-[#1a2d4d] md:text-[20px]"
-                }
-              >
-                <span>{item}</span>
-                <span className="text-[24px] leading-none text-[#1d2c45]" aria-hidden="true">
-                  →
-                </span>
-              </div>
-            ))}
+          {/* =========================================
+              RIGHT SIDE SOLUTIONS
+          ========================================== */}
+          <div
+            className="
+              w-full
+              lg:pt-[4px]
+            "
+          >
+            {solutions.map((item, index) => {
+              const isActive = index === activeIndex;
+
+              return (
+                <button
+                  key={item}
+                  type="button"
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
+                  className="
+                    flex
+                    h-[54px]
+                    w-full
+                    items-center
+                    justify-between
+                    border-t
+                    border-[#dce3eb]
+                    p-0
+                    text-left
+                  "
+                >
+                  {/* Solution name */}
+                  <span
+                    className={`
+                      font-sora
+                      text-[16px]
+                      font-normal
+                      not-italic
+                      leading-[24px]
+                      tracking-[-0.4px]
+                      transition-colors
+                      duration-200
+
+                      ${
+                        isActive
+                          ? "text-[#1748c5]"
+                          : "text-[#52627a]"
+                      }
+                    `}
+                  >
+                    {item}
+                  </span>
+
+                  {/* Arrow */}
+                  <span
+                    className={`
+                      font-sora
+                      text-[16px]
+                      font-normal
+                      leading-[24px]
+                      tracking-[-0.4px]
+                      transition-all
+                      duration-200
+
+                      ${
+                        isActive
+                          ? "translate-x-[2px] text-[#1748c5]"
+                          : "text-[#65758b]"
+                      }
+                    `}
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </button>
+              );
+            })}
+
+            {/* Bottom border */}
+            <div className="h-px w-full bg-[#dce3eb]" />
           </div>
         </div>
       </div>
