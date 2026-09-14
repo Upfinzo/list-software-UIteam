@@ -18,19 +18,14 @@ export default function HomePage() {
       <Hero />
       <AboutSection />
       <ServicesSection />
-      <ProductStack />
-
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
       <CapabilitiesSection />
       <BeyondProductSection />
-
       <Whylist />
       <TrustControlSection />
-      <SolutionsSection />
       <WhoWeServeSection />
-      <CTASection />
     </>
   );
 }
