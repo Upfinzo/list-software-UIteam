@@ -3,8 +3,7 @@ import type { NavigationItem, MegaMenuDirection } from "@/types/navigation";
 
 const productsMegaMenu: MegaMenuDirection[] = [
   {
-    label: "Banking",
-    description: "Store, manage and move your funds safely.",
+    label: "CBS",
     href: "/products/banking",
     panel: {
       panelTitle: "Solutions for Banking",
@@ -26,7 +25,7 @@ const productsMegaMenu: MegaMenuDirection[] = [
           ],
         },
         {
-          title: "Community",
+          title: "Community",                                                                                                                                                                                           
           items: [
             { label: "PTAs", href: "/solutions/banking/ptas" },
             { label: "Girl Scouts", href: "/solutions/banking/girl-scouts" },
@@ -44,8 +43,7 @@ const productsMegaMenu: MegaMenuDirection[] = [
     },
   },
   {
-    label: "Collect",
-    description: "Gather payments for dues, donations, events & more.",
+    label: "Agency Banking",
     href: "/products/collect",
     panel: {
       panelTitle: "Solutions for Collecting",
@@ -85,8 +83,7 @@ const productsMegaMenu: MegaMenuDirection[] = [
     },
   },
   {
-    label: "Spend",
-    description: "Control member spending with digital debit cards.",
+    label: "Banking Operations",
     href: "/products/spend",
     panel: {
       panelTitle: "Solutions for Spending",
@@ -126,8 +123,130 @@ const productsMegaMenu: MegaMenuDirection[] = [
     },
   },
   {
-    label: "Earn",
-    description: "Set up a passive fundraising program for consistent donations.",
+    label: "Integration & APIs",
+    href: "/products/earn",
+    panel: {
+      panelTitle: "Solutions for Earning",
+      columns: [
+        {
+          title: "Organizations",
+          items: [
+            { label: "Earn for Fraternities & Sororities", href: "/solutions/earn/fraternities" },
+            { label: "Earn for College Clubs", href: "/solutions/earn/college-clubs" },
+            { label: "Earn for Sports Club", href: "/solutions/earn/sports-club" },
+          ],
+        },
+        {
+          title: "Groups",
+          items: [
+            { label: "Earn for Booster Clubs", href: "/solutions/earn/booster-clubs" },
+            { label: "Earn for Agency Companies", href: "/solutions/earn/agency-companies" },
+            { label: "Earn for Multi-chapter Orgs", href: "/solutions/earn/multi-chapter" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Earn for PTAs", href: "/solutions/earn/ptas" },
+            { label: "Earn for Girl Scouts", href: "/solutions/earn/girl-scouts" },
+          ],
+        },
+        {
+          title: "Camps",
+          items: [
+            { label: "Earn for Summer Camps", href: "/solutions/earn/summer-camps" },
+            { label: "Earn for Winter Camps", href: "/solutions/earn/winter-camps" },
+          ],
+        },
+      ],
+   
+    },
+  },
+
+  {
+    label: "Digital Banking",
+    href: "/products/earn",
+    panel: {
+      panelTitle: "Solutions for Earning",
+      columns: [
+        {
+          title: "Organizations",
+          items: [
+            { label: "Earn for Fraternities & Sororities", href: "/solutions/earn/fraternities" },
+            { label: "Earn for College Clubs", href: "/solutions/earn/college-clubs" },
+            { label: "Earn for Sports Club", href: "/solutions/earn/sports-club" },
+          ],
+        },
+        {
+          title: "Groups",
+          items: [
+            { label: "Earn for Booster Clubs", href: "/solutions/earn/booster-clubs" },
+            { label: "Earn for Agency Companies", href: "/solutions/earn/agency-companies" },
+            { label: "Earn for Multi-chapter Orgs", href: "/solutions/earn/multi-chapter" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Earn for PTAs", href: "/solutions/earn/ptas" },
+            { label: "Earn for Girl Scouts", href: "/solutions/earn/girl-scouts" },
+          ],
+        },
+        {
+          title: "Camps",
+          items: [
+            { label: "Earn for Summer Camps", href: "/solutions/earn/summer-camps" },
+            { label: "Earn for Winter Camps", href: "/solutions/earn/winter-camps" },
+          ],
+        },
+      ],
+   
+    },
+  },
+
+   {
+    label: "Payments",
+    href: "/products/earn",
+    panel: {
+      panelTitle: "Solutions for Earning",
+      columns: [
+        {
+          title: "Organizations",
+          items: [
+            { label: "Earn for Fraternities & Sororities", href: "/solutions/earn/fraternities" },
+            { label: "Earn for College Clubs", href: "/solutions/earn/college-clubs" },
+            { label: "Earn for Sports Club", href: "/solutions/earn/sports-club" },
+          ],
+        },
+        {
+          title: "Groups",
+          items: [
+            { label: "Earn for Booster Clubs", href: "/solutions/earn/booster-clubs" },
+            { label: "Earn for Agency Companies", href: "/solutions/earn/agency-companies" },
+            { label: "Earn for Multi-chapter Orgs", href: "/solutions/earn/multi-chapter" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Earn for PTAs", href: "/solutions/earn/ptas" },
+            { label: "Earn for Girl Scouts", href: "/solutions/earn/girl-scouts" },
+          ],
+        },
+        {
+          title: "Camps",
+          items: [
+            { label: "Earn for Summer Camps", href: "/solutions/earn/summer-camps" },
+            { label: "Earn for Winter Camps", href: "/solutions/earn/winter-camps" },
+          ],
+        },
+      ],
+   
+    },
+  },
+
+   {
+    label: "Compliance & Risk ",
     href: "/products/earn",
     panel: {
       panelTitle: "Solutions for Earning",

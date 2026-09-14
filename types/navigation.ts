@@ -12,7 +12,6 @@ export interface MegaMenuPanelColumn {
 
 export interface MegaMenuPanelNote {
   title: string;
-  description: string;
   ctaLabel: string;
   ctaHref: string;
 }
@@ -25,7 +24,6 @@ export interface MegaMenuPanel {
 
 export interface MegaMenuDirection {
   label: string;
-  description: string;
   href: string;
   panel: MegaMenuPanel;
 }
