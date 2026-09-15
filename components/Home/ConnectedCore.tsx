@@ -127,41 +127,49 @@ export default function ConnectedCore() {
                                 LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center.
                             </p>
                         </div>
+                        {/* Interactive List/Tabs */}
+
 
                         {/* Interactive List/Tabs */}
-                        <div className="space-y-0 border-t border-[#DCE4EC]">
-                            {tabs.map((tab) => {
+                        <div className="mt-12">
+                            {tabs.map((tab, index, array) => {
                                 const isActive = activeTab === tab.id;
+
+                                // Remove bottom border for the last item
+                                const isLast = index === array.length - 1;
+                                const borderClass = isLast ? '' : 'border-b border-[#DCE4EC]';
 
                                 return (
                                     <div
                                         key={tab.id}
                                         onMouseEnter={() => setActiveTab(tab.id)}
-                                        className={`group relative flex items-center justify-between py-4 px-4 cursor-pointer transition-colors duration-200 border-b border-[#DCE4EC] '
-                                            }`}
+                                        className={`group relative flex items-start py-6 cursor-pointer transition-colors duration-200 ${borderClass}`}
                                     >
-                                        <div className="flex items-center space-x-4">
-                                            {/* Left Icon Container with border on hover & active */}
+                                        <div className="flex items-start gap-5">
+                                            {/* Icon Container */}
                                             <div
-                                                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ${isActive
-                                                        ? 'text-white border border-[#56B0E6] shadow-md shadow-[#56B0E6]/30'
-                                                        : 'bg-white text-[#111E89] border border-[#DCE4EC] group-hover:border-[#56B0E6]'
+                                                className={`w-[36px] h-[36px] shrink-0 rounded-[16px] flex items-center justify-center transition-all duration-200 ${isActive
+                                                        ? 'bg-gradient-to-b from-[#F4F9FF] to-[#E8F1FA] border border-[#56B0E6]/70 text-[#111E89]'
+                                                        : 'bg-transparent text-[#8C9BB4] border border-[#DCE4EC] group-hover:bg-gradient-to-b group-hover:from-[#F4F9FF] group-hover:to-[#E8F1FA] group-hover:border-[#56B0E6]/70 group-hover:text-[#111E89]'
                                                     }`}
-                                                style={isActive ? { background: 'linear-gradient(135deg, #032683 0%, #56B0E6 100%)' } : {}}
                                             >
                                                 {tab.icon}
                                             </div>
 
-                                            <div>
-                                                <h4 className={`text-sm sm:text-base font-semibold transition-colors duration-200 ${isActive ? 'text-[#111E89]' : 'text-gray-900 group-hover:text-[#111E89]'
+                                            <div className="flex flex-col justify-center">
+                                                {/* Title styled matching image_2fab8e_2.png */}
+                                                <h4 className={`font-['Sora'] text-[16px] font-medium leading-[24px] tracking-[-0.4px] transition-colors duration-200 ${isActive
+                                                        ? 'text-[#121F37]'
+                                                        : 'text-[#647183] group-hover:text-[#121F37]'
                                                     }`}>
                                                     {tab.title}
                                                 </h4>
+
                                                 {isActive && (
                                                     <motion.p
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        className="text-xs sm:text-sm text-[#647183] mt-1"
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        className="text-[14px] font-normal leading-[22.8px] tracking-[0px] text-[#647183] mt-1"
                                                     >
                                                         {tab.description}
                                                     </motion.p>
@@ -172,6 +180,7 @@ export default function ConnectedCore() {
                                 );
                             })}
                         </div>
+
                     </div>
 
                     {/* Right Column: Circular Interactive Diagram */}
@@ -277,8 +286,8 @@ export default function ConnectedCore() {
                                     >
                                         <div
                                             className={`w-[58px] h-[58px] rounded-[22.4px] flex items-center justify-center transition-all duration-200 ${isActive
-                                                    ? 'text-white border border-[#56B0E6] shadow-[0_10px_25px_rgba(86,176,230,0.4)] ring-4 ring-[#56B0E6]/20'
-                                                    : 'bg-white text-[#111E89] hover:border-[#56B0E6] border-[1.12px] border-[#DCE4EC] shadow-sm'
+                                                ? 'text-white border border-[#56B0E6] shadow-[0_10px_25px_rgba(86,176,230,0.4)] ring-4 ring-[#56B0E6]/20'
+                                                : 'bg-white text-[#111E89] hover:border-[#56B0E6] border-[1.12px] border-[#DCE4EC] shadow-sm'
                                                 }`}
                                             style={isActive ? { background: 'linear-gradient(135deg, #032683 0%, #56B0E6 100%)' } : {}}
                                         >

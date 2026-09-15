@@ -74,10 +74,10 @@ export default function ProvenFoundationSection() {
                             transition={{ duration: 0.6 }}
                             className="lg:col-span-6 space-y-6"
                         >
-                            <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
+                            <span className="font-['Sora'] text-[11px] font-semibold leading-[16.5px] tracking-[2.42px] pb-4 text-[#111E89] uppercase">
                                 Proven in banking. Built to evolve
                             </span>
-                            <h2 className="text-3xl sm:text-4xl lg:text-[38px] font-bold tracking-tight leading-[1.15] max-w-[740px]">
+                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px]">
                                 A banking technology foundation built over decades
                             </h2>
                         </motion.div>
@@ -88,17 +88,18 @@ export default function ProvenFoundationSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE4EC]"
-                        >
+                            className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE4EC]">
                             {stats.map((stat, index) => (
                                 <div
                                     key={index}
                                     className={`flex flex-col justify-center ${index !== 0 ? 'sm:pl-8 lg:pl-10' : ''} pt-6 sm:pt-0`}
                                 >
-                                    <div className="text-4xl sm:text-5xl font-extrabold text-[#111E89] tracking-tight">
+                                    {/* Updated Stat Number (image_255528.png) */}
+                                    <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
                                         <Counter value={stat.numericValue} suffix={stat.suffix} />
                                     </div>
-                                    <div className="mt-2 text-sm text-[#647183] font-medium whitespace-pre-line">
+                                    {/* Updated Stat Label (image_255545.png) */}
+                                    <div className="mt-2 text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183] whitespace-pre-line">
                                         {stat.label}
                                     </div>
                                 </div>
@@ -118,13 +119,14 @@ export default function ProvenFoundationSection() {
 
                         <ul className="flex flex-wrap items-center justify-start gap-y-4 gap-x-12">
                             {features.map((feature, index) => (
-                                <li key={index} className="flex items-center space-x-2.5 text-[#647183] text-sm font-medium">
+                                <li key={index} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] inline-block" />
                                     <span>{feature}</span>
                                 </li>
                             ))}
                         </ul>
                     </motion.div>
+
                 </div>
             </Container>
         </section>
