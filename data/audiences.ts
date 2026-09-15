@@ -11,6 +11,14 @@ import {
 
 import type { Audience } from "@/types/audience";
 
+/** The category strip that sits between the heading and the intro copy. */
+export const audienceCategories = [
+  "Banks",
+  "Financial Institutions",
+  "Credit & Lending",
+  "Digital Banking",
+];
+
 /**
  * Array order is the card grid's reading order (two columns, top to bottom).
  * `ringPosition` places the same item in the wheel, which runs in a different
@@ -21,7 +29,7 @@ export const audiences: Audience[] = [
     id: "banks",
     label: "Banks",
     description:
-      "Core banking, branch operations and accounting running on one connected platform.",
+      "Build on a dependable core banking foundation with connected solutions for accounts, deposits, lending, transactions, branch operations, digital channels, and regulatory reporting.",
     icon: Building2,
     ringPosition: 1,
   },
@@ -29,7 +37,7 @@ export const audiences: Audience[] = [
     id: "banking-operations",
     label: "Banking Operations",
     description:
-      "Day-to-day processing, clearing and settlement handled through controlled workflows.",
+      "Streamline customer service, issue resolution, workflows, and operational control efficiently.",
     icon: Workflow,
     ringPosition: 2,
   },
@@ -37,7 +45,7 @@ export const audiences: Audience[] = [
     id: "financial-institutions",
     label: "Financial Institutions",
     description:
-      "Deposits, remittances and treasury supported across every operating entity.",
+      "Extend financial operations with core banking, credit appraisal, compliance, transaction processing, and operational automation designed around institutional requirements.",
     icon: Banknote,
     ringPosition: 3,
   },
@@ -45,15 +53,15 @@ export const audiences: Audience[] = [
     id: "compliance-risk-teams",
     label: "Compliance & Risk Teams",
     description:
-      "AML, CKYC, audit trails and statutory reporting built into the core.",
+      "Strengthen compliance controls, manage risks, monitor activities, and maintain regulatory readiness.",
     icon: ShieldCheck,
     ringPosition: 4,
   },
   {
-    id: "digital-banking-business",
-    label: "Digital Banking Business",
+    id: "digital-banking-businesses",
+    label: "Digital Banking Businesses",
     description:
-      "Mobile, internet and WhatsApp banking delivered from the same banking core.",
+      "Extend banking beyond the branch through digital channels, customer services, payment connectivity, and integrated banking experiences.",
     icon: Smartphone,
     ringPosition: 5,
   },
@@ -61,7 +69,7 @@ export const audiences: Audience[] = [
     id: "management-business-teams",
     label: "Management & Business Teams",
     description:
-      "Reporting and business intelligence for operational and management oversight.",
+      "Enable better decisions with financial visibility, operational insight, and strategic control.",
     icon: Users,
     ringPosition: 0,
   },
@@ -69,7 +77,7 @@ export const audiences: Audience[] = [
     id: "it-technology-teams",
     label: "IT & Technology Teams",
     description:
-      "APIs, middleware and integration tooling that keep connected systems in step.",
+      "Empower technology teams with scalable, secure, integrated banking infrastructure solutions.",
     icon: Network,
     ringPosition: 7,
   },
@@ -77,7 +85,7 @@ export const audiences: Audience[] = [
     id: "credit-financing-businesses",
     label: "Credit & Financing Businesses",
     description:
-      "LIST Software provides core banking capabilities that support the operational needs of lending and credit.",
+      "Drive efficient financing operations with connected processes for credit evaluation, loan administration, documentation, recovery, and risk oversight.",
     icon: CreditCard,
     ringPosition: 6,
   },

@@ -25,9 +25,8 @@ export default function Footer() {
             />
           </Link>
 
-          <p className="mt-4 max-w-xs text-sm leading-6 text-white/80">
-            Building modern software solutions.
-          </p>
+          <p className="mt-4 max-w-xs text-sm leading-6 text-white">
+Core banking and connected banking technology, anchored by the Custodian Core Banking System.          </p>
         </div>
 
         {/* Column 2 - Platform */}
@@ -38,19 +37,19 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Core Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Capabilities
               </Link>
             </li>
 
             <li>
-              <Link href="/technlogy" className="text-sm text-white/70 hover:text-white">
+              <Link href="/technlogy" className="text-sm  hover:text-white">
                 Technology
               </Link>
             </li>
@@ -63,27 +62,27 @@ export default function Footer() {
             Solutions
           </h3>
 
-          <ul className="space-y-3">
+          <ul className="space-y-3 text-white">
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm hover:text-white">
                 Digital Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Payments
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Lending
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Compliance & Risk
               </Link>
             </li>
@@ -96,21 +95,21 @@ export default function Footer() {
             Company
           </h3>
 
-          <ul className="space-y-3">
+          <ul className="space-y-3 text-white">
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm hover:text-white">
                 About
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm hover:text-white">
                 Contact
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm hover:text-white">
                 Careers
               </Link>
             </li>
@@ -125,19 +124,19 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Insights
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm  hover:text-white">
                 Documentation
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm text-white/70 hover:text-white">
+              <Link href="/faq" className="text-sm text-white/70 hover:text-white">
                 FAQs
               </Link>
             </li>
@@ -147,7 +146,7 @@ export default function Footer() {
 
       {/* Bottom Section */}
       <div className="relative z-10 mx-auto max-w-7xl border-t border-white/15 px-6 py-6">
-        <div className="flex flex-col gap-4 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between font-normal">
           <p>
             © {new Date().getFullYear()} ListSoftware. All rights reserved.
           </p>
