@@ -60,7 +60,7 @@ export default function Hero() {
               {capabilities.map((capability) => (
                 <li
                   key={capability}
-                  className="rounded-full border border-hairline bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-ink"
+                  className="chip-shadow inline-flex h-[34.5px] items-center rounded-full border border-hairline bg-white/80 px-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-ink"
                 >
                   {capability}
                 </li>
