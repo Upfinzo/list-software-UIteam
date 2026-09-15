@@ -27,7 +27,7 @@ export default function HomePage() {
       <Whylist />
       <TrustControlSection />
       <WhoWeServeSection />
-      <CTASection />
+      
       <BankingFoundation/>
     </>
   );
