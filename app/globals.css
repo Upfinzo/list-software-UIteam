@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdown-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
 /* Design tokens exposed to Tailwind (text-ink, border-hairline, bg-brand-sky, ...) */
 @theme {
   --color-ink: #121f37;
