@@ -138,22 +138,26 @@ export default function CoreBankingPortfolio() {
                                 backgroundPosition: 'center'
                             }}
                         >
+                            {/* Top row with just CUSTODIAN label */}
                             <div className="flex justify-between items-start mb-12 relative z-10">
                                 <span className="text-xs font-bold tracking-widest uppercase opacity-80">
                                     CUSTODIAN
                                 </span>
-                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 backdrop-blur-md border border-white/20 tracking-wider">
-                                    ● ALWAYS ON
-                                </span>
                             </div>
 
+                            {/* Title, description, and moved badge at the bottom */}
                             <div className="relative z-10">
                                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
                                     Core Banking System
                                 </h3>
-                                <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-md">
+                                <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-md mb-4">
                                     The engine beneath every branch, ledger and customer record.
                                 </p>
+
+                                {/* Moved Badge */}
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 backdrop-blur-md border border-white/20 tracking-wider">
+                                    ● ALWAYS ON
+                                </span>
                             </div>
 
                             <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#111E89] via-[#56B0E6] to-[#5EAFE6] opacity-0 hover:opacity-100 transition-opacity duration-300" />
