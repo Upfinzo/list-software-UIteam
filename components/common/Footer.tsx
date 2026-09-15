@@ -38,19 +38,19 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/platform" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Core Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/capabilities" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Capabilities
               </Link>
             </li>
 
             <li>
-              <Link href="/technology" className="text-sm text-white/70 hover:text-white">
+              <Link href="/technlogy" className="text-sm text-white/70 hover:text-white">
                 Technology
               </Link>
             </li>
@@ -65,25 +65,25 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/digital-banking" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Digital Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/payments" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Payments
               </Link>
             </li>
 
             <li>
-              <Link href="/lending" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Lending
               </Link>
             </li>
 
             <li>
-              <Link href="/compliance-risk" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Compliance & Risk
               </Link>
             </li>
@@ -98,19 +98,19 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/about" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 About
               </Link>
             </li>
 
             <li>
-              <Link href="/contact" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Contact
               </Link>
             </li>
 
             <li>
-              <Link href="/careers" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Careers
               </Link>
             </li>
@@ -125,19 +125,19 @@ export default function Footer() {
 
           <ul className="space-y-3">
             <li>
-              <Link href="/insights" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Insights
               </Link>
             </li>
 
             <li>
-              <Link href="/documentation" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 Documentation
               </Link>
             </li>
 
             <li>
-              <Link href="/faqs" className="text-sm text-white/70 hover:text-white">
+              <Link href="/" className="text-sm text-white/70 hover:text-white">
                 FAQs
               </Link>
             </li>
@@ -153,11 +153,11 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-white">
+            <Link href="/" className="hover:text-white">
               Privacy Policy
             </Link>
 
-            <Link href="/terms" className="hover:text-white">
+            <Link href="/" className="hover:text-white">
               Terms
             </Link>
           </div>
