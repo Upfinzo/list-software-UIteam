@@ -113,8 +113,8 @@ export default function ProductStack() {
             items-center
             gap-10
 
-            min-[1200px]:grid-cols-[430px_minmax(0,667px)]
-            min-[1200px]:gap-10
+            min-[1200px]:grid-cols-[430px_minmax(0,1fr)]
+            min-[1200px]:gap-16
           "
         >
         {/* =========================================
@@ -241,7 +241,7 @@ export default function ProductStack() {
             w-full
             grid
             grid-cols-1
-            gap-[15px]
+            gap-[24px]
           "
         >
           {/* =========================================
@@ -253,7 +253,7 @@ export default function ProductStack() {
     absolute
     left-[28px]
     top-[60px]
-    bottom-[60px]
+    bottom-[127px]
     z-[999]
     w-[1px]
   "
