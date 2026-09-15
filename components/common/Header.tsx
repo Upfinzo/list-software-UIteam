@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
 import { navigation } from "@/data/navigation";
 import Button from "@/components/common/Button";
 import { Images } from "@/assets/images/images";
-import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
 // Add a route here when it should become navigable.
 const enabledNavigationLinks = new Set(["/"]);
@@ -18,10 +18,7 @@ const Header = () => {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeDirectionIndex, setActiveDirectionIndex] = useState(0);
-
   const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(null);
-  const [mobileActiveDirectionIndex, setMobileActiveDirectionIndex] = useState<number | null>(null);
 
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -42,28 +39,25 @@ const Header = () => {
 
   const activeMenu = hoveredIndex !== null ? navigation[hoveredIndex] : null;
 
-  useEffect(() => {
-    setActiveDirectionIndex(0);
-  }, [hoveredIndex]);
-
-  const activeDirection = activeMenu?.megaMenu?.[activeDirectionIndex] ?? null;
-
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "top-0 bg-white shadow-md" : "top-4 sm:top-10"
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "top-0 bg-white shadow-md" : "top-4 sm:top-10"
+      }`}
       onMouseLeave={scheduleClose}
     >
       {/* Gradient Border */}
       <div
-        className={`mx-auto max-w-7xl rounded-[100px] p-[1.5px] transition-all duration-300 ${isScrolled
-          ? "bg-transparent"
-          : "bg-[linear-gradient(359deg,#8CC8FF_0%,#E8F3FF_25%,#FFFFFF_50%,#FFFFFF_75%,#A9D4FF_100%)]"
-          }`}
+        className={`mx-auto max-w-7xl rounded-[100px] p-[1.5px] transition-all duration-300 ${
+          isScrolled
+            ? "bg-transparent"
+            : "bg-[linear-gradient(359deg,#8CC8FF_0%,#E8F3FF_25%,#FFFFFF_50%,#FFFFFF_75%,#A9D4FF_100%)]"
+        }`}
       >
         <div
-          className={`flex h-16 items-center justify-between rounded-[100px] px-4 transition-all duration-300 sm:h-20 sm:px-6 ${isScrolled ? "" : "bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)]"
-            }`}
+          className={`flex h-16 items-center justify-between rounded-[100px] px-4 transition-all duration-300 sm:h-20 sm:px-6 ${
+            isScrolled ? "" : "bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)]"
+          }`}
         >
           <Link href="/" className="flex shrink-0 items-center">
             <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[60px] sm:w-[75px]" />
@@ -82,11 +76,11 @@ const Header = () => {
                           event.preventDefault();
                           return;
                         }
-
                         setActiveIndex(index);
                       }}
-                      className={`relative text-sm font-medium transition-colors ${isActive ? "text-black" : "text-gray-700 hover:text-black"
-                        }`}
+                      className={`relative text-sm font-medium transition-colors ${
+                        isActive ? "text-black" : "text-gray-700 hover:text-black"
+                      }`}
                     >
                       {item.label}
                       {isActive && (
@@ -137,87 +131,80 @@ const Header = () => {
           onMouseEnter={() => hoveredIndex !== null && openMenu(hoveredIndex)}
         >
           <div className="w-screen border-t border-[#DCEAFF] bg-white shadow-xl">
-            <div className="mx-auto flex max-w-[1600px] flex-col gap-6 px-6 py-6 xl:flex-row xl:gap-10 xl:px-12 xl:py-10">
-              {/* Left: Directions */}
-              <div className="w-full shrink-0 xl:w-[280px] 2xl:w-[320px]">
-                <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#66758A]">
-                  Directions
-                </h4>
-                <div className="grid grid-cols-2 gap-1 xl:flex xl:flex-col 2xl:grid-cols-1">
-                  {activeMenu.megaMenu.map((direction, directionIndex) => {
-                    const isActive = activeDirectionIndex === directionIndex;
-
-                    return (
-                      <button
-                        key={direction.label}
-                        type="button"
-                        onMouseEnter={() => setActiveDirectionIndex(directionIndex)}
-                        className={`group flex flex-row items-center justify-between rounded-2xl border p-2.5 text-left outline-none ring-0 transition-colors duration-300 [-webkit-tap-highlight-color:transparent] focus:outline-none focus:ring-0 focus-visible:outline-none xl:p-3 ${isActive
-                            ? "border-[#dde6f2] bg-[#F7FAFF]"
-                            : "border-transparent hover:border-[#dde6f2] hover:bg-gray-50"
-                          }`}
-                      >
-                        <span className="block text-sm font-semibold text-gray-900">
-                          {direction.label}
+            <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-6 py-8 xl:flex-row xl:gap-12 xl:px-12 xl:py-10 ">
+              {/* Left: 15 items across 4 columns */}
+                 {/* Right: promo image card */}
+              {activeMenu.megaMenu.image && (
+                <div className="w-full shrink-0 xl:w-[300px] 2xl:w-[340px]">
+                  <div className="overflow-hidden flex items-end justify-end">
+                    <img
+                      src={Images.common.menuImage}
+                      alt={activeMenu.megaMenu.image.alt}
+                      className="rounded-xl h-[250px] w-[250px] opacity-80"
+                    />
+                    {(activeMenu.megaMenu.image.title || activeMenu.megaMenu.image.ctaLabel) && (
+                      <div className="p-5">
+                        {activeMenu.megaMenu.image.title && (
+                          <p className="text-sm font-semibold text-gray-900">
+                            {activeMenu.megaMenu.image.title}
+                          </p>
+                        )}
+                        {activeMenu.megaMenu.image.description && (
+                          <p className="mt-1.5 text-xs leading-5 text-gray-500">
+                            {activeMenu.megaMenu.image.description}
+                          </p>
+                        )}
+                        {activeMenu.megaMenu.image.ctaLabel && activeMenu.megaMenu.image.ctaHref && (
+                          <Link
+                            href={activeMenu.megaMenu.image.ctaHref}
+                            className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#DCE2EA] px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:border-[#3277D9] hover:text-[#3277D9]"
+                          >
+                            {activeMenu.megaMenu.image.ctaLabel}
+                            <ArrowRight className="h-3.5 w-3.5" />
+                          </Link>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              <div className="relative flex items-center justify-center rounded-xl bg-[#f0f9ff] p-10">
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-10 left-1/3 hidden w-px bg-[#56B0E61F] xl:block"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-10 left-2/3 hidden w-px bg-[#56B0E61F] xl:block"
+                />
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3.5 xl:grid-cols-3 2xl:grid-cols-3">
+                  {activeMenu.megaMenu.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={(event) => {
+                        if (!enabledNavigationLinks.has(item.href)) {
+                          event.preventDefault();
+                        }
+                      }}
+                      className="flex items-center gap-2 text-sm font-medium text-gray-800 transition-colors hover:text-[#3277D9]"
+                    >
+                      <ChevronDoubleRightIcon
+                        aria-hidden="true"
+                        className="h-3.5 w-3.5 shrink-0 text-[#3277D9]"
+                      />
+                      <span>{item.label}</span>
+                      {item.badge && (
+                        <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold text-[#3277D9]">
+                          {item.badge}
                         </span>
-
-                        {/* The icon now fades in smoothly when active */}
-                        <div
-                          className={`transition-all duration-300 ease-in-out ${isActive
-                              ? "opacity-100 translate-x-0 scale-100"
-                              : "opacity-0 -translate-x-2 scale-95 pointer-events-none"
-                            }`}
-                        >
-                          <ChevronDoubleRightIcon height={20} color="var(--primary-color)" />
-                        </div>
-                      </button>
-
-                    );
-                  })}
+                      )}
+                    </Link>
+                  ))}
                 </div>
               </div>
 
-              {/* Right: active Direction's panel */}
-              {activeDirection && (
-                <div className="flex-1 rounded-2xl bg-[#F7FAFF] p-5 xl:p-8">
-                  <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#66758A] xl:mb-6">
-                    {activeDirection.panel.panelTitle}
-                  </h4>
-
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-5 xl:grid-cols-2 xl:gap-x-8 2xl:grid-cols-4">
-                    {activeDirection.panel.columns.map((column) => (
-                      <div key={column.title}>
-                        <h5 className="mb-2.5 text-xs font-semibold text-gray-400 xl:mb-3">
-                          {column.title}
-                        </h5>
-                        <div className="flex flex-col gap-3 xl:gap-4">
-                          {column.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              onClick={(event) => {
-                                if (!enabledNavigationLinks.has(item.href)) {
-                                  event.preventDefault();
-                                }
-                              }}
-                              className="flex items-center gap-2 text-sm font-medium text-gray-800 transition-colors hover:text-[#3277D9]"
-                            >
-                              <span className="truncate">{item.label}</span>
-                              {item.badge && (
-                                <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold text-[#3277D9]">
-                                  {item.badge}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-
-                </div>
-              )}
+           
             </div>
           </div>
         </div>
@@ -240,12 +227,12 @@ const Header = () => {
                           if (!enabledNavigationLinks.has(item.href)) {
                             event.preventDefault();
                           }
-
                           setActiveIndex(index);
                           if (!item.megaMenu) setMobileOpen(false);
                         }}
-                        className={`block py-3 text-sm font-medium transition-colors ${activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
-                          }`}
+                        className={`block py-3 text-sm font-medium transition-colors ${
+                          activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
+                        }`}
                       >
                         {item.label}
                       </Link>
@@ -254,11 +241,7 @@ const Header = () => {
                         <button
                           type="button"
                           aria-label={`Toggle ${item.label} submenu`}
-                          onClick={() => {
-                            const nextExpanded = isExpanded ? null : index;
-                            setMobileExpandedIndex(nextExpanded);
-                            setMobileActiveDirectionIndex(nextExpanded !== null ? 0 : null);
-                          }}
+                          onClick={() => setMobileExpandedIndex(isExpanded ? null : index)}
                           className="p-2 text-gray-500"
                         >
                           <ChevronDown
@@ -269,59 +252,22 @@ const Header = () => {
                     </div>
 
                     {item.megaMenu && isExpanded && (
-                      <div className="pb-3 pl-2">
-                        {item.megaMenu.map((direction, directionIndex) => {
-                          const isDirectionOpen = mobileActiveDirectionIndex === directionIndex;
-
-                          return (
-                            <div key={direction.label} className="mb-2 rounded-2xl bg-gray-50">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setMobileActiveDirectionIndex(isDirectionOpen ? null : directionIndex)
-                                }
-                                className="flex w-full items-center justify-between gap-3 p-3 text-left"
-                              >
-                                <span className="text-sm font-semibold text-gray-900">
-                                  {direction.label}
-                                </span>
-                                <ChevronDown
-                                  className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${isDirectionOpen ? "rotate-180" : ""
-                                    }`}
-                                />
-                              </button>
-
-                              {isDirectionOpen && (
-                                <div className="space-y-4 px-3 pb-4">
-                                  {direction.panel.columns.map((column) => (
-                                    <div key={column.title}>
-                                      <h5 className="mb-2 text-xs font-semibold text-gray-400">
-                                        {column.title}
-                                      </h5>
-                                      <div className="flex flex-col gap-2">
-                                        {column.items.map((subItem) => (
-                                          <Link
-                                            key={subItem.href}
-                                            href={subItem.href}
-                                            onClick={(event) => {
-                                              if (!enabledNavigationLinks.has(subItem.href)) {
-                                                event.preventDefault();
-                                              }
-                                              setMobileOpen(false);
-                                            }}
-                                            className="text-sm text-gray-700 hover:text-[#3277D9]"
-                                          >
-                                            {subItem.label}
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
+                      <div className="flex flex-col gap-2.5 pb-4 pl-2">
+                        {item.megaMenu.items.map((subItem) => (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            onClick={(event) => {
+                              if (!enabledNavigationLinks.has(subItem.href)) {
+                                event.preventDefault();
+                              }
+                              setMobileOpen(false);
+                            }}
+                            className="text-sm text-gray-700 hover:text-[#3277D9]"
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
                       </div>
                     )}
                   </li>
