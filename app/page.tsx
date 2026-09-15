@@ -18,11 +18,7 @@ import BusinessOutcomes from "@/components/Home/BankingOutcome";
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <AboutSection />
-      <ServicesSection />
-       
-      
+      <Hero /> 
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
@@ -32,8 +28,7 @@ export default function HomePage() {
       <Whylist />
       <TrustControlSection />
           <SolutionsSection />
-      <WhoWeServeSection />
-       <CTASection />
+      <WhoWeServeSection /> 
       <BusinessOutcomes />
       <WhoWeServeSection />
       
