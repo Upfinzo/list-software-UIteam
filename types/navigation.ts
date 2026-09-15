@@ -1,35 +1,25 @@
-// types/navigation.ts
 export interface MegaMenuItem {
   label: string;
   href: string;
   badge?: string;
 }
 
-export interface MegaMenuPanelColumn {
-  title: string;
+export interface MegaMenuImage {
+  src: string;
+  alt: string;
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+export interface MegaMenu {
   items: MegaMenuItem[];
-}
-
-export interface MegaMenuPanelNote {
-  title: string;
-  ctaLabel: string;
-  ctaHref: string;
-}
-
-export interface MegaMenuPanel {
-  panelTitle: string;
-  columns: MegaMenuPanelColumn[];
-  note?: MegaMenuPanelNote;
-}
-
-export interface MegaMenuDirection {
-  label: string;
-  href: string;
-  panel: MegaMenuPanel;
+  image?: MegaMenuImage;
 }
 
 export interface NavigationItem {
   label: string;
   href: string;
-  megaMenu?: MegaMenuDirection[];
+  megaMenu?: MegaMenu;
 }
