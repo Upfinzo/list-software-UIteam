@@ -1,10 +1,13 @@
-import { Fragment } from "react";
+"use client";
+
+import { Fragment, useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
 import iconFour from "@/assets/images/Icon (4).svg";
 import iconFive from "@/assets/images/Icon (5).svg";
 import iconSix from "@/assets/images/Icon (6).svg";
 import iconSeven from "@/assets/images/Icon (7).svg";
 import iconEight from "@/assets/images/Icon (8).svg";
+import Container from "@/components/common/Container";
 
 const capabilities = [
   {
@@ -50,19 +53,20 @@ const productTags = [
 ];
 
 export default function ProductStack() {
+  const [activeCapability, setActiveCapability] = useState(0);
+
   return (
     <section
       className="
         relative
         flex
-        min-h-screen
         w-full
         items-center
         overflow-hidden
         bg-[#061b61]
         text-[#f7f9ff]
 
-        min-[801px]:min-h-[929px]
+        min-[1200px]:min-h-[929px]
       "
       aria-labelledby="home-products-title"
     >
@@ -100,26 +104,19 @@ export default function ProductStack() {
       {/* =========================================
           MAIN CONTAINER
       ========================================= */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          grid
-          w-full
-          max-w-[1160px]
-          grid-cols-1
-          items-center
-          gap-[42px]
-          px-[22px]
-          py-[60px]
+      <Container className="relative z-10 py-10 md:py-16">
+        <div
+          className="
+            grid
+            w-full
+            grid-cols-1
+            items-center
+            gap-10
 
-          min-[801px]:grid-cols-[430px_667px]
-          min-[801px]:gap-[40px]
-          min-[801px]:px-0
-          min-[801px]:py-10
-        "
-      >
+            min-[1200px]:grid-cols-[430px_minmax(0,667px)]
+            min-[1200px]:gap-10
+          "
+        >
         {/* =========================================
             LEFT CONTENT
         ========================================= */}
@@ -129,9 +126,9 @@ export default function ProductStack() {
             w-full
             max-w-[430px]
 
-            min-[801px]:mx-0
-            min-[801px]:w-[430px]
-            min-[801px]:max-w-[430px]
+            min-[1200px]:mx-0
+            min-[1200px]:w-[430px]
+            min-[1200px]:max-w-[430px]
           "
         >
           {/* Small Label */}
@@ -215,7 +212,7 @@ export default function ProductStack() {
                 )}
 
                 <span
-                  className="
+                  className={`
                     rounded-full
                     border
                     border-[rgba(160,190,255,0.24)]
@@ -226,7 +223,7 @@ export default function ProductStack() {
                     uppercase
                     tracking-[0.1em]
                     text-[#c1d0f3]
-                  "
+                  `}
                 >
                   {tag}
                 </span>
@@ -241,12 +238,10 @@ export default function ProductStack() {
         <div
           className="
             relative
-            hidden
-            w-[667px]
+            w-full
+            grid
             grid-cols-1
             gap-[15px]
-
-            min-[801px]:grid
           "
         >
           {/* =========================================
@@ -258,7 +253,7 @@ export default function ProductStack() {
     absolute
     left-[28px]
     top-[60px]
-    h-[614px]
+    bottom-[60px]
     z-[999]
     w-[1px]
   "
@@ -273,18 +268,20 @@ export default function ProductStack() {
               CAPABILITY CARDS
           ========================================= */}
           {capabilities.map((capability, index) => {
-            const isLastCard = index === capabilities.length - 1;
-
             return (
               <article
                 key={capability.number}
+                tabIndex={0}
+                role="button"
+                onClick={() => setActiveCapability(index)}
+                onFocus={() => setActiveCapability(index)}
                 className={`
                   group
                   relative
                   z-10
                   flex
-                  h-[148.5px]
-                  w-[667px]
+                  min-h-[148.5px]
+                  w-full
                   shrink-0
                   gap-[20px]
                   rounded-[20px]
@@ -298,18 +295,28 @@ export default function ProductStack() {
                   transition-all
                   duration-200
 
+                  cursor-pointer
+                  outline-none
                   hover:!border-[#4f8cdb]
                   hover:!bg-[#0d3a87]
                   hover:!text-white
+                  focus-visible:!border-[#4f8cdb]
+                  focus-visible:!bg-[#0d3a87]
+                  focus-visible:!text-white
                   group-hover:bg-[linear-gradient(100deg,rgba(33,104,208,0.58),rgba(31,65,144,0.46))]
                   group-hover:shadow-[0_0_24px_rgba(40,129,255,0.18)]
+                  ${
+                    activeCapability === index
+                      ? "border-[#4f8cdb] bg-[#0d3a87] text-white shadow-[0_0_24px_rgba(40,129,255,0.18)]"
+                      : ""
+                  }
                 `}
               >
                 {/* =========================================
                     CARD ICON
                 ========================================= */}
                 <span
-                  className="
+                  className={`
                     relative
                     z-10
                     grid
@@ -325,7 +332,14 @@ export default function ProductStack() {
                     duration-200
                     group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
                     group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
-                  "
+                    focus-within:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
+                    focus-within:shadow-[0_0_22px_rgba(87,182,255,0.52)]
+                    ${
+                      activeCapability === index
+                        ? "bg-[linear-gradient(145deg,#73c5ff,#1267cd)] shadow-[0_0_22px_rgba(87,182,255,0.52)]"
+                        : ""
+                    }
+                  `}
                   aria-hidden="true"
                 >
                   <img
@@ -349,7 +363,7 @@ export default function ProductStack() {
                   {/* Number + Title */}
                   <div className="flex items-baseline gap-[9px]">
                     <span
-                      className="
+                      className={`
                         text-[8px]
                         tracking-[0.2em]
                         text-[#77a7ee]
@@ -357,7 +371,10 @@ export default function ProductStack() {
                         duration-200
 
                         group-hover:text-[#b9d2ff]
-                      "
+                        ${
+                          activeCapability === index ? "text-[#b9d2ff]" : ""
+                        }
+                      `}
                     >
                       {capability.number}
                     </span>
@@ -377,7 +394,7 @@ export default function ProductStack() {
 
                   {/* Card Description */}
                   <p
-                    className="
+                    className={`
                       m-0
                       mt-[10px]
                       max-w-[550px]
@@ -389,9 +406,12 @@ export default function ProductStack() {
                       duration-200
 
                       group-hover:text-[#e4edff]
+                      ${
+                        activeCapability === index ? "text-[#e4edff]" : ""
+                      }
 
-                      max-[480px]:text-[9px]
-                    "
+                      max-[480px]:text-[12px]
+                    `}
                   >
                     {capability.text}
                   </p>
@@ -400,7 +420,8 @@ export default function ProductStack() {
             );
           })}
         </div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

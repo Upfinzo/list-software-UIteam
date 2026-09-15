@@ -136,7 +136,7 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/faq" className="text-sm text-white/70 hover:text-white">
                 FAQs
               </Link>
             </li>
