@@ -120,13 +120,19 @@ export default function WhoWeServeSection() {
                       }`}
                     >
                       <span className="flex items-center gap-3">
-                        <span
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-500 ease-out ${
-                            isActive ? "bg-[#032683]" : "bg-transparent"
-                          }`}
-                        >
+                        <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
+                          {/*
+                            A gradient is a background-image, and those cannot
+                            be transitioned — so it rides its own layer and
+                            cross-fades in step with the rest of the card.
+                          */}
+                          <span
+                            className={`absolute inset-0 rounded-lg bg-[linear-gradient(145deg,#032683_6.17%,#56B0E6_93.83%)] transition-opacity duration-500 ease-out ${
+                              isActive ? "opacity-100" : "opacity-0"
+                            }`}
+                          />
                           <Icon
-                            className={`h-[18px] w-[18px] transition-colors duration-500 ease-out ${
+                            className={`relative h-[18px] w-[18px] transition-colors duration-500 ease-out ${
                               isActive ? "text-white" : "text-[#032683]"
                             }`}
                             strokeWidth={1.5}
