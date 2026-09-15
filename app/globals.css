@@ -232,6 +232,11 @@ textarea {
   }
 }
 
+header button,
+header nav ul li a{
+  cursor: pointer;
+}
+
 .hero-node__chip {
   transform-box: fill-box;
   transform-origin: center;
