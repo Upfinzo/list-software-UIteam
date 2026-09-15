@@ -23,14 +23,15 @@ export default function HomePage() {
       <ConnectedCore />
       <ProductStack />
       <CapabilitiesSection />
-      <CoreBankingPortfolio/>
-      <BeyondProductSection />
+      <CoreBankingPortfolio />
       <Whylist />
-      <TrustControlSection />
+            <TrustControlSection />
       <BusinessOutcomes />
       <WhoWeServeSection />
-      
-      <BankingFoundation/>
+
+      <BeyondProductSection />
+
+      <BankingFoundation />
     </>
   );
 }
