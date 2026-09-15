@@ -205,7 +205,7 @@ const Header = () => {
                           event.preventDefault();
                         }
                       }}
-                      className="flex items-center gap-2 text-sm font-medium leading-8 text-gray-800 transition-colors hover:text-[#3277D9]"
+                      className="flex items-center gap-2 text-sm font-medium leading-8 text-gray-800 transition-colors hover:bg-gradient-to-r hover:from-[#032683] hover:to-[#56B0E6] hover:bg-clip-text hover:text-transparent"
                     >
                       <ChevronDoubleRightIcon
                         aria-hidden="true"
