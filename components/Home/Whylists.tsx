@@ -19,8 +19,7 @@ export default function Whylist() {
                 tracking-[0.27em]
               "
             >
-              Product stack
-            </p>
+              Why List            </p>
 
             <h1 className="section-title leading-none">
               Technology That Evolves Without

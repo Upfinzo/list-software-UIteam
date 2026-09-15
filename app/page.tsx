@@ -1,9 +1,7 @@
 import AboutSection from "@/components/Home/AboutSection";
 import ConnectedCore from "@/components/Home/ConnectedCore";
-import CTASection from "@/components/Home/CTASection";
 import Hero from "@/components/Home/Hero";
 import ProvenFoundationSection from "@/components/Home/ProvenFoundationSection";
-import ServicesSection from "@/components/Home/ServicesSection";
 import SolutionsSection from "@/components/Home/SolutionsSection";
 import TrustControlSection from "@/components/Home/TrustControlSection";
 import WhoWeServeSection from "@/components/Home/WhoWeServeSection";
@@ -14,25 +12,34 @@ import Whylist from "@/components/Home/Whylists";
 import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
 import BusinessOutcomes from "@/components/Home/BankingOutcome";
+import FAQPage from "./faq/page";
 
 export default function HomePage() {
   return (
     <>
-      <Hero /> 
+      <Hero />
       <ProvenFoundationSection />
       <ConnectedCore />
+
       <ProductStack />
+
       <CapabilitiesSection />
-      <CoreBankingPortfolio/>
-      <BeyondProductSection />
+
+      <CoreBankingPortfolio />
+
+      <SolutionsSection />
+
       <Whylist />
+
       <TrustControlSection />
-          <SolutionsSection />
-      <WhoWeServeSection /> 
+
       <BusinessOutcomes />
       <WhoWeServeSection />
-      
-      <BankingFoundation/>
+
+      <BeyondProductSection />
+      <FAQPage />
+
+      <BankingFoundation />
     </>
   );
 }
