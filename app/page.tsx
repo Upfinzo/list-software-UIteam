@@ -19,6 +19,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <AboutSection />
+      <ServicesSection />
+       
+      
       <ProvenFoundationSection />
       <ConnectedCore />
       <ProductStack />
@@ -27,6 +31,9 @@ export default function HomePage() {
       <BeyondProductSection />
       <Whylist />
       <TrustControlSection />
+          <SolutionsSection />
+      <WhoWeServeSection />
+       <CTASection />
       <BusinessOutcomes />
       <WhoWeServeSection />
       
