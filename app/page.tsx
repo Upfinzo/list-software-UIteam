@@ -13,6 +13,7 @@ import BeyondProductSection from "@/components/BeyondProductSection";
 import Whylist from "@/components/Home/Whylists";
 import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
+import BusinessOutcomes from "@/components/Home/BankingOutcome";
 
 export default function HomePage() {
   return (
@@ -33,6 +34,9 @@ export default function HomePage() {
           <SolutionsSection />
       <WhoWeServeSection />
        <CTASection />
+      <BusinessOutcomes />
+      <WhoWeServeSection />
+      
       <BankingFoundation/>
     </>
   );

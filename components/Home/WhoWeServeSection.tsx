@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import AudienceRing from "@/components/Home/AudienceRing";
 import Container from "@/components/common/Container";
-import { audiences } from "@/data/audiences";
+import { audienceCategories, audiences } from "@/data/audiences";
 
 /** Wheel order, so the highlight walks round the ring rather than jumping. */
 const RING_ORDER = [...audiences].sort(
@@ -59,16 +59,28 @@ export default function WhoWeServeSection() {
             Technology That Fits the Institution You are Building
           </h2>
 
+          <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-[0.14em] text-[#111E89] uppercase">
+            {audienceCategories.map((category, index) => (
+              <Fragment key={category}>
+                {index > 0 && (
+                  <span aria-hidden="true" className="text-[#111E89]/30">
+                    |
+                  </span>
+                )}
+                <span>{category}</span>
+              </Fragment>
+            ))}
+          </p>
+
           <p className="running-text mt-5 max-w-[680px] leading-7 text-[#647183]">
-            LIST Software provides banking technology across the operational,
-            digital and transaction needs of financial institutions from core
-            banking and branch operations to payments, digital channels, lending
-            and compliance
+            LIST Software provides core banking capabilities that support the
+            operational, transaction, lending, and compliance needs of financial
+            institutions.
           </p>
         </div>
 
         <div
-          className="mt-14 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.18fr)] lg:gap-10"
+          className="mt-14 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-10"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
@@ -103,7 +115,7 @@ export default function WhoWeServeSection() {
                       aria-pressed={isActive}
                       className={`h-full w-full cursor-pointer p-5 text-left transition-colors duration-500 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#032683] ${
                         isActive
-                          ? "bg-gradient-to-br from-[#E9F2FC] to-[#F8FBFE]"
+                          ? "bg-[linear-gradient(160deg,#FFFFFF_8.49%,#E7F1FD_91.51%)]"
                           : "hover:bg-[#F7F9FC]"
                       }`}
                     >
@@ -138,7 +150,7 @@ export default function WhoWeServeSection() {
                         }`}
                       >
                         <span className="overflow-hidden">
-                          <span className="mt-2.5 block pl-11 text-[13px] leading-6 text-[#647183]">
+                          <span className="mt-2 block text-[13px] leading-5 text-[#647183]">
                             {item.description}
                           </span>
                         </span>
