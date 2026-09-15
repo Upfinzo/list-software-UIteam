@@ -3,6 +3,7 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import BackToTop from "@/components/common/BackToTop";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -31,6 +32,8 @@ export default function RootLayout({
         <main className="pt-20">{children}</main>
 
         <Footer />
+
+        <BackToTop />
       </body>
     </html>
   );

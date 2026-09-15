@@ -7,7 +7,10 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { navigation } from "@/data/navigation";
 import Button from "@/components/common/Button";
 import { Images } from "@/assets/images/images";
-import { ChevronDoubleDownIcon, ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
+import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
+
+// Add a route here when it should become navigable.
+const enabledNavigationLinks = new Set(["/"]);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,7 +77,14 @@ const Header = () => {
                   <li key={item.href} onMouseEnter={() => openMenu(index)}>
                     <Link
                       href={item.href}
-                      onClick={() => setActiveIndex(index)}
+                      onClick={(event) => {
+                        if (!enabledNavigationLinks.has(item.href)) {
+                          event.preventDefault();
+                          return;
+                        }
+
+                        setActiveIndex(index);
+                      }}
                       className={`relative text-sm font-medium transition-colors ${isActive ? "text-black" : "text-gray-700 hover:text-black"
                         }`}
                     >
@@ -138,31 +148,29 @@ const Header = () => {
                     const isActive = activeDirectionIndex === directionIndex;
 
                     return (
-                  <button
-  key={direction.label}
-  type="button"
-  onMouseEnter={() => setActiveDirectionIndex(directionIndex)}
-  className={`group flex flex-row items-center justify-between rounded-2xl border p-2.5 text-left outline-none ring-0 transition-colors duration-300 [-webkit-tap-highlight-color:transparent] focus:outline-none focus:ring-0 focus-visible:outline-none xl:p-3 ${
-    isActive
-      ? "border-[#dde6f2] bg-[#F7FAFF]"
-      : "border-transparent hover:border-[#dde6f2] hover:bg-gray-50"
-  }`}
->
-  <span className="block text-sm font-semibold text-gray-900">
-    {direction.label}
-  </span>
-  
-  {/* The icon now fades in smoothly when active */}
-  <div
-    className={`transition-all duration-300 ease-in-out ${
-      isActive 
-        ? "opacity-100 translate-x-0 scale-100" 
-        : "opacity-0 -translate-x-2 scale-95 pointer-events-none"
-    }`}
-  >
-    <ChevronDoubleRightIcon height={20} color="var(--primary-color)"/>
-  </div>
-</button>
+                      <button
+                        key={direction.label}
+                        type="button"
+                        onMouseEnter={() => setActiveDirectionIndex(directionIndex)}
+                        className={`group flex flex-row items-center justify-between rounded-2xl border p-2.5 text-left outline-none ring-0 transition-colors duration-300 [-webkit-tap-highlight-color:transparent] focus:outline-none focus:ring-0 focus-visible:outline-none xl:p-3 ${isActive
+                            ? "border-[#dde6f2] bg-[#F7FAFF]"
+                            : "border-transparent hover:border-[#dde6f2] hover:bg-gray-50"
+                          }`}
+                      >
+                        <span className="block text-sm font-semibold text-gray-900">
+                          {direction.label}
+                        </span>
+
+                        {/* The icon now fades in smoothly when active */}
+                        <div
+                          className={`transition-all duration-300 ease-in-out ${isActive
+                              ? "opacity-100 translate-x-0 scale-100"
+                              : "opacity-0 -translate-x-2 scale-95 pointer-events-none"
+                            }`}
+                        >
+                          <ChevronDoubleRightIcon height={20} color="var(--primary-color)" />
+                        </div>
+                      </button>
 
                     );
                   })}
@@ -187,6 +195,11 @@ const Header = () => {
                             <Link
                               key={item.href}
                               href={item.href}
+                              onClick={(event) => {
+                                if (!enabledNavigationLinks.has(item.href)) {
+                                  event.preventDefault();
+                                }
+                              }}
                               className="flex items-center gap-2 text-sm font-medium text-gray-800 transition-colors hover:text-[#3277D9]"
                             >
                               <span className="truncate">{item.label}</span>
@@ -223,7 +236,11 @@ const Header = () => {
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
-                        onClick={() => {
+                        onClick={(event) => {
+                          if (!enabledNavigationLinks.has(item.href)) {
+                            event.preventDefault();
+                          }
+
                           setActiveIndex(index);
                           if (!item.megaMenu) setMobileOpen(false);
                         }}
@@ -286,7 +303,12 @@ const Header = () => {
                                           <Link
                                             key={subItem.href}
                                             href={subItem.href}
-                                            onClick={() => setMobileOpen(false)}
+                                            onClick={(event) => {
+                                              if (!enabledNavigationLinks.has(subItem.href)) {
+                                                event.preventDefault();
+                                              }
+                                              setMobileOpen(false);
+                                            }}
                                             className="text-sm text-gray-700 hover:text-[#3277D9]"
                                           >
                                             {subItem.label}
