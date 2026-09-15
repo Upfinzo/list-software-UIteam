@@ -7,7 +7,9 @@ const OUTER_R = 169;
 const INNER_R = 94;
 const POP = 7;
 const ICON_R = (OUTER_R + INNER_R) / 2;
-const CORNER = 7;
+/** Both edges meet square — the wedges have no corner radius. */
+const OUTER_CORNER = 0;
+const INNER_CORNER = 0;
 const GAP_DEG = 1.1;
 const SEAT_DEG = 360 / 8;
 
@@ -31,33 +33,42 @@ function seatAngles(seat: number) {
 }
 
 function wedgePath(from: number, to: number, outer: number, inner: number) {
-  const outerInset = CORNER / outer / DEG;
-  const innerInset = CORNER / inner / DEG;
+  const outerInset = OUTER_CORNER / outer / DEG;
+  const innerInset = INNER_CORNER / inner / DEG;
 
   const p = [
-    pointAt(from, outer - CORNER),
+    pointAt(from, outer - OUTER_CORNER),
     pointAt(from + outerInset, outer),
     pointAt(to - outerInset, outer),
-    pointAt(to, outer - CORNER),
-    pointAt(to, inner + CORNER),
+    pointAt(to, outer - OUTER_CORNER),
+    pointAt(to, inner + INNER_CORNER),
     pointAt(to - innerInset, inner),
     pointAt(from + innerInset, inner),
-    pointAt(from, inner + CORNER),
+    pointAt(from, inner + INNER_CORNER),
   ];
 
   const n = (v: number) => v.toFixed(2);
 
+  /**
+   * A zero radius leaves the corner point sitting on the edge it came from,
+   * so there is nothing to draw and the command is dropped.
+   */
+  const corner = (r: number, at: { x: number; y: number }) =>
+    r > 0 ? `A${r} ${r} 0 0 1 ${n(at.x)} ${n(at.y)}` : "";
+
   return [
     `M${n(p[0].x)} ${n(p[0].y)}`,
-    `A${CORNER} ${CORNER} 0 0 1 ${n(p[1].x)} ${n(p[1].y)}`,
+    corner(OUTER_CORNER, p[1]),
     `A${outer} ${outer} 0 0 1 ${n(p[2].x)} ${n(p[2].y)}`,
-    `A${CORNER} ${CORNER} 0 0 1 ${n(p[3].x)} ${n(p[3].y)}`,
+    corner(OUTER_CORNER, p[3]),
     `L${n(p[4].x)} ${n(p[4].y)}`,
-    `A${CORNER} ${CORNER} 0 0 1 ${n(p[5].x)} ${n(p[5].y)}`,
+    corner(INNER_CORNER, p[5]),
     `A${inner} ${inner} 0 0 0 ${n(p[6].x)} ${n(p[6].y)}`,
-    `A${CORNER} ${CORNER} 0 0 1 ${n(p[7].x)} ${n(p[7].y)}`,
+    corner(INNER_CORNER, p[7]),
     "Z",
-  ].join(" ");
+  ]
+    .filter(Boolean)
+    .join(" ");
 }
 
 interface AudienceRingProps {
@@ -123,6 +134,7 @@ export default function AudienceRing({
                 stroke="#032683"
                 strokeOpacity={0.12}
                 strokeWidth={1.05}
+                vectorEffect="non-scaling-stroke"
               />
 
               {/*
@@ -137,6 +149,10 @@ export default function AudienceRing({
                 fillOpacity={0.92}
                 stroke="#56B0E6"
                 strokeWidth={1.05}
+                /* The wheel scales with its column, so without this the 1.05
+                   stroke drops below a device pixel and anti-aliases into a
+                   soft edge. Pinned, it stays a crisp hairline at any size. */
+                vectorEffect="non-scaling-stroke"
                 opacity={isActive ? 1 : 0}
                 className={EASE}
               />
