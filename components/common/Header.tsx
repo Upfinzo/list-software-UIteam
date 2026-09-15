@@ -17,6 +17,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [displayedIndex, setDisplayedIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(null);
 
@@ -38,6 +39,17 @@ const Header = () => {
   };
 
   const activeMenu = hoveredIndex !== null ? navigation[hoveredIndex] : null;
+  const displayedMenu = displayedIndex !== null ? navigation[displayedIndex] : null;
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      setDisplayedIndex(hoveredIndex);
+      return;
+    }
+
+    const closeAnimation = window.setTimeout(() => setDisplayedIndex(null), 220);
+    return () => window.clearTimeout(closeAnimation);
+  }, [hoveredIndex]);
 
   return (
     <header
@@ -125,41 +137,47 @@ const Header = () => {
       </div>
 
       {/* Full-width mega menu — desktop/large tablets only (lg+) */}
-      {activeMenu?.megaMenu && (
+      {displayedMenu?.megaMenu && (
         <div
           className="absolute inset-x-0 top-full z-40 hidden lg:block"
-          onMouseEnter={() => hoveredIndex !== null && openMenu(hoveredIndex)}
+          onMouseEnter={() => displayedIndex !== null && openMenu(displayedIndex)}
         >
-          <div className="w-screen border-t border-[#DCEAFF] bg-white shadow-xl">
+          <div
+            className={`w-screen border-t border-[#DCEAFF] bg-white shadow-xl ${
+              hoveredIndex !== null
+                ? "animate-[dropdown-in_220ms_ease-out]"
+                : "animate-[dropdown-out_220ms_ease-in]"
+            }`}
+          >
             <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-6 py-8 xl:flex-row xl:gap-12 xl:px-12 xl:py-10 ">
               {/* Left: 15 items across 4 columns */}
                  {/* Right: promo image card */}
-              {activeMenu.megaMenu.image && (
-                <div className="w-full shrink-0 xl:w-[300px] 2xl:w-[340px]">
+              {displayedMenu.megaMenu.image && (
+                <div className="order-2 w-full shrink-0 xl:order-2 xl:w-[300px] 2xl:w-[340px]">
                   <div className="overflow-hidden flex items-end justify-end">
                     <img
                       src={Images.common.menuImage}
-                      alt={activeMenu.megaMenu.image.alt}
-                      className="rounded-xl h-[250px] w-[250px] opacity-80"
+                      alt={displayedMenu.megaMenu.image.alt}
+                      className="rounded-xl"
                     />
-                    {(activeMenu.megaMenu.image.title || activeMenu.megaMenu.image.ctaLabel) && (
+                    {(displayedMenu.megaMenu.image.title || displayedMenu.megaMenu.image.ctaLabel) && (
                       <div className="p-5">
-                        {activeMenu.megaMenu.image.title && (
+                        {displayedMenu.megaMenu.image.title && (
                           <p className="text-sm font-semibold text-gray-900">
-                            {activeMenu.megaMenu.image.title}
+                            {displayedMenu.megaMenu.image.title}
                           </p>
                         )}
-                        {activeMenu.megaMenu.image.description && (
+                        {displayedMenu.megaMenu.image.description && (
                           <p className="mt-1.5 text-xs leading-5 text-gray-500">
-                            {activeMenu.megaMenu.image.description}
+                            {displayedMenu.megaMenu.image.description}
                           </p>
                         )}
-                        {activeMenu.megaMenu.image.ctaLabel && activeMenu.megaMenu.image.ctaHref && (
+                        {displayedMenu.megaMenu.image.ctaLabel && displayedMenu.megaMenu.image.ctaHref && (
                           <Link
-                            href={activeMenu.megaMenu.image.ctaHref}
+                            href={displayedMenu.megaMenu.image.ctaHref}
                             className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#DCE2EA] px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:border-[#3277D9] hover:text-[#3277D9]"
                           >
-                            {activeMenu.megaMenu.image.ctaLabel}
+                            {displayedMenu.megaMenu.image.ctaLabel}
                             <ArrowRight className="h-3.5 w-3.5" />
                           </Link>
                         )}
@@ -168,7 +186,7 @@ const Header = () => {
                   </div>
                 </div>
               )}
-              <div className="relative flex items-center justify-center rounded-xl bg-[#f0f9ff] p-10">
+              <div className="order-1 relative flex items-center justify-center rounded-xl border border-[#dedede] bg-[#f5f5f5] p-10 xl:order-1 xl:flex-1">
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-y-10 left-1/3 hidden w-px bg-[#56B0E61F] xl:block"
@@ -177,8 +195,8 @@ const Header = () => {
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-y-10 left-2/3 hidden w-px bg-[#56B0E61F] xl:block"
                 />
-                <div className="grid grid-cols-2 gap-x-8 gap-y-3.5 xl:grid-cols-3 2xl:grid-cols-3">
-                  {activeMenu.megaMenu.items.map((item) => (
+                <div className="grid grid-cols-2 gap-x-12 gap-y-5 xl:grid-cols-3 xl:gap-x-16 2xl:grid-cols-3">
+                  {displayedMenu.megaMenu.items.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
@@ -187,7 +205,7 @@ const Header = () => {
                           event.preventDefault();
                         }
                       }}
-                      className="flex items-center gap-2 text-sm font-medium text-gray-800 transition-colors hover:text-[#3277D9]"
+                      className="flex items-center gap-2 text-sm font-medium leading-8 text-gray-800 transition-colors hover:text-[#3277D9]"
                     >
                       <ChevronDoubleRightIcon
                         aria-hidden="true"
