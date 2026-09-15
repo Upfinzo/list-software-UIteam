@@ -106,36 +106,40 @@ export default function BusinessOutcomes() {
                     </p>
                 </div>
 
-                {/* Horizontal Cards Grid with Uniform Fixed Height & Smooth Description Reveal */}
+                {/* Horizontal Cards Grid */}
                 <div className="relative">
-                    {/* Background Linear Gradient Connecting Line Across the Cards */}
-                    <div className="absolute top-[32px] left-0 right-0 h-[2px] bg-gradient-to-r from-[#5EAFE6]/10 via-[#5EAFE6]/40 to-[#5EAFE6]/10 z-0 pointer-events-none hidden lg:block" />
+                    <div className="absolute top-[40px] left-0 right-0 h-[2px] bg-gradient-to-r from-[#5EAFE6]/10 via-[#5EAFE6]/40 to-[#5EAFE6]/10 z-0 pointer-events-none hidden lg:block" />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 relative z-10 items-start">
                         {outcomeCards.map((card) => {
                             const isActive = activeIndex === card.id;
 
                             if (isActive) {
-                                // Active Blue Card with fixed compact sizing and animated paragraph reveal
                                 return (
                                     <div
                                         key={card.id}
                                         onMouseEnter={() => setActiveIndex(card.id)}
-                                        className="h-[235px] rounded-[28px] p-6 text-white cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-xl transform hover:-translate-y-1"
+                                        className="h-[269px] rounded-[20px] p-5 text-white cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-center gap-6 shadow-xl transform hover:-translate-y-1"
                                         style={{
                                             background: `linear-gradient(135deg, #032683 0%, #111E89 60%, #56B0E6 100%)`,
                                             backgroundBlendMode: 'overlay',
                                         }}
                                     >
-                                        <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
+                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
                                             {card.icon}
                                         </div>
 
-                                        <div className="space-y-1">
-                                            <div className="text-[11px] font-bold tracking-wider opacity-80">
+                                        <div className="space-y-2">
+                                            <div
+                                                className="text-[11px] font-semibold text-[#5EAFE6] uppercase"
+                                                style={{ letterSpacing: '2.2px', lineHeight: '16.5px' }}
+                                            >
                                                 {card.step} · {card.action}
                                             </div>
-                                            <h3 className="text-base font-bold tracking-tight text-white leading-snug">
+                                            <h3
+                                                className="text-[14.5px] font-medium text-white"
+                                                style={{ letterSpacing: '-0.36px', lineHeight: '19.9px' }}
+                                            >
                                                 {card.title}
                                             </h3>
                                             <AnimatePresence>
@@ -143,8 +147,8 @@ export default function BusinessOutcomes() {
                                                     initial={{ opacity: 0, height: 0 }}
                                                     animate={{ opacity: 1, height: 'auto' }}
                                                     exit={{ opacity: 0, height: 0 }}
-                                                    transition={{ duration: 0.2 }}
-                                                    className="text-white/80 text-[11px] leading-relaxed pt-1"
+                                                    transition={{ duration: 0.25 }}
+                                                    className="text-white/80 text-[13px] leading-relaxed pt-1"
                                                 >
                                                     {card.description}
                                                 </motion.p>
@@ -156,22 +160,27 @@ export default function BusinessOutcomes() {
                                 );
                             }
 
-                            // Standard White Cards with fixed compact sizing
                             return (
                                 <div
                                     key={card.id}
                                     onMouseEnter={() => setActiveIndex(card.id)}
-                                    className="h-[235px] bg-white rounded-[24px] p-6 cursor-pointer transition-all duration-300 border border-[#DCE4EC] hover:border-[#56B0E6]/60 hover:bg-white flex flex-col justify-between shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md"
+                                    className="h-[269px] bg-white/90 rounded-[20px] p-5 cursor-pointer transition-all duration-300 border border-[#DCE4EC] hover:border-[#5EAFE6]/60 flex flex-col justify-center gap-6 shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md"
                                 >
-                                    <div className="w-10 h-10 rounded-2xl bg-[#F8FAFD] border border-[#DCE4EC] flex items-center justify-center text-[#111E89] group-hover:border-[#56B0E6] transition-colors shrink-0">
+                                    <div className="w-12 h-12 rounded-2xl bg-[#F8FAFD] border border-[#DCE4EC] flex items-center justify-center text-[#111E89] group-hover:border-[#5EAFE6] transition-colors shrink-0">
                                         {card.icon}
                                     </div>
 
-                                    <div className="space-y-1">
-                                        <div className="text-[11px] font-bold tracking-wider text-[#111E89] opacity-75">
+                                    <div className="space-y-2">
+                                        <div
+                                            className="text-[11px] font-semibold text-[#5EAFE6] uppercase"
+                                            style={{ letterSpacing: '2.2px', lineHeight: '16.5px' }}
+                                        >
                                             {card.step} · {card.action}
                                         </div>
-                                        <h3 className="text-base font-bold tracking-tight text-gray-900 group-hover:text-[#111E89] transition-colors leading-snug">
+                                        <h3
+                                            className="text-[14.5px] font-medium text-[#121F37] group-hover:text-[#111E89] transition-colors"
+                                            style={{ letterSpacing: '-0.36px', lineHeight: '19.9px' }}
+                                        >
                                             {card.title}
                                         </h3>
                                     </div>
