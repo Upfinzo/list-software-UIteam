@@ -143,7 +143,7 @@ const Header = () => {
           onMouseEnter={() => displayedIndex !== null && openMenu(displayedIndex)}
         >
           <div
-            className={`w-screen border-t border-[#DCEAFF] bg-white shadow-xl ${
+            className={`w-screen border-t border-[#DCEAFF] bg-white shadow-xl bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)] ${
               hoveredIndex !== null
                 ? "animate-[dropdown-in_220ms_ease-out]"
                 : "animate-[dropdown-out_220ms_ease-in]"
@@ -153,7 +153,7 @@ const Header = () => {
               {/* Left: 15 items across 4 columns */}
                  {/* Right: promo image card */}
               {displayedMenu.megaMenu.image && (
-                <div className="order-2 w-full shrink-0 xl:order-2 xl:w-[300px] 2xl:w-[340px]">
+                <div className="order-2 w-full shrink-0 xl:order-2 xl:w-[300px] 2xl:w-[340px] ">
                   <div className="overflow-hidden flex items-end justify-end">
                     <img
                       src={Images.common.menuImage}
@@ -186,7 +186,7 @@ const Header = () => {
                   </div>
                 </div>
               )}
-              <div className="order-1 relative flex items-center justify-center rounded-xl border border-[#dedede] bg-[#f5f5f5] p-10 xl:order-1 xl:flex-1">
+              <div className="order-1 relative flex items-center justify-center rounded-xl border border-[#f5f5f5] bg-[#ffffff] p-10 xl:order-1 xl:flex-1  ">
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-y-10 left-1/3 hidden w-px bg-[#56B0E61F] xl:block"
@@ -205,7 +205,7 @@ const Header = () => {
                           event.preventDefault();
                         }
                       }}
-                      className="flex items-center gap-2 text-sm font-medium leading-8 text-gray-800 transition-colors hover:text-[#3277D9]"
+                      className="flex items-center gap-2 text-sm font-medium leading-8 text-gray-800 transition-colors hover:bg-gradient-to-r hover:from-[#032683] hover:to-[#56B0E6] hover:bg-clip-text hover:text-transparent"
                     >
                       <ChevronDoubleRightIcon
                         aria-hidden="true"
