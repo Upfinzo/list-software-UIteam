@@ -10,18 +10,14 @@ type Props = {
   }>;
 };
 
-export function generateStaticParams() {
-  return Object.values(products).map((product) => ({
-    slug: product.slug,
-  }));
+function getProductBySlug(slug: string) {
+  return Object.values(products).find(
+    (product) => product.slug === slug
+  );
 }
-
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-
-  const product = Object.values(products).find((item) => item.slug === slug);
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -36,16 +32,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
-  params,
-}: Props) {
+export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
+  const product = getProductBySlug(slug);
 
-  const product = Object.values(products).find((item) => item.slug === slug);
-
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
   return <ProductComponent product={product} />;
 }

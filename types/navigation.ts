@@ -1,7 +1,12 @@
 export interface MegaMenuItem {
   label: string;
   href: string;
+  desc?: string;
   badge?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface MegaMenuImage {
@@ -21,5 +26,6 @@ export interface MegaMenu {
 export interface NavigationItem {
   label: string;
   href: string;
+  desc?:string;
   megaMenu?: MegaMenu;
 }
