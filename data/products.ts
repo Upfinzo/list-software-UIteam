@@ -3,7 +3,7 @@ import type { Product } from "@/types/product";
 export const products = {
   product1: {
     name: "Product 1",
-    slug: "product1",
+    slug: "core-banking-solutions",
 
     seo: {
       title: "Product 1 | Listsoftware",

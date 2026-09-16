@@ -32,7 +32,6 @@ export default function RootLayout({
         <main className="pt-20">{children}</main>
 
         <Footer />
-
         <BackToTop />
       </body>
     </html>

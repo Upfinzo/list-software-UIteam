@@ -4,20 +4,20 @@ import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import { ProductComponent } from "@/components/products/ProductComponent";
 
-type ProductSlug = keyof typeof products;
-
 type Props = {
   params: Promise<{
-    slug: ProductSlug;
+    slug: string;
   }>;
 };
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+function getProductBySlug(slug: string) {
+  return Object.values(products).find(
+    (product) => product.slug === slug
+  );
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-
-  const product = products[slug];
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -32,16 +32,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({
-  params,
-}: Props) {
+export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
+  const product = getProductBySlug(slug);
 
-  const product = products[slug];
-
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
   return <ProductComponent product={product} />;
 }
