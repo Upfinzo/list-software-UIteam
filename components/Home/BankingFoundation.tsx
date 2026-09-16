@@ -10,7 +10,7 @@ export default function BankingFoundation() {
         }}>
             <Container className="py-12 sm:py-16 lg:py-20 d-flex justify-center">
                 <div className="flex flex-col justify-center items-center">
-                    <img src={Images.home.ctalogo} alt="ctalogo" height={100} width={100} />
+                    <img src={Images.home.ctalogo} alt="ctalogo" height={132} width={132} />
                     <h1 className="section-title leading-none pb-0 mb-0">
                         Build on a Stronger
                     </h1>
@@ -25,7 +25,7 @@ export default function BankingFoundation() {
                         </Button>
 
                         <Button href="/contact" variant="secondary" className="hidden sm:inline-flex ms-5">
-                            Request a Demo <ArrowRight height={15} />
+                            Talk to Specialist <ArrowRight height={15} />
                         </Button>
 
                     </div>

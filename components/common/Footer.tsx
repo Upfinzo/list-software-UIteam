@@ -1,5 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import { Images } from "@/assets/images/images";
+import { enabledNavigationLinks } from "@/data/navigation";
+
+const preventDisabledNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+  const href = event.currentTarget.getAttribute("href");
+
+  if (href && !enabledNavigationLinks.has(href)) {
+    event.preventDefault();
+  }
+};
 
 export default function Footer() {
   return (
@@ -16,6 +28,7 @@ export default function Footer() {
         <div>
           <Link
             href="/"
+            onClick={preventDisabledNavigation}
             className="text-xl font-bold text-white"
           >
               <img
@@ -37,19 +50,19 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
 
           <ul className="space-y-3">
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Core Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Capabilities
               </Link>
             </li>
 
             <li>
-              <Link href="/technlogy" className="text-sm  hover:text-white">
+              <Link href="/technlogy" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Technology
               </Link>
             </li>
@@ -64,25 +77,25 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
 
           <ul className="space-y-3 text-white">
             <li>
-              <Link href="/" className="text-sm hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm hover:text-white">
                 Digital Banking
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Payments
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Lending
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Compliance & Risk
               </Link>
             </li>
@@ -97,13 +110,13 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
 
           <ul className="space-y-3 text-white">
             <li>
-              <Link href="/" className="text-sm hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm hover:text-white">
                 About
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm hover:text-white">
                 Contact
               </Link>
             </li>
@@ -124,19 +137,19 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
 
           <ul className="space-y-3">
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Insights
               </Link>
             </li>
 
             <li>
-              <Link href="/" className="text-sm  hover:text-white">
+              <Link href="/" onClick={preventDisabledNavigation} className="text-sm  hover:text-white">
                 Documentation
               </Link>
             </li>
 
             <li>
-              <Link href="/faq" className="text-sm text-white/70 hover:text-white">
+              <Link href="/faq" onClick={preventDisabledNavigation} className="text-sm text-white/70 hover:text-white">
                 FAQs
               </Link>
             </li>
@@ -152,11 +165,11 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
           </p>
 
           <div className="flex gap-6">
-            <Link href="/" className="hover:text-white">
+            <Link href="/" onClick={preventDisabledNavigation} className="hover:text-white">
               Privacy Policy
             </Link>
 
-            <Link href="/" className="hover:text-white">
+            <Link href="/" onClick={preventDisabledNavigation} className="hover:text-white">
               Terms
             </Link>
           </div>

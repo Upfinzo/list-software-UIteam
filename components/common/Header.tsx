@@ -5,12 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
-import { navigation } from "@/data/navigation";
+import { enabledNavigationLinks, navigation } from "@/data/navigation";
 import Button from "@/components/common/Button";
 import { Images } from "@/assets/images/images";
-
-// Add a route here when it should become navigable.
-const enabledNavigationLinks = new Set(["/"]);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

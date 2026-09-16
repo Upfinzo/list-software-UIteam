@@ -31,3 +31,5 @@ export const navigation: NavigationItem[] = [
   { label: "Why LIST", href: "/products" },
   { label: "Institutions", href: "/contact" },
 ];
+
+export const enabledNavigationLinks = new Set(["/"]);
