@@ -135,7 +135,7 @@ export default function ProductStack() {
           <p
             className="
               mb-[15px]
-              text-[9px]
+              text-[11px]
               font-semibold
               uppercase
               tracking-[0.27em]
@@ -382,7 +382,7 @@ export default function ProductStack() {
                     <h3
                       className="
                         m-0
-                        text-[12px]
+                        text-[17px]
                         font-medium
                         leading-normal
                         tracking-[0.06em]
