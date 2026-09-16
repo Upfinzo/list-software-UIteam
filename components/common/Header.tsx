@@ -217,7 +217,7 @@ const Header = () => {
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-y-10 left-2/3 hidden w-px bg-[#56B0E61F] xl:block"
                 />
-                <div className="grid grid-cols-2 gap-x-12 gap-y-5 xl:grid-cols-3 xl:gap-x-16 2xl:grid-cols-3">
+                <div className="grid grid-cols-2 gap-x-12 gap-y-4 xl:grid-cols-3 xl:gap-x-16 2xl:grid-cols-3">
                   {displayedMenu.megaMenu.items.map((item, index) => (
                     <Link
                       key={item.href}
@@ -235,7 +235,7 @@ const Header = () => {
                     >
                       <ChevronDoubleRightIcon
                         aria-hidden="true"
-                        className="mt-1.5 h-3.5 w-3.5 shrink-0 text-[#3277D9]"
+                        className="mt-1.5 h-3.5 w-3.5 shrink-0 text-black transition-colors group-hover:text-[#3277D9]"
                       />
                       <span className="flex min-w-0 flex-col">
                         <span className="text-sm font-semibold leading-6 text-gray-900 group-hover:text-[#3277D9]">
