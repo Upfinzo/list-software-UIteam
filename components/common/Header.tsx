@@ -186,7 +186,7 @@ const Header = () => {
                   </div>
                 </div>
               )}
-              <div className="order-1 relative flex items-center justify-center rounded-xl border border-[#dedede] bg-[#f5f5f5] p-10 xl:order-1 xl:flex-1">
+              <div className="order-1 relative flex items-center justify-center rounded-xl border border-[#e5e5e5] bg-[#fafafa] p-10 xl:order-1 xl:flex-1">
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-y-10 left-1/3 hidden w-px bg-[#56B0E61F] xl:block"
