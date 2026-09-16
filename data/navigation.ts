@@ -1,4 +1,5 @@
 import type { NavigationItem, MegaMenu } from "@/types/navigation";
+import { Images } from "@/assets/images/images";
 
 const productsMegaMenu: MegaMenu = {
   items: [
@@ -23,7 +24,7 @@ const productsMegaMenu: MegaMenu = {
       label: "Merchant & QR Payments",
       href: "/products/merchant-qr-payments",
       desc: "One Stack QR Module and QR Merchant Application",
-      image: { src: "/images/common/menu-image1.svg", alt: "Merchant & QR Payments" },
+      image: { src: `${Images.common.MerchantQRPayments}`, alt: "Merchant & QR Payments" },
     },
     {
       label: "Digital Banking Suite",
@@ -41,7 +42,7 @@ const productsMegaMenu: MegaMenu = {
       label: "Payment Processing & Automation",
       href: "/products/payment-processing-automation",
       desc: "RTGS Host-to-Host / EFT Manual and RTGS Host-to-Host / EFT Automation and APS Host-to-Host Automation",
-      image: { src: "/images/common/menu-image.svg", alt: "Payment Processing & Automation" },
+      image: { src: `${Images.common.paymentprocessingautomationImage}`, alt: "Payment Processing & Automation" },
     },
     {
       label: "Bulk & Recurring Payments",
@@ -59,12 +60,12 @@ const productsMegaMenu: MegaMenu = {
     {
       label: "Integration & APIs",
       href: "/products/integration-apis",
-      image: { src: "/images/common/menu-image1.svg", alt: "Integration & APIs" },
+      image: { src: `${Images.common.integrationapis}`, alt: "Integration & APIs" },
     },
 
     { label: "BANL(Beneficiary Account Name Lookup)", href: "/products/banl", image: { src: "/images/common/menu-image.svg", alt: "BANL" } },
     { label: "ISO 20022", href: "/products/iso-20022", image: { src: "/images/common/menu-image1.svg", alt: "ISO 20022" } },
-    { label: "BBPS(Bharat Bill Payment System)", href: "/products/bbps", image: { src: "/images/common/menu-image.svg", alt: "BBPS" } },
+    { label: "BBPS(Bharat Bill Payment System)", href: "/products/bbps", image: { src: `${Images.common.BBPS}`, alt: "BBPS" } },
     {
       label: "KYC, AML & Customer Verification",
       href: "/products/kyc-aml-customer-verification",
