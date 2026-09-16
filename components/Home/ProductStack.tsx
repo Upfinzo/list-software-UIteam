@@ -135,7 +135,7 @@ export default function ProductStack() {
           <p
             className="
               mb-[15px]
-              text-[9px]
+              text-[11px]
               font-semibold
               uppercase
               tracking-[0.27em]
@@ -217,8 +217,8 @@ export default function ProductStack() {
                     border
                     border-[rgba(160,190,255,0.24)]
                     px-[10px]
-                    py-[5px]
-                    text-[8px]
+                    py-[2px]
+                    text-[10px]
                     font-semibold
                     uppercase
                     tracking-[0.1em]
@@ -349,7 +349,7 @@ export default function ProductStack() {
                       object-contain
                       transition-[filter]
                       duration-200
-                      group-hover:[filter:brightness(0)_saturate(100%)_invert(14%)_sepia(45%)_saturate(2771%)_hue-rotate(201deg)_brightness(120%)_contrast(110%)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]
+                      group-hover:[filter:brightness(0)_saturate(100%)_invert(1)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]
                     "
                     src={capability.icon.src}
                     alt=""
@@ -382,7 +382,7 @@ export default function ProductStack() {
                     <h3
                       className="
                         m-0
-                        text-[12px]
+                        text-[17px]
                         font-medium
                         leading-normal
                         tracking-[0.06em]
