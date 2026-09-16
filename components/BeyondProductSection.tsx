@@ -310,21 +310,20 @@ export default function BeyondProductSection({
                       {/* Icon */}
                       <div
                         style={{
-                          width: "40px",
-                          height: "40px",
+                          width: "52px",
+                          height: "52px",
                           borderRadius: "50%",
-                          background: "radial-gradient(circle at 40% 35%, #0d1f5c 0%, #060d2e 100%)",
+                          background: "rgba(77, 125, 216, 0.32)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          border: "1px solid rgba(80,140,255,0.35)",
-                          boxShadow:
-                            "0 0 0 4px rgba(30,60,160,0.18), 0 0 18px rgba(60,130,255,0.30), inset 0 1px 1px rgba(120,180,255,0.12)",
+                          border: "1px solid rgba(151, 188, 255, 0.42)",
+                          boxShadow: "inset 0 1px 1px rgba(190, 215, 255, 0.12)",
                           flexShrink: 0,
                         }}
                       >
                         <HubIcon
-                          style={{ width: "17px", height: "17px", color: "rgba(255,255,255,0.92)", strokeWidth: 1.8 }}
+                          style={{ width: "18px", height: "18px", color: "#63c6f3", strokeWidth: 1.6 }}
                         />
                       </div>
 
@@ -388,14 +387,14 @@ export default function BeyondProductSection({
                       height: isActive ? "62px" : "56px",
                       background: isActive
                         ? "linear-gradient(160deg, #60d0ff 0%, #2b7cf7 45%, #1050c8 100%)"
-                        : "rgba(10,28,90,0.85)",
+                        : "transparent",
                       border: isActive
                         ? "1px solid rgba(140,210,255,0.7)"
                         : "1px solid rgba(255,255,255,0.12)",
                       boxShadow: isActive
                         ? "0 0 28px rgba(80,180,255,0.65), 0 0 8px rgba(80,180,255,0.4)"
                         : "none",
-                      backdropFilter: "blur(12px)",
+                      backdropFilter: isActive ? "blur(12px)" : "none",
                     }}
                   >
                     <NodeIcon
@@ -412,7 +411,7 @@ export default function BeyondProductSection({
                         fontSize: "9px",
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
-                        fontWeight: isActive ? 700 : 500,
+                        fontWeight: 500,
                         color: isActive ? "white" : "rgba(200,220,255,0.80)",
                       }}
                     >

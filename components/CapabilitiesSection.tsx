@@ -269,7 +269,7 @@ export default function CapabilitiesSection({
                     tabIndex={isActive ? 0 : -1}
                     onClick={() => handleTabClick(index)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
-                    className={`flex-1 py-4 sm:py-5 px-4 sm:px-6 text-center text-sm md:text-base font-semibold transition-colors duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-[#111E89]/40 cursor-pointer ${
+                    className={`flex-1 py-4 sm:py-5 px-4 sm:px-6 text-left text-sm md:text-base font-semibold transition-colors duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-[#111E89]/40 cursor-pointer ${
                       isActive
                         ? "text-[#121F37] font-bold"
                         : "text-[#121F37]/60 hover:text-[#121F37]/90 font-medium"
@@ -297,17 +297,20 @@ export default function CapabilitiesSection({
               <div className="lg:col-span-6 space-y-6">
                 {/* Icon Chip */}
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-xs border-t border-[#5EAFE6]/40"
+                  className="w-14 h-14 rounded-full flex items-center justify-center relative overflow-hidden shadow-xs border-t border-[#5EAFE6]/40"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(17,30,137,0.08) 0%, rgba(67,125,198,0.115) 50%, rgba(94,175,230,0.15) 100%)",
                   }}
                 >
                   {React.isValidElement(activeTab.icon)
-                    ? React.cloneElement(activeTab.icon as React.ReactElement<any>, {
-                        className: "w-7 h-7 text-[#111E89]",
-                        strokeWidth: 2,
-                      })
+                    ? React.cloneElement(
+                        activeTab.icon as React.ReactElement<any>,
+                        {
+                          className: "w-7 h-7 text-[#111E89]",
+                          strokeWidth: 2,
+                        },
+                      )
                     : activeTab.icon}
                 </div>
 
@@ -361,7 +364,7 @@ export default function CapabilitiesSection({
                         className="flex flex-col"
                       >
                         {/* Label text */}
-                        <span className="text-xs sm:text-sm font-semibold text-[#647183] mb-1.5">
+                        <span className="text-xs sm:text-sm text-[#647183] mb-1.5">
                           {item}
                         </span>
 
