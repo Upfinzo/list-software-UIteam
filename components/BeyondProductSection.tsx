@@ -171,10 +171,11 @@ export default function BeyondProductSection({
           {/* Main Heading */}
           <h2
             id="beyond-product-heading"
-            className="mt-3 font-bold text-white leading-[1.12]"
+            className="mt-3 font-semibold text-white leading-[1.12] text-[22px] sm:text-[24px] md:text-[36px] lg:text-[46px]"
             style={{
-              fontSize: "clamp(26px, 4vw, 42px)",
+              //  fontSize: "clamp(26px, 4vw, 42px)",
               letterSpacing: "-0.5px",
+              fontWeight: 600,
             }}
           >
             A Banking Technology Partner{" "}
@@ -318,12 +319,18 @@ export default function BeyondProductSection({
                           alignItems: "center",
                           justifyContent: "center",
                           border: "1px solid rgba(151, 188, 255, 0.42)",
-                          boxShadow: "inset 0 1px 1px rgba(190, 215, 255, 0.12)",
+                          boxShadow:
+                            "inset 0 1px 1px rgba(190, 215, 255, 0.12)",
                           flexShrink: 0,
                         }}
                       >
                         <HubIcon
-                          style={{ width: "18px", height: "18px", color: "#63c6f3", strokeWidth: 1.6 }}
+                          style={{
+                            width: "18px",
+                            height: "18px",
+                            color: "#63c6f3",
+                            strokeWidth: 1.6,
+                          }}
                         />
                       </div>
 
@@ -408,7 +415,7 @@ export default function BeyondProductSection({
                     <span
                       style={{
                         marginTop: "3px",
-                        fontSize: "9px",
+                        fontSize: "8px",
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
                         fontWeight: 500,
