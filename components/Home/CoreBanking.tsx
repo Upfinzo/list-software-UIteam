@@ -2,7 +2,6 @@
 
 import Container from "@/components/common/Container";
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface PortfolioCard {
     id: number;
@@ -128,9 +127,8 @@ export default function CoreBankingPortfolio() {
                         {/* Featured Large Blue Card */}
                         <div
                             onClick={() => setSelectedCard(0)}
-                            className={`sm:col-span-2 rounded-[28px] p-8 text-white cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-xl transform hover:-translate-y-1 ${
-                                selectedCard === 0 ? 'ring-4 ring-[#56B0E6]/40 scale-[1.01]' : ''
-                            }`}
+                            className={`sm:col-span-2 rounded-[28px] p-8 text-white cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-xl transform hover:-translate-y-1 ${selectedCard === 0 ? 'ring-4 ring-[#56B0E6]/40 scale-[1.01]' : ''
+                                }`}
                             style={{
                                 background: `linear-gradient(135deg, #032683 0%, #111E89 60%, #56B0E6 100%), ${blueCardBgImage}`,
                                 backgroundBlendMode: 'overlay',
@@ -140,7 +138,8 @@ export default function CoreBankingPortfolio() {
                         >
                             {/* Top row with just CUSTODIAN label */}
                             <div className="flex justify-between items-start mb-12 relative z-10">
-                                <span className="text-xs font-bold tracking-widest uppercase opacity-80">
+                                {/* Applied Figma text settings for CUSTODIAN */}
+                                <span className="font-['Sora'] text-[10.5px] font-semibold tracking-[2.52px] text-white/65 uppercase">
                                     CUSTODIAN
                                 </span>
                             </div>
@@ -150,13 +149,17 @@ export default function CoreBankingPortfolio() {
                                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
                                     Core Banking System
                                 </h3>
-                                <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-md mb-4">
+                                {/* Applied Figma text settings for the description text */}
+                                <p className="text-[12.5px] font-normal leading-[20.3px] text-white/60 max-w-md mb-6">
                                     The engine beneath every branch, ledger and customer record.
                                 </p>
 
-                                {/* Moved Badge */}
-                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 backdrop-blur-md border border-white/20 tracking-wider">
-                                    ● ALWAYS ON
+                                {/* Applied Figma settings to ALWAYS ON dot and text */}
+                                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                                    <span className="w-[6px] h-[6px] rounded-full bg-[#5EAFE6]" />
+                                    <span className="font-['Sora'] text-[10.5px] font-normal tracking-[1.68px] text-white/80 uppercase mt-[1px]">
+                                        ALWAYS ON
+                                    </span>
                                 </span>
                             </div>
 
@@ -171,11 +174,10 @@ export default function CoreBankingPortfolio() {
                                 <div
                                     key={card.id}
                                     onClick={() => setSelectedCard(card.id)}
-                                    className={`bg-white rounded-[24px] p-6 cursor-pointer transition-all duration-300 border flex flex-col justify-between shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md ${
-                                        isSelected
+                                    className={`bg-white rounded-[24px] p-6 cursor-pointer transition-all duration-300 border flex flex-col justify-between shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md ${isSelected
                                             ? 'border-[#56B0E6] ring-2 ring-[#56B0E6]/20 bg-white'
                                             : 'border-[#DCE4EC] hover:border-[#56B0E6]/60 hover:bg-white'
-                                    }`}
+                                        }`}
                                 >
                                     <div className="flex justify-between items-start mb-6">
                                         <div className="w-10 h-10 rounded-2xl bg-[#F8FAFD] border border-[#DCE4EC] flex items-center justify-center text-[#111E89] group-hover:border-[#56B0E6] transition-colors">
@@ -187,7 +189,8 @@ export default function CoreBankingPortfolio() {
                                     </div>
 
                                     <div>
-                                        <h4 className="text-base font-bold text-gray-900 group-hover:text-[#111E89] transition-colors">
+                                        {/* Reduced title font size to 14px as requested */}
+                                        <h4 className="text-[14px] font-bold text-gray-900 group-hover:text-[#111E89] transition-colors">
                                             {card.title}
                                         </h4>
                                         <p className="text-xs text-[#647183] mt-1">
@@ -204,12 +207,15 @@ export default function CoreBankingPortfolio() {
 
                     {/* Right Text & CTA Section */}
                     <div className="lg:col-span-5 space-y-6 lg:pl-6">
-                        <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
-                            CORE BANKING
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-[1.12] text-gray-900">
-                            Technology Across Every Layer of Banking
-                        </h2>
+                        {/* Added breathing space and letter spacing to CORE BANKING label */}
+                        <div className="mb-2">
+                            <span className="font-['Sora'] text-[10.5px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block mb-4">
+                                CORE BANKING
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-[1.12] text-gray-900">
+                                Technology Across Every Layer of Banking
+                            </h2>
+                        </div>
                         <p className="text-[#647183] text-base leading-relaxed">
                             Custodian provides the foundation for everyday banking operations, helping institutions manage core functions across branches and banking teams — with integration and APIs connecting it to the wider banking environment.
                         </p>

@@ -65,7 +65,8 @@ export default function ProvenFoundationSection() {
             <Container>
                 <div className="container mx-auto max-w-7xl">
                     {/* Top Content Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    {/* ADDED: lg:gap-24 to give more horizontal breathing space between columns */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                         {/* Left Column: Heading and Subtitle */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +79,7 @@ export default function ProvenFoundationSection() {
                                 Proven in banking. Built to evolve
                             </span>
                             <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px]">
-                                A banking technology foundation built over decades
+                                A banking technology <br className="hidden sm:block" /> foundation built over decades
                             </h2>
                         </motion.div>
 
@@ -94,11 +95,9 @@ export default function ProvenFoundationSection() {
                                     key={index}
                                     className={`flex flex-col justify-center ${index !== 0 ? 'sm:pl-8 lg:pl-10' : ''} pt-6 sm:pt-0`}
                                 >
-                                    {/* Updated Stat Number (image_255528.png) */}
                                     <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
                                         <Counter value={stat.numericValue} suffix={stat.suffix} />
                                     </div>
-                                    {/* Updated Stat Label (image_255545.png) */}
                                     <div className="mt-2 text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183] whitespace-pre-line">
                                         {stat.label}
                                     </div>
@@ -113,7 +112,8 @@ export default function ProvenFoundationSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="mt-16 pt-5"
+                        /* CHANGED: Reduced mt-16 to mt-8 to bring the line closer to the text */
+                        className="mt-8 pt-4"
                     >
                         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#5EAFE6]/50 to-transparent mb-8" />
 

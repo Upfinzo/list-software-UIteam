@@ -94,14 +94,16 @@ export default function BusinessOutcomes() {
         >
             <Container>
                 {/* Header Content */}
-                <div className="max-w-3xl mb-16 space-y-4">
-                    <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
+                <div className="max-w-3xl mb-16 space-y-5">
+                    {/* Added letter spacing and breathing space based on image_bb96a4.jpg */}
+                    <span className="font-['Sora'] text-[11px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block">
                         BUSINESS OUTCOMES
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-[1.12] text-gray-900">
                         Technology That Helps Your Bank Move Forward.
                     </h2>
-                    <p className="text-[#647183] text-base leading-relaxed max-w-2xl">
+                    {/* Updated font size and line height based on image_bb979a.png */}
+                    <p className="text-[#647183] text-[15px] font-normal leading-[24.4px] max-w-2xl">
                         Turn connected technology into better banking operations — with compliance readiness and extended banking capability around the existing core.
                     </p>
                 </div>
@@ -125,7 +127,7 @@ export default function BusinessOutcomes() {
                                             backgroundBlendMode: 'overlay',
                                         }}
                                     >
-                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
+                                        <div className="w-12 h-12 rounded-[20px] bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
                                             {card.icon}
                                         </div>
 
@@ -164,9 +166,16 @@ export default function BusinessOutcomes() {
                                 <div
                                     key={card.id}
                                     onMouseEnter={() => setActiveIndex(card.id)}
-                                    className="h-[269px] bg-white/90 rounded-[20px] p-5 cursor-pointer transition-all duration-300 border border-[#DCE4EC] hover:border-[#5EAFE6]/60 flex flex-col justify-center gap-6 shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md"
+                                    /* Added a slightly darker background (bg-[#F8FAFD]) per image_bb96a4.jpg */
+                                    className="h-[269px] bg-[#F8FAFD] rounded-[20px] p-5 cursor-pointer transition-all duration-300 border border-[#DCE4EC] hover:border-[#5EAFE6]/60 flex flex-col justify-center gap-6 shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md"
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-[#F8FAFD] border border-[#DCE4EC] flex items-center justify-center text-[#111E89] group-hover:border-[#5EAFE6] transition-colors shrink-0">
+                                    {/* Applied specific linear gradient and 20px radius to icon container per image_bb975c.png */}
+                                    <div
+                                        className="w-12 h-12 rounded-[20px] border border-[#DCE4EC] flex items-center justify-center text-[#111E89] group-hover:border-[#5EAFE6] transition-colors shrink-0"
+                                        style={{
+                                            background: 'linear-gradient(135deg, rgba(3, 38, 131, 0.07) 0%, rgba(61, 134, 200, 0.12) 50%, rgba(86, 176, 230, 0.16) 100%)'
+                                        }}
+                                    >
                                         {card.icon}
                                     </div>
 
