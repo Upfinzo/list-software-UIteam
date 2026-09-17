@@ -253,16 +253,6 @@ export default function BeyondProductSection({
                   strokeWidth="1"
                 />
 
-                {/* Static accent arc on the LEFT side (between SUPPORT and PLAN) — matches image */}
-                <path
-                  d="M 73 320 A 190 190 0 0 1 82 168"
-                  fill="none"
-                  stroke="rgba(96,165,250,0.8)"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  filter="url(#bp-arc-glow)"
-                />
-
                 {/* Static short white dash at bottom (between DEPLOY and RUN) — matches image */}
                 <path
                   d="M 275 438 A 190 190 0 0 1 225 438"
@@ -397,7 +387,7 @@ export default function BeyondProductSection({
                         : "transparent",
                       border: isActive
                         ? "1px solid rgba(140,210,255,0.7)"
-                        : "1px solid rgba(255,255,255,0.12)",
+                        : "1px solid transparent",
                       boxShadow: isActive
                         ? "0 0 28px rgba(80,180,255,0.65), 0 0 8px rgba(80,180,255,0.4)"
                         : "none",
