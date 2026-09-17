@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { products } from "@/data/products";
+import { getProductBySlug, products } from "@/data/products";
 import { ProductComponent } from "@/components/products/ProductComponent";
 
 type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 };
 
-function getProductBySlug(slug: string) {
-  return Object.values(products).find(
-    (product) => product.slug === slug
-  );
+export function generateStaticParams() {
+  return Object.values(products).map((product) => ({ slug: product.slug }));
 }
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
