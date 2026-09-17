@@ -176,8 +176,6 @@ Core banking and connected banking technology, anchored by the Custodian Core Ba
         </div>
       </div>
 
-      {/* Bottom Line */}
-      <div className="relative z-10 h-[3px] bg-[#21B8FF]" />
     </footer>
   );
 }
