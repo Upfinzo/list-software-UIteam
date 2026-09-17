@@ -90,52 +90,47 @@ export default function ConnectedCore() {
         <section className="bg-white py-12 lg:py-16 overflow-hidden">
             <style jsx global>{`
         @keyframes smoothDashMove {
-          0% {
-            stroke-dashoffset: 0;
-          }
-          100% {
-            stroke-dashoffset: -36;
-          }
+          0% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: -36; }
         }
         .animate-smooth-flow {
           animation: smoothDashMove 2s linear infinite;
         }
 
         @keyframes infiniteDotFlow {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -24; }
-}
-.animate-infinite-dots {
-  animation: infiniteDotFlow 3s linear infinite;
-}
-
+          0% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: -24; }
+        }
+        .animate-infinite-dots {
+          animation: infiniteDotFlow 3s linear infinite;
+        }
       `}</style>
 
             <Container>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                {/* 1. SEPARATE HEADING ROW */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 sm:mb-12">
+                    <div className="lg:col-span-7 space-y-4 max-w-xl">
+                        <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
+                            THE CONNECTED CORE
+                        </span>
+                        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight mt-3 leading-[1.12]">
+                            One Core. Connected Capabilities. <span className="text-[#647183]">Built to Work Together.</span>
+                        </h2>
+                        <p className="text-[#647183] lg:text-[15px] mt-3 text-base leading-relaxed">
+                            LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center.
+                        </p>
+                    </div>
+                </div>
 
-                    {/* Left Column: Heading, Subtext, & Interactive List Items */}
-                    <div className="lg:col-span-7 space-y-6">
-                        <div className="space-y-4 max-w-xl">
-                            <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
-                                THE CONNECTED CORE
-                            </span>
-                            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight mt-3 leading-[1.12]">
-                                One Core. Connected Capabilities. <span className="text-[#647183]">Built to Work Together.</span>
-                            </h2>
-                            <p className="text-[#647183] lg:text-[15px] mt-3 text-base leading-relaxed">
-                                LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center.
-                            </p>
-                        </div>
-                        {/* Interactive List/Tabs */}
+                {/* 2. ACCORDION & CIRCLE ROW - Aligned to items-start */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-
-                        {/* Interactive List/Tabs */}
-                        <div className="mt-12">
+                    {/* Left Column: Interactive Tabs with Fixed Height */}
+                    {/* Applying a fixed height ensures the block doesn't expand/shrink on hover */}
+                    <div className="lg:col-span-7 w-full h-[450px] lg:h-[480px]">
+                        <div className="flex flex-col w-full">
                             {tabs.map((tab, index, array) => {
                                 const isActive = activeTab === tab.id;
-
-                                // Remove bottom border for the last item
                                 const isLast = index === array.length - 1;
                                 const borderClass = isLast ? '' : 'border-b border-[#DCE4EC]';
 
@@ -143,9 +138,9 @@ export default function ConnectedCore() {
                                     <div
                                         key={tab.id}
                                         onMouseEnter={() => setActiveTab(tab.id)}
-                                        className={`group relative flex items-start py-6 cursor-pointer transition-colors duration-200 ${borderClass}`}
+                                        className={`group relative flex items-start py-5 cursor-pointer transition-colors duration-200 ${borderClass}`}
                                     >
-                                        <div className="flex items-start gap-5">
+                                        <div className="flex items-start gap-5 w-full">
                                             {/* Icon Container */}
                                             <div
                                                 className={`w-[36px] h-[36px] shrink-0 rounded-[16px] flex items-center justify-center transition-all duration-200 ${isActive
@@ -156,41 +151,46 @@ export default function ConnectedCore() {
                                                 {tab.icon}
                                             </div>
 
-                                            <div className="flex flex-col justify-center">
-                                                {/* Title styled matching image_2fab8e_2.png */}
-                                                <h4 className={`font-['Sora'] text-[16px] font-medium leading-[24px] tracking-[-0.4px] transition-colors duration-200 ${isActive
-                                                        ? 'text-[#121F37]'
-                                                        : 'text-[#647183] group-hover:text-[#121F37]'
+                                            <div className="flex flex-col justify-center w-full">
+                                                <h4 className={`font-['Sora'] text-[16px] leading-[24px] tracking-[-0.4px] transition-colors duration-200 ${isActive
+                                                        ? 'font-bold text-[#121F37]'
+                                                        : 'font-medium text-[#647183] group-hover:text-[#121F37]'
                                                     }`}>
                                                     {tab.title}
                                                 </h4>
 
-                                                {isActive && (
-                                                    <motion.p
-                                                        initial={{ opacity: 0, height: 0 }}
-                                                        animate={{ opacity: 1, height: 'auto' }}
-                                                        className="text-[14px] font-normal leading-[22.8px] tracking-[0px] text-[#647183] mt-1"
-                                                    >
-                                                        {tab.description}
-                                                    </motion.p>
-                                                )}
+                                                <AnimatePresence initial={false}>
+                                                    {isActive && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                                                            className="overflow-hidden"
+                                                        >
+                                                            <div className="pt-2">
+                                                                <p className="text-[14px] font-normal leading-[22.8px] tracking-[0px] text-[#647183]">
+                                                                    {tab.description}
+                                                                </p>
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
                                             </div>
                                         </div>
                                     </div>
                                 );
                             })}
                         </div>
-
                     </div>
 
-                    {/* Right Column: Circular Interactive Diagram */}
-                    <div className="lg:col-span-5 flex justify-center items-center py-4 lg:py-6">
+                    {/* Right Column: Circular Interactive Diagram - Matches top alignment */}
+                    <div className="lg:col-span-5 flex justify-center items-start pt-2 lg:pt-0">
                         <div className="relative w-[380px] h-[380px] sm:w-[420px] sm:h-[420px] flex items-center justify-center">
 
-                            {/* Inner Circle Track */}
                             <div className="absolute inset-20 rounded-full border border-[#DCE4EC] pointer-events-none" />
-
                             <div className="absolute inset-8 rounded-full border border-dashed border-[#56B0E6]/20 last-line pointer-events-none" />
+
                             <svg className="absolute inset-8 w-[calc(100%-4rem)] h-[calc(100%-4rem)] pointer-events-none overflow-visible">
                                 <circle
                                     cx="50%" cy="50%" r="50%"
@@ -202,7 +202,6 @@ export default function ConnectedCore() {
                                 />
                             </svg>
 
-                            {/* Background Connecting Straight Lines for ALL nodes permanently drawn from each icon to the center */}
                             <svg className="absolute inset-0 w-full h-full pointer-events-none">
                                 {nodePositions.map((_, index) => {
                                     const allCoords = [
@@ -215,32 +214,25 @@ export default function ConnectedCore() {
                                     ];
                                     const line = allCoords[index];
                                     return (
-                                        <line
-                                            key={index}
-                                            x1={line.x1}
-                                            y1={line.y1}
-                                            x2={line.x2}
-                                            y2={line.y2}
-                                            stroke="#DCE4EC"
-                                            strokeWidth="1"
-                                        />
+                                        <line key={index} x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="#DCE4EC" strokeWidth="1" />
                                     );
                                 })}
                             </svg>
 
                             {/* Center Core Box Content */}
-                            <div className="absolute z-10 w-[240px] sm:w-[260px] bg-white rounded-3xl p-6 shadow-[0_20px_50px_rgba(86,176,230,0.15)] border border-[#DCE4EC] text-center flex flex-col items-center justify-center">
-                                <span className="text-[11px] font-extrabold tracking-widest text-[#111E89] uppercase mb-2">
-                                    CORE AT THE CENTRE
-                                </span>
+                            <div className="absolute z-10 w-[240px] sm:w-[260px] min-h-[140px] bg-white rounded-3xl p-6 shadow-[0_20px_50px_rgba(86,176,230,0.15)] border border-[#DCE4EC] text-center flex flex-col items-center justify-center">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeTab}
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.15 }}
+                                        initial={{ opacity: 0, y: 5 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -5 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="flex flex-col items-center"
                                     >
+                                        <span className="text-[11px] font-extrabold tracking-widest text-[#111E89] uppercase mb-2">
+                                            {tabs[activeTab].title}
+                                        </span>
                                         <p className="text-xs sm:text-sm text-[#647183] leading-relaxed">
                                             {tabs[activeTab].description}
                                         </p>
@@ -248,27 +240,20 @@ export default function ConnectedCore() {
                                 </AnimatePresence>
                             </div>
 
-                            {/* Solid Blue Straight Line for Active Hover State (using z-1) */}
+                            {/* Solid Blue Straight Line for Active Hover State */}
                             {(() => {
                                 const activeCoords = [
-                                    { x1: '50%', y1: '10%', x2: '50%', y2: '50%' }, // Top -> Center
-                                    { x1: '80%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Right -> Center
-                                    { x1: '80%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Right -> Center
-                                    { x1: '50%', y1: '90%', x2: '50%', y2: '50%' }, // Bottom -> Center
-                                    { x1: '20%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Left -> Center
-                                    { x1: '20%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Left -> Center
+                                    { x1: '50%', y1: '10%', x2: '50%', y2: '50%' }, // Top
+                                    { x1: '80%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Right
+                                    { x1: '80%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Right
+                                    { x1: '50%', y1: '90%', x2: '50%', y2: '50%' }, // Bottom
+                                    { x1: '20%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Left
+                                    { x1: '20%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Left
                                 ];
                                 const line = activeCoords[activeTab];
                                 return (
                                     <svg className="absolute inset-0 w-full h-full pointer-events-none z-1">
-                                        <line
-                                            x1={line.x1}
-                                            y1={line.y1}
-                                            x2={line.x2}
-                                            y2={line.y2}
-                                            stroke="#56B0E6"
-                                            strokeWidth="2.5"
-                                        />
+                                        <line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="#56B0E6" strokeWidth="2.5" />
                                     </svg>
                                 );
                             })()}
@@ -276,7 +261,6 @@ export default function ConnectedCore() {
                             {/* Floating Node Icons Around the Circle */}
                             {tabs.map((tab, index) => {
                                 const isActive = activeTab === index;
-
                                 return (
                                     <div
                                         key={tab.id}
@@ -286,8 +270,8 @@ export default function ConnectedCore() {
                                     >
                                         <div
                                             className={`w-[58px] h-[58px] rounded-[22.4px] flex items-center justify-center transition-all duration-200 ${isActive
-                                                ? 'text-white border border-[#56B0E6] shadow-[0_10px_25px_rgba(86,176,230,0.4)] ring-4 ring-[#56B0E6]/20'
-                                                : 'bg-white text-[#111E89] hover:border-[#56B0E6] border-[1.12px] border-[#DCE4EC] shadow-sm'
+                                                    ? 'text-white border border-[#56B0E6] shadow-[0_10px_25px_rgba(86,176,230,0.4)] ring-4 ring-[#56B0E6]/20'
+                                                    : 'bg-white text-[#111E89] hover:border-[#56B0E6] border-[1.12px] border-[#DCE4EC] shadow-sm'
                                                 }`}
                                             style={isActive ? { background: 'linear-gradient(135deg, #032683 0%, #56B0E6 100%)' } : {}}
                                         >
