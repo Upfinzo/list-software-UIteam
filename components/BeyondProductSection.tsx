@@ -100,7 +100,8 @@ export default function BeyondProductSection({
   const radius = 190;
   const innerRadius = 140;
   const circumference = 2 * Math.PI * radius;
-  const arcLength = 160;
+  // Shorter active arc leaves more breathing room on either side of its node.
+  const arcLength = 120;
 
   // Rotation for the glowing active arc
   const activeArcRotation =
@@ -253,16 +254,6 @@ export default function BeyondProductSection({
                   strokeWidth="1"
                 />
 
-                {/* Static accent arc on the LEFT side (between SUPPORT and PLAN) — matches image */}
-                <path
-                  d="M 73 320 A 190 190 0 0 1 82 168"
-                  fill="none"
-                  stroke="rgba(96,165,250,0.8)"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  filter="url(#bp-arc-glow)"
-                />
-
                 {/* Static short white dash at bottom (between DEPLOY and RUN) — matches image */}
                 <path
                   d="M 275 438 A 190 190 0 0 1 225 438"
@@ -390,14 +381,16 @@ export default function BeyondProductSection({
                     style={{
                       left: `${leftPercent}%`,
                       top: `${topPercent}%`,
-                      width: isActive ? "62px" : "56px",
-                      height: isActive ? "62px" : "56px",
+                      // Keep every orbit node at the same footprint so the
+                      // default outlined state does not jump when activated.
+                      width: "62px",
+                      height: "62px",
                       background: isActive
                         ? "linear-gradient(160deg, #60d0ff 0%, #2b7cf7 45%, #1050c8 100%)"
                         : "transparent",
                       border: isActive
                         ? "1px solid rgba(140,210,255,0.7)"
-                        : "1px solid rgba(255,255,255,0.12)",
+                        : "1px solid rgba(190,220,255,0.62)",
                       boxShadow: isActive
                         ? "0 0 28px rgba(80,180,255,0.65), 0 0 8px rgba(80,180,255,0.4)"
                         : "none",
