@@ -113,6 +113,9 @@ export default function ProductStack() {
             items-center
             gap-10
 
+            md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]
+            md:gap-6
+
             min-[1200px]:grid-cols-[430px_minmax(0,1fr)]
             min-[1200px]:gap-16
           "
@@ -124,7 +127,8 @@ export default function ProductStack() {
           className="
             mx-auto
             w-full
-            max-w-[430px]
+            md:max-w-[430px]
+            md:mx-0
 
             min-[1200px]:mx-0
             min-[1200px]:w-[430px]
@@ -161,9 +165,12 @@ export default function ProductStack() {
               leading-[50.16px]
               tracking-[-1.14px]
 
-              max-[800px]:text-[34px]
-              max-[800px]:leading-[38px]
-              max-[800px]:tracking-[-0.8px]
+              max-md:text-[34px]
+              max-md:leading-[38px]
+              max-md:tracking-[-0.8px]
+              md:text-[34px]
+              md:leading-[1.15]
+              md:tracking-[-0.8px]
             "
           >
             Everything Your Banking Technology Needs — Around the Core.
@@ -194,42 +201,50 @@ export default function ProductStack() {
           {/* =========================================
               PRODUCT TAGS
           ========================================= */}
-          <div
-            className="
-              mt-[22px]
-              flex
-              max-w-[410px]
-              flex-wrap
-              gap-[6px]
-            "
-            aria-label="Product capabilities"
-          >
-            {productTags.map((tag, index) => (
-              <Fragment key={tag}>
-                {/* Force second row after Clearing */}
-                {index === 4 && (
-                  <span className="h-0 basis-full" aria-hidden="true" />
-                )}
+   <div
+  className="
+    mt-[22px]
+    flex
+    w-full
+    flex-wrap
+    gap-[5px]
 
-                <span
-                  className={`
-                    rounded-full
-                    border
-                    border-[rgba(160,190,255,0.24)]
-                    px-[10px]
-                    py-[2px]
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.1em]
-                    text-[#c1d0f3]
-                  `}
-                >
-                  {tag}
-                </span>
-              </Fragment>
-            ))}
-          </div>
+    /* Mobile + Tablet */
+    max-md:justify-center
+  "
+  aria-label="Product capabilities"
+>
+  {productTags.map((tag) => (
+    <span
+      key={tag}
+      className="
+        flex
+        min-h-[30px]
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-[rgba(160,190,255,0.24)]
+        px-[11px]
+        pt-[2px]
+        flex
+        items-center
+        font-sora
+        md:text-[10px]
+        text-[7px]
+        font-semibold
+        uppercase
+        leading-[14px]
+        tracking-[1px]
+        text-[#c1d0f3]
+        text-center
+        whitespace-nowrap
+      "
+    >
+      {tag}
+    </span>
+  ))}
+</div>
         </div>
 
         {/* =========================================
@@ -242,6 +257,8 @@ export default function ProductStack() {
             grid
             grid-cols-1
             gap-[24px]
+            md:gap-4
+            min-[1200px]:gap-[24px]
           "
         >
           {/* =========================================
@@ -289,6 +306,10 @@ export default function ProductStack() {
                   border-[rgba(127,176,255,0.27)]
                   bg-[rgba(38,81,166,0.3)]
                   p-[20px]
+                  md:gap-3
+                  md:p-3
+                  min-[1200px]:gap-[20px]
+                  min-[1200px]:p-[20px]
                   text-white
                   shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]
                   backdrop-blur-[4px]
@@ -330,6 +351,10 @@ export default function ProductStack() {
                     text-[#d8e5ff]
                     transition-all
                     duration-200
+                    md:h-[36px]
+                    md:w-[36px]
+                    min-[1200px]:h-[40px]
+                    min-[1200px]:w-[40px]
                     group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
                     group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
                     focus-within:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
@@ -386,6 +411,8 @@ export default function ProductStack() {
                         font-medium
                         leading-normal
                         tracking-[0.06em]
+                        md:text-[14px]
+                        min-[1200px]:text-[17px]
                       "
                     >
                       {capability.title}
@@ -411,6 +438,8 @@ export default function ProductStack() {
                       }
 
                       max-[480px]:text-[12px]
+                      md:text-[12px]
+                      min-[1200px]:text-[14px]
                     `}
                   >
                     {capability.text}
