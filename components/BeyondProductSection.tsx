@@ -100,7 +100,8 @@ export default function BeyondProductSection({
   const radius = 190;
   const innerRadius = 140;
   const circumference = 2 * Math.PI * radius;
-  const arcLength = 160;
+  // Shorter active arc leaves more breathing room on either side of its node.
+  const arcLength = 120;
 
   // Rotation for the glowing active arc
   const activeArcRotation =
