@@ -380,14 +380,16 @@ export default function BeyondProductSection({
                     style={{
                       left: `${leftPercent}%`,
                       top: `${topPercent}%`,
-                      width: isActive ? "62px" : "56px",
-                      height: isActive ? "62px" : "56px",
+                      // Keep every orbit node at the same footprint so the
+                      // default outlined state does not jump when activated.
+                      width: "62px",
+                      height: "62px",
                       background: isActive
                         ? "linear-gradient(160deg, #60d0ff 0%, #2b7cf7 45%, #1050c8 100%)"
                         : "transparent",
                       border: isActive
                         ? "1px solid rgba(140,210,255,0.7)"
-                        : "1px solid transparent",
+                        : "1px solid rgba(190,220,255,0.62)",
                       boxShadow: isActive
                         ? "0 0 28px rgba(80,180,255,0.65), 0 0 8px rgba(80,180,255,0.4)"
                         : "none",
