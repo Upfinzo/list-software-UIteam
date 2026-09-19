@@ -16,32 +16,32 @@ const solutionData = [
   {
     title: "Digital Banking",
     description:
-      "Extend the banking experience beyond the branch with mobile banking, internet banking, WhatsApp banking, e-passbook and digital customer services.",
+      "Extend the banking experience beyond the branch with mobile banking, internet banking, WhatsApp banking, e-passbook and digital customer services",
   },
   {
     title: "Payments & Transaction Banking",
     description:
-      "Connect banking operations to payment rails, clearing systems and transaction networks through solutions supporting RTGS, EFT, NACH, CTS, ATM, IMPS and other payment interfaces.",
+      "Connect banking operations to payment rails, clearing systems and transaction networks through solutions supporting RTGS, EFT, NACH, CTS, ATM, IMPS and other payment interfaces",
   },
   {
     title: "Lending & Credit",
     description:
-      "Support the lending lifecycle with credit appraisal, loan processing, documentation, recovery and NPA management capabilities integrated into banking operations.",
+      "Support the lending lifecycle with credit appraisal, loan processing, documentation, recovery and NPA management capabilities integrated into banking operations",
   },
   {
     title: "Compliance & Risk",
     description:
-      "Strengthen financial controls through AML, CKYC, identity validation, audit, regulatory reporting and credit-bureau integration.",
+      "Strengthen financial controls through AML, CKYC, identity validation, audit, regulatory reporting and credit-bureau integration",
   },
   {
     title: "Banking Operations",
     description:
-      "Digitise and streamline everyday banking through solutions for branch operations, customer management, investments, recovery and operational workflows.",
+      "Digitise and streamline everyday banking through solutions for branch operations, customer management, investments, recovery and operational workflows",
   },
   {
     title: "Data & Intelligence",
     description:
-      "Turn banking information into actionable insight through business intelligence, reporting and analytics that support better operational and management decisions.",
+      "Turn banking information into actionable insight through business intelligence, reporting and analytics that support better operational and management decisions",
   },
 ];
 

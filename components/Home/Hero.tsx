@@ -41,7 +41,7 @@ export default function Hero() {
               LIST Software builds core banking technology for modern financial
               institutions, connecting the core with digital banking, payments,
               APIs, compliance and intelligent automation through one evolving
-              technology platform.
+              technology platform
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">

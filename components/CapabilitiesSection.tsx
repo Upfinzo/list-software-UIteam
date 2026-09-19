@@ -34,7 +34,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Integration-Ready",
     title: "Integration-Ready",
     description:
-      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems.",
+      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems",
     icon: inntegration,
     badges: [
       "API-First Connectivity ",
@@ -54,7 +54,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Secure",
     title: "Secure",
     description:
-      "Authentication, validation, controlled access and transaction-level safeguards support secure banking operations and trusted financial transactions.",
+      "Authentication, validation, controlled access and transaction-level safeguards support secure banking operations and trusted financial transactions",
     icon: secure,
     badges: [
       "Protected Operations",
@@ -74,7 +74,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Scalable",
     title: "Scalable",
     description:
-      "Built to support evolving banking requirements with scalable infrastructure and expanding multi-tenant capabilities.",
+      "Built to support evolving banking requirements with scalable infrastructure and expanding multi-tenant capabilities",
     icon: scalable,
     badges: [
       "Multi-Tenant",
@@ -90,7 +90,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Evolving",
     title: "Evolving",
     description:
-      "Modernise established banking capabilities while creating new possibilities for digital operations and financial services. ",
+      "Modernise established banking capabilities while creating new possibilities for digital operations and financial services",
     icon: evolving,
     badges: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
     items: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
@@ -213,7 +213,7 @@ export default function CapabilitiesSection({
           for Modern Banking
           </h2>
             <p className="text-sm sm:text-base text-[#647183] leading-relaxed  pt-4">
-                  LIST Software is a banking technology platform centered on core banking, connecting and extending financial institutions across digital channels, payment systems, applications, and external services through APIs and open integrations.
+                  LIST Software is a banking technology platform centered on core banking, connecting and extending financial institutions across digital channels, payment systems, applications, and external services through APIs and open integrations
             </p>
         </div>
 

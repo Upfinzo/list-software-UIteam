@@ -145,7 +145,7 @@ export default function CoreBankingPortfolio() {
                                 </h3>
                                 {/* Applied Figma text settings for the description text */}
                                 <p className="text-[12.5px] font-normal leading-[20.3px] text-white/60">
-                                    The engine beneath every branch, ledger, and customer record, powering secure banking operations, connected digital experiences, intelligent workflows, payments, compliance, and modern financial infrastructure.
+                                    The engine beneath every branch, ledger, and customer record, powering secure banking operations, connected digital experiences, intelligent workflows, payments, compliance, and modern financial infrastructure
                                 </p>
                             </div>
                         </div>
@@ -199,7 +199,7 @@ export default function CoreBankingPortfolio() {
                             </h2>
                         </div>
                         <p className="text-[#647183] text-[15px] leading-[1.7]">
-                            Custodian provides the foundation for everyday banking operations, helping institutions manage core functions across branches and banking teams — with integration and APIs connecting it to the wider banking environment.
+                            Custodian provides the foundation for everyday banking operations, helping institutions manage core functions across branches and banking teams — with integration and APIs connecting it to the wider banking environment
                         </p>
 
                         <div className="pt-4">

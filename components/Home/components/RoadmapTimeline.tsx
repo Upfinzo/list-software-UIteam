@@ -13,37 +13,37 @@ const steps: TimelineStep[] = [
     number: "01",
     title: "A Common API Platform",
     description:
-      "A flexible technology foundation that enables faster integration, smoother operations, and scalable banking experiences.",
+      "A flexible technology foundation that enables faster integration, smoother operations, and scalable banking experiences",
   },
   {
     number: "02",
     title: "AI Enabled Banking Technology",
     description:
-      "Introducing AI capabilities across newer modules to support intelligent operations, faster issue analysis and more informed banking workflows.",
+      "Introducing AI capabilities across newer modules to support intelligent operations, faster issue analysis and more informed banking workflows",
   },
   {
     number: "03",
     title: "Modernized Architecture",
     description:
-      "Modernising legacy modules into a consistent, modular technology foundation.",
+      "Modernising legacy modules into a consistent, modular technology foundation",
   },
   {
     number: "04",
     title: "Expanding Multi - Tenant Architecture",
     description:
-      "Extending multi-tenant capabilities across the portfolio to support scalable deployments, simplified management and more efficient technology operations.",
+      "Extending multi-tenant capabilities across the portfolio to support scalable deployments, simplified management and more efficient technology operations",
   },
   {
     number: "05",
     title: "Smarter Digital Experiences",
     description:
-      "Evolving mobile and digital banking capabilities with richer customer engagement, integrated services and emerging opportunities such as BBPS.",
+      "Evolving mobile and digital banking capabilities with richer customer engagement, integrated services and emerging opportunities such as BBPS",
   },
   {
     number: "06",
     title: "Technology Partnerships",
     description:
-      "Working with strategic technology partners to extend capabilities, accelerate innovation and bring new banking services to institutions faster.",
+      "Working with strategic technology partners to extend capabilities, accelerate innovation and bring new banking services to institutions faster",
   },
 ];
 

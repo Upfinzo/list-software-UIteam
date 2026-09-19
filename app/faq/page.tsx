@@ -9,32 +9,32 @@ const faqs = [
 	{
 		question: "Can LIST Software integrate with our existing banking systems?",
 		answer:
-			"Yes. The solution supports integration with existing banking applications, payment systems, digital channels, and third-party services through APIs, middleware, and interfaces.",
+			"Yes. The solution supports integration with existing banking applications, payment systems, digital channels, and third-party services through APIs, middleware, and interfaces",
 	},
 	{
 		question: "Can the platform be configured around our business requirements?",
 		answer:
-			"Yes. The platform can be configured to support your operating model, workflows, products, and business rules.",
+			"Yes. The platform can be configured to support your operating model, workflows, products, and business rules",
 	},
 	{
 		question: "Can the solution support our growth and changing requirements?",
 		answer:
-			"The solution is designed to scale with your business and adapt as your products, customers, and operational needs evolve.",
+			"The solution is designed to scale with your business and adapt as your products, customers, and operational needs evolve",
 	},
 	{
 		question: "How can the platform support our operational transformation?",
 		answer:
-			"It connects core operations, digital channels, and supporting services to help simplify processes and improve visibility across your organization.",
+			"It connects core operations, digital channels, and supporting services to help simplify processes and improve visibility across your organization",
 	},
 	{
 		question: "What should we consider when evaluating the solution?",
 		answer:
-			"Consider integration, configuration, scalability, security, implementation support, and how well the platform aligns with your long-term goals.",
+			"Consider integration, configuration, scalability, security, implementation support, and how well the platform aligns with your long-term goals",
 	},
 	{
 		question: "How can we discuss our specific requirements?",
 		answer:
-			"Contact our team to discuss your requirements, current environment, and the best way to explore the platform together.",
+			"Contact our team to discuss your requirements, current environment, and the best way to explore the platform together",
 	},
 ];
 

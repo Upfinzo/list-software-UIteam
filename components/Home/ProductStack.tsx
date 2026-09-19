@@ -13,14 +13,14 @@ const capabilities = [
   {
     number: "01",
     title: "OPERATE",
-    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows.",
+    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows",
     icon: operateImage,
   },
  
   {
     number: "02",
     title: "CONTROL",
-    text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence.",
+    text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence",
     icon: controlImage,
   },
   {
@@ -32,7 +32,7 @@ const capabilities = [
   {
     number: "04",
     title: "DIGITAL ACCESS",
-    text: "Connect every customer touchpoint—from mobile and internet banking to WhatsApp, e-passbook, POS, kiosks, and communications—through a unified banking experience.",
+    text: "Connect every customer touchpoint—from mobile and internet banking to WhatsApp, e-passbook, POS, kiosks, and communications—through a unified banking experience",
     icon: digitalImage,
   },
 ];
@@ -168,7 +168,7 @@ export default function ProductStack() {
               md:tracking-[-0.8px]
             "
           >
-            Everything Your Banking Technology Needs — Around the Core.
+            Everything Your Banking Technology Needs  Around the Core
           </h2>
 
           {/* =========================================
@@ -187,7 +187,7 @@ export default function ProductStack() {
               text-[#adbee8]
             "
           >
-            A powerful banking core connects accounts, transactions, digital banking, payments, and essential operations through one unified platform—built for flexibility, stability, and future-ready growth.
+            A powerful banking core connects accounts, transactions, digital banking, payments, and essential operations through one unified platform—built for flexibility, stability, and future-ready growth
           </p>
 
           {/* =========================================

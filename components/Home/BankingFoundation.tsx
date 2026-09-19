@@ -16,7 +16,7 @@ export default function BankingFoundation() {
                     </h1>
                     <p className="running-text mx-auto mb-8 mt-7 max-w-[980px] text-center text-black">
                         Whether you are strengthening your core banking environment, expanding digital channels, connecting payment systems,<br />
-                        <span className="block">modernising operations, LIST Software brings the technology together around a proven banking foundation.</span>
+                        <span className="block">modernising operations, LIST Software brings the technology together around a proven banking foundation</span>
                     </p>
                     <div>
                         <Button href="/contact" variant="primary" className="hidden sm:inline-flex mt-7">

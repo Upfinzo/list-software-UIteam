@@ -75,7 +75,7 @@ export default function WhoWeServeSection() {
           <p className="running-text mt-5 max-w-[680px] leading-7 text-[#647183]">
             LIST Software provides core banking capabilities that support the
             operational, transaction, lending, and compliance needs of financial
-            institutions.
+            institutions
           </p>
         </div>
 

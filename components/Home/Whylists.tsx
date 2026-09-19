@@ -33,7 +33,7 @@ export default function Whylist() {
               LIST Software continues to modernise the technology behind
               banking. It is evolving its core, expanding connectivity, and
               advancing capabilities across APIs, AI, automation, digital
-              experiences, and multi-tenant architecture.
+              experiences, and multi-tenant architecture
             </p>
           </div>
 
