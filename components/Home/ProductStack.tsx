@@ -13,7 +13,7 @@ const capabilities = [
   {
     number: "01",
     title: "OPERATE",
-    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows",
+    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows.",
     icon: iconFour,
   },
  
