@@ -2,11 +2,11 @@
 
 import { Fragment, useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
-import iconFour from "@/assets/images/Icon (4).svg";
+import controlImage from "@/assets/images/control.svg";
+import digitalImage from "@/assets/images/Digital.svg";
+import operateImage from "@/assets/images/operate.svg";
 
-import iconSix from "@/assets/images/Icon (6).svg";
 import iconSeven from "@/assets/images/Icon (7).svg";
-import iconEight from "@/assets/images/Icon (8).svg";
 import Container from "@/components/common/Container";
 
 const capabilities = [
@@ -14,14 +14,14 @@ const capabilities = [
     number: "01",
     title: "OPERATE",
     text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows.",
-    icon: iconFour,
+    icon: operateImage,
   },
  
   {
     number: "02",
     title: "CONTROL",
     text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence.",
-    icon: iconSix,
+    icon: controlImage,
   },
   {
     number: "03",
@@ -33,7 +33,7 @@ const capabilities = [
     number: "04",
     title: "DIGITAL ACCESS",
     text: "Connect every customer touchpoint—from mobile and internet banking to WhatsApp, e-passbook, POS, kiosks, and communications—through a unified banking experience.",
-    icon: iconEight,
+    icon: digitalImage,
   },
 ];
 
@@ -48,7 +48,7 @@ const productTags = [
 ];
 
 export default function ProductStack() {
-  const [activeCapability, setActiveCapability] = useState(0);
+  const [activeCapability, setActiveCapability] = useState(-1);
 
   return (
     <section
@@ -260,8 +260,8 @@ export default function ProductStack() {
   className="
     pointer-events-none
     absolute
-    left-[28px]
-    top-[48.5px]
+    left-[20px]
+    top-[30px]
     bottom-[132px]
     z-[999]
     w-[1px]
@@ -282,8 +282,11 @@ export default function ProductStack() {
                 key={capability.number}
                 tabIndex={0}
                 role="button"
+                onMouseEnter={() => setActiveCapability(index)}
+                onMouseLeave={() => setActiveCapability(-1)}
                 onClick={() => setActiveCapability(index)}
                 onFocus={() => setActiveCapability(index)}
+                onBlur={() => setActiveCapability(-1)}
                 className={`
                   group
                   relative
@@ -333,20 +336,20 @@ export default function ProductStack() {
                     relative
                     z-10
                     grid
-                    h-[40px]
-                    w-[40px]
+                    h-[54px]
+                    w-[54px]
                     shrink-0
                     place-items-center
-                    rounded-[10px]
+                    rounded-[12px]
                     bg-[rgba(103,146,224,0.18)]
-                    p-2
+                    p-3
                     text-[#d8e5ff]
                     transition-all
                     duration-200
-                    md:h-[36px]
-                    md:w-[36px]
-                    min-[1200px]:h-[40px]
-                    min-[1200px]:w-[40px]
+                    md:h-[48px]
+                    md:w-[48px]
+                    min-[1200px]:h-[54px]
+                    min-[1200px]:w-[54px]
                     group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
                     group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
                     focus-within:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
@@ -360,14 +363,19 @@ export default function ProductStack() {
                   aria-hidden="true"
                 >
                   <img
-                    className="
-                      h-full
-                      w-full
+                    className={`
+                      h-[22px]
+                      w-[22px]
                       object-contain
                       transition-[filter]
                       duration-200
+                      ${
+                        activeCapability === index
+                          ? "[filter:brightness(0)_saturate(100%)_invert(1)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]"
+                          : ""
+                      }
                       group-hover:[filter:brightness(0)_saturate(100%)_invert(1)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]
-                    "
+                    `}
                     src={capability.icon.src}
                     alt=""
                   />
