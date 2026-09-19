@@ -109,12 +109,12 @@ export default function ConnectedCore() {
             <Container>
                 {/* 1. SEPARATE HEADING ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 sm:mb-12">
-                    <div className="lg:col-span-7 space-y-4 max-w-xl">
+                    <div className="lg:col-span-7 space-y-4  ">
                         <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
                             THE CONNECTED CORE
                         </span>
                         <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight mt-3 leading-[1.12]">
-                            One Core. Connected Capabilities. <span className="text-[#647183]">Built to Work Together.</span>
+                            One Core. Connected Capabilities <span className="text-[#647183]">Built to Work Together</span>
                         </h2>
                         <p className="text-[#647183] lg:text-[15px] mt-3 text-base leading-relaxed">
                             LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center.

@@ -203,15 +203,18 @@ export default function CapabilitiesSection({
     >
       <Container>
         {/* Header Block */}
-        <div className="mb-8 md:mb-12 max-w-3xl">
+        <div className="mb-8 md:mb-12 max-w-4xl">
           <span className="font-bold uppercase tracking-[0.2em] text-[#111E89] mb-3 block text-[11px] ">
-            CAPABILITIES
+            PLATFORM
           </span>
           <h2 className=" font-semibold tracking-tight text-[#121F37] leading-[1.15] text-[32px] sm:text-[38px]  lg:text-[45.6px]">
-            Everything Banking Needs.
+      The Technology Foundation 
             <br />
-            Connected.
+          for Modern Banking
           </h2>
+            <p className="text-sm sm:text-base text-[#647183] leading-relaxed  pt-4">
+                  LIST Software is a banking technology platform centered on core banking, connecting and extending financial institutions across digital channels, payment systems, applications, and external services through APIs and open integrations.
+            </p>
         </div>
 
         {/* Outer Card Container */}

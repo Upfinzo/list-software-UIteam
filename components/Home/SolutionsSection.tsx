@@ -268,7 +268,7 @@ export default function SolutionsSection() {
             {/* =========================================
                 CARD LABEL
             ========================================= */}
-            <p
+            {/* <p
               className="
                 m-0
                 mb-[14px]
@@ -287,7 +287,7 @@ export default function SolutionsSection() {
               "
             >
               Operational Discipline
-            </p>
+            </p> */}
 
             {/* =========================================
                 ACTIVE CONTENT
