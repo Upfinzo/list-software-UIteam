@@ -31,9 +31,9 @@ export default function HomePage() {
 
       <Whylist />
 
-      <TrustControlSection />
+      {/* <TrustControlSection />
 
-      <BusinessOutcomes />
+      <BusinessOutcomes /> */}
       <WhoWeServeSection />
 
       <BeyondProductSection />

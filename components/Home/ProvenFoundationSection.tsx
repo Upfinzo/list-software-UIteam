@@ -64,8 +64,6 @@ export default function ProvenFoundationSection() {
         <section className="bg-[#F8FAFD] py-16 px-6 sm:px-12 lg:px-20 border-t border-b border-[#DCE4EC]">
             <Container>
                 <div className="container mx-auto max-w-7xl">
-                    {/* Top Content Grid */}
-                    {/* ADDED: lg:gap-24 to give more horizontal breathing space between columns */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                         {/* Left Column: Heading and Subtitle */}
                         <motion.div
@@ -83,17 +81,26 @@ export default function ProvenFoundationSection() {
                             </h2>
                         </motion.div>
 
-                        {/* Right Column: Statistics Grid */}
+                        {/* Right Column: Statistics */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE4EC]">
+                            // CHANGED: Using flex instead of grid avoids conflict between 'gap' and 'divide' spacing on mobile
+                            className="lg:col-span-6 flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#DCE4EC]"
+                        >
                             {stats.map((stat, index) => (
                                 <div
                                     key={index}
-                                    className={`flex flex-col justify-center ${index !== 0 ? 'sm:pl-8 lg:pl-10' : ''} pt-6 sm:pt-0`}
+                                    // Targeted padding ensures proper spacing and removes excess bottom padding from the last item
+                                    className={`flex flex-col justify-center py-8 sm:py-0 ${
+                                        index === 0
+                                            ? 'pt-0 sm:pr-8 lg:pr-10'
+                                            : index === stats.length - 1
+                                                ? 'pb-0 sm:pl-8 lg:pl-10'
+                                                : 'sm:px-8 lg:px-10'
+                                    }`}
                                 >
                                     <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
                                         <Counter value={stat.numericValue} suffix={stat.suffix} />
@@ -112,21 +119,20 @@ export default function ProvenFoundationSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        /* CHANGED: Reduced mt-16 to mt-8 to bring the line closer to the text */
-                        className="mt-8 pt-4"
+                        className="mt-10 pt-4"
                     >
                         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#5EAFE6]/50 to-transparent mb-8" />
 
-                        <ul className="flex flex-wrap items-center justify-start gap-y-4 gap-x-12">
+                        {/* CHANGED: Adjusted to grid on mobile so it splits neatly into 2 columns if space allows, matching the image */}
+                        <ul className="grid grid-cols-1 min-[450px]:grid-cols-2 md:flex md:flex-wrap md:items-center justify-start gap-y-4 gap-x-12">
                             {features.map((feature, index) => (
                                 <li key={index} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] inline-block" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] shrink-0" />
                                     <span>{feature}</span>
                                 </li>
                             ))}
                         </ul>
                     </motion.div>
-
                 </div>
             </Container>
         </section>
