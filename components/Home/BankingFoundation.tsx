@@ -23,7 +23,7 @@ export default function BankingFoundation() {
                             Request a Demo <ArrowRight height={15} />
                         </Button>
 
-                        <Button href="/contact" variant="secondary" className="hidden sm:inline-flex ms-5">
+                        <Button href="/contact" variant="secondary">
                             Talk to Specialist <ArrowRight height={15} />
                         </Button>
 
