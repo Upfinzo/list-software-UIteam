@@ -200,7 +200,7 @@ export default function CapabilitiesSection({
           <span className="font-bold uppercase tracking-[0.2em] text-[#111E89] mb-3 block text-[11px] ">
             CAPABILITIES
           </span>
-          <h2 className="text-[11px] font-semibold tracking-tight text-[#121F37] leading-[1.15]">
+          <h2 className=" font-semibold tracking-tight text-[#121F37] leading-[1.15] text-[32px] sm:text-[38px]  lg:text-[45.6px]">
             Everything Banking Needs.
             <br />
             Connected.
