@@ -25,7 +25,7 @@ const tabs: CoreTab[] = [
     {
         id: 1,
         title: 'Payments & Transactions',
-        description: 'Seamless cross-border, domestic, and real-time payment processing architectures.',
+        description: 'RTGS, EFT, NACH, CTS, Positive Pay, beneficiary verification, PFMS and digital payment connectivity.',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -35,7 +35,7 @@ const tabs: CoreTab[] = [
     {
         id: 2,
         title: 'Compliance & Risk',
-        description: 'Automated AML, KYC, regulatory reporting, and real-time risk management controls.',
+        description: 'AML, CKYC, identity validation, audit and credit-bureau reporting.',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -45,7 +45,7 @@ const tabs: CoreTab[] = [
     {
         id: 3,
         title: 'Operations & Intelligence',
-        description: 'Advanced data analytics, business intelligence dashboards, and back-office optimization.',
+        description: 'Reporting, customer management, recovery workflows, investments, and operational automation',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -55,7 +55,7 @@ const tabs: CoreTab[] = [
     {
         id: 4,
         title: 'Built',
-        description: 'Scalable, secure, and modern cloud-native infrastructure built for financial resilience.',
+        description: 'A dependable foundation for everyday financial operations.',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -65,7 +65,7 @@ const tabs: CoreTab[] = [
     {
         id: 5,
         title: 'Connect',
-        description: 'Open API gateways and extensions to integrate seamlessly with third-party fintech ecosystems.',
+        description: 'Unify banking experiences across channels, services, payments, and operational workflows.',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
