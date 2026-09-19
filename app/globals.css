@@ -66,21 +66,6 @@
   }
 }
 
-.tab-indicator-expand {
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: expandLine 300ms ease-out forwards;
-}
-
-@keyframes expandLine {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @keyframes contentFadeIn {
   from {
     opacity: 0;
@@ -93,18 +78,6 @@
   }
 }
 
-@keyframes borderExpand {
-  0% {
-    transform: scaleX(0);
-    opacity: 0.3;
-  }
-
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-
 @keyframes borderWidthExpand {
   0% {
     width: 0%;
@@ -114,16 +87,6 @@
   100% {
     width: 100%;
     opacity: 1;
-  }
-}
-
-.tab-indicator-expand {
-  animation: borderWidthExpand 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tab-indicator-expand {
-    animation: none;
   }
 }
 
@@ -266,7 +229,7 @@ textarea {
 }
 
 header button,
-header nav ul li a{
+header nav ul li a {
   cursor: pointer;
 }
 
@@ -356,4 +319,3 @@ header nav ul li a{
     transform: none;
   }
 }
-

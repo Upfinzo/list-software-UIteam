@@ -19,12 +19,14 @@ export default function BankingFoundation() {
                         Banking Foundation
                     </h1>
                     <p className="running-text text-center mb-8 md:mx-60">Whether you are strengthening your core banking environment, expanding digital channels, connecting payment systems, or modernising operations, LIST Software brings the technology together around a proven banking foundation.</p>
-                    <div>
-                        <Button href="/contact" variant="primary" className="hidden sm:inline-flex">
+                    {/* Both CTAs stay on every screen - this section has no
+                        mobile alternative to fall back on. */}
+                    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+                        <Button href="/contact" variant="primary">
                             Request a Demo <ArrowRight height={15} />
                         </Button>
 
-                        <Button href="/contact" variant="secondary" className="hidden sm:inline-flex ms-5">
+                        <Button href="/contact" variant="secondary">
                             Talk to Specialist <ArrowRight height={15} />
                         </Button>
 
