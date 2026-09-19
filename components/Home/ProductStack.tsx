@@ -3,7 +3,7 @@
 import { Fragment, useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
 import iconFour from "@/assets/images/Icon (4).svg";
-import iconFive from "@/assets/images/Icon (5).svg";
+
 import iconSix from "@/assets/images/Icon (6).svg";
 import iconSeven from "@/assets/images/Icon (7).svg";
 import iconEight from "@/assets/images/Icon (8).svg";
@@ -13,31 +13,26 @@ const capabilities = [
   {
     number: "01",
     title: "OPERATE",
-    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows",
+    text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows.",
     icon: iconFour,
   },
+ 
   {
     number: "02",
-    title: "CONNECT",
-    text: "Enable mobile banking, internet banking, WhatsApp banking, e-passbook, POS, kiosk and other digital delivery channels while keeping them connected to the banking core",
-    icon: iconFive,
-  },
-  {
-    number: "03",
     title: "CONTROL",
     text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence.",
     icon: iconSix,
   },
   {
-    number: "04",
+    number: "03",
     title: "TRANSACT",
     text: "Connect core banking operations with payment and transaction infrastructure including RTGS, EFT, NACH, CTS, ATM, IMPS and e-commerce interfaces, enabling connected transaction processing across channels",
     icon: iconSeven,
   },
   {
-    number: "05",
+    number: "04",
     title: "DIGITAL ACCESS",
-    text: "Deliver consistent banking experiences across the channels customers use every day.",
+    text: "Connect every customer touchpoint—from mobile and internet banking to WhatsApp, e-passbook, POS, kiosks, and communications—through a unified banking experience.",
     icon: iconEight,
   },
 ];
@@ -66,7 +61,7 @@ export default function ProductStack() {
         bg-[#061b61]
         text-[#f7f9ff]
 
-        min-[1200px]:min-h-[929px]
+        min-[1200px]:min-h-[760px]
       "
       aria-labelledby="home-products-title"
     >
@@ -104,20 +99,20 @@ export default function ProductStack() {
       {/* =========================================
           MAIN CONTAINER
       ========================================= */}
-      <Container className="relative z-10 py-10 md:py-16">
+      <Container className="relative z-10 py-8 md:py-12">
         <div
           className="
             grid
             w-full
             grid-cols-1
             items-center
-            gap-10
+            gap-6
 
             md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]
-            md:gap-6
+            md:gap-4
 
             min-[1200px]:grid-cols-[430px_minmax(0,1fr)]
-            min-[1200px]:gap-16
+            min-[1200px]:gap-10
           "
         >
         {/* =========================================
@@ -192,10 +187,7 @@ export default function ProductStack() {
               text-[#adbee8]
             "
           >
-            Run the full banking lifecycle from one core. Custodian Core Banking
-            supports deposits, accounts, loans, accounting, clearing,
-            remittances, branch operations, NPA management and day-to-day
-            banking workflows
+            A powerful banking core connects accounts, transactions, digital banking, payments, and essential operations through one unified platform—built for flexibility, stability, and future-ready growth.
           </p>
 
           {/* =========================================
@@ -256,9 +248,9 @@ export default function ProductStack() {
             w-full
             grid
             grid-cols-1
-            gap-[24px]
+            gap-[16px]
             md:gap-4
-            min-[1200px]:gap-[24px]
+            min-[1200px]:gap-[16px]
           "
         >
           {/* =========================================
@@ -269,8 +261,8 @@ export default function ProductStack() {
     pointer-events-none
     absolute
     left-[28px]
-    top-[60px]
-    bottom-[127px]
+    top-[48.5px]
+    bottom-[132px]
     z-[999]
     w-[1px]
   "
@@ -297,19 +289,19 @@ export default function ProductStack() {
                   relative
                   z-10
                   flex
-                  min-h-[148.5px]
+                  min-h-[132px]
                   w-full
                   shrink-0
-                  gap-[20px]
+                  gap-[16px]
                   rounded-[20px]
                   border
                   border-[rgba(127,176,255,0.27)]
                   bg-[rgba(38,81,166,0.3)]
-                  p-[20px]
+                  p-[16px]
                   md:gap-3
-                  md:p-3
-                  min-[1200px]:gap-[20px]
-                  min-[1200px]:p-[20px]
+                  md:p-[12px]
+                  min-[1200px]:gap-[16px]
+                  min-[1200px]:p-[16px]
                   text-white
                   shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]
                   backdrop-blur-[4px]
