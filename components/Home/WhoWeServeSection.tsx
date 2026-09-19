@@ -56,7 +56,7 @@ export default function WhoWeServeSection() {
             id="who-we-serve-title"
             className="section-title mt-5 max-w-[640px] leading-[1.15] font-bold tracking-tight text-[#121F37]"
           >
-            Technology That Fits the Institution You are Building
+            Designed for the Way Your Institution Operates
           </h2>
 
           <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-[0.14em] text-[#111E89] uppercase">

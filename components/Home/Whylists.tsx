@@ -22,7 +22,7 @@ export default function Whylist() {
               Why List            </p>
 
             <h1 className="section-title leading-none">
-              Technology That Evolves Without
+              Infrastructure That Evolves Without
             </h1>
 
             <h1 className="section-title brand-gradient-text my-5 leading-none">

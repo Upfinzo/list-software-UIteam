@@ -207,7 +207,7 @@ export default function SolutionsSection() {
             lg:tracking-[-1.14px]
           "
         >
-          Technology Built Around
+          Solutions Built Around
           <br />
           Banking&apos;s Real-World Needs
         </h2>
@@ -434,6 +434,7 @@ export default function SolutionsSection() {
                     flex
                     min-h-[52px]
                     w-full
+                    cursor-pointer
                     items-center
                     justify-between
                     overflow-hidden

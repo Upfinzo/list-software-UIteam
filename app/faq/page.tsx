@@ -46,13 +46,13 @@ export default function FAQPage() {
 			<Container>
 				<div className="grid gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20 xl:grid-cols-[340px_minmax(0,1fr)] xl:gap-20">
 					<div>
-						<p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#173a9a]">
+						{/* <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#173a9a]">
 							FAQ
-						</p>
-						<h1 className="mt-5 max-w-xs text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#121f37] sm:text-5xl">
-							Questions,
+						</p> */}
+						<h1 className="mt-5 max-w-xs text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#0D1B6F] sm:text-5xl ">
+							Frequently Asked 
 							<br />
-							Answered.
+							Questions
 						</h1>
 					</div>
 
