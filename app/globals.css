@@ -295,20 +295,22 @@ header nav ul li a{
     fill-opacity 0.25s ease;
 }
 
+/* stroke-width is set per icon, in lucide's 24-unit grid, by the component. */
 .hero-node__icon {
   fill: none;
   stroke: #dbeeff;
-  stroke-width: 0.991667;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: stroke 0.25s ease;
 }
 
+/* Matches the export: Sora 500 at 11.5px, tracked -2.5%. */
 .hero-node__label {
   fill: #ffffff;
   font-family: var(--font-sora), sans-serif;
-  font-size: 12.3px;
+  font-size: 11.5px;
   font-weight: 500;
+  letter-spacing: -0.025em;
 }
 
 /* ---- hover: lift the chip, light its wire, colour the icon disc ---- */
