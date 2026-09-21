@@ -87,8 +87,8 @@ export default function ProvenFoundationSection() {
                             <span className="font-['Sora'] text-[11px] font-semibold leading-[16.5px] tracking-[2.42px] pb-4 text-[#111E89] uppercase">
                                 Proven in banking. Built to evolve
                             </span>
-                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px]">
-                                A banking technology <br className="hidden sm:block" /> foundation built over decades
+                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px] pt-4">
+                               A banking technology foundation built  over decades with the experience to support what comes next 
                             </h2>
                         </motion.div>
 
@@ -131,7 +131,7 @@ export default function ProvenFoundationSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="mt-10 pt-4"
+                        className=" pt-4"
                     >
                         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#5EAFE6]/50 to-transparent mb-8" />
 

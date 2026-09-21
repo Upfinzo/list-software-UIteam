@@ -195,11 +195,11 @@ export default function CoreBankingPortfolio() {
                                 CORE BANKING
                             </span>
                             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight leading-[1.2] text-gray-900">
-                                Built for Everyday Banking
+                                The Foundation for Everyday Banking
                             </h2>
                         </div>
                         <p className="text-[#647183] text-[15px] leading-[1.7]">
-                            Custodian provides the foundation for everyday banking operations, helping institutions manage core functions across branches and banking teams — with integration and APIs connecting it to the wider banking environment
+                            At the heart of LIST Software is Custodian Core Banking System, a comprehensive core banking solution bringing customer management, accounts, deposits, lending, transactions, accounting, and branch operations together on one operational foundation
                         </p>
 
                         <div className="pt-4">

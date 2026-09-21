@@ -9,7 +9,7 @@ const capabilities = [
   "API-First",
   "Compliance",
   "Secure",
-  "Intelligent Automation",
+  "Intelligence",
 ];
 
 export default function Hero() {
@@ -40,7 +40,7 @@ export default function Hero() {
             <p className="running-text mt-8 max-w-lg leading-7 text-ink-muted sm:mt-12">
               LIST Software builds core banking technology for modern financial
               institutions, connecting the core with digital banking, payments,
-              APIs, compliance and intelligent automation through one evolving
+              APIs, compliance and intelligent automation through a single evolving
               technology platform
             </p>
 

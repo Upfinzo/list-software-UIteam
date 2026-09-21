@@ -14,27 +14,27 @@ const faqs = [
 	{
 		question: "Can the platform be configured around our business requirements?",
 		answer:
-			"Yes. The platform can be configured to support your operating model, workflows, products, and business rules",
+			"Yes. The platform provides modular capabilities that align with your operational processes, business needs, technology environment, and implementation priorities",
 	},
 	{
 		question: "Can the solution support our growth and changing requirements?",
 		answer:
-			"The solution is designed to scale with your business and adapt as your products, customers, and operational needs evolve",
+			"Yes. The technology is designed to accommodate evolving needs across transaction volumes, branches, digital channels, and functional requirements",
 	},
 	{
 		question: "How can the platform support our operational transformation?",
 		answer:
-			"It connects core operations, digital channels, and supporting services to help simplify processes and improve visibility across your organization",
+			"The solution provides capabilities that help modernize banking workflows, strengthen operational processes, and introduce new digital capabilities while aligning with your organisation's technology and business priorities",
 	},
 	{
 		question: "What should we consider when evaluating the solution?",
 		answer:
-			"Consider integration, configuration, scalability, security, implementation support, and how well the platform aligns with your long-term goals",
+			" Key considerations include functional coverage, scalability, deployment approach, technology requirements, and the areas where you want to enhance your banking capabilities",
 	},
 	{
 		question: "How can we discuss our specific requirements?",
 		answer:
-			"Contact our team to discuss your requirements, current environment, and the best way to explore the platform together",
+			"You can connect with the team to discuss your business objectives, operational requirements, technology environment, and potential solution approach",
 	},
 ];
 

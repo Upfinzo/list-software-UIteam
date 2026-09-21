@@ -5,7 +5,7 @@ import Container from "@/components/common/Container";
 
 const solutions = [
   "Digital Banking",
-  "Payments & Transaction Banking",
+  "Payments & Transaction ",
   "Lending & Credit",
   "Compliance & Risk",
   "Banking Operations",
@@ -19,7 +19,7 @@ const solutionData = [
       "Extend the banking experience beyond the branch with mobile banking, internet banking, WhatsApp banking, e-passbook and digital customer services",
   },
   {
-    title: "Payments & Transaction Banking",
+    title: "Payments & Transaction",
     description:
       "Connect banking operations to payment rails, clearing systems and transaction networks through solutions supporting RTGS, EFT, NACH, CTS, ATM, IMPS and other payment interfaces",
   },
@@ -211,7 +211,9 @@ export default function SolutionsSection() {
           <br />
           Banking&apos;s Real-World Needs
         </h2>
-
+<p className="text-[#647183] text-[15px] leading-[1.7] pt-4">
+  LIST Software brings together purpose-built solutions across the banking lifecycle. Enabling financial institutions to modernize customer experiences, move money, manage risk, streamline operations, and turn banking data into actionable intelligence
+</p>
         {/* =========================================
             MAIN CONTENT
         ========================================= */}
