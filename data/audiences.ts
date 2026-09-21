@@ -29,7 +29,7 @@ export const audiences: Audience[] = [
     id: "banks",
     label: "Banks",
     description:
-      "Build on a dependable core banking foundation with connected solutions for accounts, deposits, lending, transactions, branch operations, digital channels, and regulatory reporting.",
+      "Build on a dependable core banking foundation with connected solutions for accounts, deposits, lending, transactions, branch operations, digital channels, and regulatory reporting",
     icon: Building2,
     ringPosition: 1,
   },
@@ -37,7 +37,7 @@ export const audiences: Audience[] = [
     id: "banking-operations",
     label: "Banking Operations",
     description:
-      "Streamline customer service, issue resolution, workflows, and operational control efficiently.",
+      "Streamline customer service, issue resolution, workflows, and operational control efficiently",
     icon: Workflow,
     ringPosition: 2,
   },
@@ -45,7 +45,7 @@ export const audiences: Audience[] = [
     id: "financial-institutions",
     label: "Financial Institutions",
     description:
-      "Extend financial operations with core banking, credit appraisal, compliance, transaction processing, and operational automation designed around institutional requirements.",
+      "Extend financial operations with core banking, credit appraisal, compliance, transaction processing, and operational automation designed around institutional requirements",
     icon: Banknote,
     ringPosition: 3,
   },
@@ -53,7 +53,7 @@ export const audiences: Audience[] = [
     id: "compliance-risk-teams",
     label: "Compliance & Risk Teams",
     description:
-      "Strengthen compliance controls, manage risks, monitor activities, and maintain regulatory readiness.",
+      "Strengthen compliance controls, manage risks, monitor activities, and maintain regulatory readiness",
     icon: ShieldCheck,
     ringPosition: 4,
   },
@@ -61,7 +61,7 @@ export const audiences: Audience[] = [
     id: "digital-banking-businesses",
     label: "Digital Banking Businesses",
     description:
-      "Extend banking beyond the branch through digital channels, customer services, payment connectivity, and integrated banking experiences.",
+      "Extend banking beyond the branch through digital channels, customer services, payment connectivity, and integrated banking experiences",
     icon: Smartphone,
     ringPosition: 5,
   },
@@ -69,7 +69,7 @@ export const audiences: Audience[] = [
     id: "management-business-teams",
     label: "Management & Business Teams",
     description:
-      "Enable better decisions with financial visibility, operational insight, and strategic control.",
+      "Enable better decisions with financial visibility, operational insight, and strategic control",
     icon: Users,
     ringPosition: 0,
   },
@@ -77,7 +77,7 @@ export const audiences: Audience[] = [
     id: "it-technology-teams",
     label: "IT & Technology Teams",
     description:
-      "Empower technology teams with scalable, secure, integrated banking infrastructure solutions.",
+      "Empower technology teams with scalable, secure, integrated banking infrastructure solutions",
     icon: Network,
     ringPosition: 7,
   },
@@ -85,7 +85,7 @@ export const audiences: Audience[] = [
     id: "credit-financing-businesses",
     label: "Credit & Financing Businesses",
     description:
-      "Drive efficient financing operations with connected processes for credit evaluation, loan administration, documentation, recovery, and risk oversight.",
+      "Drive efficient financing operations with connected processes for credit evaluation, loan administration, documentation, recovery, and risk oversight",
     icon: CreditCard,
     ringPosition: 6,
   },

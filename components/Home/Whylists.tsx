@@ -22,7 +22,7 @@ export default function Whylist() {
               Why List            </p>
 
             <h1 className="section-title leading-none">
-              Technology That Evolves Without
+              Infrastructure That Evolves Without
             </h1>
 
             <h1 className="section-title brand-gradient-text my-5 leading-none">
@@ -33,7 +33,7 @@ export default function Whylist() {
               LIST Software continues to modernise the technology behind
               banking. It is evolving its core, expanding connectivity, and
               advancing capabilities across APIs, AI, automation, digital
-              experiences, and multi-tenant architecture.
+              experiences, and multi-tenant architecture
             </p>
           </div>
 

@@ -79,7 +79,7 @@ const Header = () => {
           }`}
         >
           <Link href="/" className="flex shrink-0 items-center">
-            <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[60px] sm:w-[75px]" />
+            <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[100px] sm:w-[100px]" />
           </Link>
 
           <nav className="hidden lg:block">
@@ -113,9 +113,17 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <Button href="/contact" variant="primary" className="hidden sm:inline-flex">
-              Request a Demo<ArrowRight height={15} />
-            </Button>
+            {/*
+              The wrapper carries the breakpoint, not the Button: Button's own
+              base class sets inline-flex, which outranks a `hidden` passed
+              through className and would keep this visible on mobile — where
+              the copy inside the hamburger menu already covers it.
+            */}
+            <div className="hidden lg:block">
+              <Button href="/contact" variant="primary">
+                Request a Demo<ArrowRight height={15} />
+              </Button>
+            </div>
 
             <button
               type="button"
@@ -360,8 +368,15 @@ const Header = () => {
               })}
             </ul>
 
-            <div className="mt-4 sm:hidden">
-              <Button href="/contact" variant="primary" className="w-full justify-center">
+            {/* The menu itself is lg:hidden, so this needs no breakpoint of
+                its own — it is the mobile and tablet copy of the CTA. */}
+            <div className="mt-4">
+              <Button
+                href="/contact"
+                variant="primary"
+                className="w-full justify-center"
+                onClick={() => setMobileOpen(false)}
+              >
                 Request a Demo
               </Button>
             </div>

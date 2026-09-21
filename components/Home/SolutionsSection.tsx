@@ -5,10 +5,10 @@ import Container from "@/components/common/Container";
 
 const solutions = [
   "Digital Banking",
-  "Payments & Transactions",
-  "Lending & Recovery",
+  "Payments & Transaction Banking",
+  "Lending & Credit",
   "Compliance & Risk",
-  "Operations",
+  "Banking Operations",
   "Data & Intelligence",
 ];
 
@@ -16,32 +16,32 @@ const solutionData = [
   {
     title: "Digital Banking",
     description:
-      "Deliver seamless digital experiences with secure account access, instant transfers, mobile-first journeys, and smart service layers built for modern banking customers.",
+      "Extend the banking experience beyond the branch with mobile banking, internet banking, WhatsApp banking, e-passbook and digital customer services",
   },
   {
-    title: "Payments & Transactions",
+    title: "Payments & Transaction Banking",
     description:
-      "Modernise payment rails with real-time processing, transaction orchestration, channel connectivity, and smart controls across every payment flow.",
+      "Connect banking operations to payment rails, clearing systems and transaction networks through solutions supporting RTGS, EFT, NACH, CTS, ATM, IMPS and other payment interfaces",
   },
   {
-    title: "Lending & Recovery",
+    title: "Lending & Credit",
     description:
-      "Accelerate lending decisions, streamline collections, and manage recovery workflows with data-driven controls across the loan lifecycle.",
+      "Support the lending lifecycle with credit appraisal, loan processing, documentation, recovery and NPA management capabilities integrated into banking operations",
   },
   {
     title: "Compliance & Risk",
     description:
-      "Strengthen governance and reduce operational risk through automated checks, identity validation, audit controls, and regulatory reporting built into your core.",
+      "Strengthen financial controls through AML, CKYC, identity validation, audit, regulatory reporting and credit-bureau integration",
   },
   {
-    title: "Operations",
+    title: "Banking Operations",
     description:
-      "LIST Software brings together purpose-built solutions across the banking lifecycle. Enabling financial institutions to modernise customer experiences, move money, manage risk, streamline operations, and turn banking data into actionable intelligence.",
+      "Digitise and streamline everyday banking through solutions for branch operations, customer management, investments, recovery and operational workflows",
   },
   {
     title: "Data & Intelligence",
     description:
-      "Turn large volumes of banking data into practical insights with reporting, forecasting, operational intelligence, and decision support across teams.",
+      "Turn banking information into actionable insight through business intelligence, reporting and analytics that support better operational and management decisions",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function SolutionsSection() {
             lg:tracking-[-1.14px]
           "
         >
-          Technology Built Around
+          Solutions Built Around
           <br />
           Banking&apos;s Real-World Needs
         </h2>
@@ -268,7 +268,7 @@ export default function SolutionsSection() {
             {/* =========================================
                 CARD LABEL
             ========================================= */}
-            <p
+            {/* <p
               className="
                 m-0
                 mb-[14px]
@@ -287,7 +287,7 @@ export default function SolutionsSection() {
               "
             >
               Operational Discipline
-            </p>
+            </p> */}
 
             {/* =========================================
                 ACTIVE CONTENT
@@ -434,6 +434,7 @@ export default function SolutionsSection() {
                     flex
                     min-h-[52px]
                     w-full
+                    cursor-pointer
                     items-center
                     justify-between
                     overflow-hidden

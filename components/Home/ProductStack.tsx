@@ -2,11 +2,11 @@
 
 import { Fragment, useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
-import iconFour from "@/assets/images/Icon (4).svg";
-import iconFive from "@/assets/images/Icon (5).svg";
-import iconSix from "@/assets/images/Icon (6).svg";
+import controlImage from "@/assets/images/control.svg";
+import digitalImage from "@/assets/images/Digital.svg";
+import operateImage from "@/assets/images/operate.svg";
+
 import iconSeven from "@/assets/images/Icon (7).svg";
-import iconEight from "@/assets/images/Icon (8).svg";
 import Container from "@/components/common/Container";
 
 const capabilities = [
@@ -14,31 +14,26 @@ const capabilities = [
     number: "01",
     title: "OPERATE",
     text: "Run the full banking lifecycle from one core. Custodian Core Banking supports deposits, accounts, loans, accounting, clearing, remittances, branch operations, NPA management and day-to-day banking workflows",
-    icon: iconFour,
+    icon: operateImage,
   },
+ 
   {
     number: "02",
-    title: "CONNECT",
-    text: "Enable mobile banking, internet banking, WhatsApp banking, e-passbook, POS, kiosk and other digital delivery channels while keeping them connected to the banking core",
-    icon: iconFive,
+    title: "CONTROL",
+    text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence",
+    icon: controlImage,
   },
   {
     number: "03",
-    title: "CONTROL",
-    text: "Automate regulatory reporting and strengthen banking controls through AML, CKYC, audit, identity validation, credit appraisal, statutory reporting and business intelligence.",
-    icon: iconSix,
-  },
-  {
-    number: "04",
     title: "TRANSACT",
     text: "Connect core banking operations with payment and transaction infrastructure including RTGS, EFT, NACH, CTS, ATM, IMPS and e-commerce interfaces, enabling connected transaction processing across channels",
     icon: iconSeven,
   },
   {
-    number: "05",
+    number: "04",
     title: "DIGITAL ACCESS",
-    text: "Deliver consistent banking experiences across the channels customers use every day.",
-    icon: iconEight,
+    text: "Connect every customer touchpoint—from mobile and internet banking to WhatsApp, e-passbook, POS, kiosks, and communications—through a unified banking experience",
+    icon: digitalImage,
   },
 ];
 
@@ -53,7 +48,7 @@ const productTags = [
 ];
 
 export default function ProductStack() {
-  const [activeCapability, setActiveCapability] = useState(0);
+  const [activeCapability, setActiveCapability] = useState(-1);
 
   return (
     <section
@@ -66,7 +61,7 @@ export default function ProductStack() {
         bg-[#061b61]
         text-[#f7f9ff]
 
-        min-[1200px]:min-h-[929px]
+        min-[1200px]:min-h-[760px]
       "
       aria-labelledby="home-products-title"
     >
@@ -104,20 +99,20 @@ export default function ProductStack() {
       {/* =========================================
           MAIN CONTAINER
       ========================================= */}
-      <Container className="relative z-10 py-10 md:py-16">
+      <Container className="relative z-10 py-8 md:py-12">
         <div
           className="
             grid
             w-full
             grid-cols-1
             items-center
-            gap-10
+            gap-6
 
             md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]
-            md:gap-6
+            md:gap-4
 
             min-[1200px]:grid-cols-[430px_minmax(0,1fr)]
-            min-[1200px]:gap-16
+            min-[1200px]:gap-10
           "
         >
         {/* =========================================
@@ -173,7 +168,7 @@ export default function ProductStack() {
               md:tracking-[-0.8px]
             "
           >
-            Everything Your Banking Technology Needs — Around the Core.
+            Everything Your Banking Technology Needs  Around the Core
           </h2>
 
           {/* =========================================
@@ -192,10 +187,7 @@ export default function ProductStack() {
               text-[#adbee8]
             "
           >
-            Run the full banking lifecycle from one core. Custodian Core Banking
-            supports deposits, accounts, loans, accounting, clearing,
-            remittances, branch operations, NPA management and day-to-day
-            banking workflows
+            A powerful banking core connects accounts, transactions, digital banking, payments, and essential operations through one unified platform—built for flexibility, stability, and future-ready growth
           </p>
 
           {/* =========================================
@@ -256,9 +248,9 @@ export default function ProductStack() {
             w-full
             grid
             grid-cols-1
-            gap-[24px]
+            gap-[16px]
             md:gap-4
-            min-[1200px]:gap-[24px]
+            min-[1200px]:gap-[16px]
           "
         >
           {/* =========================================
@@ -268,9 +260,9 @@ export default function ProductStack() {
   className="
     pointer-events-none
     absolute
-    left-[28px]
-    top-[60px]
-    bottom-[127px]
+    left-[20px]
+    top-[30px]
+    bottom-[132px]
     z-[999]
     w-[1px]
   "
@@ -290,26 +282,29 @@ export default function ProductStack() {
                 key={capability.number}
                 tabIndex={0}
                 role="button"
+                onMouseEnter={() => setActiveCapability(index)}
+                onMouseLeave={() => setActiveCapability(-1)}
                 onClick={() => setActiveCapability(index)}
                 onFocus={() => setActiveCapability(index)}
+                onBlur={() => setActiveCapability(-1)}
                 className={`
                   group
                   relative
                   z-10
                   flex
-                  min-h-[148.5px]
+                  min-h-[132px]
                   w-full
                   shrink-0
-                  gap-[20px]
+                  gap-[16px]
                   rounded-[20px]
                   border
                   border-[rgba(127,176,255,0.27)]
                   bg-[rgba(38,81,166,0.3)]
-                  p-[20px]
+                  p-[16px]
                   md:gap-3
-                  md:p-3
-                  min-[1200px]:gap-[20px]
-                  min-[1200px]:p-[20px]
+                  md:p-[12px]
+                  min-[1200px]:gap-[16px]
+                  min-[1200px]:p-[16px]
                   text-white
                   shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]
                   backdrop-blur-[4px]
@@ -341,20 +336,20 @@ export default function ProductStack() {
                     relative
                     z-10
                     grid
-                    h-[40px]
-                    w-[40px]
+                    h-[54px]
+                    w-[54px]
                     shrink-0
                     place-items-center
-                    rounded-[10px]
+                    rounded-[12px]
                     bg-[rgba(103,146,224,0.18)]
-                    p-2
+                    p-3
                     text-[#d8e5ff]
                     transition-all
                     duration-200
-                    md:h-[36px]
-                    md:w-[36px]
-                    min-[1200px]:h-[40px]
-                    min-[1200px]:w-[40px]
+                    md:h-[48px]
+                    md:w-[48px]
+                    min-[1200px]:h-[54px]
+                    min-[1200px]:w-[54px]
                     group-hover:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
                     group-hover:shadow-[0_0_22px_rgba(87,182,255,0.52)]
                     focus-within:bg-[linear-gradient(145deg,#73c5ff,#1267cd)]
@@ -368,14 +363,19 @@ export default function ProductStack() {
                   aria-hidden="true"
                 >
                   <img
-                    className="
-                      h-full
-                      w-full
+                    className={`
+                      h-[22px]
+                      w-[22px]
                       object-contain
                       transition-[filter]
                       duration-200
+                      ${
+                        activeCapability === index
+                          ? "[filter:brightness(0)_saturate(100%)_invert(1)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]"
+                          : ""
+                      }
                       group-hover:[filter:brightness(0)_saturate(100%)_invert(1)_drop-shadow(0_0_3px_rgba(137,200,255,0.8))]
-                    "
+                    `}
                     src={capability.icon.src}
                     alt=""
                   />

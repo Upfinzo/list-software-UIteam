@@ -15,7 +15,7 @@ const tabs: CoreTab[] = [
     {
         id: 0,
         title: 'Digital Core Banking',
-        description: 'Accounts, deposits, loans, transactions, accounting and branch operations.',
+        description: 'Accounts, deposits, loans, transactions, accounting, branches, mobile, internet, WhatsApp, e-passbook and customer communication',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -25,7 +25,7 @@ const tabs: CoreTab[] = [
     {
         id: 1,
         title: 'Payments & Transactions',
-        description: 'Seamless cross-border, domestic, and real-time payment processing architectures.',
+        description: 'RTGS, EFT, NACH, CTS, Positive Pay, beneficiary verification, PFMS and digital payment connectivity',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -35,7 +35,7 @@ const tabs: CoreTab[] = [
     {
         id: 2,
         title: 'Compliance & Risk',
-        description: 'Automated AML, KYC, regulatory reporting, and real-time risk management controls.',
+        description: 'AML, CKYC, identity validation, audit and credit-bureau reporting',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -45,7 +45,7 @@ const tabs: CoreTab[] = [
     {
         id: 3,
         title: 'Operations & Intelligence',
-        description: 'Advanced data analytics, business intelligence dashboards, and back-office optimization.',
+        description: 'Reporting, customer management, recovery workflows, investments, and operational automation',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -55,7 +55,7 @@ const tabs: CoreTab[] = [
     {
         id: 4,
         title: 'Built',
-        description: 'Scalable, secure, and modern cloud-native infrastructure built for financial resilience.',
+        description: 'A dependable foundation for everyday financial operations',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -65,7 +65,7 @@ const tabs: CoreTab[] = [
     {
         id: 5,
         title: 'Connect',
-        description: 'Open API gateways and extensions to integrate seamlessly with third-party fintech ecosystems.',
+        description: 'Unify banking experiences across channels, services, payments, and operational workflows',
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -109,15 +109,15 @@ export default function ConnectedCore() {
             <Container>
                 {/* 1. SEPARATE HEADING ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-10 sm:mb-12">
-                    <div className="lg:col-span-7 space-y-4 max-w-xl">
+                    <div className="lg:col-span-7 space-y-4  ">
                         <span className="text-xs font-bold tracking-widest text-[#111E89] uppercase">
                             THE CONNECTED CORE
                         </span>
                         <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight mt-3 leading-[1.12]">
-                            One Core. Connected Capabilities. <span className="text-[#647183]">Built to Work Together.</span>
+                            One Core. Connected Capabilities <span className="text-[#647183]">Built to Work Together</span>
                         </h2>
                         <p className="text-[#647183] lg:text-[15px] mt-3 text-base leading-relaxed">
-                            LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center.
+                            LIST Software’s core banking software connects the Custodian Core Banking Solution with digital banking, payments, APIs, compliance and operational technologies, enables financial institutions to extend, integrate and modernize their banking capabilities without disrupting the operational foundation at the center
                         </p>
                     </div>
                 </div>
