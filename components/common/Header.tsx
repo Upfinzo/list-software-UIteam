@@ -120,7 +120,7 @@ const Header = () => {
               the copy inside the hamburger menu already covers it.
             */}
             <div className="hidden lg:block">
-              <Button href="/contact" variant="primary">
+              <Button href="/" variant="primary">
                 Request a Demo<ArrowRight height={15} />
               </Button>
             </div>
@@ -317,7 +317,7 @@ const Header = () => {
 
                     {item.megaMenu && isExpanded && (
                       <div className="pb-4 pl-2">
-                        <div className="flex flex-col gap-2.5">
+                        <div className="flex flex-col gap-5">
                           {item.megaMenu.items.map((subItem) => (
                             <Link
                               key={subItem.href}
@@ -372,7 +372,7 @@ const Header = () => {
                 its own — it is the mobile and tablet copy of the CTA. */}
             <div className="mt-4">
               <Button
-                href="/contact"
+                href="/"
                 variant="primary"
                 className="w-full justify-center"
                 onClick={() => setMobileOpen(false)}
