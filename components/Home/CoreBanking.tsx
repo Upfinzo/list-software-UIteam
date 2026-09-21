@@ -150,6 +150,7 @@ export default function CoreBankingPortfolio() {
                                 <button
                                     type="button"
                                     key={card.id}
+                                    tabIndex={0}
                                     onClick={() => setSelectedCard(card.id)}
                                     aria-pressed={isSelected}
                                     className={`text-left w-full bg-white rounded-[20px] p-5 cursor-pointer transition-all duration-300 border flex flex-col justify-between shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md ${isSelected

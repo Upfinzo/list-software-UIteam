@@ -48,7 +48,7 @@ const solutionData = [
 const graphBars = [
   18, 42, 27, 62, 14, 48, 34, 72, 20, 54, 31, 67, 16, 46, 29, 60, 22, 50,
   35, 64, 18, 43, 28, 57,
-];
+].map((height, id) => ({ id, height }));
 
 export default function SolutionsSection() {
   const [activeIndex, setActiveIndex] = useState(4);
@@ -294,7 +294,7 @@ export default function SolutionsSection() {
             {/* =========================================
                 ACTIVE CONTENT
             ========================================= */}
-            <div key={activeIndex}>
+            <div key={activeSolution.title}>
               <h3
                 className="
                   sol-slide-in-title
@@ -375,12 +375,12 @@ export default function SolutionsSection() {
               "
               aria-hidden="true"
             >
-              {graphBars.map((height, index) => {
-                const isHighlighted = index % 4 === 0;
+              {graphBars.map((bar) => {
+                const isHighlighted = bar.id % 4 === 0;
 
                 return (
                   <span
-                    key={index}
+                    key={bar.id}
                     className={`
                       block
                       w-[5px]
@@ -399,8 +399,8 @@ export default function SolutionsSection() {
                       }
                     `}
                     style={{
-                      height: `${Math.min(height, 72)}px`,
-                      transitionDelay: `${index * 12}ms`,
+                      height: `${Math.min(bar.height, 72)}px`,
+                      transitionDelay: `${bar.id * 12}ms`,
                     }}
                   />
                 );
