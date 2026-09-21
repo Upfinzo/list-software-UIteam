@@ -19,11 +19,11 @@ export default function BankingFoundation() {
                         <span className="block">modernising operations, LIST Software brings the technology together around a proven banking foundation</span>
                     </p>
                     <div>
-                        <Button href="/contact" variant="primary" className="hidden sm:inline-flex mt-7">
+                        <Button href="/" className="hidden sm:inline-flex mt-7">
                             Request a Demo <ArrowRight height={15} />
                         </Button>
 
-                        <Button href="/contact" variant="secondary">
+                        <Button href="/" variant="secondary">
                             Talk to Specialist <ArrowRight height={15} />
                         </Button>
 

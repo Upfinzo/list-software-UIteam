@@ -5,7 +5,7 @@ import { getProductBySlug, products } from "@/data/products";
 import { ProductComponent } from "@/components/products/ProductComponent";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  readonly params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: product.seo.description,
   };
 }
+
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;

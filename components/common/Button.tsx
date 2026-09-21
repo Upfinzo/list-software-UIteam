@@ -28,7 +28,7 @@ export default function Button({
   onClick,
   disabled,
   className = "",
-}: ButtonProps) {
+}: Readonly<ButtonProps>) {
   const classes = `${baseClass} ${variantClass[variant]} ${className}`.trim();
 
   if (href) {

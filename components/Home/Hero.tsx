@@ -31,7 +31,7 @@ export default function Hero() {
             </ul> */}
 
             <h1 className="banner-title mt-5 font-bold leading-[1.1] tracking-tight text-ink sm:mt-6">
-              Built for Core Banking.
+              Built for Core Banking.{" "}
               <span className="brand-gradient-text mt-4 block sm:mt-8">
                 Connected to Modern Finance
               </span>
@@ -45,12 +45,12 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
-              <Button href="/contact" variant="primary">
+              <Button href="/" variant="primary">
                 Get Started
                 <ArrowIcon />
               </Button>
 
-              <Button href="/services" variant="secondary">
+              <Button href="/" variant="secondary">
                 Explore the Platform
                 <ArrowIcon />
               </Button>
