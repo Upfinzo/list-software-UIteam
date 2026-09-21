@@ -157,19 +157,21 @@ if (ringPath) {
     Math.atan2(+m[1] - HUB.x, -(+m[2] - HUB.y))
   );
   const dash = r * (Math.max(...angles) - Math.min(...angles));
-  cuts.push([
-    ringPath.index,
-    ringPath.index + ringPath[0].length,
-    `<circle cx="${HUB.x}" cy="${HUB.y}" r="${round(r)}" fill="none" stroke="#5EAFE6" ` +
+  cuts.push({
+    start: ringPath.index,
+    end: ringPath.index + ringPath[0].length,
+    replacement:
+      `<circle cx="${HUB.x}" cy="${HUB.y}" r="${round(r)}" fill="none" stroke="#5EAFE6" ` +
       `stroke-opacity="0.4" stroke-width="${round(band)}" ` +
       `stroke-dasharray="${round(dash)} ${round(period - dash)}"/>`,
-  ]);
-  if (mask) cuts.push([mask.index, mask.index + mask[0].length]);
+  });
+  if (mask) cuts.push({ start: mask.index, end: mask.index + mask[0].length, replacement: "" });
 }
 
-cuts.sort((p, q) => q[0] - p[0]);
-for (const [a, b, replacement] of cuts) {
-  backdrop = backdrop.slice(0, a) + (replacement ?? "") + backdrop.slice(b);
+// Splice from the end so earlier offsets stay valid.
+cuts.sort((p, q) => q.start - p.start);
+for (const { start, end, replacement } of cuts) {
+  backdrop = backdrop.slice(0, start) + replacement + backdrop.slice(end);
 }
 
 // Drop the card's baked-in shadow. It decodes to exactly
@@ -185,7 +187,9 @@ if (backdrop.includes(`filter0_d_${suffix}`)) {
 
 // Recompress the card texture. It renders at opacity 0.3, so it can be small.
 // The width/height attributes stay 800x1422 so the pattern transform still works.
-const raw = Buffer.from(backdrop.match(/base64,([A-Za-z0-9+/=]+)/)[1], "base64");
+const texture = /base64,([A-Za-z0-9+/=]+)/.exec(backdrop)?.[1];
+if (!texture) throw new Error("cannot find the embedded card texture - is this the card export?");
+const raw = Buffer.from(texture, "base64");
 const small = await sharp(raw)
   .resize({ width: TEXTURE.width })
   .jpeg({ quality: TEXTURE.quality, mozjpeg: true })
