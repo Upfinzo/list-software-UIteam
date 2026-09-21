@@ -21,11 +21,22 @@ const features: string[] = [
     'Long-Term Partnerships',
     'Continuous Evolution',
 ];
+const getStatClassName = (index: number, total: number) => {
+    if (index === 0) {
+        return 'pt-0 sm:pr-8 lg:pr-10';
+    }
 
+    if (index === total - 1) {
+        return 'pb-0 sm:pl-8 lg:pl-10';
+    }
+
+    return 'sm:px-8 lg:px-10';
+};
 function Counter({ value, suffix }: { value: number; suffix: string }) {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
+
 
     useEffect(() => {
         if (isInView) {
@@ -94,18 +105,19 @@ export default function ProvenFoundationSection() {
                                 <div
                                     key={index}
                                     // Targeted padding ensures proper spacing and removes excess bottom padding from the last item
-                                    className={`flex flex-col justify-center py-8 sm:py-0 ${
-                                        index === 0
-                                            ? 'pt-0 sm:pr-8 lg:pr-10'
-                                            : index === stats.length - 1
-                                                ? 'pb-0 sm:pl-8 lg:pl-10'
-                                                : 'sm:px-8 lg:px-10'
-                                    }`}
+                                    className={`flex flex-col justify-center py-8 sm:py-0 ${getStatClassName(
+                                        index,
+                                        stats.length,
+                                    )}`}
                                 >
                                     <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
-                                        <Counter value={stat.numericValue} suffix={stat.suffix} />
+                                        <Counter
+                                            value={stat.numericValue}
+                                            suffix={stat.suffix}
+                                        />
                                     </div>
-                                    <div className="mt-2 text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183] whitespace-pre-line">
+
+                                    <div className="mt-2 whitespace-pre-line text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183]">
                                         {stat.label}
                                     </div>
                                 </div>
