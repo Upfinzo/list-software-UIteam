@@ -49,9 +49,9 @@ const CARD_RADIUS = "5.4654% / 6.0728%"; // 34 / 622.094 and 34 / 559.875
 const CARD_SHADOW = "0px 40px 90px -40px rgba(3, 38, 131, 0.75)";
 export default function HeroEcosystem({
   className = "",
-}: {
+}: Readonly<{
   className?: string;
-}) {
+}>) {
   return (
     <div
       className={`relative ${className}`}
