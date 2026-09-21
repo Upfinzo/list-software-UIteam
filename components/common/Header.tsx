@@ -309,7 +309,7 @@ const Header = () => {
 
                     {item.megaMenu && isExpanded && (
                       <div className="pb-4 pl-2">
-                        <div className="flex flex-col gap-2.5">
+                        <div className="flex flex-col gap-5">
                           {item.megaMenu.items.map((subItem) => (
                             <Link
                               key={subItem.href}
