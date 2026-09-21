@@ -101,7 +101,7 @@ export default function CapabilitiesSection({
   autoRotate = false,
   autoRotateInterval = 4000,
   className = "",
-}: CapabilitiesSectionProps) {
+}: Readonly<CapabilitiesSectionProps>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState<{
@@ -170,7 +170,7 @@ export default function CapabilitiesSection({
 
   // Keyboard navigation for accessible tablist
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-    let nextIndex = index;
+    let nextIndex: number;
     if (e.key === "ArrowRight") {
       nextIndex = (index + 1) % tabs.length;
     } else if (e.key === "ArrowLeft") {

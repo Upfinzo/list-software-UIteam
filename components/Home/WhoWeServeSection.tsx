@@ -8,13 +8,18 @@ import { audienceCategories, audiences } from "@/data/audiences";
 
 /** Wheel order, so the highlight walks round the ring rather than jumping. */
 const RING_ORDER = [...audiences].sort(
-  (a, b) => a.ringPosition - b.ringPosition
+  (a, b) => a.ringPosition - b.ringPosition,
 );
 
 /** Opens on the wedge left of twelve o'clock, as the export shows it. */
 const DEFAULT_ID = RING_ORDER[0].id;
 
 const CYCLE_MS = 3600;
+
+const getNextAudienceId = (currentId: string) => {
+  const index = RING_ORDER.findIndex((item) => item.id === currentId);
+  return RING_ORDER[(index + 1) % RING_ORDER.length].id;
+};
 
 export default function WhoWeServeSection() {
   const [activeId, setActiveId] = useState(DEFAULT_ID);
@@ -27,10 +32,7 @@ export default function WhoWeServeSection() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setInterval(() => {
-      setActiveId((current) => {
-        const index = RING_ORDER.findIndex((item) => item.id === current);
-        return RING_ORDER[(index + 1) % RING_ORDER.length].id;
-      });
+      setActiveId((current) => getNextAudienceId(current));
     }, CYCLE_MS);
 
     return () => window.clearInterval(timer);
@@ -106,7 +108,10 @@ export default function WhoWeServeSection() {
                 const isActive = item.id === activeId;
 
                 return (
-                  <li key={item.id} className="border-r border-b border-[#E4EAF2]">
+                  <li
+                    key={item.id}
+                    className="border-r border-b border-[#E4EAF2]"
+                  >
                     <button
                       type="button"
                       onMouseEnter={() => setActiveId(item.id)}

@@ -72,10 +72,10 @@ function wedgePath(from: number, to: number, outer: number, inner: number) {
 }
 
 interface AudienceRingProps {
-  items: Audience[];
-  activeId: string;
-  onActivate: (id: string) => void;
-  className?: string;
+  readonly items: Audience[];
+  readonly activeId: string;
+  readonly onActivate: (id: string) => void;
+  readonly className?: string;
 }
 
 export default function AudienceRing({
