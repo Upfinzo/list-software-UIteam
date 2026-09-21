@@ -157,7 +157,14 @@ export default function CoreBankingPortfolio() {
                             return (
                                 <div
                                     key={card.id}
+                                    tabIndex={0}
                                     onClick={() => setSelectedCard(card.id)}
+                                    onKeyDown={(event) => {
+                                        if (event.key === 'Enter' || event.key === ' ') {
+                                            event.preventDefault();
+                                            setSelectedCard(card.id);
+                                        }
+                                    }}
                                     className={`bg-white rounded-[20px] p-5 cursor-pointer transition-all duration-300 border flex flex-col justify-between shadow-sm relative group overflow-hidden transform hover:-translate-y-1 hover:shadow-md ${isSelected
                                         ? 'border-[#56B0E6] ring-2 ring-[#56B0E6]/20'
                                         : 'border-[#DCE4EC] hover:border-[#56B0E6]/60'

@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
 import controlImage from "@/assets/images/control.svg";
 import digitalImage from "@/assets/images/Digital.svg";
@@ -279,10 +279,10 @@ export default function ProductStack() {
           ========================================= */}
           {capabilities.map((capability, index) => {
             return (
-              <article
+              <button
                 key={capability.number}
-                tabIndex={0}
-                role="button"
+                type="button"
+                aria-pressed={activeCapability === index}
                 onMouseEnter={() => setActiveCapability(index)}
                 onMouseLeave={() => setActiveCapability(-1)}
                 onClick={() => setActiveCapability(index)}
@@ -322,6 +322,9 @@ export default function ProductStack() {
                   focus-visible:!text-white
                   group-hover:bg-[linear-gradient(100deg,rgba(33,104,208,0.58),rgba(31,65,144,0.46))]
                   group-hover:shadow-[0_0_24px_rgba(40,129,255,0.18)]
+                  text-left
+                  font-[inherit]
+                  appearance-none
                   ${
                     activeCapability === index
                       ? "border-[#4f8cdb] bg-[#0d3a87] text-white shadow-[0_0_24px_rgba(40,129,255,0.18)]"
@@ -385,9 +388,9 @@ export default function ProductStack() {
                 {/* =========================================
                     CARD CONTENT
                 ========================================= */}
-                <div className="min-w-0 flex-1">
+                <span className="min-w-0 flex-1">
                   {/* Number + Title */}
-                  <div className="flex items-baseline gap-[9px]">
+                  <span className="flex items-baseline gap-[9px]">
                     <span
                       className={`
                         text-[8px]
@@ -405,7 +408,7 @@ export default function ProductStack() {
                       {capability.number}
                     </span>
 
-                    <h3
+                    <span
                       className="
                         m-0
                         text-[17px]
@@ -417,11 +420,11 @@ export default function ProductStack() {
                       "
                     >
                       {capability.title}
-                    </h3>
-                  </div>
+                    </span>
+                  </span>
 
                   {/* Card Description */}
-                  <p
+                  <span
                     className={`
                       m-0
                       mt-[10px]
@@ -444,9 +447,9 @@ export default function ProductStack() {
                     `}
                   >
                     {capability.text}
-                  </p>
-                </div>
-              </article>
+                  </span>
+                </span>
+              </button>
             );
           })}
         </div>
