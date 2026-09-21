@@ -38,13 +38,14 @@ const capabilities = [
 ];
 
 const productTags = [
-  "Deposits",
-  "Accounting",
-  "Remittances",
-  "Loans",
-  "Clearing",
-  "Branch operations",
-  "NPA management",
+  "DEPOSITS",
+  "LOANS",
+  "ACCOUNTING",
+  "BRANCH OPERATIONS",
+  "AML",
+  "CKYC",
+  "AUDIT", 
+  "CREDIT APPRAISAL",
 ];
 
 export default function ProductStack() {
@@ -111,7 +112,7 @@ export default function ProductStack() {
             md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]
             md:gap-4
 
-            min-[1200px]:grid-cols-[430px_minmax(0,1fr)]
+            min-[1200px]:grid-cols-[480px_minmax(0,1fr)]
             min-[1200px]:gap-10
           "
         >
@@ -122,12 +123,12 @@ export default function ProductStack() {
           className="
             mx-auto
             w-full
-            md:max-w-[430px]
+            md:max-w-[480px]
             md:mx-0
 
             min-[1200px]:mx-0
-            min-[1200px]:w-[430px]
-            min-[1200px]:max-w-[430px]
+            min-[1200px]:w-[480px]
+            min-[1200px]:max-w-[480px]
           "
         >
           {/* Small Label */}
