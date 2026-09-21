@@ -22,7 +22,7 @@ const features: string[] = [
     'Continuous Evolution',
 ];
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
+function Counter({ value, suffix }: Readonly<{ value: number; suffix: string }>) {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
@@ -92,7 +92,7 @@ export default function ProvenFoundationSection() {
                         >
                             {stats.map((stat, index) => (
                                 <div
-                                    key={index}
+                                    key={stat.label}
                                     // Targeted padding ensures proper spacing and removes excess bottom padding from the last item
                                     className={`flex flex-col justify-center py-8 sm:py-0 ${
                                         index === 0
@@ -125,8 +125,8 @@ export default function ProvenFoundationSection() {
 
                         {/* CHANGED: Adjusted to grid on mobile so it splits neatly into 2 columns if space allows, matching the image */}
                         <ul className="grid grid-cols-1 min-[450px]:grid-cols-2 md:flex md:flex-wrap md:items-center justify-start gap-y-4 gap-x-12">
-                            {features.map((feature, index) => (
-                                <li key={index} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
+                            {features.map((feature) => (
+                                <li key={feature} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] shrink-0" />
                                     <span>{feature}</span>
                                 </li>
