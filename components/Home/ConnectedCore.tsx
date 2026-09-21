@@ -63,10 +63,10 @@ const tabs: CoreTab[] = [
         description: 'Mobile banking, internet banking, WhatsApp banking, e-passbook and customer communication.',
         icon: (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
-<path d="M12.0004 5.33317V3.99984C12.0004 3.64622 11.8599 3.30708 11.6099 3.05703C11.3598 2.80698 11.0207 2.6665 10.667 2.6665H2.66704C2.31342 2.6665 1.97428 2.80698 1.72423 3.05703C1.47419 3.30708 1.33371 3.64622 1.33371 3.99984V8.6665C1.33371 9.02013 1.47419 9.35926 1.72423 9.60931C1.97428 9.85936 2.31342 9.99984 2.66704 9.99984H8.00038" stroke="#111E89" stroke-width="0.991667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.66629 12.6669V10.0269V12.1269" stroke="#111E89" stroke-width="0.991667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.66629 12.6665H7.99962" stroke="#111E89" stroke-width="0.991667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13.333 8H11.9996C11.2632 8 10.6663 8.59695 10.6663 9.33333V13.3333C10.6663 14.0697 11.2632 14.6667 11.9996 14.6667H13.333C14.0693 14.6667 14.6663 14.0697 14.6663 13.3333V9.33333C14.6663 8.59695 14.0693 8 13.333 8Z" stroke="#111E89" stroke-width="0.991667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.0004 5.33317V3.99984C12.0004 3.64622 11.8599 3.30708 11.6099 3.05703C11.3598 2.80698 11.0207 2.6665 10.667 2.6665H2.66704C2.31342 2.6665 1.97428 2.80698 1.72423 3.05703C1.47419 3.30708 1.33371 3.64622 1.33371 3.99984V8.6665C1.33371 9.02013 1.47419 9.35926 1.72423 9.60931C1.97428 9.85936 2.31342 9.99984 2.66704 9.99984H8.00038" stroke="#111E89" strokeWidth="0.991667" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M6.66629 12.6669V10.0269V12.1269" stroke="#111E89" strokeWidth="0.991667" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M4.66629 12.6665H7.99962" stroke="#111E89" strokeWidth="0.991667" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M13.333 8H11.9996C11.2632 8 10.6663 8.59695 10.6663 9.33333V13.3333C10.6663 14.0697 11.2632 14.6667 11.9996 14.6667H13.333C14.0693 14.6667 14.6663 14.0697 14.6663 13.3333V9.33333C14.6663 8.59695 14.0693 8 13.333 8Z" stroke="#111E89" strokeWidth="0.991667" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
             
