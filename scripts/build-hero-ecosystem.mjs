@@ -128,7 +128,7 @@ for (const n of nodes) {
 // ---------------------------------------------------------- build the backdrop
 // Figma renumbers every node on each export, so find the suffix rather than
 // hard-coding it.
-const suffix = src.match(/<filter id="filter0_d_(\d+_\d+)"/)?.[1];
+const suffix = /<filter id="filter0_d_(\d+_\d+)"/.exec(src)?.[1];
 if (!suffix) throw new Error("cannot find the card shadow filter - is this the card export?");
 
 let backdrop = src;
@@ -137,12 +137,15 @@ const cuts = [];
 // The dotted ring ships as one path per dot (312 of them, ~53KB). A dashed
 // circle draws the same band: r and the dash period are measured off the path
 // so the replacement lands on the same pixels.
-const ringPath = backdrop.match(/<path d="[^"]{20000,}"[^>]*mask="url\(#(path-\d+-inside-\d+_[\d_]+)\)"\/>/);
+const ringPath = /<path d="[^"]{20000,}"[^>]*mask="url\(#(path-\d+-inside-\d+_[\d_]+)\)"\/>/.exec(backdrop);
 if (ringPath) {
-  const maskRe = new RegExp(`<mask id="${ringPath[1]}"[\\s\\S]*?<\\/mask>`);
-  const mask = backdrop.match(maskRe);
+  const maskRe = new RegExp(String.raw`<mask id="${ringPath[1]}"[\s\S]*?</mask>`);
+  const mask = maskRe.exec(backdrop);
   const dots = (ringPath[0].match(/M/g) ?? []).length;
-  const rs = [...ringPath[0].matchAll(/(-?\d*\.?\d+) (-?\d*\.?\d+)/g)].map((m) =>
+  // A coordinate pair. Each branch of the number commits on its first
+  // character, so scanning the 20KB+ of path data stays linear.
+  const PAIR = /(-?(?:\d+(?:\.\d+)?|\.\d+)) (-?(?:\d+(?:\.\d+)?|\.\d+))/g;
+  const rs = [...ringPath[0].matchAll(PAIR)].map((m) =>
     Math.hypot(+m[1] - HUB.x, +m[2] - HUB.y)
   );
   const r = (Math.min(...rs) + Math.max(...rs)) / 2;
@@ -150,7 +153,7 @@ if (ringPath) {
   const period = (2 * Math.PI * r) / dots;
 
   // One dot's angular span sets the dash; the rest of the period is the gap.
-  const angles = [...ringPath[0].split("M")[1].matchAll(/(-?\d*\.?\d+) (-?\d*\.?\d+)/g)].map((m) =>
+  const angles = [...ringPath[0].split("M")[1].matchAll(PAIR)].map((m) =>
     Math.atan2(+m[1] - HUB.x, -(+m[2] - HUB.y))
   );
   const dash = r * (Math.max(...angles) - Math.min(...angles));
@@ -174,7 +177,7 @@ for (const [a, b, replacement] of cuts) {
 // the artwork (so it thins out on narrow viewports) and is boxed in by the
 // viewBox. The component re-applies it as a CSS box-shadow instead.
 backdrop = backdrop.replace(`<g filter="url(#filter0_d_${suffix})">`, "<g>");
-const cardShadow = backdrop.match(new RegExp(`<filter id="filter0_d_${suffix}"[\\s\\S]*?<\\/filter>`));
+const cardShadow = new RegExp(String.raw`<filter id="filter0_d_${suffix}"[\s\S]*?</filter>`).exec(backdrop);
 if (cardShadow) backdrop = backdrop.replace(cardShadow[0], "");
 if (backdrop.includes(`filter0_d_${suffix}`)) {
   throw new Error("card shadow filter is still referenced");
