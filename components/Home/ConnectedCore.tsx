@@ -98,12 +98,12 @@ export default function ConnectedCore() {
     const [activeTab, setActiveTab] = useState<number>(0);
 
     const nodePositions = [
-        { top: '2%', left: '50%', transform: 'translate(-50%, -50%)' },
-        { top: '24%', left: '85%', transform: 'translate(-50%, -50%)' },
-        { top: '76%', left: '85%', transform: 'translate(-50%, -50%)' },
-        { top: '98%', left: '50%', transform: 'translate(-50%, -50%)' },
-        { top: '76%', left: '15%', transform: 'translate(-50%, -50%)' },
-        { top: '24%', left: '15%', transform: 'translate(-50%, -50%)' },
+        { id: 'top', top: '2%', left: '50%', transform: 'translate(-50%, -50%)' },
+        { id: 'top-right', top: '24%', left: '85%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom-right', top: '76%', left: '85%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom', top: '98%', left: '50%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom-left', top: '76%', left: '15%', transform: 'translate(-50%, -50%)' },
+        { id: 'top-left', top: '24%', left: '15%', transform: 'translate(-50%, -50%)' },
     ];
 
     return (
