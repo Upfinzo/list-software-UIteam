@@ -46,31 +46,9 @@ const solutionData = [
 ];
 
 const graphBars = [
-  { id: 'bar-1', height: 18 },
-  { id: 'bar-2', height: 42 },
-  { id: 'bar-3', height: 27 },
-  { id: 'bar-4', height: 62 },
-  { id: 'bar-5', height: 14 },
-  { id: 'bar-6', height: 48 },
-  { id: 'bar-7', height: 34 },
-  { id: 'bar-8', height: 72 },
-  { id: 'bar-9', height: 20 },
-  { id: 'bar-10', height: 54 },
-  { id: 'bar-11', height: 31 },
-  { id: 'bar-12', height: 67 },
-  { id: 'bar-13', height: 16 },
-  { id: 'bar-14', height: 46 },
-  { id: 'bar-15', height: 29 },
-  { id: 'bar-16', height: 60 },
-  { id: 'bar-17', height: 22 },
-  { id: 'bar-18', height: 50 },
-  { id: 'bar-19', height: 35 },
-  { id: 'bar-20', height: 64 },
-  { id: 'bar-21', height: 18 },
-  { id: 'bar-22', height: 43 },
-  { id: 'bar-23', height: 28 },
-  { id: 'bar-24', height: 57 },
-];
+  18, 42, 27, 62, 14, 48, 34, 72, 20, 54, 31, 67, 16, 46, 29, 60, 22, 50,
+  35, 64, 18, 43, 28, 57,
+].map((height, id) => ({ id, height }));
 
 export default function SolutionsSection() {
   const [activeIndex, setActiveIndex] = useState(4);
@@ -316,7 +294,7 @@ export default function SolutionsSection() {
             {/* =========================================
                 ACTIVE CONTENT
             ========================================= */}
-            <div key={activeIndex}>
+            <div key={activeSolution.title}>
               <h3
                 className="
                   sol-slide-in-title
@@ -397,8 +375,8 @@ export default function SolutionsSection() {
               "
               aria-hidden="true"
             >
-              {graphBars.map((bar, index) => {
-                const isHighlighted = index % 4 === 0;
+              {graphBars.map((bar) => {
+                const isHighlighted = bar.id % 4 === 0;
 
                 return (
                   <span
@@ -422,7 +400,7 @@ export default function SolutionsSection() {
                     `}
                     style={{
                       height: `${Math.min(bar.height, 72)}px`,
-                      transitionDelay: `${index * 12}ms`,
+                      transitionDelay: `${bar.id * 12}ms`,
                     }}
                   />
                 );
