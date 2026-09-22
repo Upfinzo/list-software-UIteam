@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import {useState } from "react";
 import backgroundImage from "@/assets/images/backgound-page.jpg";
 import controlImage from "@/assets/images/control.svg";
 import digitalImage from "@/assets/images/Digital.svg";

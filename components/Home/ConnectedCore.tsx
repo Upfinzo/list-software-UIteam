@@ -89,12 +89,12 @@ export default function ConnectedCore() {
     const [activeTab, setActiveTab] = useState<number>(0);
 
     const nodePositions = [
-        { top: '2%', left: '50%', transform: 'translate(-50%, -50%)' },
-        { top: '24%', left: '85%', transform: 'translate(-50%, -50%)' },
-        { top: '76%', left: '85%', transform: 'translate(-50%, -50%)' },
-        { top: '98%', left: '50%', transform: 'translate(-50%, -50%)' },
-        { top: '76%', left: '15%', transform: 'translate(-50%, -50%)' },
-        { top: '24%', left: '15%', transform: 'translate(-50%, -50%)' },
+        { id: 'top', top: '2%', left: '50%', transform: 'translate(-50%, -50%)' },
+        { id: 'top-right', top: '24%', left: '85%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom-right', top: '76%', left: '85%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom', top: '98%', left: '50%', transform: 'translate(-50%, -50%)' },
+        { id: 'bottom-left', top: '76%', left: '15%', transform: 'translate(-50%, -50%)' },
+        { id: 'top-left', top: '24%', left: '15%', transform: 'translate(-50%, -50%)' },
     ];
 
     return (
@@ -224,20 +224,24 @@ export default function ConnectedCore() {
                             </svg>
 
                             <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                                {nodePositions.map((_, index) => {
-                                    const allCoords = [
-                                        { x1: '50%', y1: '10%', x2: '50%', y2: '50%' }, // Top
-                                        { x1: '80%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Right
-                                        { x1: '80%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Right
-                                        { x1: '50%', y1: '90%', x2: '50%', y2: '50%' }, // Bottom
-                                        { x1: '20%', y1: '72%', x2: '50%', y2: '50%' }, // Bottom-Left
-                                        { x1: '20%', y1: '28%', x2: '50%', y2: '50%' }, // Top-Left
-                                    ];
-                                    const line = allCoords[index];
-                                    return (
-                                        <line key={index} x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="#DCE4EC" strokeWidth="1" />
-                                    );
-                                })}
+                                {[
+                                    { id: 'top', x1: '50%', y1: '10%', x2: '50%', y2: '50%' },
+                                    { id: 'top-right', x1: '80%', y1: '28%', x2: '50%', y2: '50%' },
+                                    { id: 'bottom-right', x1: '80%', y1: '72%', x2: '50%', y2: '50%' },
+                                    { id: 'bottom', x1: '50%', y1: '90%', x2: '50%', y2: '50%' },
+                                    { id: 'bottom-left', x1: '20%', y1: '72%', x2: '50%', y2: '50%' },
+                                    { id: 'top-left', x1: '20%', y1: '28%', x2: '50%', y2: '50%' },
+                                ].map((line) => (
+                                    <line
+                                        key={line.id}
+                                        x1={line.x1}
+                                        y1={line.y1}
+                                        x2={line.x2}
+                                        y2={line.y2}
+                                        stroke="#DCE4EC"
+                                        strokeWidth="1"
+                                    />
+                                ))}
                             </svg>
 
                             {/* Center Core Box Content */}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
@@ -11,6 +11,43 @@ import { Images } from "@/assets/images/images";
 
 // Add a route here when it should become navigable.
 const enabledNavigationLinks = new Set(["/"]);
+
+const isNavigationEnabled = (href: string) => enabledNavigationLinks.has(href);
+
+const getNavigationLinkHandler =
+  (href: string, onSelect?: () => void) => (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!isNavigationEnabled(href)) {
+      event.preventDefault();
+    }
+
+    onSelect?.();
+  };
+
+const getFeaturedMenuContent = (
+  displayedMenu: (typeof navigation)[number] | null,
+  hoveredProductIndex: number | null,
+) => {
+  if (!displayedMenu?.megaMenu) {
+    return null;
+  }
+
+  const activeItem =
+    hoveredProductIndex !== null ? displayedMenu.megaMenu.items[hoveredProductIndex] : null;
+  const image = activeItem?.image ?? displayedMenu.megaMenu.image;
+  const title = activeItem?.label ?? displayedMenu.megaMenu.image?.title ?? "Products";
+  const description =
+    activeItem?.desc ??
+    displayedMenu.megaMenu.image?.description ??
+    "Explore integrated digital banking products built for modern institutions.";
+
+  return {
+    image,
+    title,
+    description,
+    ctaLabel: displayedMenu.megaMenu.image?.ctaLabel,
+    ctaHref: displayedMenu.megaMenu.image?.ctaHref,
+  };
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,8 +76,8 @@ const Header = () => {
     closeTimeout.current = setTimeout(() => setHoveredIndex(null), 120);
   };
 
-  const activeMenu = hoveredIndex !== null ? navigation[hoveredIndex] : null;
   const displayedMenu = displayedIndex !== null ? navigation[displayedIndex] : null;
+  const featuredMenuContent = getFeaturedMenuContent(displayedMenu, hoveredProductIndex);
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -170,16 +207,8 @@ const Header = () => {
                   <div className="flex h-full flex-col overflow-hidden rounded-[28px] border border-white/50 bg-white/40 shadow-[0_18px_45px_rgba(38,71,120,0.12)] backdrop-blur-sm">
                     <div className="overflow-hidden rounded-t-[28px]">
                       <img
-                        src={
-                          hoveredProductIndex !== null && displayedMenu.megaMenu.items[hoveredProductIndex]?.image?.src
-                            ? displayedMenu.megaMenu.items[hoveredProductIndex].image.src
-                            : displayedMenu.megaMenu.image.src
-                        }
-                        alt={
-                          hoveredProductIndex !== null && displayedMenu.megaMenu.items[hoveredProductIndex]?.image?.alt
-                            ? displayedMenu.megaMenu.items[hoveredProductIndex].image.alt
-                            : displayedMenu.megaMenu.image.alt
-                        }
+                        src={featuredMenuContent?.image?.src ?? displayedMenu.megaMenu.image.src}
+                        alt={featuredMenuContent?.image?.alt ?? displayedMenu.megaMenu.image.alt}
                         className="h-[200px] w-full object-cover"
                       />
                     </div>
@@ -191,24 +220,16 @@ const Header = () => {
                           : "Featured solution"}
                       </p>
 
-                      <h3 className="mt-2 text-lg font-semibold text-gray-900">
-                        {hoveredProductIndex !== null && displayedMenu.megaMenu.items[hoveredProductIndex]
-                          ? displayedMenu.megaMenu.items[hoveredProductIndex].label
-                          : displayedMenu.megaMenu.image.title || "Products"}
-                      </h3>
+                      <h3 className="mt-2 text-lg font-semibold text-gray-900">{featuredMenuContent?.title}</h3>
 
-                      <p className="mt-2 text-sm leading-6 text-gray-600">
-                        {hoveredProductIndex !== null && displayedMenu.megaMenu.items[hoveredProductIndex]?.desc
-                          ? displayedMenu.megaMenu.items[hoveredProductIndex].desc
-                          : displayedMenu.megaMenu.image.description || "Explore integrated digital banking products built for modern institutions."}
-                      </p>
+                      <p className="mt-2 text-sm leading-6 text-gray-600">{featuredMenuContent?.description}</p>
 
-                      {displayedMenu.megaMenu.image.ctaLabel && displayedMenu.megaMenu.image.ctaHref && (
+                      {featuredMenuContent?.ctaLabel && featuredMenuContent.ctaHref && (
                         <Link
-                          href={displayedMenu.megaMenu.image.ctaHref}
+                          href={featuredMenuContent.ctaHref}
                           className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#DCE2EA] bg-[#F5F9FF] px-4 py-2 text-xs font-semibold text-gray-900 transition-colors hover:border-[#3277D9] hover:bg-[#EEF6FF] hover:text-[#3277D9]"
                         >
-                          {displayedMenu.megaMenu.image.ctaLabel}
+                          {featuredMenuContent.ctaLabel}
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       )}
@@ -232,11 +253,7 @@ const Header = () => {
                       href={item.href}
                       onMouseEnter={() => setHoveredProductIndex(index)}
                       onMouseLeave={() => setHoveredProductIndex(null)}
-                      onClick={(event) => {
-                        if (!enabledNavigationLinks.has(item.href)) {
-                          event.preventDefault();
-                        }
-                      }}
+                      onClick={getNavigationLinkHandler(item.href)}
                       className={`group flex w-full items-start gap-2 rounded-lg p-1.5 text-gray-800 transition-colors hover:bg-[#F2F8FF] hover:text-[#3277D9] ${
                         hoveredProductIndex === index ? "bg-[#F2F8FF]" : ""
                       }`}
@@ -287,13 +304,12 @@ const Header = () => {
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
-                        onClick={(event) => {
-                          if (!enabledNavigationLinks.has(item.href)) {
-                            event.preventDefault();
-                          }
+                        onClick={getNavigationLinkHandler(item.href, () => {
                           setActiveIndex(index);
-                          if (!item.megaMenu) setMobileOpen(false);
-                        }}
+                          if (!item.megaMenu) {
+                            setMobileOpen(false);
+                          }
+                        })}
                         className={`block py-3 text-sm font-medium transition-colors ${
                           activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
                         }`}
@@ -322,12 +338,7 @@ const Header = () => {
                             <Link
                               key={subItem.href}
                               href={subItem.href}
-                              onClick={(event) => {
-                                if (!enabledNavigationLinks.has(subItem.href)) {
-                                  event.preventDefault();
-                                }
-                                setMobileOpen(false);
-                              }}
+                              onClick={getNavigationLinkHandler(subItem.href, () => setMobileOpen(false))}
                               className="flex flex-col gap-0.5 text-gray-700 hover:text-[#3277D9]"
                             >
                               <span className="text-sm font-medium text-gray-900">{subItem.label}</span>
