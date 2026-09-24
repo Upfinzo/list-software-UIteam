@@ -144,7 +144,7 @@ if (ringPath) {
   const dots = (ringPath[0].match(/M/g) ?? []).length;
   // A coordinate pair. Each branch of the number commits on its first
   // character, so scanning the 20KB+ of path data stays linear.
-  const PAIR = /(-?(?:\d+(?:\.\d+)?|\.\d+)) (-?(?:\d+(?:\.\d+)?|\.\d+))/g;
+  const PAIR = /(-?\d+(?:\.\d+)?|-?\.\d+) (-?\d+(?:\.\d+)?|-?\.\d+)/g;
   const rs = [...ringPath[0].matchAll(PAIR)].map((m) =>
     Math.hypot(+m[1] - HUB.x, +m[2] - HUB.y)
   );
