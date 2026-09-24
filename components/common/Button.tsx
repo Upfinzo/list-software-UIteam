@@ -28,12 +28,14 @@ export default function Button({
   onClick,
   disabled,
   className = "",
-}: ButtonProps) {
+}: Readonly<ButtonProps>) {
   const classes = `${baseClass} ${variantClass[variant]} ${className}`.trim();
 
   if (href) {
+    // onClick is forwarded here too, so a link can still run side effects —
+    // closing the mobile menu, for one.
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {children}
       </Link>
     );

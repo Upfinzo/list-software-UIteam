@@ -66,21 +66,6 @@
   }
 }
 
-.tab-indicator-expand {
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: expandLine 300ms ease-out forwards;
-}
-
-@keyframes expandLine {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @keyframes contentFadeIn {
   from {
     opacity: 0;
@@ -90,18 +75,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes borderExpand {
-  0% {
-    transform: scaleX(0);
-    opacity: 0.3;
-  }
-
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
   }
 }
 
@@ -117,16 +90,6 @@
   }
 }
 
-.tab-indicator-expand {
-  animation: borderWidthExpand 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tab-indicator-expand {
-    animation: none;
-  }
-}
-
 :root {
   --primary-color: #032683;
   --secondary-color: #1a5bb8;
@@ -138,7 +101,7 @@
     #1a5bb8 55%,
     #56b0e6 100%
   );
-  --brand-shadow: 0px 10px 26px -12px rgba(3, 38, 131, 0.7);
+  --brand-shadow: 0px 13px 26px -3px rgb(3 38 131 / 84%);
 
   /* Figma gives these as two layers; CSS stacks them in one declaration. */
   --chip-shadow:
@@ -266,7 +229,7 @@ textarea {
 }
 
 header button,
-header nav ul li a{
+header nav ul li a {
   cursor: pointer;
 }
 
@@ -295,20 +258,22 @@ header nav ul li a{
     fill-opacity 0.25s ease;
 }
 
+/* stroke-width is set per icon, in lucide's 24-unit grid, by the component. */
 .hero-node__icon {
   fill: none;
   stroke: #dbeeff;
-  stroke-width: 0.991667;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: stroke 0.25s ease;
 }
 
+/* Matches the export: Sora 500 at 11.5px, tracked -2.5%. */
 .hero-node__label {
   fill: #ffffff;
   font-family: var(--font-sora), sans-serif;
-  font-size: 12.3px;
+  font-size: 11.5px;
   font-weight: 500;
+  letter-spacing: -0.025em;
 }
 
 /* ---- hover: lift the chip, light its wire, colour the icon disc ---- */
@@ -354,4 +319,3 @@ header nav ul li a{
     transform: none;
   }
 }
-

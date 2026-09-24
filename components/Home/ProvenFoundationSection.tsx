@@ -21,11 +21,22 @@ const features: string[] = [
     'Long-Term Partnerships',
     'Continuous Evolution',
 ];
+const getStatClassName = (index: number, total: number) => {
+    if (index === 0) {
+        return 'pt-0 sm:pr-8 lg:pr-10';
+    }
 
+    if (index === total - 1) {
+        return 'pb-0 sm:pl-8 lg:pl-10';
+    }
+
+    return 'sm:px-8 lg:px-10';
+};
 function Counter({ value, suffix }: { value: number; suffix: string }) {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
+
 
     useEffect(() => {
         if (isInView) {
@@ -76,8 +87,8 @@ export default function ProvenFoundationSection() {
                             <span className="font-['Sora'] text-[11px] font-semibold leading-[16.5px] tracking-[2.42px] pb-4 text-[#111E89] uppercase">
                                 Proven in banking. Built to evolve
                             </span>
-                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px]">
-                                A banking technology <br className="hidden sm:block" /> foundation built over decades
+                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px] pt-4">
+                               A banking technology foundation built  over decades with the experience to support what comes next 
                             </h2>
                         </motion.div>
 
@@ -92,20 +103,21 @@ export default function ProvenFoundationSection() {
                         >
                             {stats.map((stat, index) => (
                                 <div
-                                    key={index}
+                                    key={stat.label}
                                     // Targeted padding ensures proper spacing and removes excess bottom padding from the last item
-                                    className={`flex flex-col justify-center py-8 sm:py-0 ${
-                                        index === 0
-                                            ? 'pt-0 sm:pr-8 lg:pr-10'
-                                            : index === stats.length - 1
-                                                ? 'pb-0 sm:pl-8 lg:pl-10'
-                                                : 'sm:px-8 lg:px-10'
-                                    }`}
+                                    className={`flex flex-col justify-center py-8 sm:py-0 ${getStatClassName(
+                                        index,
+                                        stats.length,
+                                    )}`}
                                 >
                                     <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
-                                        <Counter value={stat.numericValue} suffix={stat.suffix} />
+                                        <Counter
+                                            value={stat.numericValue}
+                                            suffix={stat.suffix}
+                                        />
                                     </div>
-                                    <div className="mt-2 text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183] whitespace-pre-line">
+
+                                    <div className="mt-2 whitespace-pre-line text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183]">
                                         {stat.label}
                                     </div>
                                 </div>
@@ -119,14 +131,14 @@ export default function ProvenFoundationSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="mt-10 pt-4"
+                        className=" pt-4"
                     >
                         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#5EAFE6]/50 to-transparent mb-8" />
 
                         {/* CHANGED: Adjusted to grid on mobile so it splits neatly into 2 columns if space allows, matching the image */}
                         <ul className="grid grid-cols-1 min-[450px]:grid-cols-2 md:flex md:flex-wrap md:items-center justify-start gap-y-4 gap-x-12">
-                            {features.map((feature, index) => (
-                                <li key={index} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
+                            {features.map((feature) => (
+                                <li key={feature} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] shrink-0" />
                                     <span>{feature}</span>
                                 </li>

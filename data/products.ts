@@ -8,6 +8,17 @@ export const products = {
     menu: {
       visible: true,
       order: 1,
+      services: [
+        "Custodian Core Banking Solution",
+        "Frictionless Customer On-boarding (FCO)",
+        "Credit Appraisal System",
+        "Loan Document Printing Module",
+        "Loan Recovery Management",
+        "Investment Module",
+        "LIST Report Builder",
+        "Statement on Mail (Account & GST)",
+        "Secure Printing Application (SPA)",
+      ],
       image: { src: "/images/common/menu-image.svg", alt: "Core Banking Solutions" },
     },
     seo: {
@@ -27,6 +38,7 @@ export const products = {
     menu: {
       visible: true,
       order: 2,
+      services: ["Doorstep (Agency) Banking", "Piggy Collection on Mobile"],
       image: { src: "/images/common/menu-image1.svg", alt: "Agency Banking" },
     },
     seo: {
@@ -46,6 +58,7 @@ export const products = {
     menu: {
       visible: true,
       order: 3,
+      services: ["ATM Interface", "SMS Module", "SMS Mitra", "CMS – Customer Management System"],
       image: { src: "/images/common/menu-image.svg", alt: "Banking Operations" },
     },
     seo: {
@@ -64,8 +77,8 @@ export const products = {
     slug: "merchant-qr-payments",
     menu: {
       visible: true,
-      order: 4,
-      services: ["One Stack QR Module", "QR Merchant Application"],
+      order: 7,
+      services: ["OneStack QR Module", "QR Merchant Application"],
       image: { src: Images.common.MerchantQRPayments, alt: "Merchant and QR Payments" },
     },
     seo: {
@@ -84,8 +97,15 @@ export const products = {
     slug: "digital-banking-suite",
     menu: {
       visible: true,
-      order: 5,
-      services: ["Financial Mobile Banking", "Non-Financial Mobile Banking", "Internet Banking"],
+      order: 4,
+      services: [
+        "Mobile Banking – Financial",
+        "Mobile Banking – Non-Financial",
+        "Internet Banking",
+        "WhatsApp Chatbot Interface",
+        "e-Passbook",
+        "Advertisement Platform",
+      ],
       image: { src: "/images/common/menu-image.svg", alt: "Digital Banking Suite" },
     },
     seo: {
@@ -99,11 +119,13 @@ export const products = {
     features: ["Mobile banking journeys", "Internet banking portal", "Customer self-service tools"],
   },
 
+  // Merged into "Digital Banking Suite" per the mapping table — hidden from the menu,
+  // its page still exists at the same slug so nothing links out to a 404.
   conversationalAssistedBanking: {
     name: "Conversational & Assisted Banking",
     slug: "conversational-assisted-banking",
     menu: {
-      visible: true,
+      visible: false,
       order: 6,
       services: ["WhatsApp Chatbot", "SMS Mitra", "e-Passbook"],
       image: { src: "/images/common/menu-image1.svg", alt: "Conversational and Assisted Banking" },
@@ -119,16 +141,25 @@ export const products = {
     features: ["WhatsApp customer journeys", "SMS banking notifications", "Digital passbook access"],
   },
 
+  // Menu label overridden to "Payments" — this entry now represents the whole
+  // Payments row from the mapping table, absorbing Bulk & Recurring Payments,
+  // BANL, ISO 20022, and BBPS into its services list.
   paymentProcessingAutomation: {
     name: "Payment Processing & Automation",
     slug: "payment-processing-automation",
     menu: {
       visible: true,
-      order: 7,
+      order: 5,
+      label: "Payments",
       services: [
         "RTGS Host-to-Host / EFT Manual",
         "RTGS Host-to-Host / EFT Automation",
-        "APS Host-to-Host Automation",
+        "ABPS / DBTL / ECS / H2H NACH Manual",
+        "APS Host-to-Host Automation Tool",
+        "BANL – Beneficiary Account Name Lookup",
+        "Migration to ISO 20022",
+        "PFMS Interface",
+        "BBPS (Bharat Bill Payment System)",
       ],
       image: {
         src: Images.common.paymentprocessingautomationImage,
@@ -136,7 +167,7 @@ export const products = {
       },
     },
     seo: {
-      title: "Payment Processing and Automation | Listsoftware",
+      title: "Payments | Listsoftware",
       description: "Automate payment processing, file exchange, host-to-host connectivity, and core banking integration.",
     },
     hero: {
@@ -146,11 +177,12 @@ export const products = {
     features: ["RTGS and EFT workflows", "Host-to-host file exchange", "Automated payment processing"],
   },
 
+  // Merged into "Payments" — hidden from the menu, page kept.
   bulkRecurringPayments: {
     name: "Bulk & Recurring Payments",
     slug: "bulk-recurring-payments",
     menu: {
-      visible: true,
+      visible: false,
       order: 8,
       services: ["ABPS", "DBTL", "ECS", "H2H NACH", "PFMS Interface"],
       image: { src: "/images/common/menu-image1.svg", alt: "Bulk and Recurring Payments" },
@@ -171,8 +203,8 @@ export const products = {
     slug: "cheque-processing-protection",
     menu: {
       visible: true,
-      order: 9,
-      services: ["CTS Interface", "Positive Pay System"],
+      order: 6,
+      services: ["CTS Interface", "Positive Pay System (PPS)"],
       image: { src: "/images/common/menu-image.svg", alt: "Cheque Processing and Protection" },
     },
     seo: {
@@ -191,7 +223,8 @@ export const products = {
     slug: "integration-apis",
     menu: {
       visible: true,
-      order: 10,
+      order: 9,
+      services: ["Interface to Sarvatra Mobile Application", "Common API Platform"],
       image: { src: Images.common.integrationapis, alt: "Integration and APIs" },
     },
     seo: {
@@ -205,12 +238,13 @@ export const products = {
     features: ["API-led integrations", "Secure data exchange", "Third-party connectivity"],
   },
 
+  // Merged into "Payments" — hidden from the menu, page kept.
   banl: {
     name: "BANL (Beneficiary Account Name Lookup)",
     slug: "banl",
     menu: {
-      visible: true,
-      order: 11,
+      visible: false,
+      order: 10,
       image: { src: "/images/common/menu-image.svg", alt: "Beneficiary Account Name Lookup" },
     },
     seo: {
@@ -224,12 +258,13 @@ export const products = {
     features: ["Beneficiary name lookup", "Pre-payment validation", "Improved payment accuracy"],
   },
 
+  // Merged into "Payments" — hidden from the menu, page kept.
   iso20022: {
     name: "ISO 20022",
     slug: "iso-20022",
     menu: {
-      visible: true,
-      order: 12,
+      visible: false,
+      order: 11,
       image: { src: "/images/common/menu-image1.svg", alt: "ISO 20022" },
     },
     seo: {
@@ -243,12 +278,13 @@ export const products = {
     features: ["ISO 20022 message mapping", "Migration support", "Structured payment data"],
   },
 
+  // Merged into "Payments" — hidden from the menu, page kept.
   bbps: {
     name: "BBPS (Bharat Bill Payment System)",
     slug: "bbps",
     menu: {
-      visible: true,
-      order: 13,
+      visible: false,
+      order: 12,
       image: { src: Images.common.BBPS, alt: "Bharat Bill Payment System" },
     },
     seo: {
@@ -262,12 +298,13 @@ export const products = {
     features: ["BBPS connectivity", "Bill payment workflows", "Transaction status visibility"],
   },
 
+  // Merged into "Compliance" — hidden from the menu, page kept.
   kycAmlCustomerVerification: {
     name: "KYC, AML & Customer Verification",
     slug: "kyc-aml-customer-verification",
     menu: {
-      visible: true,
-      order: 14,
+      visible: false,
+      order: 13,
       services: ["AML", "CKYC", "LVF"],
       image: { src: "/images/common/menu-image1.svg", alt: "KYC AML and Customer Verification" },
     },
@@ -282,17 +319,30 @@ export const products = {
     features: ["KYC processing", "AML screening support", "Customer identity verification"],
   },
 
+  // Menu label overridden to "Compliance" — absorbs KYC/AML & Customer
+  // Verification into its services list, per the mapping table.
   complianceAuditManagement: {
     name: "Compliance & Audit Management",
     slug: "compliance-audit-management",
     menu: {
       visible: true,
-      order: 15,
-      services: ["Niyamitra", "Audit Module"],
+      order: 8,
+      label: "Compliance",
+      services: [
+        "Anti-Money Laundering (AML)",
+        "Central KYC (CKYC)",
+        "LIST Validation Framework (LVF)",
+        "Niyamitra – Compliance & Audit Management Platform",
+        "Audit Module",
+        "2FA using Biometrics",
+        "2FA using QR Code",
+        "CR Rating",
+        "LIF – LIST Interceptor Framework",
+      ],
       image: { src: "/images/common/menu-image.svg", alt: "Compliance and Audit Management" },
     },
     seo: {
-      title: "Compliance and Audit Management | Listsoftware",
+      title: "Compliance | Listsoftware",
       description: "Manage governance, audit observations, corrective actions, and compliance workflows.",
     },
     hero: {

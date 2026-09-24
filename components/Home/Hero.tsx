@@ -9,7 +9,7 @@ const capabilities = [
   "API-First",
   "Compliance",
   "Secure",
-  "Intelligent Automation",
+  "Intelligence",
 ];
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-10 xl:gap-12">
           {/* Copy */}
           <div className="max-w-[620px]">
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {/* <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {focusAreas.map((area) => (
                 <li key={area} className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-ink" />
@@ -28,10 +28,10 @@ export default function Hero() {
                   </span>
                 </li>
               ))}
-            </ul>
+            </ul> */}
 
             <h1 className="banner-title mt-5 font-bold leading-[1.1] tracking-tight text-ink sm:mt-6">
-              Built for Core Banking.
+              Built for Core Banking.{" "}
               <span className="brand-gradient-text mt-4 block sm:mt-8">
                 Connected to Modern Finance
               </span>
@@ -40,17 +40,17 @@ export default function Hero() {
             <p className="running-text mt-8 max-w-lg leading-7 text-ink-muted sm:mt-12">
               LIST Software builds core banking technology for modern financial
               institutions, connecting the core with digital banking, payments,
-              APIs, compliance and intelligent automation through one evolving
-              technology platform.
+              APIs, compliance and intelligent automation through a single evolving
+              technology platform
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
-              <Button href="/contact" variant="primary">
+              <Button href="/" variant="primary">
                 Get Started
                 <ArrowIcon />
               </Button>
 
-              <Button href="/services" variant="secondary">
+              <Button href="/" variant="secondary">
                 Explore the Platform
                 <ArrowIcon />
               </Button>

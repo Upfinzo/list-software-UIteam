@@ -5,10 +5,10 @@ import Container from "@/components/common/Container";
 
 const solutions = [
   "Digital Banking",
-  "Payments & Transactions",
-  "Lending & Recovery",
+  "Payments & Transaction ",
+  "Lending & Credit",
   "Compliance & Risk",
-  "Operations",
+  "Banking Operations",
   "Data & Intelligence",
 ];
 
@@ -16,39 +16,39 @@ const solutionData = [
   {
     title: "Digital Banking",
     description:
-      "Deliver seamless digital experiences with secure account access, instant transfers, mobile-first journeys, and smart service layers built for modern banking customers.",
+      "Extend the banking experience beyond the branch with mobile banking, internet banking, WhatsApp banking, e-passbook and digital customer services",
   },
   {
-    title: "Payments & Transactions",
+    title: "Payments & Transaction",
     description:
-      "Modernise payment rails with real-time processing, transaction orchestration, channel connectivity, and smart controls across every payment flow.",
+      "Connect banking operations to payment rails, clearing systems and transaction networks through solutions supporting RTGS, EFT, NACH, CTS, ATM, IMPS and other payment interfaces",
   },
   {
-    title: "Lending & Recovery",
+    title: "Lending & Credit",
     description:
-      "Accelerate lending decisions, streamline collections, and manage recovery workflows with data-driven controls across the loan lifecycle.",
+      "Support the lending lifecycle with credit appraisal, loan processing, documentation, recovery and NPA management capabilities integrated into banking operations",
   },
   {
     title: "Compliance & Risk",
     description:
-      "Strengthen governance and reduce operational risk through automated checks, identity validation, audit controls, and regulatory reporting built into your core.",
+      "Strengthen financial controls through AML, CKYC, identity validation, audit, regulatory reporting and credit-bureau integration",
   },
   {
-    title: "Operations",
+    title: "Banking Operations",
     description:
-      "LIST Software brings together purpose-built solutions across the banking lifecycle. Enabling financial institutions to modernise customer experiences, move money, manage risk, streamline operations, and turn banking data into actionable intelligence.",
+      "Digitise and streamline everyday banking through solutions for branch operations, customer management, investments, recovery and operational workflows",
   },
   {
     title: "Data & Intelligence",
     description:
-      "Turn large volumes of banking data into practical insights with reporting, forecasting, operational intelligence, and decision support across teams.",
+      "Turn banking information into actionable insight through business intelligence, reporting and analytics that support better operational and management decisions",
   },
 ];
 
 const graphBars = [
   18, 42, 27, 62, 14, 48, 34, 72, 20, 54, 31, 67, 16, 46, 29, 60, 22, 50,
   35, 64, 18, 43, 28, 57,
-];
+].map((height, id) => ({ id, height }));
 
 export default function SolutionsSection() {
   const [activeIndex, setActiveIndex] = useState(4);
@@ -207,11 +207,13 @@ export default function SolutionsSection() {
             lg:tracking-[-1.14px]
           "
         >
-          Technology Built Around
+          Solutions Built Around
           <br />
           Banking&apos;s Real-World Needs
         </h2>
-
+<p className="text-[#647183] text-[15px] leading-[1.7] pt-4">
+  LIST Software brings together purpose-built solutions across the banking lifecycle. Enabling financial institutions to modernize customer experiences, move money, manage risk, streamline operations, and turn banking data into actionable intelligence
+</p>
         {/* =========================================
             MAIN CONTENT
         ========================================= */}
@@ -268,7 +270,7 @@ export default function SolutionsSection() {
             {/* =========================================
                 CARD LABEL
             ========================================= */}
-            <p
+            {/* <p
               className="
                 m-0
                 mb-[14px]
@@ -287,12 +289,12 @@ export default function SolutionsSection() {
               "
             >
               Operational Discipline
-            </p>
+            </p> */}
 
             {/* =========================================
                 ACTIVE CONTENT
             ========================================= */}
-            <div key={activeIndex}>
+            <div key={activeSolution.title}>
               <h3
                 className="
                   sol-slide-in-title
@@ -373,12 +375,12 @@ export default function SolutionsSection() {
               "
               aria-hidden="true"
             >
-              {graphBars.map((height, index) => {
-                const isHighlighted = index % 4 === 0;
+              {graphBars.map((bar) => {
+                const isHighlighted = bar.id % 4 === 0;
 
                 return (
                   <span
-                    key={index}
+                    key={bar.id}
                     className={`
                       block
                       w-[5px]
@@ -397,8 +399,8 @@ export default function SolutionsSection() {
                       }
                     `}
                     style={{
-                      height: `${Math.min(height, 72)}px`,
-                      transitionDelay: `${index * 12}ms`,
+                      height: `${Math.min(bar.height, 72)}px`,
+                      transitionDelay: `${bar.id * 12}ms`,
                     }}
                   />
                 );
@@ -434,6 +436,7 @@ export default function SolutionsSection() {
                     flex
                     min-h-[52px]
                     w-full
+                    cursor-pointer
                     items-center
                     justify-between
                     overflow-hidden

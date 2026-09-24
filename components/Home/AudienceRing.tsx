@@ -173,10 +173,10 @@ export default function AudienceRing({
             key={item.id}
             onMouseEnter={() => onActivate(item.id)}
             style={{
-              left: `${(at.x / BOX) * 100}%`,
-              top: `${(at.y / BOX) * 100}%`,
-              width: "4.8%",
-            }}
+                  left: `${((at.x / BOX) * 100).toFixed(4)}%`,
+                  top: `${((at.y / BOX) * 100).toFixed(4)}%`,
+                  width: "4.8%",
+                }}
             className="absolute aspect-square -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
             <Icon

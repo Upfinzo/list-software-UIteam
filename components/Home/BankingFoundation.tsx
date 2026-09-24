@@ -11,20 +11,19 @@ export default function BankingFoundation() {
             <Container className="py-12 sm:py-16 lg:py-20 d-flex justify-center">
                 <div className="flex flex-col justify-center items-center">
                     <img src={Images.home.ctalogo} alt="ctalogo" height={132} width={132} />
-                    <h1 className="section-title leading-none pb-0 mb-0">
-                        Build on a Stronger
+                    <h1 className="text-[49px] font-semibold mb-0 pb-0 mt-2 leading-none text-[#121F37]">
+                        Build on a Stronger <span className="bg-gradient-to-r from-[#072B8F] via-[#1E5CC7] to-[#5CB7EA] bg-clip-text text-transparent">Banking Foundation</span>
                     </h1>
-
-                    <h1 className="section-title brand-gradient-text my-5 leading-none pb-3 mt-2">
-                        Banking Foundation
-                    </h1>
-                    <p className="running-text text-center mb-8 md:mx-60">Whether you are strengthening your core banking environment, expanding digital channels, connecting payment systems, or modernising operations, LIST Software brings the technology together around a proven banking foundation.</p>
-                    <div>
-                        <Button href="/contact" variant="primary" className="hidden sm:inline-flex">
+                    <p className="running-text mx-auto mb-8 mt-7 max-w-[980px] text-center text-black">
+                        Whether you are strengthening your core banking environment, expanding digital channels, connecting payment systems,<br />
+                        <span className="block">modernising operations, LIST Software brings the technology together around a proven banking foundation</span>
+                    </p>
+                    <div className="justify-center text-center">
+                        <Button href="/" variant="primary" className="hidden sm:inline-flex mt-7 h-[51px]">
                             Request a Demo <ArrowRight height={15} />
                         </Button>
 
-                        <Button href="/contact" variant="secondary" className="hidden sm:inline-flex ms-5">
+                        <Button href="/" variant="secondary" className="h-[51px] md:ms-3 mt-3 md:mt-0">
                             Talk to Specialist <ArrowRight height={15} />
                         </Button>
 
