@@ -16,10 +16,66 @@ const DEFAULT_ID = RING_ORDER[0].id;
 
 const CYCLE_MS = 3600;
 
-const getNextAudienceId = (currentId: string) => {
-  const index = RING_ORDER.findIndex((item) => item.id === currentId);
-  return RING_ORDER[(index + 1) % RING_ORDER.length].id;
-};
+interface AudienceCardProps {
+  readonly item: (typeof audiences)[number];
+  readonly isActive: boolean;
+  readonly onSelect: (id: string) => void;
+}
+
+function AudienceCard({ item, isActive, onSelect }: AudienceCardProps) {
+  const Icon = item.icon;
+
+  return (
+    <li key={item.id} className="border-r border-b border-[#E4EAF2]">
+      <button
+        type="button"
+        onMouseEnter={() => onSelect(item.id)}
+        onFocus={() => onSelect(item.id)}
+        onClick={() => onSelect(item.id)}
+        aria-pressed={isActive}
+        className={`h-full w-full cursor-pointer p-5 text-left transition-colors duration-500 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#032683] ${
+          isActive
+            ? "bg-[linear-gradient(160deg,#FFFFFF_8.49%,#E7F1FD_91.51%)]"
+            : "hover:bg-[#F7F9FC]"
+        }`}
+      >
+        <span className="flex items-center gap-3">
+          <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
+            <span
+              className={`absolute inset-0 rounded-lg bg-[linear-gradient(145deg,#032683_6.17%,#56B0E6_93.83%)] transition-opacity duration-500 ease-out ${
+                isActive ? "opacity-100" : "opacity-0"
+              }`}
+            />
+            <Icon
+              className={`relative h-[18px] w-[18px] transition-colors duration-500 ease-out ${
+                isActive ? "text-white" : "text-[#032683]"
+              }`}
+              strokeWidth={1.5}
+            />
+          </span>
+
+          <span className="text-[14px] font-semibold text-[#121F37]">
+            {item.label}
+          </span>
+        </span>
+
+        <span
+          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+            isActive
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <span className="overflow-hidden">
+            <span className="mt-2 block text-[13px] leading-5 text-[#647183]">
+              {item.description}
+            </span>
+          </span>
+        </span>
+      </button>
+    </li>
+  );
+}
 
 export default function WhoWeServeSection() {
   const [activeId, setActiveId] = useState(DEFAULT_ID);
@@ -103,73 +159,14 @@ export default function WhoWeServeSection() {
           */}
           <div className="overflow-hidden rounded-2xl border border-[#E4EAF2] bg-white">
             <ul className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2">
-              {audiences.map((item) => {
-                const Icon = item.icon;
-                const isActive = item.id === activeId;
-
-                return (
-                  <li
-                    key={item.id}
-                    className="border-r border-b border-[#E4EAF2]"
-                  >
-                    <button
-                      type="button"
-                      onMouseEnter={() => setActiveId(item.id)}
-                      onFocus={() => setActiveId(item.id)}
-                      onClick={() => setActiveId(item.id)}
-                      aria-pressed={isActive}
-                      className={`h-full w-full cursor-pointer p-5 text-left transition-colors duration-500 ease-out focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#032683] ${
-                        isActive
-                          ? "bg-[linear-gradient(160deg,#FFFFFF_8.49%,#E7F1FD_91.51%)]"
-                          : "hover:bg-[#F7F9FC]"
-                      }`}
-                    >
-                      <span className="flex items-center gap-3">
-                        <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
-                          {/*
-                            A gradient is a background-image, and those cannot
-                            be transitioned — so it rides its own layer and
-                            cross-fades in step with the rest of the card.
-                          */}
-                          <span
-                            className={`absolute inset-0 rounded-lg bg-[linear-gradient(145deg,#032683_6.17%,#56B0E6_93.83%)] transition-opacity duration-500 ease-out ${
-                              isActive ? "opacity-100" : "opacity-0"
-                            }`}
-                          />
-                          <Icon
-                            className={`relative h-[18px] w-[18px] transition-colors duration-500 ease-out ${
-                              isActive ? "text-white" : "text-[#032683]"
-                            }`}
-                            strokeWidth={1.5}
-                          />
-                        </span>
-
-                        <span className="text-[14px] font-semibold text-[#121F37]">
-                          {item.label}
-                        </span>
-                      </span>
-
-                      {/*
-                        0fr -> 1fr animates the height without needing a fixed
-                        value, so the row can grow to whatever the copy needs.
-                      */}
-                      <span
-                        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
-                          isActive
-                            ? "grid-rows-[1fr] opacity-100"
-                            : "grid-rows-[0fr] opacity-0"
-                        }`}
-                      >
-                        <span className="overflow-hidden">
-                          <span className="mt-2 block text-[13px] leading-5 text-[#647183]">
-                            {item.description}
-                          </span>
-                        </span>
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
+              {audiences.map((item) => (
+                <AudienceCard
+                  key={item.id}
+                  item={item}
+                  isActive={item.id === activeId}
+                  onSelect={setActiveId}
+                />
+              ))}
             </ul>
           </div>
         </div>
