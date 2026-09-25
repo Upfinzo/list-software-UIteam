@@ -83,8 +83,8 @@ export const beyondProductItems: BeyondProductItem[] = [
 ];
 
 export interface BeyondProductSectionProps {
-  items?: BeyondProductItem[];
-  className?: string;
+  readonly items?: BeyondProductItem[];
+  readonly className?: string;
 }
 
 export default function BeyondProductSection({
