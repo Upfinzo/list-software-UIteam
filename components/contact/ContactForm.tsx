@@ -1,13 +1,13 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 import Button from "@/components/common/Button";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setIsSubmitting(true);
@@ -25,10 +25,7 @@ export default function ContactForm() {
       className="space-y-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
     >
       <div>
-        <label
-          htmlFor="name"
-          className="mb-2 block text-sm font-medium"
-        >
+        <label htmlFor="name" className="mb-2 block text-sm font-medium">
           Name
         </label>
 
@@ -43,10 +40,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="email"
-          className="mb-2 block text-sm font-medium"
-        >
+        <label htmlFor="email" className="mb-2 block text-sm font-medium">
           Email
         </label>
 
@@ -61,10 +55,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label
-          htmlFor="message"
-          className="mb-2 block text-sm font-medium"
-        >
+        <label htmlFor="message" className="mb-2 block text-sm font-medium">
           Message
         </label>
 
@@ -78,10 +69,7 @@ export default function ContactForm() {
         />
       </div>
 
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-      >
+      <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>

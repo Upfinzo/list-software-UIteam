@@ -102,7 +102,7 @@ export default function CapabilitiesSection({
   autoRotate = false,
   autoRotateInterval = 4000,
   className = "",
-}: CapabilitiesSectionProps) {
+}: Readonly<CapabilitiesSectionProps>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState<{
@@ -170,26 +170,30 @@ export default function CapabilitiesSection({
   }, [autoRotate, autoRotateInterval, isPaused, tabs.length]);
 
   // Keyboard navigation for accessible tablist
-  const handleKeyDown = (
-    e: KeyboardEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
-    let nextIndex = index;
-    if (e.key === "ArrowRight") {
-      nextIndex = (index + 1) % tabs.length;
-    } else if (e.key === "ArrowLeft") {
-      nextIndex = (index - 1 + tabs.length) % tabs.length;
-    } else if (e.key === "Home") {
-      nextIndex = 0;
-    } else if (e.key === "End") {
-      nextIndex = tabs.length - 1;
-    } else {
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    const key = e.key;
+    if (
+      key !== "ArrowRight" &&
+      key !== "ArrowLeft" &&
+      key !== "Home" &&
+      key !== "End"
+    ) {
       return;
     }
 
     e.preventDefault();
-    setActiveIndex(nextIndex);
-    tabRefs.current[nextIndex]?.focus();
+
+    const currentIndex =
+      key === "ArrowRight"
+        ? (index + 1) % tabs.length
+        : key === "ArrowLeft"
+          ? (index - 1 + tabs.length) % tabs.length
+          : key === "Home"
+            ? 0
+            : tabs.length - 1;
+
+    setActiveIndex(currentIndex);
+    tabRefs.current[currentIndex]?.focus();
   };
 
   const handleTabClick = (index: number) => {
@@ -208,13 +212,16 @@ export default function CapabilitiesSection({
             PLATFORM
           </span>
           <h2 className=" font-semibold tracking-tight text-[#121F37] leading-[1.15] text-[32px] sm:text-[38px]  lg:text-[45.6px]">
-      The Technology Foundation 
+            The Technology Foundation
             <br />
-          for Modern Banking
+            for Modern Banking
           </h2>
-            <p className="text-sm sm:text-base text-[#647183] leading-relaxed  pt-4">
-                  LIST Software is a banking technology platform centered on core banking, connecting and extending financial institutions across digital channels, payment systems, applications, and external services through APIs and open integrations
-            </p>
+          <p className="text-sm sm:text-base text-[#647183] leading-relaxed  pt-4">
+            LIST Software is a banking technology platform centered on core
+            banking, connecting and extending financial institutions across
+            digital channels, payment systems, applications, and external
+            services through APIs and open integrations
+          </p>
         </div>
 
         {/* Outer Card Container */}

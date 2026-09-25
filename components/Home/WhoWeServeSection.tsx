@@ -8,7 +8,7 @@ import { audienceCategories, audiences } from "@/data/audiences";
 
 /** Wheel order, so the highlight walks round the ring rather than jumping. */
 const RING_ORDER = [...audiences].sort(
-  (a, b) => a.ringPosition - b.ringPosition
+  (a, b) => a.ringPosition - b.ringPosition,
 );
 
 /** Opens on the wedge left of twelve o'clock, as the export shows it. */
@@ -61,7 +61,9 @@ function AudienceCard({ item, isActive, onSelect }: AudienceCardProps) {
 
         <span
           className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
-            isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            isActive
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <span className="overflow-hidden">
@@ -86,10 +88,7 @@ export default function WhoWeServeSection() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = window.setInterval(() => {
-      setActiveId((current) => {
-        const index = RING_ORDER.findIndex((item) => item.id === current);
-        return RING_ORDER[(index + 1) % RING_ORDER.length].id;
-      });
+      setActiveId((current) => getNextAudienceId(current));
     }, CYCLE_MS);
 
     return () => window.clearInterval(timer);
