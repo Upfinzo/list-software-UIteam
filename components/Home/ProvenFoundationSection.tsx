@@ -1,157 +1,163 @@
+
 'use client';
-import Container from "@/components/common/Container";
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+
+import { useState } from "react";
 
 interface StatItem {
-    numericValue: number;
-    suffix: string;
-    label: string;
+  numericValue: number;
+  suffix: string;
+  label: string;
 }
 
 const stats: StatItem[] = [
-    { numericValue: 20, suffix: '+', label: 'Years of Banking\nTechnology' },
-    { numericValue: 100, suffix: '+', label: 'Financial Institutions' },
-    { numericValue: 800, suffix: '+', label: 'Branches Connected' },
-];
-
-const features: string[] = [
-    'Proven Banking Technology',
-    'Deep Domain Expertise',
-    'Long-Term Partnerships',
-    'Continuous Evolution',
+  {
+    numericValue: 20,
+    suffix: '+',
+    label: 'Years in banking\ntechnology',
+  },
+  {
+    numericValue: 100,
+    suffix: '+',
+    label: 'Financial\ninstitutions',
+  },
+  {
+    numericValue: 800,
+    suffix: '+',
+    label: 'Connected\nbranches',
+  },
 ];
 
 export interface ProvenFoundationSectionProps {
-    readonly className?: string;
+  readonly className?: string;
 }
 
-const getStatClassName = (index: number, total: number) => {
-    if (index === 0) {
-        return 'pt-0 sm:pr-8 lg:pr-10';
-    }
+export default function ProvenFoundationSection({
+  className = "",
+}: ProvenFoundationSectionProps) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-    if (index === total - 1) {
-        return 'pb-0 sm:pl-8 lg:pl-10';
-    }
+  return (
+    <section
+      className={`relative isolate overflow-hidden bg-white pt-36 pb-10 sm:pt-40 lg:pt-44 ${className}`.trim()}
+    >
+      {/* Background Grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(213, 224, 239, 0.32) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(213, 224, 239, 0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: "300px 260px",
+        }}
+      />
 
-    return 'sm:px-8 lg:px-10';
-};
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-    const [count, setCount] = useState(0);
-    const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true, margin: '-50px' });
+      <div className="relative mx-auto w-full max-w-[1100px] px-8 text-center">
 
+          {/* Heading Section */}
+          <div className="text-center">
+            <h2 className="font-['Sora'] text-[clamp(2.25rem,3vw,3.35rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-[#101A3B]">
+              Proven in Banking
+              <span className="mt-2 block">
+                Built to Evolve
+              </span>
+            </h2>
 
-    useEffect(() => {
-        if (isInView) {
-            let startTime: number | null = null;
-            const duration = 2000; // Animation duration in ms (2 seconds)
+            <p className="mx-auto mt-8 max-w-[680px] text-[clamp(0.95rem,1.1vw,1.1rem)] leading-[1.6] text-[#536687]">
+              A banking technology foundation built over decades, with the
+              <br className="hidden sm:block" />
+              experience to support what comes next.
+            </p>
+          </div>
 
-            const animateCount = (timestamp: number) => {
-                if (!startTime) startTime = timestamp;
-                const progress = Math.min((timestamp - startTime) / duration, 1);
+          {/* Statistics Section */}
+          <div className="mt-20 border-y border-[#D9E3F0] sm:mt-24">
+            <div className="grid grid-cols-1 md:grid-cols-3">
 
-                // Easing function for smooth slowdown at the end
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              {stats.map((stat, index) => (
+                <button
+                  key={stat.label}
+                  type="button"
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                  onFocus={() => setActiveIndex(index)}
+                  onBlur={() => setActiveIndex(null)}
+                  onClick={() => setActiveIndex(index)}
+                  className={`
+                    group relative cursor-pointer px-5 pt-10 pb-12
+                    text-center transition-all duration-300
+                    focus-visible:outline-2
+                    focus-visible:outline-offset-[-4px]
+                    focus-visible:outline-[#0B6ED8]
+                    sm:px-8 sm:pt-12
+                    lg:px-10 lg:pt-11 lg:pb-12
+                    ${index < stats.length - 1
+                      ? 'md:border-r md:border-[#D9E3F0]'
+                      : ''
+                    }
+                  `}
+                >
 
-                setCount(Math.floor(easeOutQuart * value));
+                  {/* Number */}
+                  <div
+                    className={`
+                      font-['Sora']
+                      text-[clamp(3.25rem,4.5vw,5.25rem)]
+                      font-generic
+                      leading-none
+                      tracking-[-0.065em]
+                      transition-colors duration-300
+                      ${
+                        activeIndex === index
+                          ? 'text-[#032683]'
+                          : 'text-[#A5B4CE]'
+                      }
+                    `}
+                  >
+                    {stat.numericValue}{stat.suffix}
+                  </div>
 
-                if (progress < 1) {
-                    requestAnimationFrame(animateCount);
-                } else {
-                    setCount(value); // Ensure it lands exactly on target
-                }
-            };
+                  {/* Description */}
+                  <div
+                    className={`
+                      mx-auto mt-5 max-w-[170px]
+                      whitespace-pre-line
+                      text-[clamp(0.9rem,0.95vw,1rem)]
+                      leading-[1.45]
+                      transition-colors duration-300
+                      ${activeIndex === index ? 'text-black' : 'text-[#A5B4CE]'}
+                    `}
+                  >
+                    {stat.label}
+                  </div>
 
-            requestAnimationFrame(animateCount);
-        }
-    }, [isInView, value]);
+                  {/* Active Gradient Underline */}
+                  <span
+                    aria-hidden="true"
+                    className={`
+                      absolute bottom-[-1px] left-1/2
+                      h-[3px] w-[138px]
+                      -translate-x-1/2
+                      bg-gradient-to-r
+                      from-[#102C83] to-[#00A9E8]
+                      transition-opacity duration-300
+                      group-hover:opacity-100
+                      ${
+                        activeIndex === index
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                      }
+                    `}
+                  />
 
-    return (
-        <span ref={ref}>
-            {count}{suffix}
-        </span>
-    );
-}
+                </button>
+              ))}
 
-export default function ProvenFoundationSection({ className = "" }: ProvenFoundationSectionProps) {
-    return (
-        <section className={`bg-[#F8FAFD] py-16 px-6 sm:px-12 lg:px-20 border-t border-b border-[#DCE4EC] ${className}`.trim()}>
-            <Container>
-                <div className="container mx-auto max-w-7xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-                        {/* Left Column: Heading and Subtitle */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="lg:col-span-6 space-y-6"
-                        >
-                            <span className="font-['Sora'] text-[11px] font-semibold leading-[16.5px] tracking-[2.42px] pb-4 text-[#111E89] uppercase">
-                                Proven in banking. Built to evolve
-                            </span>
-                            <h2 className="font-['Sora'] text-[33.6px] font-semibold leading-[42px] tracking-[-0.84px] text-[#121F37] max-w-[740px] pt-4">
-                               A banking technology foundation built  over decades with the experience to support what comes next 
-                            </h2>
-                        </motion.div>
+            </div>
+          </div>
 
-                        {/* Right Column: Statistics */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            // CHANGED: Using flex instead of grid avoids conflict between 'gap' and 'divide' spacing on mobile
-                            className="lg:col-span-6 flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#DCE4EC]"
-                        >
-                            {stats.map((stat, index) => (
-                                <div
-                                    key={stat.label}
-                                    // Targeted padding ensures proper spacing and removes excess bottom padding from the last item
-                                    className={`flex flex-col justify-center py-8 sm:py-0 ${getStatClassName(
-                                        index,
-                                        stats.length,
-                                    )}`}
-                                >
-                                    <div className="font-['Sora'] text-[48px] font-semibold leading-[48px] tracking-[-1.2px] text-[#111E89]">
-                                        <Counter
-                                            value={stat.numericValue}
-                                            suffix={stat.suffix}
-                                        />
-                                    </div>
-
-                                    <div className="mt-2 whitespace-pre-line text-[13px] font-normal leading-[17.9px] tracking-[0px] text-[#647183]">
-                                        {stat.label}
-                                    </div>
-                                </div>
-                            ))}
-                        </motion.div>
-                    </div>
-
-                    {/* Fading Divider Line & Bottom Feature List */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className=" pt-4"
-                    >
-                        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#5EAFE6]/50 to-transparent mb-8" />
-
-                        {/* CHANGED: Adjusted to grid on mobile so it splits neatly into 2 columns if space allows, matching the image */}
-                        <ul className="grid grid-cols-1 min-[450px]:grid-cols-2 md:flex md:flex-wrap md:items-center justify-start gap-y-4 gap-x-12">
-                            {features.map((feature) => (
-                                <li key={feature} className="flex items-center space-x-2.5 font-['Sora'] text-[12.5px] font-medium leading-[18.8px] tracking-[0.75px] text-[#647183]">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#5EAFE6] shrink-0" />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                </div>
-            </Container>
-        </section>
-    );
+      </div>
+    </section>
+  );
 }
