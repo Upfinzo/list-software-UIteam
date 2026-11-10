@@ -44,6 +44,9 @@ export const Images = {
         face9: "/images/home/testimonials/face-9.webp"
       }
     },
+    proven: {
+      dome: "/images/home/proven/dome.svg"
+    },
     awards: {
       trophy: "/images/home/awards/trophy.svg",
       star: "/images/home/awards/star.svg",
