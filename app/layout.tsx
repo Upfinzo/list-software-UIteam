@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sora.variable}>
-      <body>
+    <html lang="en" className={sora.variable} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Header />
 
         <main className="pt-20">{children}</main>
