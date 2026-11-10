@@ -86,7 +86,7 @@ const nodes = [
 export default function Hero() {
   return (
     <section
-      className="hb-section relative overflow-hidden"
+      className="hb-section relative overflow-hidden pt-[100px]"
     >
       <div
         aria-hidden="true"
