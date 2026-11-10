@@ -264,14 +264,8 @@ export default function ProvenFoundationSection({
                     bg-gradient-to-r
                     from-[#032683] to-[#00A9E8]
                     transition-opacity duration-300
-
+                    opacity-0
                     group-hover:opacity-100
-
-                    ${
-                      activeIndex === index
-                        ? 'opacity-100'
-                        : 'opacity-0'
-                    }
                   `}
                 />
 
