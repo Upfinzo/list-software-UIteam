@@ -21,6 +21,11 @@ const features: string[] = [
     'Long-Term Partnerships',
     'Continuous Evolution',
 ];
+
+export interface ProvenFoundationSectionProps {
+    readonly className?: string;
+}
+
 const getStatClassName = (index: number, total: number) => {
     if (index === 0) {
         return 'pt-0 sm:pr-8 lg:pr-10';
@@ -70,9 +75,9 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     );
 }
 
-export default function ProvenFoundationSection() {
+export default function ProvenFoundationSection({ className = "" }: ProvenFoundationSectionProps) {
     return (
-        <section className="bg-[#F8FAFD] py-16 px-6 sm:px-12 lg:px-20 border-t border-b border-[#DCE4EC]">
+        <section className={`bg-[#F8FAFD] py-16 px-6 sm:px-12 lg:px-20 border-t border-b border-[#DCE4EC] ${className}`.trim()}>
             <Container>
                 <div className="container mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">

@@ -1,16 +1,15 @@
 import type { Product } from "@/types/product";
 
-type ProductComponentProps = {
+type ProductComponentProps = Readonly<{
   product: Product;
-};
+}>;
 
 export function ProductComponent({ product }: ProductComponentProps) {
   return (
     <>
       <section className="mx-auto max-w-5xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
-          Product 
-          
+          Product
         </p>
         <h1 className="mt-4 text-4xl font-bold text-gray-950 md:text-6xl">
           {product.hero.title}

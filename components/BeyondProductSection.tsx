@@ -83,14 +83,14 @@ export const beyondProductItems: BeyondProductItem[] = [
 ];
 
 export interface BeyondProductSectionProps {
-  items?: BeyondProductItem[];
-  className?: string;
+  readonly items?: BeyondProductItem[];
+  readonly className?: string;
 }
 
 export default function BeyondProductSection({
   items = beyondProductItems,
   className = "",
-}: BeyondProductSectionProps) {
+}: Readonly<BeyondProductSectionProps>) {
   // Default to index 1 (Integration & Connectivity) matching the reference design image
   const [activeIndex, setActiveIndex] = useState<number>(1);
 
