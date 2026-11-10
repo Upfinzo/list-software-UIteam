@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./Hero.css";
 
 const typedText = "Connected to Modern Finance";
 
@@ -82,82 +83,11 @@ const nodes = [
   },
 ];
 
-/* Typewriter keyframes: each character appears 0.75% later and disappears 0.35% earlier */
-const typeKeyframes = typedText
-  .split("")
-  .map((_, i) => {
-    const inStart = (5 + i * 0.75).toFixed(2);
-    const inEnd = (5.3 + i * 0.75).toFixed(2);
-    const outStart = (78.1 - i * 0.35).toFixed(2);
-    const outEnd = (78.4 - i * 0.35).toFixed(2);
-    return `@keyframes hbTc${i}{0%,${inStart}%{max-width:0;opacity:0}${inEnd}%,${outStart}%{max-width:1.2em;opacity:1}${outEnd}%,100%{max-width:0;opacity:0}}`;
-  })
-  .join("\n");
-
-const heroStyles = `
-@keyframes hbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes hbCaret{0%,49%{opacity:1}50%,100%{opacity:0}}
-@keyframes hbSelbox{0%,61%{opacity:0;transform:scale(.98)}63%,79%{opacity:1;transform:none}80.5%,100%{opacity:0}}
-@keyframes hbCurs{0%,58%{opacity:0;transform:translate(60px,40px)}61%,79%{opacity:1;transform:translate(0,0)}82%,100%{opacity:0;transform:translate(40px,30px)}}
-@keyframes hbBtnPop{0%{opacity:0;transform:scale(.4)}70%{transform:scale(1.06)}100%{opacity:1;transform:none}}
-@keyframes hbVline{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes hbHline{from{transform:scaleX(0);opacity:1}70%{opacity:1}to{transform:scaleX(1);opacity:0}}
-@keyframes hbCardOpen{from{clip-path:inset(0 50% 100% 50% round 18px);opacity:.4}to{clip-path:inset(0 0 0 0 round 18px);opacity:1}}
-@keyframes hbHeadDrop{from{opacity:0;transform:translateY(-14px) scale(.96)}to{opacity:1;transform:none}}
-@keyframes hbNodePop{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%)}}
-@keyframes hbDashFlow{to{stroke-dashoffset:-20}}
-@keyframes hbArcSpin{to{transform:rotate(360deg)}}
-@keyframes hbTagIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-${typeKeyframes}
-
-.hb-tch{display:inline-block;overflow:visible;vertical-align:baseline;white-space:pre;max-width:0;opacity:0;animation-duration:10s;animation-iteration-count:infinite;animation-timing-function:linear}
-.hb-tsp{width:.28em;height:1px}
-.hb-caret{display:inline-block;width:3px;height:.9em;margin-left:10px;vertical-align:-0.06em;background:#032683;border-radius:2px;animation:hbCaret 1s steps(1) infinite}
-.hb-selbox{position:absolute;inset:-4px -14px -2px -14px;border:1.5px dashed #0094D3;border-radius:10px;background:rgba(0,148,211,.05);opacity:0;animation:hbSelbox 10s linear infinite;pointer-events:none}
-.hb-curs{position:absolute;right:-30px;bottom:-26px;animation:hbCurs 10s ease-in-out infinite}
-.hb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-.hb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 28px;border-radius:10px;font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease;animation:hbBtnPop .7s cubic-bezier(.2,.7,.2,1) both .7s}
-.hb-btn:hover{transform:translateY(-2px)}
-.hb-btn-p{background:linear-gradient(180deg,#1F7FE0,#032683);color:#FFFFFF;box-shadow:0 12px 24px -12px rgba(3,38,131,.8),inset 0 1px 0 rgba(255,255,255,.35)}
-.hb-btn-p:hover{color:#FFFFFF;box-shadow:0 16px 30px -12px rgba(3,38,131,.85),inset 0 1px 0 rgba(255,255,255,.35)}
-.hb-btn-s{background:#FFFFFF;border:1px solid #CFDCEE;color:#032683;box-shadow:0 10px 22px -16px rgba(3,46,137,.45);animation-delay:.85s}
-.hb-btn-s:hover{background:#F2F7FD}
-
-.hb-cross-v{transform-origin:top;animation:hbVline .6s ease-out both 1.1s}
-.hb-cross-h{transform-origin:center;animation:hbHline .9s ease-out both 1.5s}
-.hb-card-open{animation:hbCardOpen 1s cubic-bezier(.2,.7,.2,1) both 1.8s}
-.hb-head-drop{animation:hbHeadDrop .8s cubic-bezier(.2,.7,.2,1) both 2.4s}
-.hb-np{animation:hbNodePop .6s cubic-bezier(.2,.7,.2,1) both}
-.hb-dflow{stroke-dasharray:5 5;animation:hbDashFlow 1.6s linear infinite}
-.hb-arc-s{transform-box:view-box;transform-origin:50% 50%;animation:hbArcSpin 3.2s linear infinite}
-.hb-arc-r{transform-box:view-box;transform-origin:50% 50%;animation:hbArcSpin 5s linear infinite reverse}
-
-.hb-tag{position:absolute;display:inline-flex;align-items:center;justify-content:center;min-width:170px;height:44px;padding:0 22px;border-radius:10px;background:#FFFFFF;border:1px solid #E3EBF6;box-shadow:0 10px 24px -16px rgba(3,38,131,.35);font-size:12.5px;font-weight:600;letter-spacing:.14em;color:#1F3F8F;animation:hbTagIn .7s ease both}
-.hb-tag > span{animation:hbFloat 7s ease-in-out infinite}
-.hb-lines{display:block}
-@media (max-width:1000px){.hb-lines,.hb-tag{display:none !important}}
-@media (max-width:640px){.hb-head-drop{left:-8px !important;right:-8px !important;padding:14px 16px !important}}
-
-@media (prefers-reduced-motion: reduce){
-  .hb-tch{animation:none;max-width:none;opacity:1}
-  .hb-caret,.hb-selbox,.hb-curs,.hb-dflow,.hb-arc-s,.hb-arc-r,.hb-tag > span{animation:none}
-  .hb-selbox,.hb-curs{display:none}
-}
-`;
-
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden"
-      style={{
-        fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
-        background:
-          "linear-gradient(180deg, #EEF4FD 0%, #F6F9FE 45%, #FFFFFF 100%)",
-      }}
+      className="hb-section relative overflow-hidden"
     >
-      <style>{heroStyles}</style>
-
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-[-260px] h-[600px] w-[1200px] -ml-[600px] rounded-full"
