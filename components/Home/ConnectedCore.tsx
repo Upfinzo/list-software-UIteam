@@ -182,7 +182,7 @@ export default function ConnectedCore() {
                                             </div>
 
                                             <div className="flex flex-col justify-center w-full">
-                                                <h4 className={`font-['Sora'] text-[16px] leading-[24px] tracking-[-0.4px] transition-colors duration-200 ${isActive
+                                                <h4 className={`font-[var(--font-inter-tight)] text-[16px] leading-[24px] tracking-[-0.4px] transition-colors duration-200 ${isActive
                                                     ? 'font-bold text-[#121F37]'
                                                     : 'font-medium text-[#647183] group-hover:text-[#121F37]'
                                                     }`}>

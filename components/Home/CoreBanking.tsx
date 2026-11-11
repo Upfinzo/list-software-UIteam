@@ -108,7 +108,7 @@ export default function CoreBankingPortfolio() {
                             }}
                         >
                             {/* Applied Figma text settings for CUSTODIAN */}
-                            <span className="font-['Sora'] text-[10.5px] font-semibold tracking-[2.52px] text-white/65 uppercase relative z-10">
+                            <span className="font-[var(--font-inter-tight)] text-[10.5px] font-semibold tracking-[2.52px] text-white/65 uppercase relative z-10">
                                 CUSTODIAN
                             </span>
 
@@ -167,7 +167,7 @@ export default function CoreBankingPortfolio() {
                     {/* Right Text & CTA Section */}
                     <div className="lg:col-span-5 space-y-6">
                         <div className="mb-2">
-                            <span className="font-['Sora'] text-[10.5px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block mb-4">
+                            <span className="font-[var(--font-inter-tight)] text-[10.5px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block mb-4">
                                 CORE BANKING
                             </span>
                             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight leading-[1.2] text-gray-900">

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import BackToTop from "@/components/common/BackToTop";
+import Preloader from "@/components/common/Preloader";
 
-const sora = Sora({
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-inter-tight",
 });
 
 export const metadata: Metadata = {
@@ -25,15 +26,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sora.variable} suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <Header />
+  <html lang="en" className={interTight.variable} suppressHydrationWarning>
+  <body suppressHydrationWarning>
+    <Preloader />
+    <Header />
 
-        <main>{children}</main>
+    <main>{children}</main>
 
-        <Footer />
-        <BackToTop />
-      </body>
-    </html>
+    <Footer />
+    <BackToTop />
+  </body>
+</html>
   );
 }
