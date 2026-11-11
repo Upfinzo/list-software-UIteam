@@ -97,27 +97,19 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "top-0 bg-white shadow-md" : "top-4 sm:top-10"
-        }`}
+      className="fixed inset-x-0 top-0 z-50 bg-white transition-all duration-300"
       onMouseLeave={scheduleClose}
     >
-      {/* Gradient Border */}
-      <div
-        className={`mx-auto max-w-7xl rounded-[100px] p-[1.5px] transition-all duration-300 ${isScrolled
-            ? "bg-transparent"
-            : "bg-[linear-gradient(359deg,#8CC8FF_0%,#E8F3FF_25%,#FFFFFF_50%,#FFFFFF_75%,#A9D4FF_100%)]"
-          }`}
-      >
-        <div
-          className={`flex h-16 items-center justify-between rounded-[100px] px-4 transition-all duration-300 sm:h-20 sm:px-6 ${isScrolled ? "" : "bg-[linear-gradient(180deg,#F0F9FF_0%,#F4F7FF_50%,#EEF0FF_100%)]"
-            }`}
-        >
+      <div className="mx-auto max-w-[1440px] px-3">
+        <div className="flex h-24 items-center">
+          {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center">
-            <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[100px] sm:w-[100px]" />
+            <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[112px]" />
           </Link>
 
-          <nav className="hidden lg:block">
-            <ul className="flex items-center gap-6 xl:gap-8">
+          {/* Desktop Navigation */}
+          <nav className="ml-12 hidden lg:block">
+            <ul className="flex items-center gap-9">
               {navigation.map((item, index) => {
                 const isActive = activeIndex === index;
                 return (
@@ -131,13 +123,11 @@ const Header = () => {
                         }
                         setActiveIndex(index);
                       }}
-                      className={`relative text-sm font-medium transition-colors ${isActive ? "text-black" : "text-gray-700 hover:text-black"
-                        }`}
+                      className={`text-base font-medium transition-colors hover:text-[#56E6BD] ${
+                        isActive ? "text-[#1F2937]" : "text-[#4B5563]"
+                      }`}
                     >
                       {item.label}
-                      {isActive && (
-                        <span className="absolute -bottom-2 left-0 h-[1px] w-full bg-[#4B9EFF]" />
-                      )}
                     </Link>
                   </li>
                 );
@@ -145,22 +135,26 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/*
-              The wrapper carries the breakpoint, not the Button: Button's own
-              base class sets inline-flex, which outranks a `hidden` passed
-              through className and would keep this visible on mobile — where
-              the copy inside the hamburger menu already covers it.
-            */}
-            <div className="hidden lg:block">
-              <Button href="/" variant="primary">
-                Request a Demo<ArrowRight height={15} />
-              </Button>
-            </div>
+          {/* Right Side: Sign in & Book a Demo */}
+          <div className="ml-auto flex items-center gap-4">
+            <button className="hidden text-base font-medium text-[#4B5563] transition-colors hover:text-[#56E6BD] lg:block">
+              Sign in
+            </button>
 
             <button
+              className="hidden min-h-[50px] w-[154px] rounded-[12px] border-0 px-5 text-base font-semibold text-white transition-transform duration-200 hover:-translate-y-1 lg:block"
+              style={{
+                background: 'linear-gradient(180deg, #1F7FE0, #032683)',
+                boxShadow: '0 12px 24px -12px rgba(3, 38, 131, .8), inset 0 1px 0 rgba(255, 255, 255, .35)',
+              }}
+            >
+              Book a Demo
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
               type="button"
-              className="rounded-full bg-[#111A2E] p-2.5 text-white lg:hidden"
+              className="rounded-full bg-[#0052CC] p-2.5 text-white lg:hidden"
               onClick={() => setMobileOpen((open) => !open)}
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
@@ -294,7 +288,7 @@ const Header = () => {
                             setMobileOpen(false);
                           }
                         })}
-                        className={`block py-3 text-sm font-medium transition-colors ${activeIndex === index ? "text-black" : "text-gray-700 hover:text-black"
+                        className={`block py-3 text-sm font-medium transition-colors hover:text-[#56E6BD] ${activeIndex === index ? "text-black" : "text-gray-700"
                           }`}
                       >
                         {item.label}
