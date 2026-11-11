@@ -14,6 +14,9 @@ import TestimonialsSection from "@/components/Home/TestimonialsSection";
 import AwardsSection from "@/components/Home/AwardsSection";
 import FAQPage from "./faq/page";
 
+import { Custodiancbs } from "@/components/Home/Custodiancbs";
+import { FAQ } from "@/components/Home/Faq";
+
 export default function HomePage() {
   return (
     <>
@@ -28,7 +31,7 @@ export default function HomePage() {
       <CoreBankingPortfolio />
 
       <SolutionsSection />
-
+      <Custodiancbs />
       <Whylist />
 
       <ClientsSection />
@@ -40,7 +43,10 @@ export default function HomePage() {
       <AwardsSection />
       <SuccessStoriesSection />
 
+      <FAQ />
+
       {/* <TrustControlSection />
+      
 
       <BusinessOutcomes /> */}
       <WhoWeServeSection />
