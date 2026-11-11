@@ -16,6 +16,7 @@ import FAQPage from "./faq/page";
 
 import { Custodiancbs } from "@/components/Home/Custodiancbs";
 import { FAQ } from "@/components/Home/Faq";
+import CapabilityConnected from "@/components/Home/CapabilityConnected";
 
 export default function HomePage() {
   return (
@@ -23,18 +24,12 @@ export default function HomePage() {
       <Hero />
       <ProvenInBankingSection />
       <CapabilitiesSection />
-      <ConnectedCore />
-      
-
-      <ProductStack />
-
-      
-
-      <CoreBankingPortfolio />
-
+    
       <SolutionsSection />
       <Custodiancbs />
-      <Whylist />
+
+      <CapabilityConnected />
+
 
       <ClientsSection />
 
@@ -47,14 +42,7 @@ export default function HomePage() {
 
       <FAQ />
 
-      {/* <TrustControlSection />
-      
-
-      <BusinessOutcomes /> */}
-      <WhoWeServeSection />
-
-      {/* <BeyondProductSection /> */}
-      <FAQPage />
+  
 
       <BankingFoundation />
     </>
