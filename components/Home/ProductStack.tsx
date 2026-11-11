@@ -154,7 +154,7 @@ export default function ProductStack() {
               m-0
               w-full
               max-w-[430px]
-              font-sora
+              font-[var(--font-inter-tight)]
               text-[43px]
               font-semibold
               not-italic
@@ -222,7 +222,7 @@ export default function ProductStack() {
         pt-[2px]
         flex
         items-center
-        font-sora
+              font-[var(--font-inter-tight)]
         md:text-[10px]
         text-[7px]
         font-semibold

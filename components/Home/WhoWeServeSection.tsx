@@ -14,11 +14,10 @@ const RING_ORDER = [...audiences].sort(
 /** Opens on the wedge left of twelve o'clock, as the export shows it. */
 const DEFAULT_ID = RING_ORDER[0].id;
 
-const getNextAudienceId = (currentId: string) => {
-  const index = RING_ORDER.findIndex((item) => item.id === currentId);
-  const nextIndex = index >= 0 ? (index + 1) % RING_ORDER.length : 0;
-  return RING_ORDER[nextIndex].id;
-};
+function getNextAudienceId(currentId: string): string {
+  const currentIndex = RING_ORDER.findIndex((item) => item.id === currentId);
+  return RING_ORDER[(currentIndex + 1) % RING_ORDER.length].id;
+}
 
 const CYCLE_MS = 3600;
 

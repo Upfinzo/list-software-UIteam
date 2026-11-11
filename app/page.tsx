@@ -9,9 +9,13 @@ import Whylist from "@/components/Home/Whylists";
 import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
 import ClientsSection from "@/components/Home/ClientsSection";
+import SuccessStoriesSection from "@/components/Home/SuccessStoriesSection";
 import TestimonialsSection from "@/components/Home/TestimonialsSection";
 import AwardsSection from "@/components/Home/AwardsSection";
 import FAQPage from "./faq/page";
+
+import { Custodiancbs } from "@/components/Home/Custodiancbs";
+import { FAQ } from "@/components/Home/Faq";
 
 export default function HomePage() {
   return (
@@ -27,16 +31,22 @@ export default function HomePage() {
       <CoreBankingPortfolio />
 
       <SolutionsSection />
-
+      <Custodiancbs />
       <Whylist />
 
       <ClientsSection />
 
+      
+
       <TestimonialsSection />
 
       <AwardsSection />
+      <SuccessStoriesSection />
+
+      <FAQ />
 
       {/* <TrustControlSection />
+      
 
       <BusinessOutcomes /> */}
       <WhoWeServeSection />

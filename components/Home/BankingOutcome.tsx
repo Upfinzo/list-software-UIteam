@@ -96,7 +96,7 @@ export default function BusinessOutcomes() {
                 {/* Header Content */}
                 <div className="max-w-3xl mb-16 space-y-5">
                     {/* Added letter spacing and breathing space based on image_bb96a4.jpg */}
-                    <span className="font-['Sora'] text-[11px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block">
+                    <span className="font-[var(--font-inter-tight)] text-[11px] font-semibold tracking-[2.52px] text-[#111E89] uppercase block">
                         BUSINESS OUTCOMES
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-[1.12] text-gray-900">
