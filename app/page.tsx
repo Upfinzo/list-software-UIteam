@@ -24,21 +24,12 @@ export default function HomePage() {
       <Hero />
       <ProvenInBankingSection />
       <CapabilitiesSection />
-      <ConnectedCore />
-      
-
-      <ProductStack />
-
-      
-
-      <CoreBankingPortfolio />
-
+    
       <SolutionsSection />
       <Custodiancbs />
 
       <CapabilityConnected />
 
-      <Whylist />
 
       <ClientsSection />
 
@@ -51,14 +42,7 @@ export default function HomePage() {
 
       <FAQ />
 
-      {/* <TrustControlSection />
-      
-
-      <BusinessOutcomes /> */}
-      <WhoWeServeSection />
-
-      {/* <BeyondProductSection /> */}
-      <FAQPage />
+  
 
       <BankingFoundation />
     </>
