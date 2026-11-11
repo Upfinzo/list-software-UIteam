@@ -10,6 +10,9 @@ import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
 import FAQPage from "./faq/page";
 
+import { Custodiancbs } from "@/components/Home/Custodiancbs";
+import { FAQ } from "@/components/Home/Faq";
+
 export default function HomePage() {
   return (
     <>
@@ -27,7 +30,11 @@ export default function HomePage() {
 
       <Whylist />
 
+      <Custodiancbs />
+      <FAQ />
+
       {/* <TrustControlSection />
+      
 
       <BusinessOutcomes /> */}
       <WhoWeServeSection />
