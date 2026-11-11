@@ -757,21 +757,145 @@ header nav ul li a {
   transition: color .3s ease;
 }
 
-/* ---------- Background container ---------- */
-.footer-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  background: #061538;
+
+@keyframes capabilitiesToggleTrack {
+  from {
+    background-color: #d7e2ee;
+  }
+
+  to {
+    background-color: #079bd4;
+  }
 }
 
-.footer-base,
-.footer-wave,
-.footer-glow,
-.footer-dark-overlay {
-  position: absolute;
+@keyframes capabilitiesGaugeDraw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.capabilities-gauge-draw {
+  animation: capabilitiesGaugeDraw 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.capabilities-toggle-track {
+  background-color: #d7e2ee;
+  animation: capabilitiesToggleTrack 450ms ease-out both;
+}
+
+@keyframes capabilitiesToggleKnob {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(16px);
+  }
+}
+
+.capabilities-toggle-knob {
+  animation: capabilitiesToggleKnob 450ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes capabilitiesDetailsIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.capabilities-details-in {
+  animation: capabilitiesDetailsIn 650ms ease-out 180ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capabilities-gauge-draw {
+    animation: none;
+  }
+
+  .capabilities-details-in {
+    animation: none;
+  }
+
+  .capabilities-toggle-track {
+    background-color: #079bd4;
+    animation: none;
+  }
+
+  .capabilities-toggle-knob {
+    transform: translateX(16px);
+    animation: none;
+  }
+}
+
+@keyframes capabilityTabProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.capability-tab-progress {
+  animation-name: capabilityTabProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes capabilitiesPanelTransition {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.capabilities-panel-transition {
+  animation: capabilitiesPanelTransition 500ms cubic-bezier(0.2, 0.7, 0.2, 1)
+    both;
+}
+
+@keyframes capabilitiesTextReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    text-shadow: 0 0 12px rgba(0, 156, 218, 0.7);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    text-shadow: 0 0 0 rgba(0, 156, 218, 0);
+  }
+}
+
+.capabilities-text-reveal {
+  display: grid;
+}
+
+.capabilities-text-reveal-base,
+.capabilities-text-reveal-overlay {
+  grid-area: 1 / 1;
+}
+
+.capabilities-text-reveal-overlay {
+  pointer-events: none;
+  will-change: clip-path;
+  animation: capabilitiesTextReveal 1s linear both;
 }
 
 /* Static navy base with a hint of blue at the bottom-left and violet top-right */
@@ -987,9 +1111,16 @@ header nav ul li a {
 
 /* ---------- Respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .footer-wave,
-  .footer-glow,
-  .footer-top-button::before {
-    animation: none !important;
+  .capability-tab-progress {
+    transform: scaleX(1);
+    animation: none;
+  }
+
+  .capabilities-panel-transition {
+    animation: none;
+  }
+
+  .capabilities-text-reveal-overlay {
+    animation: none;
   }
 }
