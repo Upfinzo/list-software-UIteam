@@ -16,6 +16,7 @@ import FAQPage from "./faq/page";
 
 import { Custodiancbs } from "@/components/Home/Custodiancbs";
 import { FAQ } from "@/components/Home/Faq";
+import CapabilityConnected from "@/components/Home/CapabilityConnected";
 
 export default function HomePage() {
   return (
@@ -34,6 +35,9 @@ export default function HomePage() {
 
       <SolutionsSection />
       <Custodiancbs />
+
+      <CapabilityConnected />
+
       <Whylist />
 
       <ClientsSection />
