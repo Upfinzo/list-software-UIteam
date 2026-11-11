@@ -3,6 +3,7 @@ export const Images = {
     logo: "/images/common/listsoftware-logo.svg",
     footerbg: "/images/common/footer-bg.jpg",
     footerlogo: "/images/common/footer-logo.svg",
+    footerGrain: "/images/common/footer-grain.svg",
     heroEcosystemBackdrop: "/images/common/hero-ecosystem-backdrop.svg",
     favicon: "/images/common/favicon.ico",
     menuImage: "/images/common/menu-image.svg",

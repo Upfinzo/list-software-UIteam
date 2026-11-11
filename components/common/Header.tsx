@@ -290,7 +290,9 @@ const Header = () => {
                         })}
                         className={`block py-3 text-sm font-medium transition-colors hover:text-[#56E6BD] ${activeIndex === index ? "text-black" : "text-gray-700"
                           }`}
+
                       >
+                        
                         {item.label}
                       </Link>
 

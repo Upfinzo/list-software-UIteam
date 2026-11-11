@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { MouseEvent } from "react";
 import { Images } from "@/assets/images/images";
 import { enabledNavigationLinks } from "@/data/navigation";
+import FooterSilk from "@/components/common/FooterSilk";
 
 const preventDisabledNavigation = (
   event: MouseEvent<HTMLAnchorElement>
@@ -81,27 +82,21 @@ export default function Footer() {
     <footer className="animated-footer relative isolate overflow-hidden rounded-t-[32px] text-white">
 
       {/* =====================================
-          ANIMATED BACKGROUND WITH FLOWING WAVES
+          ANIMATED BACKGROUND — liquid silk gradient
       ===================================== */}
 
       <div className="footer-background" aria-hidden="true">
+        {/* Drifting, folding bands of navy, royal blue and violet. */}
+        <FooterSilk className="absolute inset-0 h-full w-full scale-[1.08] blur-[18px] saturate-[1.05]" />
 
-        {/* Base animated gradient background */}
-        <div className="footer-base" />
+        {/* Navy veil keeps the text readable over the brightest folds. */}
+        <div className="absolute inset-0 bg-[rgba(4,16,48,0.5)]" />
 
-        {/* Flowing wave ribbons - smooth animated layers */}
-        <div className="footer-wave footer-wave-1" />
-        <div className="footer-wave footer-wave-2" />
-        <div className="footer-wave footer-wave-3" />
-        <div className="footer-wave footer-wave-4" />
-        <div className="footer-wave footer-wave-5" />
-
-        {/* Soft glowing accents for depth */}
-        <div className="footer-glow footer-glow-1" />
-        <div className="footer-glow footer-glow-2" />
-
-        {/* Dark overlay for contrast and readability */}
-        <div className="footer-dark-overlay" />
+        {/* Fine film grain on top, so the gradient never looks flat. */}
+        <div
+          className="absolute inset-0 opacity-[0.22] mix-blend-overlay"
+          style={{ backgroundImage: `url(${Images.common.footerGrain})` }}
+        />
       </div>
 
       {/* =====================================
