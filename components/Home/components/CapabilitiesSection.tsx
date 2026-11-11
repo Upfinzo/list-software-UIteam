@@ -169,6 +169,31 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
   },
 ];
 
+function TextReveal({
+  text,
+  className = "",
+  delay = 0,
+}: {
+  readonly text: string;
+  readonly className?: string;
+  readonly delay?: number;
+}) {
+  return (
+    <span className={`capabilities-text-reveal ${className}`}>
+      <span aria-hidden="true" className="capabilities-text-reveal-base">
+        {text}
+      </span>
+      <span
+        aria-hidden="true"
+        className="capabilities-text-reveal-overlay"
+        style={{ animationDelay: `${delay}ms` }}
+      >
+        {text}
+      </span>
+    </span>
+  );
+}
+
 export default function CapabilitiesSection({
   tabs = defaultCapabilityTabs,
   autoRotate = true,
@@ -383,36 +408,22 @@ export default function CapabilitiesSection({
 
             <div className="capabilities-details-in mx-auto w-full max-w-[500px] lg:mx-0">
               <div className="overflow-hidden">
-                <div className="capabilities-text-write">
-                  <h3
-                  key={`${activeTab.id}-heading`}
-                    className="col-start-1 row-start-1 text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </h3>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </span>
-                </div>
+                <h3
+                    aria-label={activeTab.title}
+                    key={`${activeTab.id}-heading`}
+                    className="text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
+                >
+                    <TextReveal text={activeTab.title} />
+                </h3>
               </div>
               <div className="mt-4 max-w-[470px] overflow-hidden">
-                <div className="capabilities-text-write">
-                  <p
+                <p
+                    aria-label={activeTab.description}
                     key={`${activeTab.id}-description`}
-                    className="col-start-1 row-start-1 text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </p>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay capabilities-text-write-delay text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </span>
-                </div>
+                    className="text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
+                >
+                    <TextReveal text={activeTab.description} delay={120} />
+                </p>
               </div>
               <ul className="mt-5 space-y-2 text-[15px] text-[#52627E]">
                 {activeTab.items.map((item) => (
