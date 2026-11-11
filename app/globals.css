@@ -742,7 +742,7 @@ header nav ul li a {
    ========================================================= */
 
 .animated-footer {
-  background: #020919;
+  background: #061538;
   font-family: inherit;
 }
 
@@ -764,7 +764,7 @@ header nav ul li a {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #020919;
+  background: #061538;
 }
 
 .footer-base,
