@@ -257,7 +257,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sora), sans-serif;
+  font-family: var(--font-inter-tight), sans-serif;
 }
 
 h1,
@@ -266,7 +266,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-sora), sans-serif;
+  font-family: var(--font-inter-tight), sans-serif;
 }
 
 button,
@@ -396,10 +396,10 @@ header nav ul li a {
   transition: stroke 0.25s ease;
 }
 
-/* Matches the export: Sora 500 at 11.5px, tracked -2.5%. */
+/* Matches the export: 500 weight at 11.5px, tracked -2.5%. */
 .hero-node__label {
   fill: #ffffff;
-  font-family: var(--font-sora), sans-serif;
+  font-family: var(--font-inter-tight), sans-serif;
   font-size: 11.5px;
   font-weight: 500;
   letter-spacing: -0.025em;

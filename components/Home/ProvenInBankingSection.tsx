@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useInView } from "framer-motion";
 
 import { Images } from "@/assets/images/images";
@@ -26,7 +26,7 @@ function Odometer({ value, startDelay, play }: OdometerProps) {
     <span aria-hidden="true">
       {[...value].map((digit, i) => (
         <span
-          key={i}
+          key={`${value}-${i}-${digit}`}
           className="inline-block h-[1em] overflow-hidden align-top tabular-nums"
         >
           <span
@@ -54,14 +54,23 @@ interface StatProps {
   readonly stat: ProvenStat;
   readonly index: number;
   readonly play: boolean;
+  readonly isActive: boolean;
+  readonly onMouseEnter: () => void;
+  readonly onMouseLeave: () => void;
 }
 
-function Stat({ stat, index, play }: StatProps) {
-  const cycle: CSSProperties = { animationDelay: `${stat.highlightDelay}s` };
-
+function Stat({
+  stat,
+  index,
+  play,
+  isActive,
+  onMouseEnter,
+  onMouseLeave,
+}: StatProps) {
   return (
     <div
-      tabIndex={0}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={`group/stat relative cursor-default px-5 pt-[38px] pb-10 outline-none ${
         index > 0
           ? "before:absolute before:top-0 before:right-[30%] before:left-[30%] before:h-px before:bg-[#E1E9F4] before:content-[''] min-[701px]:before:top-[28%] min-[701px]:before:right-auto min-[701px]:before:bottom-[28%] min-[701px]:before:left-0 min-[701px]:before:h-auto min-[701px]:before:w-px"
@@ -70,8 +79,9 @@ function Stat({ stat, index, play }: StatProps) {
     >
       <p
         aria-label={`${stat.value}${stat.suffix}`}
-        className="m-0 animate-[proofHighlight_9s_ease-in-out_infinite] text-[clamp(48px,5.4vw,72px)] leading-none font-medium tracking-[-0.03em] text-[#A3B0C9] transition-colors duration-300 group-focus-within/stats:animate-none group-hover/stats:animate-none group-hover/stat:text-brand! group-focus/stat:text-brand! motion-reduce:animate-none"
-        style={cycle}
+        className={`m-0 text-[clamp(48px,5.4vw,72px)] leading-none font-medium tracking-[-0.03em] transition-colors duration-300 ${
+          isActive ? "text-brand" : "text-[#A3B0C9]"
+        }`}
       >
         <Odometer
           value={stat.value}
@@ -81,8 +91,9 @@ function Stat({ stat, index, play }: StatProps) {
         <span aria-hidden="true">{stat.suffix}</span>
       </p>
       <p
-        className="mt-[14px] animate-[proofHighlight_9s_ease-in-out_infinite] text-[15px] leading-[1.45] text-[#A3B0C9] transition-colors duration-300 group-focus-within/stats:animate-none group-hover/stats:animate-none group-hover/stat:text-[#06123A]! group-focus/stat:text-[#06123A]! motion-reduce:animate-none"
-        style={cycle}
+        className={`mt-[14px] text-[15px] leading-[1.45] transition-colors duration-300 ${
+          isActive ? "text-[#06123A]" : "text-[#A3B0C9]"
+        }`}
       >
         {stat.label[0]}
         <br />
@@ -90,8 +101,9 @@ function Stat({ stat, index, play }: StatProps) {
       </p>
       <span
         aria-hidden="true"
-        className="absolute right-[30%] -bottom-px left-[30%] h-0.5 origin-center scale-x-0 animate-[proofBar_9s_ease-in-out_infinite] rounded-sm bg-[linear-gradient(90deg,#032683,#0094D3)] transition-transform duration-300 group-focus-within/stats:animate-none group-hover/stats:animate-none group-hover/stat:scale-x-100 group-focus/stat:scale-x-100 motion-reduce:animate-none"
-        style={cycle}
+        className={`absolute right-[30%] -bottom-px left-[30%] h-0.5 origin-center rounded-sm bg-[linear-gradient(90deg,#032683,#0094D3)] transition-transform duration-300 ${
+          isActive ? "scale-x-100" : "scale-x-0"
+        }`}
       />
     </div>
   );
@@ -154,6 +166,18 @@ function Chip({ chip }: { readonly chip: ProvenChip }) {
 export default function ProvenInBankingSection() {
   const statsRef = useRef<HTMLDivElement>(null);
   const inView = useInView(statsRef, { once: true, amount: 0.5 });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % provenStats.length);
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, [inView]);
 
   return (
     <section
@@ -189,9 +213,20 @@ export default function ProvenInBankingSection() {
             aria-hidden="true"
             className="absolute right-0 bottom-0 left-0 h-px bg-[linear-gradient(90deg,transparent,#CFDDEE_20%,#CFDDEE_80%,transparent)]"
           />
-          <div className="group/stats grid grid-cols-1 min-[701px]:grid-cols-3">
+          <div className="grid grid-cols-1 min-[701px]:grid-cols-3">
             {provenStats.map((stat, index) => (
-              <Stat key={stat.id} stat={stat} index={index} play={inView} />
+              <Stat
+                key={stat.id}
+                stat={stat}
+                index={index}
+                play={inView}
+                isActive={
+                  hoveredIndex === index ||
+                  (hoveredIndex === null && activeIndex === index)
+                }
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              />
             ))}
           </div>
         </div>

@@ -169,7 +169,7 @@ export default function ProvenFoundationSection({
         <div className="text-center">
           <h2
             className="
-              font-['Sora']
+              font-[var(--font-inter-tight)]
               text-[clamp(2.25rem,3vw,3.35rem)]
               font-semibold
               leading-[0.98]
@@ -230,7 +230,7 @@ export default function ProvenFoundationSection({
                     {/* Animated Number - Always Black */}
                     <div
                       className="
-                        font-['Sora']
+                        font-[var(--font-inter-tight)]
                         text-[clamp(3.25rem,4.5vw,5.25rem)]
                         font-semibold
                         leading-none
