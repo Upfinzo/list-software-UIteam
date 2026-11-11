@@ -1,10 +1,11 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
-import { Images } from "@/assets/images/images";
+import SamarthBank from "@/assets/images/SamarthBank.jpg";
+import RajapurBank from "@/assets/images/rajpuraBank.png";
 
 interface SuccessStory {
   bank: string;
-  bankLogo: string;
+  bankLogo: StaticImageData;
   badge?: string;
   title: string;
   description: string;
@@ -14,7 +15,7 @@ interface SuccessStory {
 const stories: SuccessStory[] = [
   {
     bank: "Samarth Sahakari Bank",
-    bankLogo: Images.home.clients.samarth,
+    bankLogo: SamarthBank,
     badge: "Largest among the latest licensed banks",
     title: "Samarth Bank Solapur",
     description:
@@ -23,7 +24,7 @@ const stories: SuccessStory[] = [
   },
   {
     bank: "Rajapur Urban Bank",
-    bankLogo: Images.home.clients.rajapur,
+    bankLogo: RajapurBank,
     title: "Rajapur Urban Bank",
     description:
       "“Rajapur Urban Bank did exponential growth using Custodian Core Banking Solution as a core resource.”",
