@@ -1,0 +1,71 @@
+/* Build on a Stronger Banking Foundation (CTA) section */
+@keyframes ocDash { from { opacity: 0; transform: translateY(140px) rotateX(28deg) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes ocW { from { opacity: 0; filter: blur(12px); transform: translateY(18px); } to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes ocBar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes ocDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+.oc { position: relative; overflow: hidden; background: linear-gradient(180deg, #FFFFFF 0%, #F2F7FD 60%, #FFFFFF 100%); padding: 110px 0 0; }
+.oc-intro { position: relative; max-width: 900px; margin: 0 auto; padding: 0 28px; text-align: center; }
+.oc-h { margin: 0; font-weight: 600; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.08; letter-spacing: -0.04em; color: #0A1330; }
+.oc-w { display: inline-block; }
+.oc-p { margin: 20px auto 0; max-width: 640px; font-size: 16.5px; line-height: 1.65; color: #5B6785; }
+.oc-btns { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.oc-p, .oc-btns { transition: opacity .8s ease .5s, transform .9s cubic-bezier(.2,.7,.2,1) .5s; }
+.oc-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+.oc-b1 { background: linear-gradient(180deg, #1F7FE0, #032683); color: #FFFFFF; border: 0; box-shadow: 0 12px 24px -12px rgba(3,38,131,.8), inset 0 1px 0 rgba(255,255,255,.35); }
+.oc-b1:hover { color: #FFFFFF; transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(3,38,131,.85), inset 0 1px 0 rgba(255,255,255,.35); }
+.oc-b2 { background: #FFFFFF; border: 1px solid #CFDCEE; color: #032683; box-shadow: 0 10px 22px -16px rgba(3,46,137,.45); }
+.oc-b2:hover { background: #F2F7FD; transform: translateY(-2px); }
+
+.oc-stage { position: relative; max-width: 1060px; margin: 64px auto 0; padding: 0 28px; perspective: 1600px; }
+.oc-glow { position: absolute; left: 50%; top: 10%; width: 110%; height: 90%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(82,175,229,.45), rgba(82,175,229,0) 65%); filter: blur(10px); }
+.oc-frame { position: relative; padding: 10px; border-radius: 22px; background: rgba(255,255,255,.6); border: 1px solid #FFFFFF; box-shadow: 0 50px 90px -40px rgba(3,46,137,.45); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform-origin: 50% 100%; }
+.oc-dash { display: flex; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid #E6EDF7; text-align: left; }
+.oc-side { width: 190px; flex: none; padding: 18px 12px; border-right: 1px solid #EEF2F8; display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: #4A5878; }
+.oc-logo { height: 26px; width: auto; margin: 2px 8px 18px; }
+.oc-side span { padding: 8px 10px; border-radius: 8px; }
+.oc-side span.on { background: linear-gradient(90deg, #032683, #0094D3); color: #FFFFFF; font-weight: 600; }
+.oc-main { flex: 1; min-width: 0; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+.oc-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.oc-top b { font-size: 18px; letter-spacing: -0.02em; color: #06123A; }
+.oc-search { padding: 8px 14px; border-radius: 9px; background: #F2F6FB; font-size: 12px; color: #7584A6; }
+.oc-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.oc-card { position: relative; padding: 14px; border-radius: 12px; border: 1px solid #EEF2F8; overflow: hidden; }
+.oc-card p { margin: 0; font-size: 12px; color: #6A789A; }
+.oc-card > b { display: block; margin-top: 4px; font-size: 22px; letter-spacing: -0.02em; color: #06123A; }
+.oc-card svg { width: 100%; height: 46px; margin-top: 6px; display: block; }
+.oc-up { position: absolute; right: 14px; top: 14px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #DDF8EF; color: #0E8F6E; }
+.oc-split { margin-top: 14px; height: 10px; display: flex; border-radius: 6px; overflow: hidden; gap: 3px; }
+.oc-split i { display: block; height: 100%; border-radius: 4px; }
+.oc-bars { margin-top: 10px; height: 70px; display: flex; align-items: flex-end; gap: 8px; }
+.oc-bars i { flex: 1; border-radius: 5px 5px 0 0; background: #CFE3F6; transform-origin: bottom; }
+.oc-bars i.hl { background: linear-gradient(180deg, #52AFE5, #0548D5); }
+.oc-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #F0F4FA; font-size: 12px; color: #4A5878; }
+.oc-row:last-child { border: 0; }
+.oc-row b { color: #06123A; }
+.oc-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+
+.oc-armed:not(.oc-in) .oc-w { opacity: 0; filter: blur(12px); transform: translateY(18px); }
+.oc-armed:not(.oc-in) .oc-p, .oc-armed:not(.oc-in) .oc-btns { opacity: 0; transform: translateY(16px); }
+.oc-armed:not(.oc-in) .oc-frame { opacity: 0; transform: translateY(140px) rotateX(28deg) scale(.94); }
+.oc-armed:not(.oc-in) .oc-bars i { transform: scaleY(0); }
+.oc-in .oc-w { animation: ocW .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * .08s); }
+.oc-in .oc-frame { animation: ocDash 1.4s cubic-bezier(.16,.84,.3,1) both .3s; }
+.oc-in .oc-bars i { animation: ocBar .9s cubic-bezier(.2,.7,.2,1) both 1.3s; }
+.oc-in .oc-line { animation: ocDraw 1.8s ease both 1.2s; }
+.oc:not(.oc-armed) .oc-line { stroke-dashoffset: 0; }
+
+@media (max-width: 900px) {
+  .oc-side { display: none; }
+  .oc-cards { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .oc { padding-top: 72px; }
+  .oc-intro { padding: 0 16px; }
+  .oc-stage { padding: 0 16px; margin-top: 44px; }
+  .oc-search { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oc-in .oc-w, .oc-in .oc-frame, .oc-in .oc-bars i, .oc-in .oc-line { animation: none; }
+  .oc-line { stroke-dashoffset: 0; }
+}
