@@ -102,8 +102,8 @@ export default function Hero() {
         </p>
 
         <div
-          className="hb-lw mt-8 flex flex-wrap justify-center gap-7"
-          style={{ animationDelay: "1.1s", display: "flex", columnGap: 28, rowGap: 14 }}
+          className="hb-lw mt-8 flex flex-wrap justify-center gap-3"
+          style={{ animationDelay: "1.1s", display: "flex" }}
         >
           <Link href="/contact" className="hb-btn hb-btn-p">
             Request a Demo
