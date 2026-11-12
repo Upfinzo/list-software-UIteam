@@ -150,10 +150,10 @@ function Chip({ chip }: { readonly chip: ProvenChip }) {
           </svg>
         </span>
         <span className="block">
-          <span className="block text-[13.4px] leading-[1.3] font-bold text-[#06123A]">
+          <span className="block text-[15px] leading-[1.3] font-bold text-[#06123A]">
             {chip.title}
           </span>
-          <span className="mt-0.5 flex items-center gap-1.5 text-[10.75px] leading-[1.3] text-[#5B6B8E]">
+          <span className="mt-0.5 flex items-center gap-1.5 text-[12px] leading-[1.3] text-[#5B6B8E]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#0094D3]" />
             {chip.caption}
           </span>
