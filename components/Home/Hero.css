@@ -57,7 +57,7 @@
 .hb-fl2{animation:hbFloat 7.5s ease-in-out infinite .8s}
 
 /* buttons */
-.hb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 32px;border-radius:12px;font-weight:600;font-size:17px;letter-spacing:-0.01em;transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease}
+.hb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 26px;border-radius:10px;font-weight:600;font-size:15px;letter-spacing:-0.01em;transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease}
 .hb-btn:hover{transform:translateY(-2px)}
 .hb-btn-p{background:linear-gradient(180deg,#1F7FE0,#032683);color:#FFFFFF;box-shadow:0 12px 24px -12px rgba(3,38,131,.8),inset 0 1px 0 rgba(255,255,255,.35)}
 .hb-btn-p:hover{color:#FFFFFF;box-shadow:0 16px 30px -12px rgba(3,38,131,.85),inset 0 1px 0 rgba(255,255,255,.35)}
