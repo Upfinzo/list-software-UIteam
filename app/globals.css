@@ -289,10 +289,12 @@ h6 {
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-button,
-input,
-textarea {
-  font: inherit;
+@layer base {
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
 }
 
 /* Type scale */
