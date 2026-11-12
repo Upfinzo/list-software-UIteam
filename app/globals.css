@@ -866,6 +866,21 @@ header nav ul li a {
   }
 }
 
+.capabilities-scroll-section[data-scroll-driven="true"] {
+  height: calc(var(--capability-height, 900px) + 240vh);
+}
+
+.capabilities-scroll-section[data-scroll-driven="true"] .capabilities-sticky-content {
+  position: sticky;
+  top: var(--capability-top, 0px);
+}
+
+.capabilities-scroll-section[data-scroll-driven="true"] .capability-tab-progress {
+  animation: none;
+  transform: scaleX(var(--capability-progress, 0));
+  transition: transform 150ms linear;
+}
+
 .capabilities-panel-transition {
   animation: capabilitiesPanelTransition 500ms cubic-bezier(0.2, 0.7, 0.2, 1)
     both;
@@ -874,12 +889,10 @@ header nav ul li a {
 @keyframes capabilitiesTextReveal {
   from {
     clip-path: inset(0 100% 0 0);
-    text-shadow: 0 0 12px rgba(0, 156, 218, 0.7);
   }
 
   to {
     clip-path: inset(0 0 0 0);
-    text-shadow: 0 0 0 rgba(0, 156, 218, 0);
   }
 }
 
@@ -892,10 +905,18 @@ header nav ul li a {
   grid-area: 1 / 1;
 }
 
+.capabilities-text-reveal-base {
+  opacity: 0.3;
+}
+
 .capabilities-text-reveal-overlay {
   pointer-events: none;
   will-change: clip-path;
-  animation: capabilitiesTextReveal 1s linear both;
+  animation: capabilitiesTextReveal 1.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+p .capabilities-text-reveal-overlay {
+  animation-duration: 1.8s;
 }
 
 /* Static navy base with a hint of blue at the bottom-left and violet top-right */
