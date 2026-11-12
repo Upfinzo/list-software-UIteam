@@ -261,7 +261,7 @@
   --foreground: #121f37;
 
   --banner-title-size: clamp(32px, 5vw, 60px);
-  --section-title-size: clamp(28px, 4vw, 45px);
+  --section-title-size: clamp(32px, 4vw, 48px);
   --running-text-size: 15px;
 }
 
