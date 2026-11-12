@@ -1,6 +1,7 @@
 import ConnectedCore from "@/components/Home/ConnectedCore";
 import Hero from "@/components/Home/Hero";
 import ProvenInBankingSection from "@/components/Home/ProvenInBankingSection";
+import InstitutionOperatesSection from "@/components/Home/InstitutionOperatesSection";
 import SolutionsSection from "@/components/Home/SolutionsSection";
 import WhoWeServeSection from "@/components/Home/WhoWeServeSection";
 import ProductStack from "@/components/Home/ProductStack";
@@ -24,25 +25,17 @@ export default function HomePage() {
       <Hero />
       <ProvenInBankingSection />
       <CapabilitiesSection />
-    
       <SolutionsSection />
       <Custodiancbs />
-
       <CapabilityConnected />
-
-
+      <InstitutionOperatesSection />
       <ClientsSection />
-
-      
-
       <TestimonialsSection />
-
       <AwardsSection />
       <SuccessStoriesSection />
-
       <FAQ />
 
-  
+
 
       <BankingFoundation />
     </>
