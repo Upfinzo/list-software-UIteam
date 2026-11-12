@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 import type { StaticImageData } from "next/image";
 
@@ -169,6 +169,31 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
   },
 ];
 
+function TextReveal({
+  text,
+  className = "",
+  delay = 200,
+}: {
+  readonly text: string;
+  readonly className?: string;
+  readonly delay?: number;
+}) {
+  return (
+    <span className={`capabilities-text-reveal ${className}`}>
+      <span aria-hidden="true" className="capabilities-text-reveal-base">
+        {text}
+      </span>
+      <span
+        aria-hidden="true"
+        className="capabilities-text-reveal-overlay"
+        style={{ animationDelay: `${delay}ms` }}
+      >
+        {text}
+      </span>
+    </span>
+  );
+}
+
 export default function CapabilitiesSection({
   tabs = defaultCapabilityTabs,
   autoRotate = true,
@@ -176,17 +201,107 @@ export default function CapabilitiesSection({
   className = "",
 }: Readonly<CapabilitiesSectionProps>) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollDrivenRef = useRef(false);
   const activeTab = tabs[activeIndex] || tabs[0];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content || tabs.length < 2) return;
+
+    const media = window.matchMedia(
+      "(min-width: 900px) and (prefers-reduced-motion: no-preference)",
+    );
+    let frame = 0;
+
+    const applyScroll = () => {
+      frame = 0;
+      if (!scrollDrivenRef.current) return;
+
+      const bounds = section.getBoundingClientRect();
+      const contentHeight = content.offsetHeight;
+      const stickyTop = Math.min(0, window.innerHeight - contentHeight);
+      const range = bounds.height - contentHeight;
+      const progress = range > 0
+        ? Math.max(0, Math.min(0.9999, (stickyTop - bounds.top) / range))
+        : 0;
+      const step = progress * tabs.length;
+      const index = Math.floor(step);
+
+      section.style.setProperty("--capability-progress", String(step - index));
+      setActiveIndex(index);
+    };
+
+    const scheduleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(applyScroll);
+    };
+
+    const measure = () => {
+      scrollDrivenRef.current = media.matches;
+      section.dataset.scrollDriven = String(media.matches);
+      if (media.matches) {
+        section.style.setProperty("--capability-height", `${content.offsetHeight}px`);
+        section.style.setProperty(
+          "--capability-top",
+          `${Math.min(0, window.innerHeight - content.offsetHeight)}px`,
+        );
+      } else {
+        section.style.removeProperty("--capability-height");
+        section.style.removeProperty("--capability-top");
+        section.style.removeProperty("--capability-progress");
+      }
+      scheduleScroll();
+    };
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    media.addEventListener("change", measure);
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", scheduleScroll, { passive: true });
+    measure();
+
+    return () => {
+      observer.disconnect();
+      media.removeEventListener("change", measure);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", scheduleScroll);
+      window.cancelAnimationFrame(frame);
+      scrollDrivenRef.current = false;
+      delete section.dataset.scrollDriven;
+      section.style.removeProperty("--capability-height");
+      section.style.removeProperty("--capability-top");
+      section.style.removeProperty("--capability-progress");
+    };
+  }, [tabs.length]);
 
   useEffect(() => {
     if (!autoRotate || tabs.length < 2) return;
 
     const timer = window.setInterval(() => {
+      if (scrollDrivenRef.current) return;
       setActiveIndex((prevIndex) => (prevIndex + 1) % tabs.length);
     }, autoRotateInterval);
 
     return () => window.clearInterval(timer);
   }, [autoRotate, autoRotateInterval, tabs.length]);
+
+  const selectTab = (index: number) => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (scrollDrivenRef.current && section && content) {
+      const bounds = section.getBoundingClientRect();
+      const stickyTop = Math.min(0, window.innerHeight - content.offsetHeight);
+      const range = bounds.height - content.offsetHeight;
+      window.scrollTo({
+        top: window.scrollY + bounds.top - stickyTop + range * (index + 0.15) / tabs.length,
+        behavior: "smooth",
+      });
+      return;
+    }
+    setActiveIndex(index);
+  };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
@@ -201,16 +316,20 @@ export default function CapabilitiesSection({
             ? 0
             : tabs.length - 1;
 
-    setActiveIndex(nextIndex);
-    document.getElementById(`technology-tab-${tabs[nextIndex].id}`)?.focus();
+    selectTab(nextIndex);
+    document.getElementById(`technology-tab-${tabs[nextIndex].id}`)?.focus({ preventScroll: true });
   };
 
   return (
     <section
-      className={`bg-white py-12 sm:py-16 lg:py-[52px] ${className}`}
+      ref={sectionRef}
+      className={`capabilities-scroll-section bg-white ${className}`}
       aria-labelledby="technology-foundation-heading"
     >
-      <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
+      <div
+        ref={contentRef}
+        className="capabilities-sticky-content mx-auto max-w-[1200px] px-5 py-12 sm:px-8 sm:py-16 lg:py-[52px]"
+      >
         <header className="mx-auto max-w-[1120px] text-center">
           <h2
             id="technology-foundation-heading"
@@ -241,7 +360,7 @@ export default function CapabilitiesSection({
                   aria-selected={isActive}
                   aria-controls={`technology-panel-${tab.id}`}
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => selectTab(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   className={`relative min-h-[52px] cursor-pointer px-3 py-3 text-center text-sm font-medium transition-[background-color,color] duration-300 ease-out focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-[#0789D0] sm:min-h-[54px] sm:text-[15px] ${
                     isActive
@@ -383,36 +502,22 @@ export default function CapabilitiesSection({
 
             <div className="capabilities-details-in mx-auto w-full max-w-[500px] lg:mx-0">
               <div className="overflow-hidden">
-                <div className="capabilities-text-write">
-                  <h3
-                  key={`${activeTab.id}-heading`}
-                    className="col-start-1 row-start-1 text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </h3>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </span>
-                </div>
+                <h3
+                    aria-label={activeTab.title}
+                    key={`${activeTab.id}-heading`}
+                    className="text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
+                >
+                    <TextReveal text={activeTab.title} />
+                </h3>
               </div>
               <div className="mt-4 max-w-[470px] overflow-hidden">
-                <div className="capabilities-text-write">
-                  <p
+                <p
+                    aria-label={activeTab.description}
                     key={`${activeTab.id}-description`}
-                    className="col-start-1 row-start-1 text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </p>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay capabilities-text-write-delay text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </span>
-                </div>
+                    className="text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
+                >
+                    <TextReveal text={activeTab.description} delay={600} />
+                </p>
               </div>
               <ul className="mt-5 space-y-2 text-[15px] text-[#52627E]">
                 {activeTab.items.map((item) => (
