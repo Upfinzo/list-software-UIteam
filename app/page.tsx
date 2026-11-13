@@ -9,6 +9,7 @@ import CapabilitiesSection from "@/components/Home/components/CapabilitiesSectio
 import Whylist from "@/components/Home/Whylists";
 import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
+import InfrastructureSection from "@/components/Home/InfrastructureSection";
 import ClientsSection from "@/components/Home/ClientsSection";
 import SuccessStoriesSection from "@/components/Home/SuccessStoriesSection";
 import TestimonialsSection from "@/components/Home/TestimonialsSection";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <Custodiancbs />
       <CapabilityConnected />
       <InstitutionOperatesSection />
+      <InfrastructureSection />
       <ClientsSection />
       <TestimonialsSection />
       <AwardsSection />

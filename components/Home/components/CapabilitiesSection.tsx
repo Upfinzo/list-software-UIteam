@@ -8,25 +8,32 @@ import inntegration from "@/public/images/home/CAPABILITIES/inntegration.svg";
 import scalable from "@/public/images/home/CAPABILITIES/scalable.svg";
 import secure from "@/public/images/home/CAPABILITIES/secure.svg";
 
-type CapabilityVisualItem = {
+type CapabilityToggleItem = {
   code: string;
   title: string;
   subtitle: string;
+  /** Badge colours (background + text). */
   color: string;
 };
 
 export type CapabilityTab = {
   id: string;
   label: string; // tab bar label
-  title: string; // left column heading
+  title: string; // right column heading
   description: string;
   /** Imported SVG — the artwork already carries the brand #111E89. */
   icon: StaticImageData;
-  badges: string[];
-  items: string[]; // right-panel row labels
-  visualTitle: string;
-  visualStatus: string;
-  visualItems: CapabilityVisualItem[];
+  items: string[]; // bullet list under the description
+  /** Gauge card (left, back). */
+  gaugeLabel: string;
+  gaugeValue: string;
+  gaugeChip: string;
+  gaugeFoot: string;
+  /** Floating highlight card (top right). */
+  highlightTitle: string;
+  highlightSub: string;
+  /** Toggle rows card (bottom right). */
+  toggles: CapabilityToggleItem[];
 };
 
 export interface CapabilitiesSectionProps {
@@ -42,34 +49,32 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Integration-Ready",
     title: "Integration-Ready",
     description:
-      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems",
+      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems.",
     icon: inntegration,
-    badges: [
-      "API-First Connectivity ",
-      "Open Integrations",
-      "Connected Ecosystem",
-      "Built to Extend",
-    ],
     items: [
-      "API-First Connectivity ",
+      "API-First Connectivity",
       "Open Integrations",
       "Connected Ecosystem",
       "Built to Extend",
     ],
-    visualTitle: "Open integrations",
-    visualStatus: "Connected ecosystem",
-    visualItems: [
+    gaugeLabel: "Connected systems",
+    gaugeValue: "12 integrations",
+    gaugeChip: "APIs live",
+    gaugeFoot: "Middleware online",
+    highlightTitle: "Banking API",
+    highlightSub: "Connected and secure",
+    toggles: [
       {
         code: "API",
-        title: "Banking APIs",
-        subtitle: "API-first connectivity",
-        color: "bg-[#E5F3FC] text-[#0789C5]",
+        title: "Mobile banking API",
+        subtitle: "Open integration",
+        color: "bg-[#DDF8EF] text-[#0E8F6E]",
       },
       {
-        code: "INT",
-        title: "Open integrations",
-        subtitle: "Third-party connectivity",
-        color: "bg-[#EAF5EF] text-[#238B58]",
+        code: "3P",
+        title: "Third-party systems",
+        subtitle: "Connected ecosystem",
+        color: "bg-[#EEE7FB] text-[#6A3BC2]",
       },
     ],
   },
@@ -80,32 +85,30 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Authentication, validation, controlled access, and transaction-level safeguards support secure banking operations and trusted financial transactions.",
     icon: secure,
-    badges: [
-      "Protected Operations",
-      "Controlled Access",
-      "Secure Connectivity",
-      "Built-In Resilience",
-    ],
     items: [
       "Protected Operations",
       "Controlled Access",
       "Secure Connectivity",
       "Built-In Resilience",
     ],
-    visualTitle: "Role-based access",
-    visualStatus: "Controlled access",
-    visualItems: [
+    gaugeLabel: "Transactions validated",
+    gaugeValue: "18,240 today",
+    gaugeChip: "Safeguarded",
+    gaugeFoot: "Transaction level",
+    highlightTitle: "Authentication",
+    highlightSub: "Validation passed",
+    toggles: [
       {
         code: "ACL",
         title: "Controlled access",
         subtitle: "Role-based permissions",
-        color: "bg-[#E8F3FC] text-[#087DBB]",
+        color: "bg-[#EEE7FB] text-[#6A3BC2]",
       },
       {
         code: "TXN",
         title: "Transaction safeguards",
-        subtitle: "Secure transactions",
-        color: "bg-[#EAF5EF] text-[#238B58]",
+        subtitle: "Trusted transactions",
+        color: "bg-[#FDEAE6] text-[#C23A24]",
       },
     ],
   },
@@ -116,28 +119,25 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Built to support evolving banking requirements with scalable infrastructure and expanding multi-tenant capabilities.",
     icon: scalable,
-    badges: [
-      "Multi-Tenant",
-      "Flexible",
-      "Expandable",
-      "Resilient",
-      "Adaptable",
-    ],
     items: ["Multi-Tenant", "Flexible", "Expandable", "Resilient", "Adaptable"],
-    visualTitle: "Multi-tenant capability",
-    visualStatus: "Expanding",
-    visualItems: [
+    gaugeLabel: "Connected branches",
+    gaugeValue: "800+",
+    gaugeChip: "100+ institutions",
+    gaugeFoot: "Multi-tenant",
+    highlightTitle: "Infrastructure",
+    highlightSub: "Scaling with demand",
+    toggles: [
       {
         code: "MT",
         title: "Multi-tenant capability",
         subtitle: "Expanding",
-        color: "bg-[#E8F3FC] text-[#087DBB]",
+        color: "bg-[#FDF3DD] text-[#A8740B]",
       },
       {
         code: "BR",
         title: "New branch onboarding",
         subtitle: "Flexible rollout",
-        color: "bg-[#FFF3D9] text-[#B47C16]",
+        color: "bg-[#DDF8EF] text-[#0E8F6E]",
       },
     ],
   },
@@ -148,22 +148,25 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Modernize established banking capabilities while creating new possibilities for digital operations and financial services.",
     icon: evolving,
-    badges: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
     items: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
-    visualTitle: "Intelligent workflows",
-    visualStatus: "Automation active",
-    visualItems: [
+    gaugeLabel: "Digital operations",
+    gaugeValue: "Modernizing",
+    gaugeChip: "AI enabled",
+    gaugeFoot: "Newer modules",
+    highlightTitle: "Intelligent workflows",
+    highlightSub: "Automation active",
+    toggles: [
       {
         code: "AI",
         title: "AI capabilities",
         subtitle: "Intelligent operations",
-        color: "bg-[#FDEBE7] text-[#D95345]",
+        color: "bg-[#FDEAE6] text-[#C23A24]",
       },
       {
         code: "DX",
         title: "Digital services",
         subtitle: "New possibilities",
-        color: "bg-[#FFF3D9] text-[#B47C16]",
+        color: "bg-[#FDF3DD] text-[#A8740B]",
       },
     ],
   },
@@ -431,13 +434,14 @@ export default function CapabilitiesSection({
                   </svg>
                 </div>
                 <div className="absolute right-0 bottom-[43px] left-0 border-t border-[#EEF2F7] px-5 pt-3 sm:bottom-[46px] sm:px-6">
-                  <p className="text-[11px] text-[#73829F]">{activeTab.title}</p>
-                  <p className="mt-0.5 line-clamp-2 text-[15px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-lg">
-                    {activeTab.visualTitle}
+                  <p className="text-[13px] text-[#73829F]">{activeTab.gaugeLabel}</p>
+                  <p className="mt-0.5 line-clamp-2 text-[26px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B]">
+                    {activeTab.gaugeValue}
                   </p>
                 </div>
-                <div className="absolute right-0 bottom-0 left-0 rounded-b-[17px] bg-[#F4F8FD] px-5 py-2.5 text-xs font-semibold text-[#0798CF] sm:px-6">
-                  {activeTab.visualStatus}
+                <div className="absolute right-0 bottom-0 left-0 flex items-center justify-between gap-3 rounded-b-[17px] bg-[#F4F8FD] px-5 py-2.5 text-[13px] sm:px-6">
+                  <span className="font-bold text-[#0798CF]">{activeTab.gaugeChip}</span>
+                  <span className="text-[#73829F]">{activeTab.gaugeFoot}</span>
                 </div>
               </div>
 
@@ -460,16 +464,16 @@ export default function CapabilitiesSection({
                 </span>
                 <span>
                   <span className="block text-[13px] font-semibold leading-tight text-[#101A3B] sm:text-sm">
-                    {activeTab.visualTitle}
+                    {activeTab.highlightTitle}
                   </span>
                   <span className="mt-1 block text-[11px] text-[#73829F] sm:text-xs">
-                    {activeTab.visualStatus}
+                    {activeTab.highlightSub}
                   </span>
                 </span>
               </div>
 
-              <div className="absolute right-0 bottom-0 z-20 w-[72%] overflow-hidden rounded-[16px] border border-[#E4EBF5] bg-white shadow-[0_18px_38px_-25px_rgba(3,38,131,.38)] sm:right-0 sm:w-[72%]">
-                {activeTab.visualItems.map((item, index) => (
+              <div className="absolute right-0 bottom-0 z-20 w-[72%] overflow-hidden rounded-[16px] border border-[#E4EBF5] bg-white shadow-[0_18px_38px_-25px_rgba(3,38,131,.38)] min-[480px]:w-[60%]">
+                {activeTab.toggles.map((item, index) => (
                   <div
                     key={item.code}
                     className="flex items-center gap-3 border-b border-[#EDF1F6] px-3.5 py-3 last:border-b-0 sm:gap-4 sm:px-5 sm:py-3.5"
@@ -478,10 +482,10 @@ export default function CapabilitiesSection({
                       {item.code}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-xs font-semibold text-[#101A3B] sm:text-sm">
+                      <span className="block truncate text-[14px] text-xs font-semibold text-[#101A3B] sm:text-sm">
                         {item.title}
                       </span>
-                      <span className="mt-0.5 block truncate text-[10px] text-[#73829F] sm:text-xs">
+                      <span className="mt-0.5 block truncate text-[12px] text-[#73829F] sm:text-[12px]">
                         {item.subtitle}
                       </span>
                     </span>
