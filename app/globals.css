@@ -772,11 +772,7 @@ header nav ul li a {
 
 @keyframes capabilitiesGaugeDraw {
   from {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  to {
-    clip-path: inset(0 0 0 0);
+    stroke-dasharray: 0 100;
   }
 }
 .capabilities-gauge-draw {

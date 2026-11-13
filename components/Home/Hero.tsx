@@ -106,7 +106,7 @@ export default function Hero() {
           style={{ animationDelay: "1.1s", display: "flex" }}
         >
           <Link href="/contact" className="hb-btn hb-btn-p">
-            Request a Demo
+            Request a Demo  
           </Link>
           <a href="#solutions-carousel" className="hb-btn hb-btn-o">
             Get Started
@@ -193,7 +193,7 @@ export default function Hero() {
                           <div className="grid grid-cols-3 gap-2">
                             <div style={card}>
                               <p className="m-0 text-[10px] text-[#6A789A]">Total users</p>
-                              <p className="mb-0.5 mt-1 text-[13px] font-bold sm:text-[17px]">
+                              <p className="mb-0.5 mt-1 text-[13px] font-bold leading-[1.15] sm:text-[17px]">
                                 3,56
                                 <span className="hb-roll">
                                   <span className="hb-roll-in hb-r-slow">8901234567</span>
@@ -203,7 +203,7 @@ export default function Hero() {
                             </div>
                             <div style={card}>
                               <p className="m-0 text-[10px] text-[#6A789A]">Transactions today</p>
-                              <p className="mb-0.5 mt-1 text-[13px] font-bold sm:text-[17px]">
+                              <p className="mb-0.5 mt-1 text-[13px] font-bold leading-[1.15] sm:text-[17px]">
                                 18,2
                                 <span className="hb-roll">
                                   <span className="hb-roll-in hb-r-mid">4567890123</span>
