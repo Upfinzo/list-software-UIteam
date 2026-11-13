@@ -250,7 +250,7 @@ export default function ProvenInBankingSection() {
           {/* Drawn larger than the band and anchored to its floor, so the dome
               reads big while the empty sky above it spills harmlessly upward. */}
           <div className="absolute bottom-0 left-1/2 h-[470px] w-[1200px] -translate-x-1/2 max-[900px]:h-[458px] max-[900px]:w-[1170px] max-[640px]:h-[305px] max-[640px]:w-[780px]">
-            <div className="h-full w-full animate-[domeSway_9s_ease-in-out_infinite] motion-reduce:animate-none">
+            <div className="relative h-full w-full animate-[domeSway_9s_ease-in-out_infinite] motion-reduce:animate-none">
               <Image
                 src={Images.home.proven.dome}
                 alt=""
