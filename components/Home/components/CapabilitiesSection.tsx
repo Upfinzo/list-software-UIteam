@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 import type { StaticImageData } from "next/image";
 
@@ -8,25 +8,32 @@ import inntegration from "@/public/images/home/CAPABILITIES/inntegration.svg";
 import scalable from "@/public/images/home/CAPABILITIES/scalable.svg";
 import secure from "@/public/images/home/CAPABILITIES/secure.svg";
 
-type CapabilityVisualItem = {
+type CapabilityToggleItem = {
   code: string;
   title: string;
   subtitle: string;
+  /** Badge colours (background + text). */
   color: string;
 };
 
 export type CapabilityTab = {
   id: string;
   label: string; // tab bar label
-  title: string; // left column heading
+  title: string; // right column heading
   description: string;
   /** Imported SVG — the artwork already carries the brand #111E89. */
   icon: StaticImageData;
-  badges: string[];
-  items: string[]; // right-panel row labels
-  visualTitle: string;
-  visualStatus: string;
-  visualItems: CapabilityVisualItem[];
+  items: string[]; // bullet list under the description
+  /** Gauge card (left, back). */
+  gaugeLabel: string;
+  gaugeValue: string;
+  gaugeChip: string;
+  gaugeFoot: string;
+  /** Floating highlight card (top right). */
+  highlightTitle: string;
+  highlightSub: string;
+  /** Toggle rows card (bottom right). */
+  toggles: CapabilityToggleItem[];
 };
 
 export interface CapabilitiesSectionProps {
@@ -42,34 +49,32 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     label: "Integration-Ready",
     title: "Integration-Ready",
     description:
-      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems",
+      "Middleware, banking APIs, interfaces, and open integrations enable seamless connectivity between banking applications and third-party systems.",
     icon: inntegration,
-    badges: [
-      "API-First Connectivity ",
-      "Open Integrations",
-      "Connected Ecosystem",
-      "Built to Extend",
-    ],
     items: [
-      "API-First Connectivity ",
+      "API-First Connectivity",
       "Open Integrations",
       "Connected Ecosystem",
       "Built to Extend",
     ],
-    visualTitle: "Open integrations",
-    visualStatus: "Connected ecosystem",
-    visualItems: [
+    gaugeLabel: "Connected systems",
+    gaugeValue: "12 integrations",
+    gaugeChip: "APIs live",
+    gaugeFoot: "Middleware online",
+    highlightTitle: "Banking API",
+    highlightSub: "Connected and secure",
+    toggles: [
       {
         code: "API",
-        title: "Banking APIs",
-        subtitle: "API-first connectivity",
-        color: "bg-[#E5F3FC] text-[#0789C5]",
+        title: "Mobile banking API",
+        subtitle: "Open integration",
+        color: "bg-[#DDF8EF] text-[#0E8F6E]",
       },
       {
-        code: "INT",
-        title: "Open integrations",
-        subtitle: "Third-party connectivity",
-        color: "bg-[#EAF5EF] text-[#238B58]",
+        code: "3P",
+        title: "Third-party systems",
+        subtitle: "Connected ecosystem",
+        color: "bg-[#EEE7FB] text-[#6A3BC2]",
       },
     ],
   },
@@ -80,32 +85,30 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Authentication, validation, controlled access, and transaction-level safeguards support secure banking operations and trusted financial transactions.",
     icon: secure,
-    badges: [
-      "Protected Operations",
-      "Controlled Access",
-      "Secure Connectivity",
-      "Built-In Resilience",
-    ],
     items: [
       "Protected Operations",
       "Controlled Access",
       "Secure Connectivity",
       "Built-In Resilience",
     ],
-    visualTitle: "Role-based access",
-    visualStatus: "Controlled access",
-    visualItems: [
+    gaugeLabel: "Transactions validated",
+    gaugeValue: "18,240 today",
+    gaugeChip: "Safeguarded",
+    gaugeFoot: "Transaction level",
+    highlightTitle: "Authentication",
+    highlightSub: "Validation passed",
+    toggles: [
       {
         code: "ACL",
         title: "Controlled access",
         subtitle: "Role-based permissions",
-        color: "bg-[#E8F3FC] text-[#087DBB]",
+        color: "bg-[#EEE7FB] text-[#6A3BC2]",
       },
       {
         code: "TXN",
         title: "Transaction safeguards",
-        subtitle: "Secure transactions",
-        color: "bg-[#EAF5EF] text-[#238B58]",
+        subtitle: "Trusted transactions",
+        color: "bg-[#FDEAE6] text-[#C23A24]",
       },
     ],
   },
@@ -116,28 +119,25 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Built to support evolving banking requirements with scalable infrastructure and expanding multi-tenant capabilities.",
     icon: scalable,
-    badges: [
-      "Multi-Tenant",
-      "Flexible",
-      "Expandable",
-      "Resilient",
-      "Adaptable",
-    ],
     items: ["Multi-Tenant", "Flexible", "Expandable", "Resilient", "Adaptable"],
-    visualTitle: "Multi-tenant capability",
-    visualStatus: "Expanding",
-    visualItems: [
+    gaugeLabel: "Connected branches",
+    gaugeValue: "800+",
+    gaugeChip: "100+ institutions",
+    gaugeFoot: "Multi-tenant",
+    highlightTitle: "Infrastructure",
+    highlightSub: "Scaling with demand",
+    toggles: [
       {
         code: "MT",
         title: "Multi-tenant capability",
         subtitle: "Expanding",
-        color: "bg-[#E8F3FC] text-[#087DBB]",
+        color: "bg-[#FDF3DD] text-[#A8740B]",
       },
       {
         code: "BR",
         title: "New branch onboarding",
         subtitle: "Flexible rollout",
-        color: "bg-[#FFF3D9] text-[#B47C16]",
+        color: "bg-[#DDF8EF] text-[#0E8F6E]",
       },
     ],
   },
@@ -148,26 +148,54 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
     description:
       "Modernize established banking capabilities while creating new possibilities for digital operations and financial services.",
     icon: evolving,
-    badges: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
     items: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
-    visualTitle: "Intelligent workflows",
-    visualStatus: "Automation active",
-    visualItems: [
+    gaugeLabel: "Digital operations",
+    gaugeValue: "Modernizing",
+    gaugeChip: "AI enabled",
+    gaugeFoot: "Newer modules",
+    highlightTitle: "Intelligent workflows",
+    highlightSub: "Automation active",
+    toggles: [
       {
         code: "AI",
         title: "AI capabilities",
         subtitle: "Intelligent operations",
-        color: "bg-[#FDEBE7] text-[#D95345]",
+        color: "bg-[#FDEAE6] text-[#C23A24]",
       },
       {
         code: "DX",
         title: "Digital services",
         subtitle: "New possibilities",
-        color: "bg-[#FFF3D9] text-[#B47C16]",
+        color: "bg-[#FDF3DD] text-[#A8740B]",
       },
     ],
   },
 ];
+
+function TextReveal({
+  text,
+  className = "",
+  delay = 200,
+}: {
+  readonly text: string;
+  readonly className?: string;
+  readonly delay?: number;
+}) {
+  return (
+    <span className={`capabilities-text-reveal ${className}`}>
+      <span aria-hidden="true" className="capabilities-text-reveal-base">
+        {text}
+      </span>
+      <span
+        aria-hidden="true"
+        className="capabilities-text-reveal-overlay"
+        style={{ animationDelay: `${delay}ms` }}
+      >
+        {text}
+      </span>
+    </span>
+  );
+}
 
 export default function CapabilitiesSection({
   tabs = defaultCapabilityTabs,
@@ -176,17 +204,107 @@ export default function CapabilitiesSection({
   className = "",
 }: Readonly<CapabilitiesSectionProps>) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollDrivenRef = useRef(false);
   const activeTab = tabs[activeIndex] || tabs[0];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (!section || !content || tabs.length < 2) return;
+
+    const media = window.matchMedia(
+      "(min-width: 900px) and (prefers-reduced-motion: no-preference)",
+    );
+    let frame = 0;
+
+    const applyScroll = () => {
+      frame = 0;
+      if (!scrollDrivenRef.current) return;
+
+      const bounds = section.getBoundingClientRect();
+      const contentHeight = content.offsetHeight;
+      const stickyTop = Math.min(0, window.innerHeight - contentHeight);
+      const range = bounds.height - contentHeight;
+      const progress = range > 0
+        ? Math.max(0, Math.min(0.9999, (stickyTop - bounds.top) / range))
+        : 0;
+      const step = progress * tabs.length;
+      const index = Math.floor(step);
+
+      section.style.setProperty("--capability-progress", String(step - index));
+      setActiveIndex(index);
+    };
+
+    const scheduleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(applyScroll);
+    };
+
+    const measure = () => {
+      scrollDrivenRef.current = media.matches;
+      section.dataset.scrollDriven = String(media.matches);
+      if (media.matches) {
+        section.style.setProperty("--capability-height", `${content.offsetHeight}px`);
+        section.style.setProperty(
+          "--capability-top",
+          `${Math.min(0, window.innerHeight - content.offsetHeight)}px`,
+        );
+      } else {
+        section.style.removeProperty("--capability-height");
+        section.style.removeProperty("--capability-top");
+        section.style.removeProperty("--capability-progress");
+      }
+      scheduleScroll();
+    };
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    media.addEventListener("change", measure);
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", scheduleScroll, { passive: true });
+    measure();
+
+    return () => {
+      observer.disconnect();
+      media.removeEventListener("change", measure);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", scheduleScroll);
+      window.cancelAnimationFrame(frame);
+      scrollDrivenRef.current = false;
+      delete section.dataset.scrollDriven;
+      section.style.removeProperty("--capability-height");
+      section.style.removeProperty("--capability-top");
+      section.style.removeProperty("--capability-progress");
+    };
+  }, [tabs.length]);
 
   useEffect(() => {
     if (!autoRotate || tabs.length < 2) return;
 
     const timer = window.setInterval(() => {
+      if (scrollDrivenRef.current) return;
       setActiveIndex((prevIndex) => (prevIndex + 1) % tabs.length);
     }, autoRotateInterval);
 
     return () => window.clearInterval(timer);
   }, [autoRotate, autoRotateInterval, tabs.length]);
+
+  const selectTab = (index: number) => {
+    const section = sectionRef.current;
+    const content = contentRef.current;
+    if (scrollDrivenRef.current && section && content) {
+      const bounds = section.getBoundingClientRect();
+      const stickyTop = Math.min(0, window.innerHeight - content.offsetHeight);
+      const range = bounds.height - content.offsetHeight;
+      window.scrollTo({
+        top: window.scrollY + bounds.top - stickyTop + range * (index + 0.15) / tabs.length,
+        behavior: "smooth",
+      });
+      return;
+    }
+    setActiveIndex(index);
+  };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
@@ -201,16 +319,20 @@ export default function CapabilitiesSection({
             ? 0
             : tabs.length - 1;
 
-    setActiveIndex(nextIndex);
-    document.getElementById(`technology-tab-${tabs[nextIndex].id}`)?.focus();
+    selectTab(nextIndex);
+    document.getElementById(`technology-tab-${tabs[nextIndex].id}`)?.focus({ preventScroll: true });
   };
 
   return (
     <section
-      className={`bg-white py-12 sm:py-16 lg:py-[52px] ${className}`}
+      ref={sectionRef}
+      className={`capabilities-scroll-section bg-white ${className}`}
       aria-labelledby="technology-foundation-heading"
     >
-      <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
+      <div
+        ref={contentRef}
+        className="capabilities-sticky-content mx-auto max-w-[1200px] px-5 py-12 sm:px-8 sm:py-16 lg:py-[52px]"
+      >
         <header className="mx-auto max-w-[1120px] text-center">
           <h2
             id="technology-foundation-heading"
@@ -241,7 +363,7 @@ export default function CapabilitiesSection({
                   aria-selected={isActive}
                   aria-controls={`technology-panel-${tab.id}`}
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => selectTab(index)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
                   className={`relative min-h-[52px] cursor-pointer px-3 py-3 text-center text-sm font-medium transition-[background-color,color] duration-300 ease-out focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-[#0789D0] sm:min-h-[54px] sm:text-[15px] ${
                     isActive
@@ -312,13 +434,14 @@ export default function CapabilitiesSection({
                   </svg>
                 </div>
                 <div className="absolute right-0 bottom-[43px] left-0 border-t border-[#EEF2F7] px-5 pt-3 sm:bottom-[46px] sm:px-6">
-                  <p className="text-[11px] text-[#73829F]">{activeTab.title}</p>
-                  <p className="mt-0.5 line-clamp-2 text-[15px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-lg">
-                    {activeTab.visualTitle}
+                  <p className="text-[13px] text-[#73829F]">{activeTab.gaugeLabel}</p>
+                  <p className="mt-0.5 line-clamp-2 text-[26px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B]">
+                    {activeTab.gaugeValue}
                   </p>
                 </div>
-                <div className="absolute right-0 bottom-0 left-0 rounded-b-[17px] bg-[#F4F8FD] px-5 py-2.5 text-xs font-semibold text-[#0798CF] sm:px-6">
-                  {activeTab.visualStatus}
+                <div className="absolute right-0 bottom-0 left-0 flex items-center justify-between gap-3 rounded-b-[17px] bg-[#F4F8FD] px-5 py-2.5 text-[13px] sm:px-6">
+                  <span className="font-bold text-[#0798CF]">{activeTab.gaugeChip}</span>
+                  <span className="text-[#73829F]">{activeTab.gaugeFoot}</span>
                 </div>
               </div>
 
@@ -341,16 +464,16 @@ export default function CapabilitiesSection({
                 </span>
                 <span>
                   <span className="block text-[13px] font-semibold leading-tight text-[#101A3B] sm:text-sm">
-                    {activeTab.visualTitle}
+                    {activeTab.highlightTitle}
                   </span>
                   <span className="mt-1 block text-[11px] text-[#73829F] sm:text-xs">
-                    {activeTab.visualStatus}
+                    {activeTab.highlightSub}
                   </span>
                 </span>
               </div>
 
-              <div className="absolute right-0 bottom-0 z-20 w-[72%] overflow-hidden rounded-[16px] border border-[#E4EBF5] bg-white shadow-[0_18px_38px_-25px_rgba(3,38,131,.38)] sm:right-0 sm:w-[72%]">
-                {activeTab.visualItems.map((item, index) => (
+              <div className="absolute right-0 bottom-0 z-20 w-[72%] overflow-hidden rounded-[16px] border border-[#E4EBF5] bg-white shadow-[0_18px_38px_-25px_rgba(3,38,131,.38)] min-[480px]:w-[60%]">
+                {activeTab.toggles.map((item, index) => (
                   <div
                     key={item.code}
                     className="flex items-center gap-3 border-b border-[#EDF1F6] px-3.5 py-3 last:border-b-0 sm:gap-4 sm:px-5 sm:py-3.5"
@@ -359,10 +482,10 @@ export default function CapabilitiesSection({
                       {item.code}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-xs font-semibold text-[#101A3B] sm:text-sm">
+                      <span className="block truncate text-[14px] text-xs font-semibold text-[#101A3B] sm:text-sm">
                         {item.title}
                       </span>
-                      <span className="mt-0.5 block truncate text-[10px] text-[#73829F] sm:text-xs">
+                      <span className="mt-0.5 block truncate text-[12px] text-[#73829F] sm:text-[12px]">
                         {item.subtitle}
                       </span>
                     </span>
@@ -383,36 +506,22 @@ export default function CapabilitiesSection({
 
             <div className="capabilities-details-in mx-auto w-full max-w-[500px] lg:mx-0">
               <div className="overflow-hidden">
-                <div className="capabilities-text-write">
-                  <h3
-                  key={`${activeTab.id}-heading`}
-                    className="col-start-1 row-start-1 text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </h3>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
-                  >
-                    {activeTab.title}
-                  </span>
-                </div>
+                <h3
+                    aria-label={activeTab.title}
+                    key={`${activeTab.id}-heading`}
+                    className="text-[32px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B] sm:text-[38px]"
+                >
+                    <TextReveal text={activeTab.title} />
+                </h3>
               </div>
               <div className="mt-4 max-w-[470px] overflow-hidden">
-                <div className="capabilities-text-write">
-                  <p
+                <p
+                    aria-label={activeTab.description}
                     key={`${activeTab.id}-description`}
-                    className="col-start-1 row-start-1 text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </p>
-                  <span
-                    aria-hidden="true"
-                    className="capabilities-text-write-overlay capabilities-text-write-delay text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
-                  >
-                    {activeTab.description}
-                  </span>
-                </div>
+                    className="text-[15px] leading-[1.75] text-[#64738F] sm:text-base"
+                >
+                    <TextReveal text={activeTab.description} delay={600} />
+                </p>
               </div>
               <ul className="mt-5 space-y-2 text-[15px] text-[#52627E]">
                 {activeTab.items.map((item) => (

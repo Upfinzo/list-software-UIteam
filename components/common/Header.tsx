@@ -7,6 +7,7 @@ import { ChevronDoubleRightIcon } from "@heroicons/react/16/solid";
 
 import { navigation } from "@/data/navigation";
 import Button from "@/components/common/Button";
+import Container from "@/components/common/Container";
 import { Images } from "@/assets/images/images";
 
 // Add a route here when it should become navigable.
@@ -62,9 +63,20 @@ const Header = () => {
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let frame = 0;
+    const handleScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 12);
+        frame = 0;
+      });
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   const openMenu = (index: number) => {
@@ -97,11 +109,17 @@ const Header = () => {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 bg-white transition-all duration-300"
+      className={`fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-300 ease-out motion-reduce:transition-none ${
+        isScrolled ? "shadow-[0_4px_20px_rgba(16,26,59,0.08)]" : "shadow-none"
+      }`}
       onMouseLeave={scheduleClose}
     >
-      <div className="mx-auto max-w-[1440px] px-3">
-        <div className="flex h-24 items-center">
+      <Container>
+        <div
+          className={`flex items-center transition-[height] duration-300 ease-out motion-reduce:transition-none ${
+            isScrolled ? "h-20" : "h-24"
+          }`}
+        >
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center">
             <img src={Images.common.logo} alt="ListSoftware Logo" className="h-auto w-[112px]" />
@@ -123,7 +141,7 @@ const Header = () => {
                         }
                         setActiveIndex(index);
                       }}
-                      className={`text-base font-medium transition-colors hover:text-[#56E6BD] ${
+                      className={`text-[14px] font-medium transition-colors hover:text-[#56E6BD] ${
                         isActive ? "text-[#1F2937]" : "text-[#4B5563]"
                       }`}
                     >
@@ -137,12 +155,12 @@ const Header = () => {
 
           {/* Right Side: Sign in & Book a Demo */}
           <div className="ml-auto flex items-center gap-4">
-            <button className="hidden text-base font-medium text-[#4B5563] transition-colors hover:text-[#56E6BD] lg:block">
+            <button className="text-[14px] hidden font-medium text-[#4B5563] transition-colors hover:text-[#56E6BD] lg:block">
               Sign in
             </button>
 
             <button
-              className="hidden min-h-[50px] w-[154px] rounded-[12px] border-0 px-5 text-base font-semibold text-white transition-transform duration-200 hover:-translate-y-1 lg:block"
+              className="hidden min-h-[50px] w-[154px] rounded-[12px] border-0 px-5 text-[14px] font-semibold text-white transition-transform duration-200 hover:-translate-y-1 lg:block"
               style={{
                 background: 'linear-gradient(180deg, #1F7FE0, #032683)',
                 boxShadow: '0 12px 24px -12px rgba(3, 38, 131, .8), inset 0 1px 0 rgba(255, 255, 255, .35)',
@@ -176,7 +194,7 @@ const Header = () => {
             </button>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Full-width mega menu — desktop/large tablets only (lg+) */}
      {/* Full-width mega menu — desktop/large tablets only (lg+) */}

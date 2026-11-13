@@ -150,10 +150,10 @@ function Chip({ chip }: { readonly chip: ProvenChip }) {
           </svg>
         </span>
         <span className="block">
-          <span className="block text-[13.4px] leading-[1.3] font-bold text-[#06123A]">
+          <span className="block text-[15px] leading-[1.3] font-bold text-[#06123A]">
             {chip.title}
           </span>
-          <span className="mt-0.5 flex items-center gap-1.5 text-[10.75px] leading-[1.3] text-[#5B6B8E]">
+          <span className="mt-0.5 flex items-center gap-1.5 text-[12px] leading-[1.3] text-[#5B6B8E]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#0094D3]" />
             {chip.caption}
           </span>
@@ -250,7 +250,7 @@ export default function ProvenInBankingSection() {
           {/* Drawn larger than the band and anchored to its floor, so the dome
               reads big while the empty sky above it spills harmlessly upward. */}
           <div className="absolute bottom-0 left-1/2 h-[470px] w-[1200px] -translate-x-1/2 max-[900px]:h-[458px] max-[900px]:w-[1170px] max-[640px]:h-[305px] max-[640px]:w-[780px]">
-            <div className="h-full w-full animate-[domeSway_9s_ease-in-out_infinite] motion-reduce:animate-none">
+            <div className="relative h-full w-full animate-[domeSway_9s_ease-in-out_infinite] motion-reduce:animate-none">
               <Image
                 src={Images.home.proven.dome}
                 alt=""

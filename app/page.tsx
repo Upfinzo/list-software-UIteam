@@ -1,6 +1,7 @@
 import ConnectedCore from "@/components/Home/ConnectedCore";
 import Hero from "@/components/Home/Hero";
 import ProvenInBankingSection from "@/components/Home/ProvenInBankingSection";
+import InstitutionOperatesSection from "@/components/Home/InstitutionOperatesSection";
 import SolutionsSection from "@/components/Home/SolutionsSection";
 import WhoWeServeSection from "@/components/Home/WhoWeServeSection";
 import ProductStack from "@/components/Home/ProductStack";
@@ -8,6 +9,7 @@ import CapabilitiesSection from "@/components/Home/components/CapabilitiesSectio
 import Whylist from "@/components/Home/Whylists";
 import BankingFoundation from "@/components/Home/BankingFoundation";
 import CoreBankingPortfolio from "@/components/Home/CoreBanking";
+import InfrastructureSection from "@/components/Home/InfrastructureSection";
 import ClientsSection from "@/components/Home/ClientsSection";
 import SuccessStoriesSection from "@/components/Home/SuccessStoriesSection";
 import TestimonialsSection from "@/components/Home/TestimonialsSection";
@@ -24,25 +26,18 @@ export default function HomePage() {
       <Hero />
       <ProvenInBankingSection />
       <CapabilitiesSection />
-    
       <SolutionsSection />
       <Custodiancbs />
-
       <CapabilityConnected />
-
-
+      <InstitutionOperatesSection />
+      <InfrastructureSection />
       <ClientsSection />
-
-      
-
       <TestimonialsSection />
-
       <AwardsSection />
       <SuccessStoriesSection />
-
       <FAQ />
 
-  
+
 
       <BankingFoundation />
     </>
