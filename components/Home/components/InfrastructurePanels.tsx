@@ -168,7 +168,6 @@ function ApiPanel() {
           </i>
         </span>
       ))}
-
       <Tag>One API, Every System</Tag>
     </div>
   );

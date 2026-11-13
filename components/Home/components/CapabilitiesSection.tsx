@@ -25,6 +25,7 @@ export type CapabilityTab = {
   icon: StaticImageData;
   items: string[]; // bullet list under the description
   /** Gauge card (left, back). */
+  gaugeProgress: number;
   gaugeLabel: string;
   gaugeValue: string;
   gaugeChip: string;
@@ -57,6 +58,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
       "Connected Ecosystem",
       "Built to Extend",
     ],
+    gaugeProgress: 74,
     gaugeLabel: "Connected systems",
     gaugeValue: "12 integrations",
     gaugeChip: "APIs live",
@@ -91,6 +93,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
       "Secure Connectivity",
       "Built-In Resilience",
     ],
+    gaugeProgress: 92,
     gaugeLabel: "Transactions validated",
     gaugeValue: "18,240 today",
     gaugeChip: "Safeguarded",
@@ -120,6 +123,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
       "Built to support evolving banking requirements with scalable infrastructure and expanding multi-tenant capabilities.",
     icon: scalable,
     items: ["Multi-Tenant", "Flexible", "Expandable", "Resilient", "Adaptable"],
+    gaugeProgress: 84,
     gaugeLabel: "Connected branches",
     gaugeValue: "800+",
     gaugeChip: "100+ institutions",
@@ -149,6 +153,7 @@ export const defaultCapabilityTabs: CapabilityTab[] = [
       "Modernize established banking capabilities while creating new possibilities for digital operations and financial services.",
     icon: evolving,
     items: ["Modern", "Intelligent", "Connected", "Automated", "Innovative"],
+    gaugeProgress: 66,
     gaugeLabel: "Digital operations",
     gaugeValue: "Modernizing",
     gaugeChip: "AI enabled",
@@ -403,37 +408,38 @@ export default function CapabilitiesSection({
                 <div className="absolute inset-x-5 top-6 flex justify-center sm:top-8">
                   <svg
                     aria-hidden="true"
-                    viewBox="0 0 260 132"
+                    viewBox="0 0 220 120"
                     className="w-full max-w-[260px]"
                     fill="none"
                   >
                     <path
-                      d="M12 128a118 118 0 0 1 236 0h-43a75 75 0 0 0-150 0H12Z"
-                      fill="#E8EEF6"
+                      d="M24 110 A86 86 0 0 1 196 110"
+                      pathLength="100"
+                      stroke="#E8EEF6"
+                      strokeWidth="34"
                     />
                     <path
-                      d="M12 128a118 118 0 0 1 191-91l-25 36a75 75 0 0 0-123 55H12Z"
-                      fill="#089DD4"
-                      className="capabilities-gauge-draw"
-                    />
-                    <path
-                      d="M12 128a118 118 0 0 1 191-91l-25 36a75 75 0 0 0-123 55H12Z"
-                      fill="url(#foundation-gauge-dots)"
+                      d="M24 110 A86 86 0 0 1 196 110"
+                      pathLength="100"
+                      stroke="url(#foundation-gauge-dots)"
+                      strokeWidth="34"
+                      strokeDasharray={`${activeTab.gaugeProgress} 100`}
                       className="capabilities-gauge-draw"
                     />
                     <defs>
                       <pattern
                         id="foundation-gauge-dots"
-                        width="8"
-                        height="8"
+                        width="6"
+                        height="6"
                         patternUnits="userSpaceOnUse"
                       >
-                        <circle cx="2" cy="2" r="1" fill="white" fillOpacity=".42" />
+                        <rect width="6" height="6" fill="#0094D3" />
+                        <circle cx="3" cy="3" r="1.3" fill="#56B0E6" />
                       </pattern>
                     </defs>
                   </svg>
                 </div>
-                <div className="absolute right-0 bottom-[43px] left-0 border-t border-[#EEF2F7] px-5 pt-3 sm:bottom-[46px] sm:px-6">
+                <div className="absolute right-0 bottom-[43px] left-0 px-5 pt-3 sm:bottom-[46px] sm:px-6">
                   <p className="text-[13px] text-[#73829F]">{activeTab.gaugeLabel}</p>
                   <p className="mt-0.5 line-clamp-2 text-[26px] font-semibold leading-tight tracking-[-0.05em] text-[#101A3B]">
                     {activeTab.gaugeValue}
